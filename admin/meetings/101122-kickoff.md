@@ -28,10 +28,10 @@ This meeting is being held to kickoff the start of many meetings to come during 
   - review assignments
   - figure out rules
   - start branding/team name
+- ### Next Meeting's Business
   - figure out roles
   - decide next meeting times
   - figure out team bonding events
-- ### Next Meeting's Business
   - finish rules
   - brainstorm CRUD applications
   - complete any other assignments
