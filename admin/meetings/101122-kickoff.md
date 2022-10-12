@@ -32,8 +32,9 @@ This meeting is being held to kickoff the start of many meetings to come during 
   - decide next meeting times
   - figure out team bonding events
 - ### Next Meeting's Business
-  - complete assignments
+  - finish rules
   - brainstorm CRUD applications
+  - complete any other assignments
 
 ## Decisions Made
 
