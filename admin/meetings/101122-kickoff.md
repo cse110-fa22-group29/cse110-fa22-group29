@@ -1,4 +1,4 @@
-# Meeting Minutes 
+# Meeting Minutes (10/12/2022)
 ## Meeting Name: Team 29
 ## Meeting Topic: Kickoff Meeting
 This meeting is being held to kickoff the start of many meetings to come during the quarter.
