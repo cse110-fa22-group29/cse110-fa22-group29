@@ -1,5 +1,5 @@
 # Meeting Minutes (10/12/2022)
-## Meeting Name: Team 29
+## Team 29: Hackers1995
 ## Meeting Topic: Kickoff Meeting
 This meeting is being held to kickoff the start of many meetings to come during the quarter.
 ## Attendance
@@ -11,10 +11,10 @@ This meeting is being held to kickoff the start of many meetings to come during 
 6. Marc Reta
 7. Sanjit Joseph
 8. Isaac Otero
-9. Arthur Lu
-10. Daniel Hernandez
+9. Daniel Hernandez
 
 ## Absentees
+1. Arthur Lu
 
 ## Meeting Details
 - When: 10/12/2022 at 3:30PM
@@ -26,17 +26,19 @@ This meeting is being held to kickoff the start of many meetings to come during 
 - ### New Business
   - go over github organization
   - review assignments
-  - figure out rules
+  - go through rules
   - start branding/team name
 - ### Next Meeting's Business
   - figure out roles
-  - decide next meeting times
+  - decide weekly meeting times
   - figure out team bonding events
-  - finish rules
   - brainstorm CRUD applications
-  - complete any other assignments
+  - complete any remaining assignments
 
 ## Decisions Made
+- went over github organizations and reviewed the assignments
+- went through the rules and agreed on the contract
+- figured out the 
 
 ## End Time
 - 10/12/2022 at 4:30PM
