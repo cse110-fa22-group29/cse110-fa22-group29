@@ -5,7 +5,7 @@
     - Team 29
     - TA: Gagan Gopalaiah
     - Instructor: Professor Thomas Powell
-    - Team Name: Hacker1995
+    - Team Name: Hackers1995
 
 ## Team member info (name/email)
     1. Rhea Bhutada, rbhutada@ucsd.edu
