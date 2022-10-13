@@ -26,7 +26,7 @@
 - All pull requests require 3 people to review the code being pushed to main.
 
 #### 2) Scheduling Meetings (Schedule at least one meeting as part of constructing your team agreement.)
-- Team will agree to meet at least once a week in person or on Zoom. Communicate 24 hours before scheduling a meeting to make sure anyone who needs to attend can make the meeting.
+- Members are expected to meet at least once a week with the group either in-person or on Zoom. Future meeting details will be determined within a 24 hours window.
 - Team members hosting the meeting will send out a reminder of the meeting with an agenda 2 hours before the meeting.
 
 #### 3) General Responsibilities for All Team Members
