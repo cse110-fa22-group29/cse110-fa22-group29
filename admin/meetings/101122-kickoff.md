@@ -38,7 +38,7 @@ This meeting is being held to kickoff the start of many meetings to come during 
 ## Decisions Made
 - went over github organizations and reviewed the assignments
 - went through the rules and agreed on the contract
-- figured out the 
+- figured out the brand name
 
 ## End Time
 - 10/12/2022 at 4:30PM
