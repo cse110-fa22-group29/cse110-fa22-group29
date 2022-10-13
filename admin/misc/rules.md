@@ -22,12 +22,12 @@
 ## RULES:
 #### 1)  Primary Means of Communication and Expectations
 - All members will communicate via Slack.
-- All members will be expected to read messages from group chats and direct messages, and respond in no more than ____ hours and no later than ____.
-- All pull requests require ____ people to review the code being pushed to main.
+- All members will be expected to read messages from group chats and direct messages, and respond in no more than 4 hours and no later than 10PM.
+- All pull requests require 3 people to review the code being pushed to main.
 
 #### 2) Scheduling Meetings (Schedule at least one meeting as part of constructing your team agreement.)
-- Team will agree, at the end of each class, to set any meetings times and agenda needed before the next class and beyond if possible
-- Team members hosting the meeting will send out a reminder of the meeting with an agenda ____ hours before the meeting.
+- Team will agree to meet at least once a week in person or on Zoom. Communicate 24 hours before scheduling a meeting to make sure anyone who needs to attend can make the meeting.
+- Team members hosting the meeting will send out a reminder of the meeting with an agenda 2 hours before the meeting.
 
 #### 3) General Responsibilities for All Team Members
 
