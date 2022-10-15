@@ -21,6 +21,7 @@
 
 ### **Team Lead: George Dubinin**
 - #### About Me:
+   - Hello World! I'm the second lead on this project and I'm super excited to share my experience as a fifth year (super senior!) computer science major. My technical interests include virtualization and IaC (infrastructure as code) particularly as they relate to web development. In addition I've studied computer hardware design, cryptography, and cybersecurity which I explored while interning at Palo Alto Networks during Summer 2022. I am also deeply passionate about music and I am the current training manager for DVC, the on-campus DJ club. This quarter is going to be a fantastic opportunitity to work with the team and learn from all the amazing experience that our members are bringing!
 - #### Link to Github: https://github.com/look-its-ashton
 
 
