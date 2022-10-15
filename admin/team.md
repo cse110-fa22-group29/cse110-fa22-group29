@@ -38,6 +38,7 @@
 
 ### **Henry Feng**
 - #### About Me:
+  - My name is Henry Feng and I am a 3rd year Computer Science major at Warren. I am from Auckland, New Zealand, a country with breathtaking scenary. I love to hike, as I enjoy both viewseeing and mountain climbing. I also enjoy cooking, playing badminton, and playing the guitar outside of school. As for software engineering, I enjoy working on the backend, but I am also interested in experiencing more in the frontend aspects. I hope that by the end of this project I will become more knowledgable on software engineering!
 - #### Link to Github: https://github.com/dusk-moon
 
 
