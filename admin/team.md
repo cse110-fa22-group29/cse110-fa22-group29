@@ -21,7 +21,6 @@
 
 ### **Team Lead: George Dubinin**
 - #### About Me:
-   - Hello World! I'm the second lead on this project and I'm super excited to share my experience as a fifth year (super senior!) computer science major. My technical interests include virtualization and IaC (infrastructure as code) particularly as they relate to web development. In addition I've studied computer hardware design, cryptography, and cybersecurity which I explored while interning at Palo Alto Networks during Summer 2022. I am also deeply passionate about music and I am the current training manager for DVC, the on-campus DJ club. This quarter is going to be a fantastic opportunitity to work with the team and learn from all the amazing experience that our members are bringing!
 - #### Link to Github: https://github.com/look-its-ashton
 
 
@@ -39,7 +38,6 @@
 
 ### **Henry Feng**
 - #### About Me:
-  - My name is Henry Feng and I am a 3rd year Computer Science major at Warren. I am from Auckland, New Zealand, a country with breathtaking scenary. I love to hike, as I enjoy both viewseeing and mountain climbing. I also enjoy cooking, playing badminton, and playing the guitar outside of school. As for software engineering, I enjoy working on the backend, but I am also interested in experiencing more in the frontend aspects. I hope that by the end of this project I will become more knowledgable on software engineering!
 - #### Link to Github: https://github.com/dusk-moon
 
 
@@ -49,7 +47,7 @@
 
 
 ### **Marc Reta**
-- #### About Me:
+- #### About Me: My name is Marc Reta and I am a 3rd year Computer Engineering major in Warren College. I love exploring San Diego and going on adventures. I have a huge interest in Public Transportation. I'm looking foward to working with everyone in my group and learn how to create an application. 
 - #### Link to Github: https://github.com/Graydogminer
 
 
