@@ -64,4 +64,5 @@
 
 ### **Arthur Lu**
 - #### About Me:
+  - My name is Arthur Lu and I am a 3rd year CE major. I am primarily interested in low level systems design, hardware development and optimization, and HPC architecture. I work as an undergraduate research assistant for Prof. Turakhia developing hardware accelerators for long length genome alignment. When I’m not busy, I like to relax with some retro video games. 
 - #### Link to Github: https://github.com/ltcptgeneral
