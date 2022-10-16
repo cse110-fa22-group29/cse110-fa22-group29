@@ -47,12 +47,13 @@
 
 
 ### **Marc Reta**
-- #### About Me:
+- #### About Me: My name is Marc Reta and I am a 3rd year Computer Engineering major in Warren College. I love exploring San Diego and going on adventures. I have a huge interest in Public Transportation. I'm looking foward to working with everyone in my group and learn how to create an application. 
 - #### Link to Github: https://github.com/Graydogminer
 
 
 ### **Sanjit Joseph**
-- #### About Me:
+- #### About Me: 
+  - Hi! My name is Sanjit Joseph and I'm a 3rd year CE major at Sixth. I'm from the Bay Area, so I've been surrounded by technology most of my life. I'm into building computers and I waste a lot of time (and money) messing with my PC and playing video games on it. I enjoy things outside of tech, though--as an Eagle Scout, I've done tons of backpacking throughout California and the US. I also hold a black belt in Shotokan Karate. As for this class, I'm pretty excited about all the different aspects of software engineering; frontend and backend both appeal to me, but I'm really just excited to work on a long class project in a team setting.
 - #### Link to Github: https://github.com/sm-joseph
 
 
