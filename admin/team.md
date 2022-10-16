@@ -43,6 +43,7 @@
 
 ### **Kara Hoagland**
 - #### About Me:
+  - My name is Kara Hoagland and I am a 3rd year Computer Engineering major. CS-wise, I'm interested in topics such as computer vision and RFID, but it's hard to limit oneself because there's so many interesting topics out there. Outside of CS, I enjoy D&D, biking, and reading. I got some industry experience over summer and love getting to see how that experience and my previous classes all apply to this project. I'm interested in full stack but more so the backend of things.
 - #### Link to Github: https://github.com/KH-Cl
 
 
