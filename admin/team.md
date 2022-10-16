@@ -59,7 +59,8 @@
 
 
 ### **Isaac Otero**
-- #### About Me: My name is Isaac Otero, I am a 5th year Cog Sci major. I am interested in front end development. I want to implement what I’ve learned from my design classes into my projects for front end development. 
+- #### About Me: 
+  -  My name is Isaac Otero, I am a 5th year Cog Sci major. I am interested in front end development. I want to implement what I’ve learned from my design classes into  my projects for front end development. 
 - #### Link to Github: https://github.com/Isaac-Otero
 
 
