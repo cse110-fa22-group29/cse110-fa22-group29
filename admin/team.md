@@ -40,6 +40,7 @@
 
 ### **Henry Feng**
 - #### About Me:
+  - My name is Henry, and I am a 3rd year CS mahor. I was born in China and grew up in New Zealand. I wrote my first line of code, in Python during my second year of high school. My favourite foods are ramen, steak and pasta. Some of my hobbies include playing guitar, hiking, cooking, video games, and music (from the Persona series). I am excited to start this project and hope to contribute to both frontend and backend.
 - #### Link to Github: https://github.com/dusk-moon
 
 
