@@ -1,6 +1,7 @@
 # **Hackers1995**
 
 ## **Brand**
+![poster](./branding/teamposter.jpg)
 
 ## **Values**
 - Openness
