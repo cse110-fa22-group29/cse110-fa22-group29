@@ -31,8 +31,8 @@ This meeting is held to help the group decide on which kind of app to build.
 
 ## Decisions Made
 - Maybe for the food reviewer app. Presenting possible writeup to Gagan
-- Maybe for the resume builder. Presenting possible writeup to Gagan
-- Maybe for Social Media Local Archive. Presenting possible writeup to Gagan
+- Maybe for the resume builder. Presenting possible writeup to Gagan https://docs.google.com/document/d/1zdvVxd47Ivdz-D0rZGNJqc3D9GiQj0n_xMJKapOV39A/edit?usp=sharing
+- Maybe for Social Media Local Archive. Presenting possible writeup to Gagan https://docs.google.com/document/d/1upNr6lneB2uzCoQ12_aa1CMg1W8p2NBFb6xmP7i4-z4/edit?usp=sharing
 - No to the copy/paste app (not local first)
 
 ## End Time
