@@ -13,7 +13,7 @@ This meeting is held to help the group decide on which kind of app to build.
 
 ## Absentees
 1. Sanjit Joseph
-2. 2. Gavyn Ezell
+2. Gavyn Ezell
 3. Daniel Hernandez
 
 ## Meeting Details
@@ -32,7 +32,7 @@ This meeting is held to help the group decide on which kind of app to build.
 ## Decisions Made
 - Maybe for the food reviewer app. Presenting possible writeup to Gagan
 - Maybe for the resume builder. Presenting possible writeup to Gagan
-- Maybe for the social media aux. Presenting possible writeup to Gagan
+- Maybe for Social Media Local Archive. Presenting possible writeup to Gagan
 - No to the copy/paste app (not local first)
 
 ## End Time
