@@ -17,9 +17,14 @@
 * Delete: Users may delete their reviews
 
 ## Visual Representation
+- User Flow Diagram:
+
+<img src="./diagram.png"></img>
+
 - Home Page: Users sees all their reviews and can perform CRUD actions
 - Create New Entry Page: new page with a form is opened up
-<img src="./diagram.png"></img>
+
+<img src="./new_entry_protoype.jpg"></img>
 
 ## User Personas
 ### Persona 1: Tom
