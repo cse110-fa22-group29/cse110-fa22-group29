@@ -57,4 +57,4 @@ We're figuring out what project we're going to do, and figure out what we need f
 
 
 ## End Time
-- 10/27/2022 at 6:00 PM
+- 10/27/2022 at 6:15 PM
