@@ -2,6 +2,7 @@
 ## Team 29: Hackers1995
 ## Meeting Topic: Project Pitch
 We finished up the project pitch docs and presenting them to Gagan. 
+
 Google slides: **https://docs.google.com/presentation/d/1_XWihJGVChFtYS38RnYJtQUuFKsgvewOCOkdeMHFRg4/edit?usp=sharing**
 
 ## Meeting Details
@@ -17,7 +18,7 @@ Google slides: **https://docs.google.com/presentation/d/1_XWihJGVChFtYS38RnYJtQU
 
 ## Moving forward:
 - I think we need to upload our project pitch to canvas by 11/1
-- Start on the really basic stuff as discussed in lecture
+- Start on the really basic stuff as discussed in lecture (hello world for CI/CD setup, etc)
 
 ## End Time
 - 10/28/2022 at 4:00 PM
