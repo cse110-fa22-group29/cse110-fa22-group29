@@ -22,9 +22,16 @@
 <img src="./diagram.png"></img>
 
 - Home Page: Users sees all their reviews and can perform CRUD actions
+
+<img src="./wireframes/home_page_wireframe.PNG"></img>
+
+- Review Page: User can see an induvidual review that they created previously
+
+<img src="./wireframes/read_review_wireframe.PNG"></img>
+
 - Create New Entry Page: new page with a form is opened up
 
-<img src="./new_entry_protoype.jpg"></img>
+<img src="./wireframes/new_entry_wireframe.PNG"></img>
 
 ## User Personas
 ### Persona 1: Tom
