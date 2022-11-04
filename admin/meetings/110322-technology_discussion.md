@@ -5,15 +5,9 @@ We're deciding on what web technologies we will incorporate into our food blog a
 
 ## Attendance
 1. Rhea Bhutada
-2. Sanjit Joseph
 3. Arthur Lu
-4. Henry Feng
 5. Marc Reta
-6. Kara Hoagland
-7. Daniel Hernandez
 8. Gavyn Ezell
-9. Isaac Otero
-
 ## Meeting Details
 - When: 11/03/2022 at 3:00PM
 - Where: In-person (CSE Basement B250) and George's Zoom room
