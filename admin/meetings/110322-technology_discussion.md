@@ -31,14 +31,6 @@ We're deciding on what web technologies we will incorporate into our food blog a
   - How will PRs be approved
     - The team will be split up into groups for different aspects of the app (front end, ui, database for example) and PRs will be reviewed and approved by 1 other member of the respective group
   - Introduce the ADR and discuss how we will create it
-    - 
-
-
-
-## Assignments:
-- ### By X point in time:
-- 
-
 
 ## End Time
 - 11/03/2022 at 4:00 PM
