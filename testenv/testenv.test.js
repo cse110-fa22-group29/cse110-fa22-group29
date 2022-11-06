@@ -69,7 +69,7 @@ describe("test localStorage mock", () => {
 		expect(getFromLocal("testkey4")).toBe(null);
 	});
 
-	test("test delete and fetch", () => {
+	test("test clear and fetch", () => {
 		let window = environment();
 		saveToLocal("testkey1", "testvalue1");
 		saveToLocal("testkey2", "testvalue2");
