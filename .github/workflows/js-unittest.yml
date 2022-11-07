@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install apt updates
-        run: apt -y update; apt -y upgrade;
+        run: sudo apt -y update; sudo apt -y upgrade;
       - name: Install prerequisites
-        run: apt install -y nodejs npm git;
+        run: sudo apt install -y nodejs npm git;
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install dependencies
-        run: npm install
+        run: sudo npm install
       - name: Run tests
-        run: npm test
+        run: sudo npm test
