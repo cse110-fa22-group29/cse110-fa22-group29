@@ -1,4 +1,4 @@
-name: Install jest and run JS unit tests
+name: Jest JS Unit Test
 
 on:
   pull_request:
