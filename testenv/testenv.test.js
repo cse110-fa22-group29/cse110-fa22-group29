@@ -1,6 +1,7 @@
 const {environment} = require("./testenv.js");
-var assert = require('assert');
-var {saveToLocal, getFromLocal, removeFromLocal, clearLocal} = require('./testenv_helpers');
+var assert = require("assert");
+var {describe, it, beforeEach} = require("mocha");
+var {saveToLocal, getFromLocal, removeFromLocal, clearLocal} = require("./testenv_helpers");
 
 beforeEach(() => {
 	window = environment();

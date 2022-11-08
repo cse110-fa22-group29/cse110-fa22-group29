@@ -2,9 +2,12 @@
   "name": "food-journal",
   "version": "1.0.0",
   "scripts": {
-    "test": "mocha --recursive **/*.test.js"
+    "test": "mocha --recursive **/*.test.js",
+    "lint": "eslint **/*.js",
+    "fix-style": "eslint --fix **/*.js"
   },
-  "dependencies": {
+  "devDependencies": {
+    "eslint": "^8.27.0",
     "mocha": "10"
   }
 }
