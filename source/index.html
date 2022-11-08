@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 6 - Recipe Cards</title>
+
+  <!-- Recipe Card Custom Element -->
+  <script src="assets/scripts/RecipeCard.js" type="module"></script>
+
+  <!-- Main Stylesheets & Scripts -->
+  <link rel="stylesheet" href="assets/styles/main.css" />
+  <script src="assets/scripts/main.js" type="module"></script>
+</head>
+<body>
+  <main>
+    <!-- Add Recipes Here -->
+  </main>
+  <!-- For the Explore section - Remove "hidden" class before beginning -->
+  <form id="new-recipe">
+    <fieldset>
+      <legend>Image:</legend>
+      <label for="image-src">
+        Source:
+        <input type="text" id="imgSrc" name="imgSrc" required>
+      </label>
+      <label for="image-alt">
+        Alt Text:
+        <input type="text" id="imgAlt" name="imgAlt" required>
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Title:</legend>
+      <label for="title-txt">Text:
+        <input type="text" id="titleTxt" name="titleTxt" required>
+      </label>
+      <label for="title-lnk">Link:
+        <input type="url" id="titleLnk" name="titleLnk" required>
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Rating</legend>
+      <label for="rating-0">
+        0<input type="radio" id="rating-0" value="0" name="rating">
+      </label>
+      <label for="rating-1">
+        1<input type="radio" id="rating-1" value="1" name="rating">
+      </label>
+      <label for="rating-2">
+        2<input type="radio" id="rating-2" value="2" name="rating">
+      </label>
+      <label for="rating-3">
+        3<input type="radio" id="rating-3" value="3" name="rating">
+      </label>
+      <label for="rating-4">
+        4<input type="radio" id="rating-4" value="4" name="rating">
+      </label>
+      <label for="rating-5">
+        5<input type="radio" id="rating-5" value="5" name="rating">
+      </label>
+      <label for="numRatings">
+        Num Ratings:
+        <input type="number" id="numRatings" name="numRatings">
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Other Info:</legend>
+      <label for="organization">
+        Organization:
+        <input type="text" id="organization" name="organization" required>
+      </label>
+      <label for="lengthTime">
+        Length (time):
+        <input type="text" id="lengthTime" name="lengthTime" required>
+      </label>
+      <label for="ingredients">
+        <p>Ingredients:</p>
+        <textarea name="ingredients" id="ingredients" cols="38" rows="5"
+          required></textarea>
+      </label>
+    </fieldset>
+    <button type="submit">Add Recipe</button>
+    <button type="button" class="danger">Clear Local Storage</button>
+  </form>
+</body>
+</html>

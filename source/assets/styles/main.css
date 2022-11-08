@@ -1,0 +1,58 @@
+/* main.css */
+
+* {
+  font-family: sans-serif;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+fieldset {
+  border: 2px solid rgb(214, 214, 214);
+  box-sizing: border-box;
+  display: block;
+  width: max-content;
+}
+
+form button {
+  display: block;
+  margin-top: 5px;
+}
+
+label[for="ingredients"] p {
+  margin: 0;
+}
+
+label[for="numRatings"] {
+  margin: 10px 0 0 0;
+}
+
+label[for^="rating"] {
+  padding-right: 10px;
+}
+
+label:not([for^="rating"]) {
+  display: block;
+  margin-bottom: 5px;
+}
+
+main {
+  column-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  max-width: 660px;
+  row-gap: 10px;
+  width: 100%;
+}
+
+.danger {
+  background-color: rgb(254, 171, 171);
+  border-color: red;
+}
+
+.hidden {
+  display: none;
+}
