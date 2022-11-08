@@ -2,9 +2,9 @@
   "name": "food-journal",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest"
+    "test": "mocha --recursive **/*.test.js"
   },
   "dependencies": {
-    "jest": "24"
+    "mocha": "10"
   }
 }
