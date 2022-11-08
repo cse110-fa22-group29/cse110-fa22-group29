@@ -1,27 +1,13 @@
 const {environment} = require("./testenv.js");
 var assert = require('assert');
-var window;
+var {saveToLocal, getFromLocal, removeFromLocal, clearLocal} = require('./testenv_helpers');
 
-function saveToLocal (k, v) {
-	window.localStorage.setItem(k, v);
-}
-
-function getFromLocal (k) {
-	return window.localStorage.getItem(k);
-}
-
-function removeFromLocal (k) {
-	window.localStorage.removeItem(k);
-}
-
-function clearLocal () {
-	window.localStorage.clear();
-} 
+beforeEach(() => {
+	window = environment();
+});
 
 describe("test localStorage mock", () => {
 	it("test save and fetch", () => {
-		window = environment();
-
 		saveToLocal("testkey1", "testvalue1");
 		saveToLocal("testkey2", "testvalue2");
 		saveToLocal("testkey3", "testvalue3");
@@ -37,8 +23,6 @@ describe("test localStorage mock", () => {
 	});
 
 	it("test window locality", () => {
-		window = environment();
-
 		assert.equal(getFromLocal("testkey1"), null);
 		assert.equal(getFromLocal("testkey2"), null);
 		assert.equal(getFromLocal("testkey3"), null);
@@ -46,8 +30,6 @@ describe("test localStorage mock", () => {
 	});
 
 	it("test delete and fetch", () => {
-		window = environment();
-
 		saveToLocal("testkey1", "testvalue1");
 		saveToLocal("testkey2", "testvalue2");
 		saveToLocal("testkey3", "testvalue3");
@@ -83,8 +65,6 @@ describe("test localStorage mock", () => {
 	});
 
 	it("test clear and fetch", () => {
-		window = environment();
-
 		saveToLocal("testkey1", "testvalue1");
 		saveToLocal("testkey2", "testvalue2");
 		saveToLocal("testkey3", "testvalue3");
