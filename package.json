@@ -2,9 +2,16 @@
   "name": "food-journal",
   "version": "1.0.0",
   "scripts": {
-    "test": "mocha --recursive **/*.test.js"
+    "test": "mocha --recursive **/*.test.js",
+    "lint": "eslint **/*.js",
+    "fix-style": "eslint --fix **/*.js"
   },
-  "dependencies": {
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.5.0",
+    "eslint-plugin-promise": "^6.1.1",
     "mocha": "10"
   }
 }
