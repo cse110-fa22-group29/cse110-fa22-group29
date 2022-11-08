@@ -8,11 +8,13 @@
   <title>Food Journal</title>
 
   <!-- Recipe Card Custom Element -->
-  <script src="assets/scripts/RecipeCard.js" type="module"></script>
+  <script src="/source/assets/scripts/ReviewCard.js" type="module"></script>
+
 
   <!-- Main Stylesheets & Scripts --> 
   <link rel="stylesheet" href="assets/styles/main.css" />
   <script src="assets/scripts/main.js" type="module"></script>
+
 </head>
 <body>
   <main>
@@ -32,6 +34,7 @@
       </label>
     </fieldset>
     <fieldset>
+
       <legend> Meal: </legend>
       /* TODO: change parameters */ 
       <label for="Meal: "> Meal:
@@ -40,6 +43,7 @@
       /* navigate to review page */ 
       <label for="title-lnk">Link:
         <input type="url" id="titleLnk" name="titleLnk" required>
+
       </label>
     </fieldset>
     <fieldset>
@@ -62,6 +66,7 @@
       <label for="rating-5">
         5<input type="radio" id="rating-5" value="5" name="rating">
       </label>
+
     </fieldset>
     <fieldset>
       <legend>Other Info:</legend>
@@ -77,6 +82,7 @@
         Tags:
         <input type="text" id="comments" name="comments" required>
       </label>
+
     </fieldset>
     <button type="submit">Add Review</button>
     <button type="button" class="danger">Clear Local Storage</button>
