@@ -47,7 +47,28 @@
     row-gap: 10px;
     width: 100%;
   }
-  
+  .tag {
+  background-color: grey;
+  border-radius: 7px;
+  color: white;
+  padding-right: 7px;
+  padding-left: 7px;
+  margin: 3px;
+}
+
+.tag::before {
+  display: inline-block;
+  content: 'x';
+  height: 15px;
+  width: 15px;
+  margin-right: 4px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+.tag:hover::before{
+  color: red;
+}
   .danger {
     background-color: rgb(254, 171, 171);
     border-color: red;
