@@ -61,18 +61,11 @@ class ReviewCard extends HTMLElement {
         width: calc(100% + 32px);
       }
     
-      p.ingredients {
-        height: 32px;
-        line-height: 16px;
-        padding-top: 4px;
-        overflow: hidden;
-      }
-    
-      p.organization {
+      p.restaurant-name {
         color: black !important;
       }
     
-      p.title {
+      p.meal-name {
         display: -webkit-box;
         font-size: 16px;
         height: 36px;
@@ -82,7 +75,7 @@ class ReviewCard extends HTMLElement {
         -webkit-box-orient: vertical;
       }
     
-      p:not(.title),
+      p:not(.meal-name),
       span,
       time {
         color: #70757A;
@@ -149,6 +142,7 @@ class ReviewCard extends HTMLElement {
     articleEl.append(pMeal)
     articleEl.append(pRestaurant)
     articleEl.append(div)
+
 
   }
 }

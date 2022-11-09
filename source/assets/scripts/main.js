@@ -41,7 +41,7 @@ function addReviewsToDocument(reviews) {
  * saves that string to 'reviews' in localStorage
  * @param {Array<Object>} reviews An array of reviews
  */
-function saveRecipesToStorage(reviews) {
+function saveReviewsToStorage(reviews) {
   localStorage.setItem('reviews', JSON.stringify(reviews));
 }
 
@@ -50,40 +50,74 @@ function saveRecipesToStorage(reviews) {
  * <button>.
  */
 function initFormHandler() {
-
+  let tagContainer = document.getElementById('tag-container');
   let theForm = document.querySelector('form')
-  
   let submitButt = document.querySelector('button[type="submit"]')
   submitButt.addEventListener('click', function(){
-
-    let formData = new FormData(theForm);
-    let recipeObject = {}
-
-    for (let [key, value] of formData) {
-      
-      recipeObject[`${key}`] = `${value}`
+    let deleteTags = document.querySelectorAll('.tag')
+    for(let i = 0; i < deleteTags.length; i ++) {
+      tagContainer.removeChild(deleteTags[i]);
     }
+    let formData = new FormData(theForm);
+    let reviewObject = {}
+    for (let [key, value] of formData) {
+      console.log(`${key}`)
+      console.log(`${value}`)
+      reviewObject[`${key}`] = `${value}`
+    }
+    //console.log(reviewObject)
 
-    let newRecipe = document.createElement('recipe-card')
-    newRecipe.data = recipeObject
+    let newReview = document.createElement('review-card')
+    newReview.data = reviewObject
 
     let mainEl = document.querySelector('main')
-    mainEl.append(newRecipe)
+    mainEl.append(newReview)
 
-    let aList = getRecipesFromStorage()
-    //console.log(typeof(aList))
-    //console.log(aList)
-    aList.push(recipeObject)
-    saveRecipesToStorage(aList)
+    let aList = getReviewsFromStorage()
+    aList.push(reviewObject)
+    saveReviewsToStorage(aList)
+    document.getElementById("new-food-entry").reset();
   });
 
   let clearButt = document.querySelector('.danger')
   clearButt.addEventListener('click', function() {
     localStorage.clear();
     let mainEl = document.querySelector('main')
-     while (mainEl.firstChild) {
+    while (mainEl.firstChild) {
       mainEl.removeChild(mainEl.firstChild);
-     }
+    }
+    let deleteTags = document.querySelectorAll('.tag')
+    for(let i = 0; i < deleteTags.length; i ++) {
+      tagContainer.removeChild(deleteTags[i]);
+    }
+    
+    //clears reviews AS WELL as resets form
+    document.getElementById("new-food-entry").reset();
+     
+     
+  });
+
+  //allowing for tags selection/creation for user's review card
+  let tagAddButton = document.getElementById('tagAdd');
+  tagAddButton.addEventListener('click', ()=> {
+    let tagField = document.getElementById('tags');
+    if (tagField.value.length > 0) {
+      let p = document.createElement('p');
+      p.innerHTML = tagField.value;
+      p.setAttribute('class','tag')
+      
+      tagContainer.append(p);
+      tagField.value = '';
+
+      //adding deletion feature to each individual tag
+      let deleteTags = document.querySelectorAll('.tag')
+
+      for(let i = 0; i < deleteTags.length; i ++) {
+        deleteTags[i].addEventListener('click',()=> {
+          tagContainer.removeChild(deleteTags[i]);
+        })
+      }
+    }
   });
 
 }
