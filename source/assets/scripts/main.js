@@ -1,4 +1,5 @@
 // main.js
+const {getReviewsFromStorage, saveReviewsToStorage} = require('./localStorage');
 
 // Run the init() function when the page has loaded
 window.addEventListener('DOMContentLoaded', init);
@@ -13,17 +14,6 @@ function init() {
 }
 
 /**
- * @returns {Array<Object>} An array of reviews found in localStorage
- */
-function getReviewsFromStorage() {
-  let result = JSON.parse(localStorage.getItem('reviews'))
-  if (result) {
-    return result;
-  }
-  return new Array(0);
-}
-
-/**
  * @param {Array<Object>} reviews An array of reviews
  */
 function addReviewsToDocument(reviews) {
@@ -34,15 +24,6 @@ function addReviewsToDocument(reviews) {
     mainEl.append(newReview);
   })
 
-}
-
-/**
- * Takes in an array of reviews, converts it to a string, and then
- * saves that string to 'reviews' in localStorage
- * @param {Array<Object>} reviews An array of reviews
- */
-function saveReviewsToStorage(reviews) {
-  localStorage.setItem('reviews', JSON.stringify(reviews));
 }
 
 /**
