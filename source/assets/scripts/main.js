@@ -1,5 +1,5 @@
 // main.js
-const {getReviewsFromStorage, saveReviewsToStorage} = require('./localStorage');
+import {getReviewsFromStorage, saveReviewsToStorage} from './localStorage.js';
 
 // Run the init() function when the page has loaded
 window.addEventListener('DOMContentLoaded', init);
@@ -31,14 +31,16 @@ function addReviewsToDocument(reviews) {
  * <button>.
  */
 function initFormHandler() {
-  let tagContainer = document.getElementById('tag-container');
+  //accessing form components
+  let tagContainer = document.getElementById('tag-container-form');
   let theForm = document.querySelector('form')
   let submitButt = document.querySelector('button[type="submit"]')
+  
   submitButt.addEventListener('click', function(){
-    let deleteTags = document.querySelectorAll('.tag')
-    for(let i = 0; i < deleteTags.length; i ++) {
-      tagContainer.removeChild(deleteTags[i]);
-    }
+    /*
+    *  User submits the form for their review.
+    *  We create reviewCard and put in storage
+    */
     let formData = new FormData(theForm);
     let reviewObject = {}
     for (let [key, value] of formData) {
@@ -46,7 +48,14 @@ function initFormHandler() {
       console.log(`${value}`)
       reviewObject[`${key}`] = `${value}`
     }
-    //console.log(reviewObject)
+    reviewObject['tags'] = []
+
+    let deleteTags = document.querySelectorAll('.tag')
+    for(let i = 0; i < deleteTags.length; i ++) {
+      reviewObject['tags'].push(deleteTags[i].innerHTML);
+      tagContainer.removeChild(deleteTags[i]);
+    }
+    
 
     let newReview = document.createElement('review-card')
     newReview.data = reviewObject
@@ -78,10 +87,9 @@ function initFormHandler() {
      
   });
 
-  //allowing for tags selection/creation for user's review card
   let tagAddButton = document.getElementById('tagAdd');
   tagAddButton.addEventListener('click', ()=> {
-    let tagField = document.getElementById('tags');
+    let tagField = document.getElementById('tag-form');
     if (tagField.value.length > 0) {
       let p = document.createElement('p');
       p.innerHTML = tagField.value;

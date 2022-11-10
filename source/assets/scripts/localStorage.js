@@ -1,9 +1,10 @@
-module.exports = {getReviewsFromStorage, saveReviewsToStorage};
+//
+//module.exports = {getReviewsFromStorage, saveReviewsToStorage};
 
 /**
  * @returns {Array<Object>} An array of reviews found in localStorage
  */
-function getReviewsFromStorage() {
+export function getReviewsFromStorage() {
 	let result = JSON.parse(localStorage.getItem('reviews'))
 	if (result) {
 		return result;
@@ -16,6 +17,6 @@ function getReviewsFromStorage() {
  * saves that string to 'reviews' in localStorage
  * @param {Array<Object>} reviews An array of reviews
  */
-function saveReviewsToStorage(reviews) {
+export function saveReviewsToStorage(reviews) {
 	localStorage.setItem('reviews', JSON.stringify(reviews));
 }
