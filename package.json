@@ -4,7 +4,7 @@
   "scripts": {
     "test": "mocha --recursive './{,!(node_modules)/**}/*.test.js'",
     "lint": "eslint **/*.js",
-    "fix-style": "eslint --fix **/*.js"
+    "fix-style": "eslint --fix '**/*.js'"
   },
   "devDependencies": {
     "eslint": "^8.27.0",
