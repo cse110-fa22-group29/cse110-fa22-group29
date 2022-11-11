@@ -142,7 +142,7 @@ class ReviewCard extends HTMLElement {
     for (let i = 0; i < data['tags'].length; i++) {
       let newTag = document.createElement('label');
       newTag.setAttribute('class','tag');
-      newTag.innerHTML = data['tags'][i] + " ";
+      newTag.innerHTML = data['tags'][i] + "   ";
       tagContainer.append(newTag);
     }
 
