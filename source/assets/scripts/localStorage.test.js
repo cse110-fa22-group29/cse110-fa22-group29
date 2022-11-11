@@ -1,11 +1,9 @@
-const {getReviewsFromStorage, saveReviewsToStorage} = require("./localStorage");
-const {environment} = require("./testenv");
-const assert = require("assert");
-const {describe, it, beforeEach} = require("mocha");
+import {strict as assert} from "node:assert"
+import {describe, it, beforeEach} from "mocha";
+import {saveReviewsToStorage, getReviewsFromStorage} from "./localStorage.js";
 
 beforeEach(() => {
-	window = environment();
-	localStorage = window.localStorage;
+	localStorage.clear();
 });
 
 describe("test app localStorage interaction", () => {
@@ -26,7 +24,8 @@ describe("test app localStorage interaction", () => {
 		assert.deepEqual(getReviewsFromStorage(), reviews);
 	});
 	it("repeated store one more and get", () => {
-		saveReviewsToStorage(reviews);
+		let reviews = [];
+
 		assert.deepEqual(getReviewsFromStorage(), reviews);
 
 		for(let i = 0; i < 1000; i++){
