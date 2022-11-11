@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', init);
 function init() {
   // Get the reviews from localStorage
   let reviews = getReviewsFromStorage();
-  // Add each recipe to the <main> element
+  // Add each reviews to the <main> element
   addReviewsToDocument(reviews);
   // Add the event listeners to the form elements
   initFormHandler();
@@ -17,66 +17,74 @@ function init() {
  * @param {Array<Object>} reviews An array of reviews
  */
 function addReviewsToDocument(reviews) {
-  let mainEl = document.querySelector('main')
+  let mainEl = document.querySelector('main');
   reviews.forEach(review=> {
-    let newReview = document.createElement('review-card')
-    newReview.data = review
+    let newReview = document.createElement('review-card');
+    newReview.data = review;
+    newReview.addEventListener('click', function(){
+      //TODO: create a separate file for specs - frontend
+      var newWin = window.open('about:blank','_self');
+    });
+    //TODO: want to append it to whatever the box is in layout 
     mainEl.append(newReview);
-  })
+  });
 
 }
 
 /**
- * Adds the necesarry event handlers to <form> and the clear storage
+ * Adds the necessary event handlers to <form> and the clear storage
  * <button>.
  */
 function initFormHandler() {
   //accessing form components
   let tagContainer = document.getElementById('tag-container-form');
-  let theForm = document.querySelector('form')
-  let submitButt = document.querySelector('button[type="submit"]')
+  let form = document.querySelector('form');
   
-  submitButt.addEventListener('click', function(){
+  form.addEventListener('submit', function(){
     /*
     *  User submits the form for their review.
     *  We create reviewCard and put in storage
     */
-    let formData = new FormData(theForm);
-    let reviewObject = {}
+    let formData = new FormData(form);
+    let reviewObject = {};
     for (let [key, value] of formData) {
-      console.log(`${key}`)
-      console.log(`${value}`)
-      reviewObject[`${key}`] = `${value}`
+      console.log(`${key}`);
+      console.log(`${value}`);
+      if (`${key}` !== "tag-form") {
+        reviewObject[`${key}`] = `${value}`;
+      }
     }
-    reviewObject['tags'] = []
+    reviewObject['tags'] = [];
 
-    let deleteTags = document.querySelectorAll('.tag')
-    for(let i = 0; i < deleteTags.length; i ++) {
-      reviewObject['tags'].push(deleteTags[i].innerHTML);
-      tagContainer.removeChild(deleteTags[i]);
+    let tags = document.querySelectorAll('.tag');
+    for(let i = 0; i < tags.length; i ++) {
+      reviewObject['tags'].push(tags[i].innerHTML);
+      tagContainer.removeChild(tags[i]);
     }
     
 
-    let newReview = document.createElement('review-card')
-    newReview.data = reviewObject
+    let newReview = document.createElement('review-card');
+    newReview.data = reviewObject;
 
-    let mainEl = document.querySelector('main')
-    mainEl.append(newReview)
+    //TODO: want to append it to whatever the box is in layout 
+    let mainEl = document.querySelector('main');
+    mainEl.append(newReview);
 
-    let aList = getReviewsFromStorage()
-    aList.push(reviewObject)
-    saveReviewsToStorage(aList)
+    let storedReviews = getReviewsFromStorage();
+    storedReviews.push(reviewObject);
+    saveReviewsToStorage(storedReviews);
     document.getElementById("new-food-entry").reset();
   });
 
-  let clearButt = document.querySelector('.danger')
-  clearButt.addEventListener('click', function() {
+  // DEV-MODE: for testing purposes 
+  let clearBtn = document.querySelector('.danger');
+  clearBtn.addEventListener('click', function() {
     localStorage.clear();
-    let mainEl = document.querySelector('main')
+    let mainEl = document.querySelector('main');
     while (mainEl.firstChild) {
       mainEl.removeChild(mainEl.firstChild);
     }
-    let deleteTags = document.querySelectorAll('.tag')
+    let deleteTags = document.querySelectorAll('.tag');
     for(let i = 0; i < deleteTags.length; i ++) {
       tagContainer.removeChild(deleteTags[i]);
     }
@@ -87,25 +95,20 @@ function initFormHandler() {
      
   });
 
-  let tagAddButton = document.getElementById('tagAdd');
-  tagAddButton.addEventListener('click', ()=> {
+  let tagAddBtn = document.getElementById('tagAdd');
+  tagAddBtn.addEventListener('click', ()=> {
     let tagField = document.getElementById('tag-form');
     if (tagField.value.length > 0) {
-      let p = document.createElement('p');
-      p.innerHTML = tagField.value;
-      p.setAttribute('class','tag')
+      let tagLabel = document.createElement('label');
+      tagLabel.innerHTML = tagField.value;
+      tagLabel.setAttribute('class','tag');
+      tagLabel.addEventListener('click',()=> {
+        tagContainer.removeChild(tagLabel);
+      });
       
-      tagContainer.append(p);
+      tagContainer.append(tagLabel);
       tagField.value = '';
 
-      //adding deletion feature to each individual tag
-      let deleteTags = document.querySelectorAll('.tag')
-
-      for(let i = 0; i < deleteTags.length; i ++) {
-        deleteTags[i].addEventListener('click',()=> {
-          tagContainer.removeChild(deleteTags[i]);
-        })
-      }
     }
   });
 

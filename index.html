@@ -12,8 +12,9 @@
 
 
   <!-- Main Stylesheets & Scripts --> 
-  <link rel="stylesheet" href="/static/ReviewCard.css" />
-  <link rel="stylesheet" href="/static/reset.css" />
+  <!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
+  <!-- <link rel="stylesheet" href="/static/reset.css" /> -->
+  <link rel="stylesheet" href="./static/ReviewCard.css" />
   <script src="/source/assets/scripts/main.js" type="module"></script>
 
 </head>
@@ -23,15 +24,14 @@
   </main>
   <form id="new-food-entry">
     <fieldset>
-
       <legend>Photo:</legend>
       <label for="image-src">
         Source:
-        <input type="text" id="imgSrc" name="imgSrc" required>
+        <input type="text" id="imgSrc" name="imgSrc">
       </label>
       <label for="image-alt">
         Alt Text:
-        <input type="text" id="imgAlt" name="imgAlt" required>
+        <input type="text" id="imgAlt" name="imgAlt">
       </label>
     </fieldset>
     <fieldset>
@@ -40,15 +40,15 @@
       <label for="Meal: ">Meal:
         <input type="text" id="mealName" name="mealName" required>
       </label>
-      <label for="review">Description: 
+      <label for="comments">Description: 
         <br>
-        <textarea id="review"></textarea>
+        <textarea name="comments" id="comments"></textarea>
       </label>
     </fieldset>
     <fieldset>
       <legend>Rating</legend>
       <label for="rating-0">
-        0<input type="radio" id="rating-0" value="0" name="rating">
+        0<input type="radio" id="rating-0" value="0" name="rating" required>
       </label>
       <label for="rating-1">
         1<input type="radio" id="rating-1" value="1" name="rating">
@@ -75,7 +75,7 @@
       </label>
       <label for="tag-form">
         Tags:
-        <input type="text" id="tag-form" name="tag-form" required>
+        <input type="text" id="tag-form" name="tag-form">
         <div class='tag-container' id="tag-container-form">
 
         </div>

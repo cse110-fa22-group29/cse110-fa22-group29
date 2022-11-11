@@ -61,11 +61,11 @@ class ReviewCard extends HTMLElement {
         width: calc(100% + 32px);
       }
     
-      p.restaurant-name {
+      label.restaurant-name {
         color: black !important;
       }
     
-      p.meal-name {
+      label.meal-name {
         display: -webkit-box;
         font-size: 16px;
         height: 36px;
@@ -75,7 +75,7 @@ class ReviewCard extends HTMLElement {
         -webkit-box-orient: vertical;
       }
     
-      p:not(.meal-name),
+      label:not(.meal-name),
       span,
       time {
         color: #70757A;
@@ -84,7 +84,7 @@ class ReviewCard extends HTMLElement {
     `;
     articleEl.append(styleEl);
     shadowEl.append(articleEl);
-    this.shadowEl = shadowEl
+    this.shadowEl = shadowEl;
   }
 
   /**
@@ -115,45 +115,42 @@ class ReviewCard extends HTMLElement {
     // setting the article elements for the review card
 
     //image setup
-    let img1 = document.createElement('img');
-    img1.setAttribute('src',data['imgSrc']);
-    img1.setAttribute('alt',data['imgAlt']);
+    let mealImg = document.createElement('img');
+    mealImg.setAttribute('src',data['imgSrc']);
+    mealImg.setAttribute('alt',data['imgAlt']);
 
     //meal name setup
-    let pMeal = document.createElement('p');
-    pMeal.setAttribute('class','meal-name');
-    pMeal.innerHTML = data["mealName"];
+    let mealLabel = document.createElement('label');
+    mealLabel.setAttribute('class','meal-name');
+    mealLabel.innerHTML = data['mealName'];
 
-    let pRestaurant = document.createElement('p');
-    pRestaurant.setAttribute('class','restaurant-name');
-    pRestaurant.innerHTML = data["restaurant"];
+    let restaurantLabel = document.createElement('label');
+    restaurantLabel.setAttribute('class','restaurant-name');
+    restaurantLabel.innerHTML = data['restaurant'];
 
     //other info: rating
-    let div = document.createElement('div')
-    div.setAttribute('class', 'rating')
-    let span1 = document.createElement('span')
-    span1.innerHTML = data["rating"];
-    let img2 = document.createElement('img')
-    img2.setAttribute('src', './source/assets/images/icons/'+data['rating']+'-star.svg');
-    img2.setAttribute('alt', data['rating'] +' stars');
-    div.append(span1);
-    div.append(img2);
+    let ratingDiv = document.createElement('div');
+    ratingDiv.setAttribute('class', 'rating');
+    let starsImg = document.createElement('img');
+    starsImg.setAttribute('src', './source/assets/images/icons/'+data['rating']+'-star.svg');
+    starsImg.setAttribute('alt', data['rating'] +' stars');
+    ratingDiv.append(starsImg);
 
     //added tags
     let tagContainer = document.createElement('div')
     tagContainer.setAttribute('class', 'tag-container');
     for (let i = 0; i < data['tags'].length; i++) {
-      let newTag = document.createElement('p');
+      let newTag = document.createElement('label');
       newTag.setAttribute('class','tag');
-      newTag.innerHTML = data['tags'][i]
-      tagContainer.append(newTag)
+      newTag.innerHTML = data['tags'][i] + " ";
+      tagContainer.append(newTag);
     }
 
-    articleEl.append(img1)
-    articleEl.append(pMeal)
-    articleEl.append(pRestaurant)
-    articleEl.append(div)
-    articleEl.append(tagContainer)
+    articleEl.append(mealImg);
+    articleEl.append(mealLabel);
+    articleEl.append(restaurantLabel);
+    articleEl.append(ratingDiv);
+    articleEl.append(tagContainer);
 
 
   }
