@@ -1,13 +1,15 @@
 {
   "name": "food-journal",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "test": "mocha --recursive './{,!(node_modules)/**}/*.test.js'",
+    "test": "mocha --recursive --require mock-local-storage './{,!(node_modules)/**}/*.test.js'",
     "lint": "eslint **/*.js",
     "fix-style": "eslint --fix '**/*.js'"
   },
   "devDependencies": {
     "eslint": "^8.27.0",
-    "mocha": "10"
+    "mocha": "10",
+    "mock-local-storage": "^1.1.23"
   }
 }

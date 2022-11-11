@@ -1,6 +1,3 @@
-//
-//module.exports = {getReviewsFromStorage, saveReviewsToStorage};
-
 /**
  * @returns {Array<Object>} An array of reviews found in localStorage
  */
