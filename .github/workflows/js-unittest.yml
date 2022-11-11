@@ -16,7 +16,7 @@ jobs:
       - name: Install apt updates
         run: sudo apt -y update; sudo apt -y upgrade;
       - name: Install prerequisites
-      - uses: actions/setup-node@v3
+        uses: actions/setup-node@v3
         with:
           node-version: 18
       - name: Checkout
