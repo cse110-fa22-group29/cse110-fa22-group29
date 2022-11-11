@@ -4,13 +4,16 @@
       "imgAlt": "tacos pic",
       "mealName": "Birria Tacos",
       "restaurant": "Mike's Red Tacos",
-      "rating": 5
+      "rating": 5,
+      "tags": ["delicious", "#worthit","omg"]
    },
    {
       "imgSrc": "https://www.redwormcomposting.com/images/worm-burrito.JPG",
       "imgAlt": "wolftown pic",
       "mealName": "Carnitas Burrito",
       "restaurant": "Wolftown UCSD",
-      "rating": 0
+      "rating": 0,
+      "tags": ["gross", "why","no"]
+
    }
 ]

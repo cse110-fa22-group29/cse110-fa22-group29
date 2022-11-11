@@ -47,6 +47,11 @@
     row-gap: 10px;
     width: 100%;
   }
+
+  .tag-container {
+    display: flex;
+    flex-flow: row wrap;
+  }
   .tag {
   background-color: grey;
   border-radius: 7px;
@@ -66,14 +71,14 @@
   color: white;
   cursor: pointer;
 }
-.tag:hover::before{
+.tag:hover::before {
   color: red;
 }
-  .danger {
-    background-color: rgb(254, 171, 171);
-    border-color: red;
-  }
-  
-  .hidden {
-    display: none;
-  }
+.danger {
+  background-color: rgb(254, 171, 171);
+  border-color: red;
+}
+
+.hidden {
+  display: none;
+}

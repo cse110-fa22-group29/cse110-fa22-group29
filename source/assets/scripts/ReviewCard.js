@@ -102,6 +102,7 @@ class ReviewCard extends HTMLElement {
    *                          "mealName": "string",
    *                          "restaurant": "string",
    *                          "rating": number
+   *                          "tags": string array
    *                        }
    */
   set data(data) {
@@ -138,10 +139,21 @@ class ReviewCard extends HTMLElement {
     div.append(span1);
     div.append(img2);
 
+    //added tags
+    let tagContainer = document.createElement('div')
+    tagContainer.setAttribute('class', 'tag-container');
+    for (let i = 0; i < data['tags'].length; i++) {
+      let newTag = document.createElement('p');
+      newTag.setAttribute('class','tag');
+      newTag.innerHTML = data['tags'][i]
+      tagContainer.append(newTag)
+    }
+
     articleEl.append(img1)
     articleEl.append(pMeal)
     articleEl.append(pRestaurant)
     articleEl.append(div)
+    articleEl.append(tagContainer)
 
 
   }
