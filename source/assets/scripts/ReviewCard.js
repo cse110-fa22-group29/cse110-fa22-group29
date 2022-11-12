@@ -116,12 +116,12 @@ class ReviewCard extends HTMLElement {
    * @param {Object} data - The data to pass into the <review-card>, must be of the
    *                        following format:
    *                        {
-   *                          "comments": "string",
-   *                          "imgAlt": "string",
    *                          "mealImg": "string",
+   *                          "imgAlt": "string",
    *                          "mealName": "string",
-   *                          "restaurant": "string",
+   *                          "comments": "string",
    *                          "rating": number,
+   *                          "restaurant": "string",
    *                          "tags": string array
    *                        }
    */
@@ -147,6 +147,26 @@ class ReviewCard extends HTMLElement {
     mealLabel.innerHTML = data['mealName'];
 
     //restaurant name setup
+/*
+    //review page link
+    //giving it functionality to save the review card's info to session storage for loading the review page
+    let reviewLink = document.createElement('a');
+    reviewLink.setAttribute('href','./review.html')
+    reviewLink.innerHTML = 'review page'
+    reviewLink.addEventListener('click', () => {
+      sessionStorage.clear();
+      let currReview = {
+        "imgSrc": data['imgSrc'],
+        "imgAlt": data['imgAlt'],
+        "mealName": data['mealName'],
+        "restaurant": data['restaurant'],
+        "comments": data['comments'],
+        "rating": data['rating'],
+        "tags": data['tags']                
+      }
+      sessionStorage.setItem('currReview', JSON.stringify(currReview));
+    });
+*/
     let restaurantLabel = document.createElement('label');
     restaurantLabel.setAttribute('id', 'a-restaurant');
     restaurantLabel.setAttribute('class','restaurant-name');
@@ -184,6 +204,7 @@ class ReviewCard extends HTMLElement {
 
     articleEl.append(mealImg);
     articleEl.append(mealLabel);
+    //articleEl.append(reviewLink)
     articleEl.append(restaurantLabel);
     articleEl.append(ratingDiv);
     articleEl.append(tagContainer);
@@ -202,12 +223,12 @@ class ReviewCard extends HTMLElement {
    * @return {Object} data - The data from the <review-card>, of the
    *                        following format:
    *                        {
-   *                          "comments": "string",
-   *                          "imgAlt": "string",
    *                          "mealImg": "string",
+   *                          "imgAlt": "string",
    *                          "mealName": "string",
-   *                          "restaurant": "string",
+   *                          "comments": "string",
    *                          "rating": number,
+   *                          "restaurant": "string",
    *                          "tags": string array
    *                        }
    */
