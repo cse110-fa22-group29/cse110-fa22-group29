@@ -100,6 +100,7 @@ class ReviewCard extends HTMLElement {
    *                          "imgSrc": "string",
    *                          "imgAlt": "string",
    *                          "mealName": "string",
+   *                          "comments": "string",
    *                          "restaurant": "string",
    *                          "rating": number
    *                          "tags": string array
@@ -136,6 +137,7 @@ class ReviewCard extends HTMLElement {
         "imgAlt": data['imgAlt'],
         "mealName": data['mealName'],
         "restaurant": data['restaurant'],
+        "comments": data['comments'],
         "rating": data['rating'],
         "tags": data['tags']                
       }
