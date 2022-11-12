@@ -18,13 +18,9 @@ function init() {
  */
 function addReviewsToDocument(reviews) {
   let mainEl = document.querySelector('main');
-  reviews.forEach(review=> {
+  reviews.forEach(review => {
     let newReview = document.createElement('review-card');
     newReview.data = review;
-    newReview.addEventListener('click', function(){
-      //TODO: create a separate file for specs - frontend
-      var newWin = window.open('about:blank','_self');
-    });
     //TODO: want to append it to whatever the box is in layout 
     mainEl.append(newReview);
   });
@@ -36,6 +32,13 @@ function addReviewsToDocument(reviews) {
  * <button>.
  */
 function initFormHandler() {
+
+  //btn to create form (could be its own function?)
+  let createBtn = document.getElementById('create');
+  createBtn.addEventListener('click', function(){
+    window.location.assign('./CreatePage.html');
+  });
+
   //accessing form components
   let tagContainer = document.getElementById('tag-container-form');
   let form = document.querySelector('form');

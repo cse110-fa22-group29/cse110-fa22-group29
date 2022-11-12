@@ -85,6 +85,25 @@ class ReviewCard extends HTMLElement {
     articleEl.append(styleEl);
     shadowEl.append(articleEl);
     this.shadowEl = shadowEl;
+    //attach event listener to each recipe-card
+    this.addEventListener('click', (event) => {
+      console.log(event.target);
+      console.log(event.target.data);
+      //Option 1: sending current data to second html page using localStorage (could also just store index)
+      sessionStorage.setItem('current', JSON.stringify(event.target.data));
+      window.location.assign("./ReviewDetails.html");
+      /*
+      //Option 2: sending current data to second html page using string query w/ url (currently not storing value)
+      let reviewFields = window.location.search.slice(1).split("&");
+      for(let i = 0; i < reviewFields.length; i++) {
+        let kv = reviewFields[i].split("=");
+        let key = kv[0]; 
+        let value = kv[1];
+        console.log(key);
+        console.log(value);
+        // What you want to do with name and value...
+      }*/
+    });
   }
 
   /**
@@ -97,11 +116,12 @@ class ReviewCard extends HTMLElement {
    * @param {Object} data - The data to pass into the <review-card>, must be of the
    *                        following format:
    *                        {
-   *                          "imgSrc": "string",
+   *                          "comments": "string",
    *                          "imgAlt": "string",
+   *                          "mealImg": "string",
    *                          "mealName": "string",
    *                          "restaurant": "string",
-   *                          "rating": number
+   *                          "rating": number,
    *                          "tags": string array
    *                        }
    */
@@ -116,34 +136,50 @@ class ReviewCard extends HTMLElement {
 
     //image setup
     let mealImg = document.createElement('img');
-    mealImg.setAttribute('src',data['imgSrc']);
+    mealImg.setAttribute('id', 'a-mealImg');
+    mealImg.setAttribute('src',data['mealImg']);
     mealImg.setAttribute('alt',data['imgAlt']);
 
     //meal name setup
     let mealLabel = document.createElement('label');
+    mealLabel.setAttribute('id', 'a-mealName');
     mealLabel.setAttribute('class','meal-name');
     mealLabel.innerHTML = data['mealName'];
 
+    //restaurant name setup
     let restaurantLabel = document.createElement('label');
+    restaurantLabel.setAttribute('id', 'a-restaurant');
     restaurantLabel.setAttribute('class','restaurant-name');
     restaurantLabel.innerHTML = data['restaurant'];
+
+    //comment section setup (display set to none)
+    let comments = document.createElement('p');
+    comments.setAttribute('id', 'a-comments');
+    comments.style.display = 'none';
+    comments.innerText = data['comments'];
 
     //other info: rating
     let ratingDiv = document.createElement('div');
     ratingDiv.setAttribute('class', 'rating');
     let starsImg = document.createElement('img');
+    starsImg.setAttribute('id', 'a-rating');
     starsImg.setAttribute('src', './source/assets/images/icons/'+data['rating']+'-star.svg');
     starsImg.setAttribute('alt', data['rating'] +' stars');
+    starsImg.setAttribute('num', data['rating']);
     ratingDiv.append(starsImg);
 
     //added tags
-    let tagContainer = document.createElement('div')
+    let tagContainer = document.createElement('div');
     tagContainer.setAttribute('class', 'tag-container');
-    for (let i = 0; i < data['tags'].length; i++) {
-      let newTag = document.createElement('label');
-      newTag.setAttribute('class','tag');
-      newTag.innerHTML = data['tags'][i] + "   ";
-      tagContainer.append(newTag);
+    tagContainer.setAttribute('id', 'a-tags');
+    tagContainer.setAttribute('list', data['tags']);
+    if(data['tags']){
+      for (let i = 0; i < data['tags'].length; i++) {
+        let newTag = document.createElement('label');
+        newTag.setAttribute('class','tag');
+        newTag.innerHTML = data['tags'][i] + "   ";
+        tagContainer.append(newTag);
+      }
     }
 
     articleEl.append(mealImg);
@@ -151,8 +187,63 @@ class ReviewCard extends HTMLElement {
     articleEl.append(restaurantLabel);
     articleEl.append(ratingDiv);
     articleEl.append(tagContainer);
+    articleEl.append(comments);
 
 
+  }
+
+    /**
+   * Called when getting the .data property of this element.
+   *
+   * For Example:
+   * let reviewCard = document.createElement('review-card'); 
+   * reviewCard.data = { foo: 'bar' } 
+   *
+   * @return {Object} data - The data from the <review-card>, of the
+   *                        following format:
+   *                        {
+   *                          "comments": "string",
+   *                          "imgAlt": "string",
+   *                          "mealImg": "string",
+   *                          "mealName": "string",
+   *                          "restaurant": "string",
+   *                          "rating": number,
+   *                          "tags": string array
+   *                        }
+   */
+  get data() {
+
+    let dataContainer = {};
+    
+    // getting the article elements for the review card
+
+    //get image
+    let mealImg = this.shadowEl.getElementById('a-mealImg');
+    dataContainer['mealImg'] = mealImg.getAttribute('src');
+    dataContainer['imgAlt'] = mealImg.getAttribute('alt');
+
+    //get meal name
+    let mealLabel = this.shadowEl.getElementById('a-mealName');
+    dataContainer['mealName'] = mealLabel.innerHTML;
+
+    //get comment section
+    let comments = this.shadowEl.getElementById('a-comments');
+    console.log(comments);
+    dataContainer['comments'] = comments.innerText;
+
+    //get other info: rating
+    let starsImg = this.shadowEl.getElementById('a-rating');
+    dataContainer['rating'] = starsImg.getAttribute('num');
+
+    //get restaurant name
+    let restaurantLabel = this.shadowEl.getElementById('a-restaurant');
+    dataContainer['restaurant'] = restaurantLabel.innerHTML;
+
+    //get tags
+    let tagContainer = this.shadowEl.getElementById('a-tags');
+    dataContainer['tags'] = tagContainer.getAttribute('list').split(",");
+
+    return dataContainer;
   }
 }
 customElements.define('review-card', ReviewCard);
