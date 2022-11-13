@@ -1,6 +1,6 @@
-# Sprint 1 Review Meeting Minutes (11/13/2022)
+# Sprint 1 Retrospective (11/14/2022)
 ## Team 29: Hackers1995
-## Meeting Topic: Sprint 1 Review
+## Meeting Topic: Sprint 1 Retrospective
 
 ## Attendance
 1. Rhea Bhutada
@@ -15,11 +15,13 @@
 10. Isaac Otero
 
 ## Meeting Details
-- When: 11/13/2022 at 1:00PM
-- Where: Capital One Cafe and Zoom
+- When: 11/14/2022 at 4:30PM
+- Where: On Campus
 
 ## Agenda:
-Review the week 7 sprint and get the writeup for the Agile review assignemnt
+Discuss the review, share more detailed thoughts on sprint 1, and create some resolutions for sprint 2
+
+## Sprint 1 Review Below (for convenience)
 
 ## Sprint 1 REVIEW
 In collecting feedback during our final sprint the leads decided to ask members individually about their experience during sprint 1 to then summarize these responses. Each member was asked 4 questions with their summarized responses below:
@@ -47,5 +49,12 @@ Communication was challenging especially for members that would attend over Zoom
 
 Overall we feel that sprint 1 was a success with many lessons learned. Our enthusiasm for the project is only building and we are excited to get back into it with sprint 2 after a much needed short break.
 
+## Resolutions
+* Divide up tasks and assign tasks to members
+* Define objectives for team groups (frontend, backend, and unit testing)
+* Scheduled meetings with more notice and keep meetings at a more central location so that more members can attend
+* Get the unit testing modules up to date
+* To-do: create a style guide
+
 ## End Time
-- 11/13/2022 at 3:00PM
+- 11/14/2022 at 5:00PM
