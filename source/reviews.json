@@ -1,0 +1,19 @@
+[
+   {
+      "imgSrc": "https://cdn.vox-cdn.com/thumbor/Cj5J-5WqSCjlC2tWCOXEB536CJY=/0x0:1810x1182/1200x800/filters:focal(761x447:1049x735)/cdn.vox-cdn.com/uploads/chorus_image/image/69422966/Tacos_Lined_Up.0.png",
+      "imgAlt": "tacos pic",
+      "mealName": "Birria Tacos",
+      "restaurant": "Mike's Red Tacos",
+      "rating": 5,
+      "tags": ["delicious", "#worthit","omg"]
+   },
+   {
+      "imgSrc": "https://www.redwormcomposting.com/images/worm-burrito.JPG",
+      "imgAlt": "wolftown pic",
+      "mealName": "Carnitas Burrito",
+      "restaurant": "Wolftown UCSD",
+      "rating": 0,
+      "tags": ["gross", "why","no"]
+
+   }
+]

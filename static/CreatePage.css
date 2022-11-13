@@ -1,0 +1,128 @@
+/* CreatePage.css */
+
+* {
+  font-family: sans-serif;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+fieldset {
+  border: 2px solid rgb(214, 214, 214);
+  box-sizing: border-box;
+  display: block;
+  width: max-content;
+}
+
+form button {
+  display: block;
+  margin-top: 5px;
+}
+
+label[for="ingredients"] p {
+  margin: 0;
+}
+
+label[for="numRatings"] {
+  margin: 10px 0 0 0;
+}
+
+label[for^="rating"] {
+  padding-right: 10px;
+}
+
+label:not([for^="rating"]) {
+  display: block;
+  margin-bottom: 5px;
+}
+
+main {
+  column-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  max-width: 660px;
+  row-gap: 10px;
+  width: 100%;
+}
+
+.tag-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+.tag {
+background-color: grey;
+border-radius: 7px;
+color: white;
+padding-right: 7px;
+padding-left: 7px;
+margin: 3px;
+}
+
+.tag::before {
+display: inline-block;
+content: 'x';
+height: 15px;
+width: 15px;
+margin-right: 4px;
+text-align: center;
+color: white;
+cursor: pointer;
+}
+
+.tag:hover::before {
+color: red;
+}
+.danger {
+background-color: rgb(254, 171, 171);
+border-color: red;
+}
+
+
+.hidden, 
+.rating:not(:checked) > input { /* Hide radio circles while star rating */
+display: none;
+}
+
+/* Unchecked stars */
+.rating:not(:checked) > label {
+  /* Make stars line up sideways and not vertically */
+  float:right; 
+
+  /* Hide label text */
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+
+  font-size:200%;
+  line-height:1.2;
+  color:#b3b3cc; 
+}
+
+.rating:not(:checked) > label:before {
+  content:'★';
+}
+
+/* Checked star color */
+.rating > input:checked ~ label {
+  color: #FFBF00;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: orangered;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: orangered;
+}
+
+.rating > label:active {
+  position:relative;
+}

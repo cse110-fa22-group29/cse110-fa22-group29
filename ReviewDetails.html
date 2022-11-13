@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Journal</title>
+
+  <!-- Recipe Card Custom Element -->
+  <script src="/source/assets/scripts/ReviewCard.js" type="module"></script>
+
+
+  <!-- Main Stylesheets & Scripts --> 
+  <!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
+  <!-- <link rel="stylesheet" href="/static/reset.css" /> -->
+  <link rel="stylesheet" href="./static/ReviewCard.css" />
+  <script src="/source/assets/scripts/ReviewDetails.js" type="module"></script>
+
+</head>
+<body>
+  <main>
+    <button type="button" id="update">Update</button>
+    <button type="button" id="delete" class="danger">Delete</button>
+  </main>
+    <!----> <form id="update-food-entry" class="hidden">
+      <fieldset>
+        <legend>Pic:</legend>
+        <label for="mealImage">
+          Source:
+          <input type="text" id="mealImg" name="mealImg">
+        </label>
+        <label for="image-alt">
+          Alt Text:
+          <input type="text" id="imgAlt" name="imgAlt">
+        </label>
+      </fieldset>
+      <fieldset>
+  
+        <legend> Meal: </legend>
+        <label for="Meal: ">Meal:
+          <input type="text" id="mealName" name="mealName" required>
+        </label>
+        <label for="comments">Comments: 
+          <br>
+          <textarea name="comments" id="comments"></textarea>
+        </label>
+      </fieldset>
+      
+      <fieldset class="rating">
+        <legend> Rating: </legend>
+        <input type="radio" id="s5" name="rating" value="5"/> <label for="s5"> 5 stars </label>
+        <input type="radio" id="s4" name="rating" value="4"/> <label for="s4"> 4 stars </label>
+        <input type="radio" id="s3" name="rating" value="3"/> <label for="s3"> 3 stars </label>
+        <input type="radio" id="s2" name="rating" value="2"/> <label for="s2"> 2 stars </label>
+        <input type="radio" id="s1" name="rating" value="1"/> <label for="s1"> 1 star </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Other Info:</legend>
+        <label for="restaurant">
+          Restaurant:
+          <input type="text" id="restaurant" name="restaurant" required>
+        </label>
+        <label for="tag-form">
+          Tags:
+          <input type="text" id="tag-form" name="tag-form">
+          <div class='tag-container' id="tag-container-form">
+  
+          </div>
+          <button type="button" id="tagAdd">Add Tag</button>
+        </label>
+  
+      </fieldset>
+      <button type="submit" value="Submit">Add Review</button>
+      </form>
+</body>
+</html>
