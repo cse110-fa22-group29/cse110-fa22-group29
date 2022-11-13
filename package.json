@@ -4,19 +4,15 @@
   "scripts": {
     "test": "mocha --recursive './{,!(node_modules)/**}/*.test.js'",
     "lint": "eslint '**/*.js'",
-    "fix-style": "eslint --fix **/*.js"
-  },
-  "html": {
-    "lintHTML": "npx htmlhint '**/*.html'"
-  },
-  "css": {
+    "fix-style": "eslint --fix **/*.js",
+    "lintHTML": "npx htmlhint '**/*.html'",
     "lintCSS": "npx stylelint '**/*.css'"
   },
   "devDependencies": {
     "eslint": "^8.27.0",
-    "mocha": "10",
     "htmlhint": "1.1.4",
-    "stylelint": "14.14.1"
-
+    "mocha": "10",
+    "stylelint": "14.14.1",
+    "stylelint-config-standard": "^29.0.0"
   }
 }
