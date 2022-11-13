@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Install apt updates
         run: sudo apt -y update; sudo apt -y upgrade;
-      - name: Install prerequisites
-        run: sudo apt install -y htmlhint npm;
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install dependencies

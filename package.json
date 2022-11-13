@@ -6,11 +6,17 @@
     "lint": "eslint '**/*.js'",
     "fix-style": "eslint --fix **/*.js"
   },
-   "html": {
-    "lintHTML": "npx htmlhint '**/*.html'",
+  "html": {
+    "lintHTML": "npx htmlhint '**/*.html'"
+  },
+  "css": {
+    "lintCSS": "npx stylelint '**/*.css'"
   },
   "devDependencies": {
     "eslint": "^8.27.0",
-    "mocha": "10"
+    "mocha": "10",
+    "htmlhint": "1.1.4",
+    "stylelint": "14.14.1"
+
   }
 }
