@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,13 +11,14 @@
   <script src="/source/assets/scripts/ReviewCard.js" type="module"></script>
 
 
-  <!-- Main Stylesheets & Scripts --> 
+  <!-- Main Stylesheets & Scripts -->
   <!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
   <!-- <link rel="stylesheet" href="/static/reset.css" /> -->
   <link rel="stylesheet" href="./static/CreatePage.css" />
   <script src="/source/assets/scripts/main.js" type="module"></script>
 
 </head>
+
 <body>
   <form id="new-food-entry">
     <fieldset>
@@ -37,33 +38,21 @@
       <label for="Meal: ">Meal:
         <input type="text" id="mealName" name="mealName" required>
       </label>
-      <label for="comments">Comments: 
+      <label for="comments">Comments:
         <br>
         <textarea name="comments" id="comments"></textarea>
       </label>
     </fieldset>
-    <fieldset>
-      <legend>Rating</legend>
-      <label for="rating-0">
-        0<input type="radio" id="rating-0" value="0" name="rating" required>
-      </label>
-      <label for="rating-1">
-        1<input type="radio" id="rating-1" value="1" name="rating">
-      </label>
-      <label for="rating-2">
-        2<input type="radio" id="rating-2" value="2" name="rating">
-      </label>
-      <label for="rating-3">
-        3<input type="radio" id="rating-3" value="3" name="rating">
-      </label>
-      <label for="rating-4">
-        4<input type="radio" id="rating-4" value="4" name="rating">
-      </label>
-      <label for="rating-5">
-        5<input type="radio" id="rating-5" value="5" name="rating">
-      </label>
 
+    <fieldset class="rating">
+      <legend> Rating: </legend>
+      <input type="radio" id="s5" name="rating" value="5"/> <label for="s5"> 5 stars </label>
+      <input type="radio" id="s4" name="rating" value="4"/> <label for="s4"> 4 stars </label>
+      <input type="radio" id="s3" name="rating" value="3"/> <label for="s3"> 3 stars </label>
+      <input type="radio" id="s2" name="rating" value="2"/> <label for="s2"> 2 stars </label>
+      <input type="radio" id="s1" name="rating" value="1"/> <label for="s1"> 1 star </label>
     </fieldset>
+
     <fieldset>
       <legend>Other Info:</legend>
       <label for="restaurant">
@@ -84,4 +73,5 @@
     <button type="button" class="danger">Clear Review Journal</button>
   </form>
 </body>
+
 </html>
