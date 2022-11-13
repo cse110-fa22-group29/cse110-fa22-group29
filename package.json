@@ -5,8 +5,8 @@
     "test": "mocha --recursive './{,!(node_modules)/**}/*.test.js'",
     "lint": "eslint '**/*.js'",
     "fix-style": "eslint --fix **/*.js",
-    "lintHTML": "npx htmlhint '**/*.html'",
-    "lintCSS": "npx stylelint '**/*.css'"
+    "lintHTML": "htmlhint '**/*.html'",
+    "lintCSS": "stylelint '**/*.css'"
   },
   "devDependencies": {
     "eslint": "^8.27.0",
