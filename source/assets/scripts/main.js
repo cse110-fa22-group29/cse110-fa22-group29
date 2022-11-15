@@ -33,6 +33,7 @@ function addReviewsToDocument(reviews) {
  */
 function initFormHandler() {
 
+	/*
 	//btn to create form (could be its own function?)
 	let createBtn = document.getElementById("create");
 	createBtn.addEventListener("click", function(){
@@ -41,7 +42,7 @@ function initFormHandler() {
 
 	//accessing form components
 	let tagContainer = document.getElementById("tag-container-form");
-	let form = document.querySelector("form");
+	let form = document.querySelector("form");*/
   
 	form.addEventListener("submit", function(){
 		/*

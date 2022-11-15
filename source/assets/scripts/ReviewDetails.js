@@ -66,7 +66,6 @@ function setupUpdate(){
 					tagContainer.append(newTag);
 				}
 			}
-
 			//Take formdata values as newData when submit
 			form.addEventListener("submit", function(){
 				/*

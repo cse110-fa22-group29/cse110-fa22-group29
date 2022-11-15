@@ -183,7 +183,7 @@ class ReviewCard extends HTMLElement {
 		ratingDiv.setAttribute("class", "rating");
 		let starsImg = document.createElement("img");
 		starsImg.setAttribute("id", "a-rating");
-		starsImg.setAttribute("src", "./source/assets/images/icons/"+data["rating"]+"-star.svg");
+		starsImg.setAttribute("src", "./assets/images/icons/"+data["rating"]+"-star.svg");
 		starsImg.setAttribute("alt", data["rating"] +" stars");
 		starsImg.setAttribute("num", data["rating"]);
 		ratingDiv.append(starsImg);
