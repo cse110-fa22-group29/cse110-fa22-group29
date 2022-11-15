@@ -44,5 +44,5 @@ describe("test app localStorage interaction", () => {
 			saveReviewsToStorage(reviews);
 			assert.deepEqual(getReviewsFromStorage(), reviews);
 		}
-	});
+	}).timeout(10000);
 });
