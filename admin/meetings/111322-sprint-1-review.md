@@ -1,6 +1,7 @@
 # Sprint 1 Review Meeting Minutes (11/13/2022)
 ## Team 29: Hackers1995
 ## Meeting Topic: Sprint 1 Review
+We are meeting with Gagan to discuss progress made on Sprint 1 and testing strategies that we need to keep in mind as we continue developing.
 
 ## Attendance
 1. Rhea Bhutada
