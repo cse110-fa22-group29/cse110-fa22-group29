@@ -2,7 +2,7 @@
  * @returns {Array<Object>} An array of reviews found in localStorage
  */
 export function getReviewsFromStorage() {
-	let result = JSON.parse(localStorage.getItem('reviews'))
+	let result = JSON.parse(localStorage.getItem("reviews"));
 	if (result) {
 		return result;
 	}
@@ -15,5 +15,5 @@ export function getReviewsFromStorage() {
  * @param {Array<Object>} reviews An array of reviews
  */
 export function saveReviewsToStorage(reviews) {
-	localStorage.setItem('reviews', JSON.stringify(reviews));
+	localStorage.setItem("reviews", JSON.stringify(reviews));
 }

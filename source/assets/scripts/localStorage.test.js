@@ -1,4 +1,4 @@
-import {strict as assert} from "node:assert"
+import {strict as assert} from "node:assert";
 import {describe, it, beforeEach} from "mocha";
 import {saveReviewsToStorage, getReviewsFromStorage} from "./localStorage.js";
 
@@ -40,7 +40,7 @@ describe("test app localStorage interaction", () => {
 					"rating": i,
 					"tags": [`tag ${3*i}`, `tag ${3*i + 1}`, `tag ${3*i + 2}`]
 				}
-			)
+			);
 			saveReviewsToStorage(reviews);
 			assert.deepEqual(getReviewsFromStorage(), reviews);
 		}
