@@ -38,14 +38,14 @@ function initFormHandler() {
 	let createBtn = document.getElementById("create");
 	createBtn.addEventListener("click", function(){
 		window.location.assign("./CreatePage.html");
-	});
+	});*/
 
 	//accessing form components
 	let tagContainer = document.getElementById("tag-container-form");
-	let form = document.querySelector("form");*/
+	let form = document.querySelector("form");
   
 	form.addEventListener("submit", function(){
-		/*
+	/*
     *  User submits the form for their review.
     *  We create reviewCard and put in storage
     */
