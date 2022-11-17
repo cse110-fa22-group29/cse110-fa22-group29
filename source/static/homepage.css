@@ -1,0 +1,38 @@
+/* homepage.css */
+body{
+    background-color: #13323b;
+}
+.Top-Bar{
+    margin-top: -8cm;
+}
+.Top-Bar > img{
+    position: relative;
+    top: 8.85cm;
+}
+.Top-Bar > h1{
+    position: relative;
+    left: 10.5cm;
+    top: 3.2cm;
+    font-size: 3cm;
+    color: #EAA9BC 
+  
+}
+.Top-Bar > form{
+    position: relative;
+    left: 32cm;
+}
+.Review-boxes {
+    position: relative;
+}
+
+.Review-boxes > h2{
+    position: relative;
+    left: 10cm;
+    font-size: 1.5cm;
+    color: #EAA9BC 
+}
+.Review-boxes > input{
+    position: relative;
+    left: 20.34cm;
+    top: -3.5cm;
+}
