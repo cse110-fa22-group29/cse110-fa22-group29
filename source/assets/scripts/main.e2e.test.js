@@ -8,7 +8,7 @@ describe("test App end to end", async () => {
 	let browser;
 	let page;
 
-	beforeEach(async () => {
+	before(async () => {
 		browser = await puppeteer.launch();
 		page = await browser.newPage();
 		try{
@@ -24,7 +24,23 @@ describe("test App end to end", async () => {
 		assert.strictEqual(await page.title(), "Food Journal");
 	});
 
-	afterEach(async () => {
+	it("test create review functinality", async () => {
+		
+	});
+
+	it("test read review functinality", async () => {
+		
+	});
+
+	it("test update review functinality", async () => {
+		
+	});
+
+	it("test delete review functinality", async () => {
+		
+	});
+
+	after(async () => {
 		await page.close();
 		await browser.close();
 	});
