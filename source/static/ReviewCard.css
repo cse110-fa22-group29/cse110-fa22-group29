@@ -81,3 +81,49 @@ main {
   background-color: rgb(254 171 171);
   border-color: red;
 }
+
+.hidden, 
+.rating:not(:checked) > input { /* Hide radio circles while star rating */
+display: none;
+}
+
+/* Unchecked stars */
+.rating:not(:checked) > label {
+  /* Make stars line up sideways and not vertically */
+  float:right; 
+
+  /* Hide label text */
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+
+  font-size:200%;
+  line-height:1.2;
+  color:#b3b3cc; 
+}
+
+.rating:not(:checked) > label:before {
+  content:'★';
+}
+
+/* Checked star color */
+.rating > input:checked ~ label {
+  color: #FFBF00;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: orangered;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: orangered;
+}
+
+.rating > label:active {
+  position:relative;
+}
