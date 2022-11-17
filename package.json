@@ -8,7 +8,7 @@
     "fix-style": "eslint --fix **/*.js",
     "lintHTML": "htmlhint '**/*.html'",
     "lintCSS": "stylelint '**/*.css'",
-    "http-server": "http-server source &"
+    "http-server": "http-server source"
   },
   "devDependencies": {
     "eslint": "^8.27.0",
