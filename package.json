@@ -7,7 +7,8 @@
     "lint": "eslint '**/*.js'",
     "fix-style": "eslint --fix **/*.js",
     "lintHTML": "htmlhint '**/*.html'",
-    "lintCSS": "stylelint '**/*.css'"
+    "lintCSS": "stylelint '**/*.css'",
+    "http-server": "http-server source"
   },
   "devDependencies": {
     "eslint": "^8.27.0",
@@ -15,6 +16,8 @@
     "mocha": "10",
     "mock-local-storage": "^1.1.23",
     "stylelint": "14.14.1",
-    "stylelint-config-standard": "^29.0.0"
+    "stylelint-config-standard": "^29.0.0",
+    "puppeteer": "18",
+    "http-server": ""
   }
 }

@@ -2,11 +2,12 @@ import {strict as assert} from "node:assert";
 import {describe, it, beforeEach} from "mocha";
 import {saveReviewsToStorage, getReviewsFromStorage} from "./localStorage.js";
 
-beforeEach(() => {
-	localStorage.clear();
-});
-
 describe("test app localStorage interaction", () => {
+	
+	beforeEach(() => {
+		localStorage.clear();
+	});
+
 	it("get after init", () => {
 		assert.deepEqual(getReviewsFromStorage(), []);
 	});
