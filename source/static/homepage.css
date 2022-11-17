@@ -8,14 +8,14 @@ body{
 }
 .Top-Bar > img{
     position: relative;
-    top: 8.85cm;
+    top: 7.5cm;
 }
 .Top-Bar > h1{
     position: relative;
     left: 10.5cm;
-    top: 3.2cm;
+    top: 2.2cm;
     font-size: 3cm;
-    color: #EAA9BC 
+    color: #EAA9BC; 
   
 }
 .Top-Bar > form{
@@ -26,13 +26,13 @@ body{
     position: relative;
 }
 
-.Review-boxes > h2{
+.Review-boxes > h2 {
     position: relative;
     left: 10cm;
     font-size: 1.5cm;
-    color: #EAA9BC 
+    color: #EAA9BC; 
 }
-.Review-boxes > input{
+.Review-boxes > input {
     position: relative;
     left: 20.34cm;
     top: -3.5cm;

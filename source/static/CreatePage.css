@@ -1,5 +1,42 @@
 /* CreatePage.css */
 
+body{
+  background-color: #13323b;
+}
+
+h1 {
+  text-align: center;
+}
+.Top-Bar{
+  margin-top: -8cm;
+}
+.Top-Bar > img{
+  position: relative;
+  top: 7.85cm;
+}
+.Top-Bar > h1{
+  position: relative;
+  top: 2.2cm;
+  font-size: 3cm;
+  color: #EAA9BC 
+
+}
+.Top-Bar > form{
+  position: relative;
+  left: 32cm;
+}
+
+.journal-form {
+  font-size: 120%;
+  width: 50%;
+  display: block;
+  margin: auto;
+  color: #ccb3bb;
+  border: 3px solid rgb(7, 0, 0);
+  background-color: #b52754;
+}
+
+/*
 * {
   font-family: sans-serif;
 }

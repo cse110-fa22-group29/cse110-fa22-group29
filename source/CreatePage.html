@@ -20,27 +20,39 @@
 </head>
 
 <body>
+  <!-- Top Bar -->
+  <div class ="Top-Bar">
+    <img src ="./assets/images/icons/Logo.png" alt="logo" />
+    <h1> Food Journal </h1>
+    <!--
+    <form id="form">
+        <input type='search' id="seaching" name="searchBar" placeholder="Search journal...">
+        <button class="click" type="search">
+            Search
+        </button>
+    </form>
+    --->
+</div>
+<div class = "journal-form">
+  <h1> New Entry </h1>
   <form id="new-food-entry">
     <fieldset>
-      <legend>Pic:</legend>
+        <!---- <legend>Pic:</legend> --->
       <label for="mealImage">
-        Source:
+        Upload Image:
         <input type="text" id="mealImg" name="mealImg">
       </label>
+      <!----
       <label for="image-alt">
         Alt Text:
         <input type="text" id="imgAlt" name="imgAlt">
       </label>
+      --->
     </fieldset>
     <fieldset>
 
-      <legend> Meal: </legend>
-      <label for="Meal: ">Meal:
+      <label for="Meal: ">Meal Title:
         <input type="text" id="mealName" name="mealName" required>
-      </label>
-      <label for="comments">Comments:
-        <br>
-        <textarea name="comments" id="comments"></textarea>
       </label>
     </fieldset>
 
@@ -59,6 +71,7 @@
         Restaurant:
         <input type="text" id="restaurant" name="restaurant" required>
       </label>
+      <br>
       <label for="tag-form">
         Tags:
         <input type="text" id="tag-form" name="tag-form">
@@ -67,11 +80,16 @@
         </div>
         <button type="button" id="tagAdd">Add Tag</button>
       </label>
+        <br>
+      <label for="comments">Comments:
+        <br>
+        <textarea name="comments" id="comments"></textarea>
+      </label>
 
     </fieldset>
     <button type="submit" value="Submit">Add Review</button>
-    <button type="button" class="danger">Clear Review Journal</button>
-  </form>
+
+</div>
 </body>
 
 </html>
