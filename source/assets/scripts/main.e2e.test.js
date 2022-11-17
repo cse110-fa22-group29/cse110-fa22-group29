@@ -1,6 +1,6 @@
 import {strict as assert} from "node:assert";
-import {describe, it, beforeEach} from "mocha";
-import puppeteer from 'puppeteer-core';
+import {describe, it, beforeEach, afterEach} from "mocha";
+import puppeteer from "puppeteer-core";
 import { exit } from "node:process";
 
 describe("test App end to end", async () => {
@@ -12,10 +12,10 @@ describe("test App end to end", async () => {
 		browser = await puppeteer.launch();
 		page = await browser.newPage();
 		try{
-			await page.goto('http://localhost:8080', {timeout: 1000});
+			await page.goto("http://localhost:8080", {timeout: 1000});
 		}
 		catch (error) {
-			console.log("❌ failed to connect to localhost webserver on port 8080")
+			console.log("❌ failed to connect to localhost webserver on port 8080");
 			exit(1);
 		}
 	});
