@@ -10,7 +10,7 @@ function init(){
 }
 
 function setupDelete(){
-	let deleteBtn = document.getElementById("delete");
+	let deleteBtn = document.getElementById("delete-btn");
 	let reviews = getReviewsFromStorage();
 	let current = JSON.parse(sessionStorage.getItem("current"));
 	deleteBtn.addEventListener("click", function(){
@@ -35,7 +35,7 @@ function setupDelete(){
 }
 
 function setupUpdate(){
-	let updateBtn = document.getElementById("update");
+	let updateBtn = document.getElementById("update-btn");
 	let reviews = getReviewsFromStorage();
 	let current = JSON.parse(sessionStorage.getItem("current"));
 	let form = document.getElementById("update-food-entry");
@@ -104,7 +104,7 @@ function setupUpdate(){
 
 			});
 
-			let tagAddBtn = document.getElementById("tagAdd");
+			let tagAddBtn = document.getElementById("tag-add-btn");
 			tagAddBtn.addEventListener("click", ()=> {
 				let tagField = document.getElementById("tag-form");
 				if (tagField.value.length > 0) {
