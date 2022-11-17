@@ -116,7 +116,7 @@ describe("test App end to end", async () => {
 		home_btn.click();
 
 		// Get the review card again and get its shadowRoot
-		review_card = await page.$("review-card");
+		let review_card = await page.$("review-card");
 		let shadowRoot = await review_card.getProperty("shadowRoot");
 
 		// Get the review image and check src and alt
