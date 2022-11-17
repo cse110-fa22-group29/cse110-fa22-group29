@@ -24,18 +24,30 @@ describe("test App end to end", async () => {
 		assert.strictEqual(await page.title(), "Food Journal");
 	});
 
-	it("test create review functinality", async () => {
+	it("test create review functionality on details page", async () => {
 		
 	});
 
-	it("test read review functinality", async () => {
+	it("test create review functionality on home page", async () => {
 		
 	});
 
-	it("test update review functinality", async () => {
+	it("test read review functionality on details page", async () => {
+		
+	});
+
+	it("test read review functionality on home page", async () => {
+		
+	});
+
+	it("test update review functionality on details page", async () => {
 		// Get the only review card and click it
 		let review_card = await page.$("review-card");
 		await review_card.click();
+
+		// Click the button to show update form
+		let update_btn = await page.$("update-btn");
+		await update_btn.click();
 
 		// Set text fields
 		await page.$eval("#mealImg", el => el.value = "updated src");
@@ -61,9 +73,47 @@ describe("test App end to end", async () => {
 		let rating_select = await page.$("#s1");
 		rating_select.click();
 
-		// Click the submit button to save updates
-		let submit_btn = await page.$("submit.btn");
-		submit_btn.click();
+		// Click the save button to save updates
+		let save_btn = await page.$("#save-btn");
+		save_btn.click();
+
+		// Get the review image and check src and alt
+		let img = await page.$("#d-mealImg");
+		let imgSrc = await img.getProperty("src");
+		let imgAlt = await img.getProperty("alt");
+		// Check src and alt
+		assert.strictEqual(await imgSrc.jsonValue(), "updated src");
+		assert.strictEqual(await imgAlt.jsonValue(), "updated alt");
+
+		// Get the title, comment, and restaurant
+		let title = await page.$("#d-mealName");
+		let title_text = await title.getProperty("innerText");
+		let comment = await page.$("#d-comments");
+		let comment_text = await comment.getProperty("innerText");
+		let restaurant = await page.$("#d-restaurant");
+		let restaurant_text = await restaurant.getProperty("innerText");
+		// Check title, comment, and restaurant
+		assert.strictEqual(await title_text.jsonValue(), "updated name");
+		assert.strictEqual(await comment_text.jsonValue(), "updated comment");
+		assert.strictEqual(await restaurant_text.jsonValue(), "updated restaurant");
+		
+		// Check tags
+		let tags = page.$(".tag");
+		for(let i = 0; i < tags.length; i++){
+			let tag_text = await tags[i].getProperty("innerText");
+			assert.strictEqual(await tag_text.jsonValue(), `tag -${i}`);
+		}
+
+		// Check stars
+		let stars = await page.$("#d-rating");
+		let stars_src = await stars.getProperty("src");
+		assert.strictEqual(await stars_src.jsonValue(), "./assets/images/icons/1-star.svg");
+	});
+
+	it("test update review funcionality on home page", async () => {
+		// Click the button to return to the home page
+		let home_btn = await page.$("#home-btn");
+		home_btn.click();
 
 		// Get the review card again and get its shadowRoot
 		review_card = await page.$("review-card");
@@ -80,7 +130,7 @@ describe("test App end to end", async () => {
 		// Get the title, comment, and restaurant
 		let title = await shadowRoot.$("#a-mealName");
 		let title_text = await title.getProperty("innerText");
-		let comment = await shadowRoot.$("a-comments");
+		let comment = await shadowRoot.$("#a-comments");
 		let comment_text = await comment.getProperty("innerText");
 		let restaurant = await shadowRoot.$("#a-restaurant");
 		let restaurant_text = await restaurant.getProperty("innerText");
@@ -97,22 +147,22 @@ describe("test App end to end", async () => {
 		}
 
 		// Check stars
-		let stars = await shadowRoot.$("a-rating");
+		let stars = await shadowRoot.$("#a-rating");
 		let stars_src = await stars.getProperty("src");
 		assert.strictEqual(await stars_src.jsonValue(), "./assets/images/icons/1-star.svg");
 	});
 
-	it("test delete review functinality", async () => {
+	it("test delete review functionality", async () => {
 		// Get the only review card and click it
 		let review_card = await page.$("review-card");
 		await review_card.click();
 
 		// Get the delete button and click it
-		let delete_btn = await page.$("delete-btn");
+		let delete_btn = await page.$("#delete-btn");
 		await delete_btn.click();
 
 		// Check that the card was correctly removed (there should be no remaining cards)
-		review_card = await page.$("review-card");
+		review_card = await page.$("#review-card");
 		assert.strictEqual(review_card, null);
 	});
 
