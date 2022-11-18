@@ -3,10 +3,10 @@ import { newReviewToStorage } from "./localStorage.js";
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-    // get next id
+	// get next id
 
-    // creates the key
-    initFormHandler();
+	// creates the key
+	initFormHandler();
     
 }
 
@@ -42,7 +42,7 @@ function initFormHandler() {
 		let nextReviewId = newReviewToStorage(reviewObject);
 		sessionStorage.setItem("currID", JSON.stringify(nextReviewId));
 
-		window.location.assign('./ReviewDetails.html');
+		window.location.assign("./ReviewDetails.html");
         
 	});
 

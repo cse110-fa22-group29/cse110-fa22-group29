@@ -52,8 +52,8 @@ export function deleteReviewFromStorage(ID){
 	for (let i in activeIDS) {
 		if (activeIDS[i] == ID) {
 			activeIDS.splice(i,1);
-			localStorage.setItem('activeIDS', JSON.stringify(activeIDS));
-			localStorage.removeItem(`review${ID}`)
+			localStorage.setItem("activeIDS", JSON.stringify(activeIDS));
+			localStorage.removeItem(`review${ID}`);
 			return;
 		}
 	}
@@ -70,7 +70,7 @@ export function getAllReviewsFromStorage() {
 	}
 	//iterate thru activeIDS
 	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
-	let reviews = []
+	let reviews = [];
 	for (let i = 0; i < activeIDS.length; i++) {
 		let currReview = JSON.parse(localStorage.getItem(`review${activeIDS[i]}`));
 		reviews.push(currReview);

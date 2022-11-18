@@ -15,7 +15,7 @@ function setupDelete(){
 	deleteBtn.addEventListener("click", function(){
 		if(window.confirm("Are you sure you want to delete this entry?")){
 			deleteReviewFromStorage(currID);
-			sessionStorage.removeItem('currID');
+			sessionStorage.removeItem("currID");
 			window.location.assign("./index.html");
 		}
 	});

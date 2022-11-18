@@ -1,5 +1,5 @@
 import {strict as assert} from "node:assert";
-import {describe, it, beforeEach} from "mocha";
+import {describe, it, before, after} from "mocha";
 import {newReviewToStorage, getReviewFromStorage, updateReviewToStorage, deleteReviewFromStorage, getAllReviewsFromStorage} from "./localStorage.js";
 
 describe("test app localStorage interaction", () => {
@@ -49,7 +49,7 @@ describe("test app localStorage interaction", () => {
 				"restaurant": `sample restaurant ${i}`,
 				"rating": i,
 				"tags": [`tag ${3*i}`, `tag ${3*i + 1}`, `tag ${3*i + 2}`]
-			}
+			};
 
 			newReviewToStorage(new_review);
 
@@ -75,7 +75,7 @@ describe("test app localStorage interaction", () => {
 				"restaurant": `updated sample restaurant ${i}`,
 				"rating": i*2+i,
 				"tags": [`tag ${3*i}`, `tag ${3*i + 1}`, `tag ${3*i + 2}`]
-			}
+			};
 			new_review.reviewID = i;
 
 			reviews[i] = new_review;

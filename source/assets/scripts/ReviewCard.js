@@ -132,18 +132,18 @@ class ReviewCard extends HTMLElement {
 		let articleEl = this.shadowEl.querySelector("article");
     
 		// setting the article elements for the review card
-    this.reviewID = data["reviewID"];
+		this.reviewID = data["reviewID"];
 
 		//image setup
 		let mealImg = document.createElement("img");
 		mealImg.setAttribute("id", "a-mealImg");
 		mealImg.setAttribute("alt",data["imgAlt"]);
-    if(data["mealImg"] != ""){
-      mealImg.setAttribute("src",data["mealImg"]);
-    }
-    else{
-      mealImg.setAttribute("src", "./assets/images/icons/plate_with_cutlery.png");
-    }
+		if(data["mealImg"] != ""){
+			mealImg.setAttribute("src",data["mealImg"]);
+		}
+		else{
+			mealImg.setAttribute("src", "./assets/images/icons/plate_with_cutlery.png");
+		}
 
 		//meal name setup
 		let mealLabel = document.createElement("label");
@@ -187,7 +187,7 @@ class ReviewCard extends HTMLElement {
 			}
 		}
 
-    //adding final ID to data!
+		//adding final ID to data!
 
 		articleEl.append(mealImg);
 		articleEl.append(mealLabel);
@@ -223,7 +223,7 @@ class ReviewCard extends HTMLElement {
 		let dataContainer = {};
     
 		// getting the article elements for the review card
-    dataContainer["reviewID"] = this.reviewID;
+		dataContainer["reviewID"] = this.reviewID;
 
 		//get image
 		let mealImg = this.shadowEl.getElementById("a-mealImg");
