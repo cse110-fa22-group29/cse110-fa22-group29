@@ -6,8 +6,6 @@ describe("test app localStorage interaction", () => {
 	
 	before(() => {
 		localStorage.clear();
-		localStorage.setItem("activeIDS", JSON.stringify([]));
-		localStorage.setItem("nextID", JSON.stringify(0));
 	});
 
 	it("test localStorage state after init", () => {
