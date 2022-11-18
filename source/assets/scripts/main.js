@@ -13,6 +13,7 @@ function init() {
 	initFormHandler();
 }
 
+
 /**
  * @param {Array<Object>} reviews An array of reviews
  */
@@ -33,14 +34,14 @@ function addReviewsToDocument(reviews) {
  */
 function initFormHandler() {
 
-	/*
 	//btn to create form (could be its own function?)
-	let createBtn = document.getElementById("create");
+	let createBtn = document.getElementById("create-btn");
 	createBtn.addEventListener("click", function(){
 		window.location.assign("./CreatePage.html");
-	});*/
-
+	});
+	
 	//accessing form components
+	/*
 	let tagContainer = document.getElementById("tag-container-form");
 	let form = document.querySelector("form");
   
@@ -48,7 +49,6 @@ function initFormHandler() {
 	/*
     *  User submits the form for their review.
     *  We create reviewCard and put in storage
-    */
 		let formData = new FormData(form);
 		let reviewObject = {};
 		for (let [key, value] of formData) {
@@ -73,6 +73,9 @@ function initFormHandler() {
 		//TODO: want to append it to whatever the box is in layout 
 		let mainEl = document.querySelector("main");
 		mainEl.append(newReview);
+
+		// TODO: assign an ID to be used for referencing this object form the activeIDs array and the tag arrays
+		let ID = localStorage.nextID;
 
 		let storedReviews = getReviewsFromStorage();
 		storedReviews.push(reviewObject);
@@ -115,5 +118,6 @@ function initFormHandler() {
 
 		}
 	});
+	*/
 
 }

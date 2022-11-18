@@ -11,23 +11,18 @@ function init(){
 
 function setupDelete(){
 	let deleteBtn = document.getElementById("delete-btn");
-	let reviews = getReviewsFromStorage();
-	let current = JSON.parse(sessionStorage.getItem("current"));
+	let currID = JSON.parse(sessionStorage.getItem("currID"));
+	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
 	deleteBtn.addEventListener("click", function(){
 		if(window.confirm("Are you sure you want to delete this entry?")){
-			//delete function
-			if(current){
-				console.log(current);
-				for(let i = 0; i < reviews.length; i++){
-					console.log(reviews[i]);
-					if(reviews[i]["mealName"] == current["mealName"] && reviews[i]["restaurant"] == current["restaurant"]){
-						console.log("match found");
-						reviews.splice(i,1);
-						saveReviewsToStorage(reviews);
-						sessionStorage.removeItem("current");
-						window.location.assign("./index.html");
-						break;
-					}
+			for (let i in activeIDS) {
+				if (activeIDS[i] == currID) {
+					activeIDS.splice(i,1);
+					localStorage.setItem('activeIDS', JSON.stringify(activeIDS));
+					sessionStorage.removeItem('currID');
+					localStorage.removeItem(`review${currID}`);
+					window.location.assign("./index.html");
+					break;
 				}
 			}
 		}
@@ -36,30 +31,31 @@ function setupDelete(){
 
 function setupUpdate(){
 	let updateBtn = document.getElementById("update-btn");
-	let reviews = getReviewsFromStorage();
-	let current = JSON.parse(sessionStorage.getItem("current"));
+	let currID = JSON.parse(sessionStorage.getItem("currID"));
+	let currReview = JSON.parse(localStorage.getItem(`review${currID}`));
 	let form = document.getElementById("update-food-entry");
 	updateBtn.addEventListener("click", function(){
 		//update function
-		if(current){
-			console.log(current);
+		if(currReview){
 			form.style.display = "block";
 			let tagContainer = document.getElementById("tag-container-form");
-			console.log(document.querySelectorAll("#update-food-entry input"));
 
 			//Set value of each input element to current's values
-			document.getElementById("mealImg").defaultValue = current["mealImg"];
-			document.getElementById("imgAlt").defaultValue = current["imgAlt"];
-			document.getElementById("mealName").defaultValue = current["mealName"];
-			document.getElementById("comments").textContent = current["comments"];
-			document.getElementById("rating-" + `${current["rating"]}`).checked = true;
-			document.getElementById("restaurant").defaultValue = current["restaurant"];
+			document.getElementById("mealImg").defaultValue = currReview["mealImg"];
+			document.getElementById("imgAlt").defaultValue = currReview["imgAlt"];
+			document.getElementById("mealName").defaultValue = currReview["mealName"];
+			document.getElementById("comments").textContent = currReview["comments"];
+			document.getElementById("s" + `${currReview["rating"]}`).checked = true;
+			document.getElementById("restaurant").defaultValue = currReview["restaurant"];
 
-			if(current["tags"]){
-				for (let i = 0; i < current["tags"].length; i++) {
+			if(currReview["tags"]){
+				while (tagContainer.firstChild) {
+					tagContainer.removeChild(tagContainer.firstChild);
+				}
+				for (let i = 0; i < currReview["tags"].length; i++) {
 					let newTag = document.createElement("label");
 					newTag.setAttribute("class","tag");
-					newTag.innerHTML = current["tags"][i] + "   ";
+					newTag.innerHTML = currReview["tags"][i];
 					newTag.addEventListener("click",()=> {
 						tagContainer.removeChild(newTag);
 					});
@@ -89,16 +85,10 @@ function setupUpdate(){
 					tagContainer.removeChild(tags[i]);
 				}
 
-				for(let i = 0; i < reviews.length; i++){
-					console.log(reviews[i]);
-					if(reviews[i]["mealName"] == current["mealName"] && reviews[i]["restaurant"] == current["restaurant"]){
-						console.log("match found");
-						reviews.splice(i,1,newData);
-						saveReviewsToStorage(reviews);
-						sessionStorage.setItem("current", JSON.stringify(newData));
-						break;
-					}
-				}
+				newData["reviewID"] = currID;
+
+
+				localStorage.setItem("review"+currID, JSON.stringify(newData));
 
 				form.style.display = "none";
 

@@ -14,12 +14,13 @@
   <!-- Main Stylesheets & Scripts -->
   <!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
   <!-- <link rel="stylesheet" href="/static/reset.css" /> -->
-  <link rel="stylesheet" href="./static/CreatePage.css" />
-  <script src="assets/scripts/main.js" type="module"></script>
+  <link rel="stylesheet" href="./static/ReviewCard.css" />
+  <script src="./assets/scripts/CreatePage.js" type="module"></script>
 
 </head>
 
 <body>
+  <input type="button" value="Home" id="home-btn" onclick="window.location.assign('./index.html')">
   <form id="new-food-entry">
     <fieldset>
       <legend>Pic:</legend>
@@ -69,8 +70,7 @@
       </label>
 
     </fieldset>
-    <button type="submit" value="Submit">Add Review</button>
-    <button type="button" class="danger">Clear Review Journal</button>
+    <button type="submit" id="save-btn" value="Submit">Save Review</button>
   </form>
 </body>
 

@@ -2,11 +2,19 @@
  * @returns {Array<Object>} An array of reviews found in localStorage
  */
 export function getReviewsFromStorage() {
-	let result = JSON.parse(localStorage.getItem("reviews"));
-	if (result) {
-		return result;
+	if (!(localStorage.getItem("activeIDS"))) {
+		// we wanna init the active ID array and start the nextID count
+		localStorage.setItem("activeIDS", JSON.stringify([]));
+		localStorage.setItem("nextID",  JSON.stringify(0));
 	}
-	return new Array(0);
+	//iterate thru activeIDS
+	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
+	let reviews = []
+	for (let i = 0; i < activeIDS.length; i++) {
+		let currReview = JSON.parse(localStorage.getItem('review'+activeIDS[i]));
+		reviews.push(currReview);
+	}
+	return reviews;
 }
 
 /**
@@ -15,5 +23,5 @@ export function getReviewsFromStorage() {
  * @param {Array<Object>} reviews An array of reviews
  */
 export function saveReviewsToStorage(reviews) {
-	localStorage.setItem("reviews", JSON.stringify(reviews));
+	localStorage.setItem(`review${reviewId}`, JSON.stringify(reviews));
 }
