@@ -55,6 +55,14 @@ Overall we feel that sprint 1 was a success with many lessons learned. Our enthu
 * Scheduled meetings with more notice and keep meetings at a more central location so that more members can attend
 * Get the unit testing modules up to date
 * To-do: create a style guide
+* Heed the styles and documentation (to avoid linter issues)
+
+## Early Issues
+* restructure local storage to store individual (key, review) pairs rather than storing data under one key (current schema)
+* implement a file upload system (think canvas file upload)
+* add a cuisine attribute for tagging and filtering
+* Create UI buttons and low fidelity css
+* Unit test all the above
 
 ## End Time
 - 11/14/2022 at 5:00PM
