@@ -1,12 +1,12 @@
 // main.js
-import {getReviewsFromStorage, saveReviewsToStorage} from "./localStorage.js";
+import {getAllReviewsFromStorage} from "./localStorage.js";
 
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
 	// Get the reviews from localStorage
-	let reviews = getReviewsFromStorage();
+	let reviews = getAllReviewsFromStorage();
 	// Add each reviews to the <main> element
 	addReviewsToDocument(reviews);
 	// Add the event listeners to the form elements

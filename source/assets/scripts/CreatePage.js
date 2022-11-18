@@ -1,3 +1,5 @@
+import { newReviewToStorage } from "./localStorage.js";
+
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
@@ -37,22 +39,8 @@ function initFormHandler() {
 			tagContainer.removeChild(tags[i]);
 		}
 
-		//grabbing the nextID, and putting our review object in storage associated with the ID
-		let nextReviewId = JSON.parse(localStorage.getItem("nextID"));
-		reviewObject["reviewID"] = nextReviewId;
-
-        localStorage.setItem("review"+nextReviewId, JSON.stringify(reviewObject));
+		let nextReviewId = newReviewToStorage(reviewObject);
 		sessionStorage.setItem("currID", JSON.stringify(nextReviewId));
-
-        //updating our activeIDS list
-        let tempIdArr = JSON.parse(localStorage.getItem("activeIDS"));
-        tempIdArr.push(nextReviewId);
-        localStorage.setItem("activeIDS", JSON.stringify(tempIdArr));
-        
-        
-        //increment nextID for next review creation
-        nextReviewId++;
-		localStorage.setItem("nextID", JSON.stringify(nextReviewId));
 
 		window.location.assign('./ReviewDetails.html');
         
