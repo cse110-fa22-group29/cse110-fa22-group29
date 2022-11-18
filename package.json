@@ -13,11 +13,11 @@
   "devDependencies": {
     "eslint": "^8.27.0",
     "htmlhint": "1.1.4",
+    "http-server": "",
     "mocha": "10",
     "mock-local-storage": "^1.1.23",
+    "puppeteer": "^18.2.1",
     "stylelint": "14.14.1",
-    "stylelint-config-standard": "^29.0.0",
-    "puppeteer": "18",
-    "http-server": ""
+    "stylelint-config-standard": "^29.0.0"
   }
 }
