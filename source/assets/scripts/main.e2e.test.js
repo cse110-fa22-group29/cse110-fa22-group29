@@ -364,6 +364,11 @@ describe("test App end to end", async () => {
 			await review_card.click();
 			await page.waitForNavigation();
 
+			page.on('dialog', async dialog => {
+				console.log(dialog.message());
+				await dialog.accept();
+			});
+
 			// Get the delete button and click it
 			let delete_btn = await page.$("#delete-btn");
 			await delete_btn.click();
