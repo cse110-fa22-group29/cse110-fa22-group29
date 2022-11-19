@@ -61,6 +61,8 @@ describe("test App end to end", async () => {
 			let review_card = await page.$("review-card");
 			await review_card.click();
 
+			await page.waitForNavigation();
+
 			// Click the button to show update form
 			let update_btn = await page.$("update-btn");
 			await update_btn.click();
@@ -132,6 +134,8 @@ describe("test App end to end", async () => {
 			// Click the button to return to the home page
 			let home_btn = await page.$("#home-btn");
 			home_btn.click();
+
+			await page.waitForNavigation();
 
 			// Get the review card again and get its shadowRoot
 			let review_card = await page.$("review-card");
