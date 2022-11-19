@@ -9,14 +9,23 @@ describe("test App end to end", async () => {
 	let page;
 
 	before(async () => {
-		browser = await puppeteer.launch();
-		page = await browser.newPage();
-		try{
-			await page.goto("http://localhost:8080", {timeout: 5000});
+		let root;
+		try {
+			root =  process.getuid() == 0;
 		}
 		catch (error) {
-			console.log("❌ failed to connect to localhost webserver on port 8080");
-			exit(1);
+			root = false;
+		}
+
+		browser = await puppeteer.launch({args: root ? ['--no-sandbox'] : undefined});
+		page = await browser.newPage();
+		try{
+			await page.goto("http://localhost:8080", {timeout: 1000});
+			await console.log(`✔ connected to localhost webserver as ${root ? "root" : "user"}`);
+		}
+		catch (error) {
+			await console.log("❌ failed to connect to localhost webserver on port 8080");
+			await exit(1);
 		}
 	});
 
