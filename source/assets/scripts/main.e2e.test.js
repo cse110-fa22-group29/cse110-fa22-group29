@@ -43,7 +43,6 @@ describe("test App end to end", async () => {
 			await page.waitForNavigation();
 
 			// Set text fields
-			await page.$eval("#mealImg", el => el.value = "");
 			await page.$eval("#imgAlt", el => el.value = "sample alt");
 			await page.$eval("#mealName", el => el.value = "sample name");
 			await page.$eval("#comments", el => el.value = "sample comment");
@@ -249,7 +248,6 @@ describe("test App end to end", async () => {
 			await update_btn.click();
 
 			// Set text fields
-			await page.$eval("#mealImg", el => el.value = "");
 			await page.$eval("#imgAlt", el => el.value = "updated alt");
 			await page.$eval("#mealName", el => el.value = "updated name");
 			await page.$eval("#comments", el => el.value = "updated comment");
