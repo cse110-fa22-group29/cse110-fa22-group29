@@ -29,7 +29,7 @@ function setupUpdate(){
 	updateBtn.addEventListener("click", function(){
 		//update function
 
-		form.style.display = "block";
+		//form.style.display = "block";
 		form.classList.remove("hidden");
 		let tagContainer = document.getElementById("tag-container-form");
 
