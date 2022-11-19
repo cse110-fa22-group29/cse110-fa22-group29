@@ -12,7 +12,7 @@ describe("test App end to end", async () => {
 		browser = await puppeteer.launch();
 		page = await browser.newPage();
 		try{
-			await page.goto("http://localhost:8080", {timeout: 1000});
+			await page.goto("http://localhost:8080", {timeout: 5000});
 		}
 		catch (error) {
 			console.log("❌ failed to connect to localhost webserver on port 8080");
@@ -28,7 +28,32 @@ describe("test App end to end", async () => {
 
 	describe("test create 1 new review", async () => {
 		it("create 1 new review", async () => {
+			// Click the button to show update form
+			let create_btn = await page.$("#create-btn");
+			await create_btn.click();
+			await page.waitForNavigation();
 
+			// Set text fields
+			await page.$eval("#mealImg", el => el.value = "sample src");
+			await page.$eval("#imgAlt", el => el.value = "sample alt");
+			await page.$eval("#mealName", el => el.value = "sample name");
+			await page.$eval("#comments", el => el.value = "sample comment");
+			await page.$eval("#restaurant", el => el.value = "sample restaurant");
+
+			// Get the button needed to add new tags
+			let tag_btn = await page.$("#tag-add-btn");
+			for(let i = 0; i < 5; i++){
+				await page.$eval("#tag-form", (el, value) => el.value = `tag ${value}`, i);
+				await tag_btn.click();
+			}
+			
+			// Select a new rating of 1 star
+			let rating_select = await page.$("#s1");
+			rating_select.click();
+
+			// Click the save button to save updates
+			page.click("#save-btn");
+			await page.waitForNavigation();
 		});
 
 		it("check details page", async () => {
@@ -36,7 +61,11 @@ describe("test App end to end", async () => {
 		});
 	
 		it("check home page", async () => {
-			
+			// Click the button to return to the home page
+			let home_btn = await page.$("#home-btn");
+			home_btn.click();
+
+			await page.waitForNavigation();
 		});
 	});
 
@@ -57,14 +86,15 @@ describe("test App end to end", async () => {
 	describe("test update 1 review", async () => {
 
 		it("update 1 review", async () => {
+
 			// Get the only review card and click it
 			let review_card = await page.$("review-card");
+			console.log(JSON.stringify(review_card));
 			await review_card.click();
-
 			await page.waitForNavigation();
 
 			// Click the button to show update form
-			let update_btn = await page.$("update-btn");
+			let update_btn = await page.$("#update-btn");
 			await update_btn.click();
 
 			// Set text fields
@@ -83,17 +113,17 @@ describe("test App end to end", async () => {
 			// Get the button needed to add new tags
 			let tag_btn = await page.$("#tag-add-btn");
 			for(let i = 0; i < 5; i++){
-				await page.$eval("#tag-form", (el, value) => el.value = `tag -${value}`, i);
-				tag_btn.click();
+				await page.$eval("#tag-form", (el, value) => el.value = `updated tag -${value}`, i);
+				await tag_btn.click();
 			}
-
+			
 			// Select a new rating of 1 star
 			let rating_select = await page.$("#s1");
 			rating_select.click();
 
 			// Click the save button to save updates
-			let save_btn = await page.$("#save-btn");
-			save_btn.click();
+			page.click("#save-btn");
+			await page.waitForNavigation();
 		});
 
 		it("check details page", async () => {
@@ -121,7 +151,7 @@ describe("test App end to end", async () => {
 			let tags = page.$(".tag");
 			for(let i = 0; i < tags.length; i++){
 				let tag_text = await tags[i].getProperty("innerText");
-				assert.strictEqual(await tag_text.jsonValue(), `tag -${i}`);
+				assert.strictEqual(await tag_text.jsonValue(), `updated tag -${i}`);
 			}
 
 			// Check stars
