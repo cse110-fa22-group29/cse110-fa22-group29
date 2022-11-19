@@ -14,18 +14,24 @@
   <!-- Main Stylesheets & Scripts -->
   <!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
   <!-- <link rel="stylesheet" href="/static/reset.css" /> -->
-  <link rel="stylesheet" href="./static/CreatePage.css" />
-  <script src="assets/scripts/main.js" type="module"></script>
+  <link rel="stylesheet" href="./static/ReviewCard.css" />
+  <script src="./assets/scripts/CreatePage.js" type="module"></script>
 
 </head>
 
 <body>
+  <input type="button" value="Home" id="home-btn" onclick="window.location.assign('./index.html')">
   <form id="new-food-entry">
     <fieldset>
       <legend>Pic:</legend>
-      <label for="mealImage">
+      Choose Input type:
+      <select id="select" name="select">
+        <option value="file">File Upload</option>
+        <option value="url">From an URL</option>
+      </select>
+      <label for="mealImage" id="source">
         Source:
-        <input type="text" id="mealImg" name="mealImg">
+        <input type="file" accept="image/*" id="mealImg" name="mealImg">
       </label>
       <label for="image-alt">
         Alt Text:
@@ -46,11 +52,11 @@
 
     <fieldset class="rating">
       <legend> Rating: </legend>
-      <input type="radio" id="s5" name="rating" value="5"/> <label for="s5"> 5 stars </label>
-      <input type="radio" id="s4" name="rating" value="4"/> <label for="s4"> 4 stars </label>
-      <input type="radio" id="s3" name="rating" value="3"/> <label for="s3"> 3 stars </label>
-      <input type="radio" id="s2" name="rating" value="2"/> <label for="s2"> 2 stars </label>
-      <input type="radio" id="s1" name="rating" value="1"/> <label for="s1"> 1 star </label>
+      <input type="radio" id="s5" name="rating" value="5"/> <label for="s5" id="s5-select"> 5 stars </label>
+      <input type="radio" id="s4" name="rating" value="4"/> <label for="s4" id="s4-select"> 4 stars </label>
+      <input type="radio" id="s3" name="rating" value="3"/> <label for="s3" id="s3-select"> 3 stars </label>
+      <input type="radio" id="s2" name="rating" value="2"/> <label for="s2" id="s2-select"> 2 stars </label>
+      <input type="radio" id="s1" name="rating" value="1"/> <label for="s1" id="s1-select"> 1 star </label>
     </fieldset>
 
     <fieldset>
@@ -65,12 +71,11 @@
         <div class='tag-container' id="tag-container-form">
 
         </div>
-        <button type="button" id="tagAdd">Add Tag</button>
+        <button type="button" id="tag-add-btn">Add Tag</button>
       </label>
 
     </fieldset>
-    <button type="submit" value="Submit">Add Review</button>
-    <button type="button" class="danger">Clear Review Journal</button>
+    <button type="submit" id="save-btn" value="Submit">Save Review</button>
   </form>
 </body>
 

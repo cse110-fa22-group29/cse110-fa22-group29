@@ -21,62 +21,6 @@
   <main>
     <!-- Add Food Entries Here -->
   </main>
-  <!--<button type="button" id="create">CREATE</button>-->
-  <!----> <form id="new-food-entry">
-    <fieldset>
-      <legend>Pic:</legend>
-      Choose Input type:
-      <select id="select" name="select">
-        <option value="file">File Upload</option>
-        <option value="url">From an URL</option>
-      </select>
-      <label for="mealImage" id="source">
-        Source:
-        <input type="file" id="mealImg" name="mealImg">
-      </label>
-      <label for="image-alt">
-        Alt Text:
-        <input type="text" id="imgAlt" name="imgAlt">
-      </label>
-    </fieldset>
-    <fieldset>
-      <legend> Meal: </legend>
-      <label for="Meal: ">Meal:
-        <input type="text" id="mealName" name="mealName" required>
-      </label>
-      <label for="comments">Comments: 
-        <br>
-        <textarea name="comments" id="comments"></textarea>
-      </label>
-    </fieldset>
-    
-    <fieldset class="rating">
-      <legend> Rating: </legend>
-      <input type="radio" id="s5" name="rating" value="5"/> <label for="s5"> 5 stars </label>
-      <input type="radio" id="s4" name="rating" value="4"/> <label for="s4"> 4 stars </label>
-      <input type="radio" id="s3" name="rating" value="3"/> <label for="s3"> 3 stars </label>
-      <input type="radio" id="s2" name="rating" value="2"/> <label for="s2"> 2 stars </label>
-      <input type="radio" id="s1" name="rating" value="1"/> <label for="s1"> 1 star </label>
-    </fieldset>
-
-    <fieldset>
-      <legend>Other Info:</legend>
-      <label for="restaurant">
-        Restaurant:
-        <input type="text" id="restaurant" name="restaurant" required>
-      </label>
-      <label for="tag-form">
-        Tags:
-        <input type="text" id="tag-form" name="tag-form">
-        <div class='tag-container' id="tag-container-form">
-
-        </div>
-        <button type="button" id="tagAdd">Add Tag</button>
-      </label>
-
-    </fieldset>
-    <button type="submit" value="Submit">Add Review</button>
-    <button type="button" class="danger">Clear Review Journal</button>
-  </form> <!---->
+  <button type="button" id="create-btn"><a href='./CreatePage.html'></a>CREATE</button>
 </body>
 </html>

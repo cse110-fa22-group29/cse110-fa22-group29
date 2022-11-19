@@ -4,16 +4,19 @@
   "type": "module",
   "scripts": {
     "test": "mocha --recursive --require mock-local-storage './{,!(node_modules)/**}/*.test.js'",
-    "lint": "eslint '**/*.js'",
+    "lint": "eslint **/*.js",
     "fix-style": "eslint --fix **/*.js",
     "lintHTML": "htmlhint '**/*.html'",
-    "lintCSS": "stylelint '**/*.css'"
+    "lintCSS": "stylelint '**/*.css'",
+    "http-server": "http-server source"
   },
   "devDependencies": {
     "eslint": "^8.27.0",
     "htmlhint": "1.1.4",
+    "http-server": "",
     "mocha": "10",
     "mock-local-storage": "^1.1.23",
+    "puppeteer": "^18.2.1",
     "stylelint": "14.14.1",
     "stylelint-config-standard": "^29.0.0"
   }
