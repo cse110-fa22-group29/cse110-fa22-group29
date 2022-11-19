@@ -52,7 +52,8 @@ describe("test App end to end", async () => {
 			rating_select.click();
 
 			// Click the save button to save updates
-			page.click("#save-btn");
+			let save_btn = await page.$("#save-btn");
+			save_btn.click();
 			await page.waitForNavigation();
 		});
 
@@ -122,7 +123,8 @@ describe("test App end to end", async () => {
 			rating_select.click();
 
 			// Click the save button to save updates
-			page.click("#save-btn");
+			let save_btn = await page.$("#save-btn");
+			save_btn.click();
 			await page.waitForNavigation();
 		});
 
@@ -164,7 +166,6 @@ describe("test App end to end", async () => {
 			// Click the button to return to the home page
 			let home_btn = await page.$("#home-btn");
 			home_btn.click();
-
 			await page.waitForNavigation();
 
 			// Get the review card again and get its shadowRoot
@@ -211,10 +212,12 @@ describe("test App end to end", async () => {
 			// Get the only review card and click it
 			let review_card = await page.$("review-card");
 			await review_card.click();
+			await page.waitForNavigation();
 
 			// Get the delete button and click it
 			let delete_btn = await page.$("#delete-btn");
 			await delete_btn.click();
+			await page.waitForNavigation();
 
 			// Check that the card was correctly removed (there should be no remaining cards)
 			review_card = await page.$("#review-card");
