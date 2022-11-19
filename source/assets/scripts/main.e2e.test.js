@@ -55,14 +55,14 @@ describe("test App end to end", async () => {
 				await page.$eval("#tag-form", (el, value) => el.value = `tag ${value}`, i);
 				await tag_btn.click();
 			}
-			
+
 			// Select a new rating of 1 star
-			let rating_select = await page.$("#s1");
-			rating_select.click();
+			let rating_select = await page.$("#s1-select");
+			await rating_select.click({delay: 100});
 
 			// Click the save button to save updates
 			let save_btn = await page.$("#save-btn");
-			save_btn.click();
+			await save_btn.click();
 			await page.waitForNavigation();
 		});
 
@@ -260,7 +260,7 @@ describe("test App end to end", async () => {
 			// Get all tag elements and click them to delete them
 			let tag_items = await page.$$(".tag");
 			for(let i = 0; i < tag_items.length; i++){
-				await tag_items.click();
+				await tag_items[i].click();
 			}
 
 			// Get the button needed to add new tags
@@ -271,12 +271,12 @@ describe("test App end to end", async () => {
 			}
 			
 			// Select a new rating of 5 stars
-			let rating_select = await page.$("#s5");
-			rating_select.click();
+			let rating_select = await page.$("#s5-select");
+			await rating_selects.click();
 
 			// Click the save button to save updates
 			let save_btn = await page.$("#save-btn");
-			save_btn.click();
+			await save_btn.click();
 			await page.waitForNavigation();
 		});
 
