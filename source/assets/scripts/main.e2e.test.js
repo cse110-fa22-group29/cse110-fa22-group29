@@ -67,12 +67,6 @@ describe("test App end to end", async () => {
 		});
 
 		it("check details page", async () => {
-			// click review card
-			let review_card = await page.$("review-card");
-			console.log(JSON.stringify(review_card));
-			await review_card.click();
-			await page.waitForNavigation();
-
 			// Get the review image and check src and alt
 			let img = await page.$("#d-mealImg");
 			let imgSrc = await img.getProperty("src");
