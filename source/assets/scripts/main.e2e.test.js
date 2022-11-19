@@ -117,8 +117,8 @@ describe("test App end to end", async () => {
 				await tag_btn.click();
 			}
 			
-			// Select a new rating of 1 star
-			let rating_select = await page.$("#s1");
+			// Select a new rating of 5 stars
+			let rating_select = await page.$("#s5");
 			rating_select.click();
 
 			// Click the save button to save updates
