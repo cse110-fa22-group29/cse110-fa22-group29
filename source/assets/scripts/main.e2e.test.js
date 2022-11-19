@@ -43,7 +43,7 @@ describe("test App end to end", async () => {
 			await page.waitForNavigation();
 
 			// Set text fields
-			await page.$eval("#mealImg", el => el.value = "sample src");
+			await page.$eval("#mealImg", el => el.value = "");
 			await page.$eval("#imgAlt", el => el.value = "sample alt");
 			await page.$eval("#mealName", el => el.value = "sample name");
 			await page.$eval("#comments", el => el.value = "sample comment");
@@ -72,7 +72,7 @@ describe("test App end to end", async () => {
 			let imgSrc = await img.getProperty("src");
 			let imgAlt = await img.getProperty("alt");
 			// Check src and alt
-			assert.strictEqual(await imgSrc.jsonValue(), "sample src");
+			assert.strictEqual(await imgSrc.jsonValue(), "http://localhost:8080/assets/images/icons/plate_with_cutlery.png");
 			assert.strictEqual(await imgAlt.jsonValue(), "sample alt");
 
 			// Get the title, comment, and restaurant
@@ -98,7 +98,7 @@ describe("test App end to end", async () => {
 			// Check stars
 			let stars = await page.$("#d-rating");
 			let stars_src = await stars.getProperty("src");
-			assert.strictEqual(await stars_src.jsonValue(), "./assets/images/icons/5-star.svg");
+			assert.strictEqual(await stars_src.jsonValue(), "http://localhost:8080/assets/images/icons/1-star.svg");
 		});
 	
 		it("check home page", async () => {
@@ -116,7 +116,7 @@ describe("test App end to end", async () => {
 			let imgSrc = await img.getProperty("src");
 			let imgAlt = await img.getProperty("alt");
 			// Check src and alt
-			assert.strictEqual(await imgSrc.jsonValue(), "sample src");
+			assert.strictEqual(await imgSrc.jsonValue(), "http://localhost:8080/assets/images/icons/plate_with_cutlery.png");
 			assert.strictEqual(await imgAlt.jsonValue(), "sample alt");
 
 			// Get the title, comment, and restaurant
@@ -141,7 +141,7 @@ describe("test App end to end", async () => {
 			// Check stars
 			let stars = await shadowRoot.$("#a-rating");
 			let stars_src = await stars.getProperty("src");
-			assert.strictEqual(await stars_src.jsonValue(), "./assets/images/icons/5-star.svg");
+			assert.strictEqual(await stars_src.jsonValue(), "http://localhost:8080/assets/images/icons/1-star.svg");
 		});
 	});
 
@@ -154,7 +154,6 @@ describe("test App end to end", async () => {
 		it("check details page", async () => {
 			// click review card
 			let review_card = await page.$("review-card");
-			console.log(JSON.stringify(review_card));
 			await review_card.click();
 			await page.waitForNavigation();
 
@@ -163,7 +162,7 @@ describe("test App end to end", async () => {
 			let imgSrc = await img.getProperty("src");
 			let imgAlt = await img.getProperty("alt");
 			// Check src and alt
-			assert.strictEqual(await imgSrc.jsonValue(), "sample src");
+			assert.strictEqual(await imgSrc.jsonValue(), "http://localhost:8080/assets/images/icons/plate_with_cutlery.png");
 			assert.strictEqual(await imgAlt.jsonValue(), "sample alt");
 
 			// Get the title, comment, and restaurant
@@ -189,7 +188,7 @@ describe("test App end to end", async () => {
 			// Check stars
 			let stars = await page.$("#d-rating");
 			let stars_src = await stars.getProperty("src");
-			assert.strictEqual(await stars_src.jsonValue(), "./assets/images/icons/5-star.svg");
+			assert.strictEqual(await stars_src.jsonValue(), "http://localhost:8080/assets/images/icons/1-star.svg");
 		});
 
 		it("check home page", async () => {
@@ -207,7 +206,7 @@ describe("test App end to end", async () => {
 			let imgSrc = await img.getProperty("src");
 			let imgAlt = await img.getProperty("alt");
 			// Check src and alt
-			assert.strictEqual(await imgSrc.jsonValue(), "sample src");
+			assert.strictEqual(await imgSrc.jsonValue(), "http://localhost:8080/assets/images/icons/plate_with_cutlery.png");
 			assert.strictEqual(await imgAlt.jsonValue(), "sample alt");
 
 			// Get the title, comment, and restaurant
@@ -232,7 +231,7 @@ describe("test App end to end", async () => {
 			// Check stars
 			let stars = await shadowRoot.$("#a-rating");
 			let stars_src = await stars.getProperty("src");
-			assert.strictEqual(await stars_src.jsonValue(), "./assets/images/icons/5-star.svg");
+			assert.strictEqual(await stars_src.jsonValue(), "http://localhost:8080/assets/images/icons/1-star.svg");
 		});
 	});
 
@@ -242,7 +241,6 @@ describe("test App end to end", async () => {
 
 			// Get the only review card and click it
 			let review_card = await page.$("review-card");
-			console.log(JSON.stringify(review_card));
 			await review_card.click();
 			await page.waitForNavigation();
 
@@ -251,7 +249,7 @@ describe("test App end to end", async () => {
 			await update_btn.click();
 
 			// Set text fields
-			await page.$eval("#mealImg", el => el.value = "updated src");
+			await page.$eval("#mealImg", el => el.value = "");
 			await page.$eval("#imgAlt", el => el.value = "updated alt");
 			await page.$eval("#mealName", el => el.value = "updated name");
 			await page.$eval("#comments", el => el.value = "updated comment");
@@ -272,7 +270,7 @@ describe("test App end to end", async () => {
 			
 			// Select a new rating of 5 stars
 			let rating_select = await page.$("#s5-select");
-			await rating_selects.click();
+			await rating_select.click();
 
 			// Click the save button to save updates
 			let save_btn = await page.$("#save-btn");
@@ -286,7 +284,7 @@ describe("test App end to end", async () => {
 			let imgSrc = await img.getProperty("src");
 			let imgAlt = await img.getProperty("alt");
 			// Check src and alt
-			assert.strictEqual(await imgSrc.jsonValue(), "updated src");
+			assert.strictEqual(await imgSrc.jsonValue(), "http://localhost:8080/assets/images/icons/plate_with_cutlery.png");
 			assert.strictEqual(await imgAlt.jsonValue(), "updated alt");
 
 			// Get the title, comment, and restaurant
@@ -311,7 +309,7 @@ describe("test App end to end", async () => {
 			// Check stars
 			let stars = await page.$("#d-rating");
 			let stars_src = await stars.getProperty("src");
-			assert.strictEqual(await stars_src.jsonValue(), "./assets/images/icons/1-star.svg");
+			assert.strictEqual(await stars_src.jsonValue(), "http://localhost:8080/assets/images/icons/5-star.svg");
 		});
 
 		it("check home page", async () => {
@@ -329,7 +327,7 @@ describe("test App end to end", async () => {
 			let imgSrc = await img.getProperty("src");
 			let imgAlt = await img.getProperty("alt");
 			// Check src and alt
-			assert.strictEqual(await imgSrc.jsonValue(), "updated src");
+			assert.strictEqual(await imgSrc.jsonValue(), "http://localhost:8080/assets/images/icons/plate_with_cutlery.png");
 			assert.strictEqual(await imgAlt.jsonValue(), "updated alt");
 
 			// Get the title, comment, and restaurant
@@ -354,7 +352,7 @@ describe("test App end to end", async () => {
 			// Check stars
 			let stars = await shadowRoot.$("#a-rating");
 			let stars_src = await stars.getProperty("src");
-			assert.strictEqual(await stars_src.jsonValue(), "./assets/images/icons/1-star.svg");
+			assert.strictEqual(await stars_src.jsonValue(), "http://localhost:8080/assets/images/icons/5-star.svg");
 		});
 
 	});
