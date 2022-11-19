@@ -58,29 +58,178 @@ describe("test App end to end", async () => {
 		});
 
 		it("check details page", async () => {
-		
+			// click review card
+			let review_card = await page.$("review-card");
+			console.log(JSON.stringify(review_card));
+			await review_card.click();
+			await page.waitForNavigation();
+
+			// Get the review image and check src and alt
+			let img = await page.$("#d-mealImg");
+			let imgSrc = await img.getProperty("src");
+			let imgAlt = await img.getProperty("alt");
+			// Check src and alt
+			assert.strictEqual(await imgSrc.jsonValue(), "sample src");
+			assert.strictEqual(await imgAlt.jsonValue(), "sample alt");
+
+			// Get the title, comment, and restaurant
+			let title = await page.$("#d-mealName");
+			let title_text = await title.getProperty("innerText");
+			let comment = await page.$("#d-comments");
+			let comment_text = await comment.getProperty("innerText");
+			let restaurant = await page.$("#d-restaurant");
+			let restaurant_text = await restaurant.getProperty("innerText");
+
+			// Check title, comment, and restaurant
+			assert.strictEqual(await title_text.jsonValue(), "sample name");
+			assert.strictEqual(await comment_text.jsonValue(), "sample comment");
+			assert.strictEqual(await restaurant_text.jsonValue(), "sample restaurant");
+
+			// Check tags
+			let tags = page.$(".tag");
+			for(let i = 0; i < tags.length; i++){
+				let tag_text = await tags[i].getProperty("innerText");
+				assert.strictEqual(await tag_text.jsonValue(), `tag -${i}`);
+			}
+
+			// Check stars
+			let stars = await page.$("#d-rating");
+			let stars_src = await stars.getProperty("src");
+			assert.strictEqual(await stars_src.jsonValue(), "./assets/images/icons/5-star.svg");
 		});
 	
 		it("check home page", async () => {
 			// Click the button to return to the home page
 			let home_btn = await page.$("#home-btn");
 			home_btn.click();
-
 			await page.waitForNavigation();
+
+			// Get the review card again and get its shadowRoot
+			let review_card = await page.$("review-card");
+			let shadowRoot = await review_card.getProperty("shadowRoot");
+
+			// Get the review image and check src and alt
+			let img = await shadowRoot.$("#a-mealImg");
+			let imgSrc = await img.getProperty("src");
+			let imgAlt = await img.getProperty("alt");
+			// Check src and alt
+			assert.strictEqual(await imgSrc.jsonValue(), "sample src");
+			assert.strictEqual(await imgAlt.jsonValue(), "sample alt");
+
+			// Get the title, comment, and restaurant
+			let title = await shadowRoot.$("#a-mealName");
+			let title_text = await title.getProperty("innerText");
+			let comment = await shadowRoot.$("#a-comments");
+			let comment_text = await comment.getProperty("innerText");
+			let restaurant = await shadowRoot.$("#a-restaurant");
+			let restaurant_text = await restaurant.getProperty("innerText");
+			// Check title, comment, and restaurant
+			assert.strictEqual(await title_text.jsonValue(), "sample name");
+			assert.strictEqual(await comment_text.jsonValue(), "sample comment");
+			assert.strictEqual(await restaurant_text.jsonValue(), "sample restaurant");
+			
+			// Check tags
+			let tags = shadowRoot.$(".tag");
+			for(let i = 0; i < tags.length; i++){
+				let tag_text = await tags[i].getProperty("innerText");
+				assert.strictEqual(await tag_text.jsonValue(), `tag -${i}`);
+			}
+
+			// Check stars
+			let stars = await shadowRoot.$("#a-rating");
+			let stars_src = await stars.getProperty("src");
+			assert.strictEqual(await stars_src.jsonValue(), "./assets/images/icons/5-star.svg");
 		});
 	});
 
 	describe("test read 1 review after refresh", async () => {
 		it("refresh page", async () => {
-
+			// Reload the page
+			await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
 		});
 
 		it("check details page", async () => {
-			
+			// click review card
+			let review_card = await page.$("review-card");
+			console.log(JSON.stringify(review_card));
+			await review_card.click();
+			await page.waitForNavigation();
+
+			// Get the review image and check src and alt
+			let img = await page.$("#d-mealImg");
+			let imgSrc = await img.getProperty("src");
+			let imgAlt = await img.getProperty("alt");
+			// Check src and alt
+			assert.strictEqual(await imgSrc.jsonValue(), "sample src");
+			assert.strictEqual(await imgAlt.jsonValue(), "sample alt");
+
+			// Get the title, comment, and restaurant
+			let title = await page.$("#d-mealName");
+			let title_text = await title.getProperty("innerText");
+			let comment = await page.$("#d-comments");
+			let comment_text = await comment.getProperty("innerText");
+			let restaurant = await page.$("#d-restaurant");
+			let restaurant_text = await restaurant.getProperty("innerText");
+
+			// Check title, comment, and restaurant
+			assert.strictEqual(await title_text.jsonValue(), "sample name");
+			assert.strictEqual(await comment_text.jsonValue(), "sample comment");
+			assert.strictEqual(await restaurant_text.jsonValue(), "sample restaurant");
+
+			// Check tags
+			let tags = page.$(".tag");
+			for(let i = 0; i < tags.length; i++){
+				let tag_text = await tags[i].getProperty("innerText");
+				assert.strictEqual(await tag_text.jsonValue(), `tag -${i}`);
+			}
+
+			// Check stars
+			let stars = await page.$("#d-rating");
+			let stars_src = await stars.getProperty("src");
+			assert.strictEqual(await stars_src.jsonValue(), "./assets/images/icons/5-star.svg");
 		});
 
 		it("check home page", async () => {
+			// Click the button to return to the home page
+			let home_btn = await page.$("#home-btn");
+			home_btn.click();
+			await page.waitForNavigation();
+
+			// Get the review card again and get its shadowRoot
+			let review_card = await page.$("review-card");
+			let shadowRoot = await review_card.getProperty("shadowRoot");
+
+			// Get the review image and check src and alt
+			let img = await shadowRoot.$("#a-mealImg");
+			let imgSrc = await img.getProperty("src");
+			let imgAlt = await img.getProperty("alt");
+			// Check src and alt
+			assert.strictEqual(await imgSrc.jsonValue(), "sample src");
+			assert.strictEqual(await imgAlt.jsonValue(), "sample alt");
+
+			// Get the title, comment, and restaurant
+			let title = await shadowRoot.$("#a-mealName");
+			let title_text = await title.getProperty("innerText");
+			let comment = await shadowRoot.$("#a-comments");
+			let comment_text = await comment.getProperty("innerText");
+			let restaurant = await shadowRoot.$("#a-restaurant");
+			let restaurant_text = await restaurant.getProperty("innerText");
+			// Check title, comment, and restaurant
+			assert.strictEqual(await title_text.jsonValue(), "sample name");
+			assert.strictEqual(await comment_text.jsonValue(), "sample comment");
+			assert.strictEqual(await restaurant_text.jsonValue(), "sample restaurant");
 			
+			// Check tags
+			let tags = shadowRoot.$(".tag");
+			for(let i = 0; i < tags.length; i++){
+				let tag_text = await tags[i].getProperty("innerText");
+				assert.strictEqual(await tag_text.jsonValue(), `tag -${i}`);
+			}
+
+			// Check stars
+			let stars = await shadowRoot.$("#a-rating");
+			let stars_src = await stars.getProperty("src");
+			assert.strictEqual(await stars_src.jsonValue(), "./assets/images/icons/5-star.svg");
 		});
 	});
 
