@@ -45,7 +45,7 @@ function initFormHandler() {
 
 			window.location.assign("./ReviewDetails.html");
 		} else{
-			window.alert("NO");
+			window.alert("NO! FILL IN STARS");
 		}
         
 	});
