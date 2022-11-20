@@ -218,7 +218,7 @@ describe("test App end to end", async () => {
 
 		});
 
-		describe("test delete 1 review", () => {
+		describe("test delete 1 review", async () => {
 			it("delete 1 review", async () => {
 				// Get the only review card and click it
 				let review_card = await page.$("review-card");
