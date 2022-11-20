@@ -6,8 +6,8 @@
     "test": "mocha --recursive --require mock-local-storage './{,!(node_modules)/**}/*.test.js'",
     "lint": "eslint **/*.js",
     "fix-style": "eslint --fix **/*.js",
-    "lintHTML": "htmlhint '**/*.html'",
-    "lintCSS": "stylelint '**/*.css'",
+    "lintHTML": "htmlhint **/*.html",
+    "lintCSS": "stylelint **/*.css",
     "http-server": "http-server source"
   },
   "devDependencies": {
