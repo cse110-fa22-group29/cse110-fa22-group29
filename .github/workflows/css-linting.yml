@@ -20,4 +20,4 @@ jobs:
       - name: Install dependencies
         run: sudo npm install
       - name: Run tests
-        run: sudo npm run lintCSS
+        run: sudo npm run lint-css

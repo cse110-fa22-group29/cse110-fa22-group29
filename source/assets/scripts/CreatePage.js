@@ -15,7 +15,44 @@ function initFormHandler() {
 	//accessing form components
 	let tagContainer = document.getElementById("tag-container-form");
 	let form = document.querySelector("form");
-  
+
+	/*
+	* change the input source of the image between local file and URL 
+	* depending on user's selection
+	*/
+	let select = document.getElementById("select");
+	select.addEventListener("change", function() {
+		const input = document.getElementById("source");
+	
+		if (select.value == "file") {
+			input.innerHTML = `
+			Source:
+			<input type="file" accept="image/*" id="mealImg" name="mealImg">
+			`;
+		}
+		//TODO: change to photo taking for sprint 3
+		else {
+			input.innerHTML = `
+			Source:
+			<input type="text" id="mealImg" name="mealImg">
+			`;
+		}
+	});
+
+	//addressing sourcing image from local file
+	let imgDataURL = "";
+	document.getElementById("mealImg").addEventListener("change", function() {
+		const reader = new FileReader();
+		
+		//store image data URL after successful image load
+		reader.addEventListener("load", ()=>{
+			imgDataURL = reader.result;
+		}, false);
+		
+		//convert image file into data URL for local storage
+		reader.readAsDataURL(document.getElementById("mealImg").files[0]);
+	});
+		
 	form.addEventListener("submit", function(e){
 	/*
     *  User submits the form for their review.
@@ -29,6 +66,9 @@ function initFormHandler() {
 			console.log(`${value}`);
 			if (`${key}` !== "tag-form") {
 				reviewObject[`${key}`] = `${value}`;
+			}
+			if (`${key}` === "mealImg" && select.value == "file") {
+				reviewObject["mealImg"] = imgDataURL;
 			}
 		}
 		reviewObject["tags"] = [];
