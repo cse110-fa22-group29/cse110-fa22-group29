@@ -229,7 +229,7 @@ describe("test App end to end", async () => {
 					console.log(dialog.message());
 					await dialog.accept();
 				});
-			}
+			});
 		});
 	});
 
