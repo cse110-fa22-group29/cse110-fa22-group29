@@ -26,9 +26,14 @@
     <!----> <form id="update-food-entry" class="hidden">
       <fieldset>
         <legend>Pic:</legend>
-        <label for="mealImage">
+        Choose Input type:
+        <select id="select" name="select">
+          <option value="file">File Upload</option>
+          <option value="url">From an URL</option>
+        </select>
+        <label for="mealImage" id="source">
           Source:
-          <input type="text" id="mealImg" name="mealImg">
+          <input type="file" accept="image/*" id="mealImg" name="mealImg">
         </label>
         <label for="image-alt">
           Alt Text:
