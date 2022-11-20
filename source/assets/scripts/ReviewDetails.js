@@ -55,6 +55,46 @@ function setupUpdate(){
 				tagContainer.append(newTag);
 			}
 		}
+
+		/*
+		* change the input source of the image between local file and URL 
+		* depending on user's selection
+		*/
+		let select = document.getElementById("select");
+		select.addEventListener("change", function() {
+			const input = document.getElementById('source');
+		
+			if (select.value == "file") {
+			input.innerHTML = `
+			Source:
+			<input type="file" accept="image/*" id="mealImg" name="mealImg">
+			`
+			}
+			//TODO: change to photo taking for sprint 3
+			else {
+			input.innerHTML = `
+			Source:
+			<input type="text" id="mealImg" name="mealImg">
+			`
+			}
+		});
+
+		//addressing sourcing image from local file
+		let imgDataURL = "";
+		document.getElementById("mealImg").addEventListener("change", function() {
+			console.log("reading used");
+			const reader = new FileReader();
+			
+			//store image data URL after successful image load
+			reader.addEventListener("load", ()=>{
+				imgDataURL = reader.result;
+			}, false);
+			
+			//convert image file into data URL for local storage
+			reader.readAsDataURL(document.getElementById("mealImg").files[0]);
+		})
+
+		
 		//Take formdata values as newData when submit
 		form.addEventListener("submit", function(){
 			/*
@@ -68,6 +108,13 @@ function setupUpdate(){
 				console.log(`${value}`);
 				if (`${key}` !== "tag-form") {
 					newData[`${key}`] = `${value}`;
+				}
+				//Account for the case where image is not updated
+				if (`${key}` === "mealImg" && document.getElementById("mealImg").value === "") {
+					newData["mealImg"] = currReview["mealImg"];
+				}
+				else if (`${key}` === "mealImg" && select.value == "file") {
+					newData["mealImg"] = imgDataURL;
 				}
 			}
 			newData["tags"] = [];
