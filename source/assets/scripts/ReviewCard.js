@@ -6,7 +6,6 @@ class ReviewCard extends HTMLElement {
 	constructor() {
 		super(); 
 
-
 		let shadowEl = this.attachShadow({mode:"open"});
 
 		let articleEl = document.createElement("article");
@@ -88,9 +87,9 @@ class ReviewCard extends HTMLElement {
 		//attach event listener to each recipe-card
 		this.addEventListener("click", (event) => {
 			console.log(event.target);
-			console.log(event.target.data);
+			console.log(event.target.reviewId);
 			//Option 1: sending current data to second html page using localStorage (could also just store index)
-			sessionStorage.setItem("current", JSON.stringify(event.target.data));
+			sessionStorage.setItem("currID", JSON.stringify(event.target.data.reviewID));
 			window.location.assign("./ReviewDetails.html");
 			/*
       //Option 2: sending current data to second html page using string query w/ url (currently not storing value)
@@ -133,12 +132,18 @@ class ReviewCard extends HTMLElement {
 		let articleEl = this.shadowEl.querySelector("article");
     
 		// setting the article elements for the review card
+		this.reviewID = data["reviewID"];
 
 		//image setup
 		let mealImg = document.createElement("img");
 		mealImg.setAttribute("id", "a-mealImg");
-		mealImg.setAttribute("src",data["mealImg"]);
 		mealImg.setAttribute("alt",data["imgAlt"]);
+		if(data["mealImg"] != ""){
+			mealImg.setAttribute("src",data["mealImg"]);
+		}
+		else{
+			mealImg.setAttribute("src", "./assets/images/icons/plate_with_cutlery.png");
+		}
 
 		//meal name setup
 		let mealLabel = document.createElement("label");
@@ -147,26 +152,6 @@ class ReviewCard extends HTMLElement {
 		mealLabel.innerHTML = data["mealName"];
 
 		//restaurant name setup
-		/*
-    //review page link
-    //giving it functionality to save the review card's info to session storage for loading the review page
-    let reviewLink = document.createElement('a');
-    reviewLink.setAttribute('href','./review.html')
-    reviewLink.innerHTML = 'review page'
-    reviewLink.addEventListener('click', () => {
-      sessionStorage.clear();
-      let currReview = {
-        "imgSrc": data['imgSrc'],
-        "imgAlt": data['imgAlt'],
-        "mealName": data['mealName'],
-        "restaurant": data['restaurant'],
-        "comments": data['comments'],
-        "rating": data['rating'],
-        "tags": data['tags']                
-      }
-      sessionStorage.setItem('currReview', JSON.stringify(currReview));
-    });
-*/
 		let restaurantLabel = document.createElement("label");
 		restaurantLabel.setAttribute("id", "a-restaurant");
 		restaurantLabel.setAttribute("class","restaurant-name");
@@ -197,14 +182,15 @@ class ReviewCard extends HTMLElement {
 			for (let i = 0; i < data["tags"].length; i++) {
 				let newTag = document.createElement("label");
 				newTag.setAttribute("class","tag");
-				newTag.innerHTML = data["tags"][i] + "   ";
+				newTag.innerHTML = data["tags"][i];
 				tagContainer.append(newTag);
 			}
 		}
 
+		//adding final ID to data!
+
 		articleEl.append(mealImg);
 		articleEl.append(mealLabel);
-		//articleEl.append(reviewLink)
 		articleEl.append(restaurantLabel);
 		articleEl.append(ratingDiv);
 		articleEl.append(tagContainer);
@@ -237,6 +223,7 @@ class ReviewCard extends HTMLElement {
 		let dataContainer = {};
     
 		// getting the article elements for the review card
+		dataContainer["reviewID"] = this.reviewID;
 
 		//get image
 		let mealImg = this.shadowEl.getElementById("a-mealImg");

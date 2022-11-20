@@ -14,66 +14,39 @@
   <!-- Main Stylesheets & Scripts --> 
   <!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
   <!-- <link rel="stylesheet" href="/static/reset.css" /> -->
-  <link rel="stylesheet" href="./static/ReviewCard.css" />
+  <link rel="stylesheet" href="./static/homepage.css" />
   <script src="assets/scripts/main.js" type="module"></script>
 
 </head>
 <body>
+  <div class ="Top-Bar">
+    <img src ="./assets/images/icons/Logo.png" alt="logo" />
+    <h1 style="font-family:'Lucida Sans'"> Food Journal </h1>
+    <form id="form">
+        <input type='search' id="seaching" name="searchBar" placeholder="Search journal...">
+        <button class="click" type="search">
+            Search
+        </button>
+    </form>
+    <!--
+    <form id="form">
+        <input type='search' id="seaching" name="searchBar" placeholder="Search journal...">
+        <button class="click" type="search">
+            Search
+        </button>
+    </form>
+    --->
   <main>
     <!-- Add Food Entries Here -->
+    <div class="Review-boxes">
+      <h2> Recent Reviews </h2>
+      <a href='./CreatePage.html'><img src ="./assets/images/icons/Grouppink.png" alt="CREATE" /></a>
+      
+    </div>
+      <div class="Filter-box">
+    </div>
+    <div class="review-container" id="review-container"></div>
   </main>
-  <!--<button type="button" id="create">CREATE</button>-->
-  <!----> <form id="new-food-entry">
-    <fieldset>
-      <legend>Pic:</legend>
-      <label for="mealImage">
-        Source:
-        <input type="text" id="mealImg" name="mealImg">
-      </label>
-      <label for="image-alt">
-        Alt Text:
-        <input type="text" id="imgAlt" name="imgAlt">
-      </label>
-    </fieldset>
-    <fieldset>
-
-      <legend> Meal: </legend>
-      <label for="Meal: ">Meal:
-        <input type="text" id="mealName" name="mealName" required>
-      </label>
-      <label for="comments">Comments: 
-        <br>
-        <textarea name="comments" id="comments"></textarea>
-      </label>
-    </fieldset>
-    
-    <fieldset class="rating">
-      <legend> Rating: </legend>
-      <input type="radio" id="s5" name="rating" value="5"/> <label for="s5"> 5 stars </label>
-      <input type="radio" id="s4" name="rating" value="4"/> <label for="s4"> 4 stars </label>
-      <input type="radio" id="s3" name="rating" value="3"/> <label for="s3"> 3 stars </label>
-      <input type="radio" id="s2" name="rating" value="2"/> <label for="s2"> 2 stars </label>
-      <input type="radio" id="s1" name="rating" value="1"/> <label for="s1"> 1 star </label>
-    </fieldset>
-
-    <fieldset>
-      <legend>Other Info:</legend>
-      <label for="restaurant">
-        Restaurant:
-        <input type="text" id="restaurant" name="restaurant" required>
-      </label>
-      <label for="tag-form">
-        Tags:
-        <input type="text" id="tag-form" name="tag-form">
-        <div class='tag-container' id="tag-container-form">
-
-        </div>
-        <button type="button" id="tagAdd">Add Tag</button>
-      </label>
-
-    </fieldset>
-    <button type="submit" value="Submit">Add Review</button>
-    <button type="button" class="danger">Clear Review Journal</button>
-  </form> <!---->
+  <!--<button type="button" id="create-btn"><a href='./CreatePage.html'></a>CREATE</button>-->
 </body>
 </html>
