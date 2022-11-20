@@ -82,6 +82,7 @@ function setupUpdate(){
 		//addressing sourcing image from local file
 		let imgDataURL = "";
 		document.getElementById("mealImg").addEventListener("change", function() {
+			console.log("reading used");
 			const reader = new FileReader();
 			
 			//store image data URL after successful image load
@@ -108,7 +109,11 @@ function setupUpdate(){
 				if (`${key}` !== "tag-form") {
 					newData[`${key}`] = `${value}`;
 				}
-				if (`${key}` === "mealImg" && select.value == "file") {
+				//Account for the case where image is not updated
+				if (`${key}` === "mealImg" && document.getElementById("mealImg").value === "") {
+					newData["mealImg"] = currReview["mealImg"];
+				}
+				else if (`${key}` === "mealImg" && select.value == "file") {
 					newData["mealImg"] = imgDataURL;
 				}
 			}
