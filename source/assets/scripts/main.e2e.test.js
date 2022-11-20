@@ -2,7 +2,7 @@ import {strict as assert} from "node:assert";
 import {describe, it, before, after} from "mocha";
 import puppeteer from "puppeteer-core";
 import {exit} from "node:process";
-import {setReviewForm, checkCorrectness} from "./appTestHelpers.js"
+import {setReviewForm, checkCorrectness} from "./appTestHelpers.js";
 
 describe("test App end to end", async () => {
 
@@ -19,7 +19,7 @@ describe("test App end to end", async () => {
 		}
 
 		//browser = await puppeteer.launch({headless: false, slowMo: 250, args: root ? ['--no-sandbox'] : undefined});
-		browser = await puppeteer.launch({args: root ? ['--no-sandbox'] : undefined});
+		browser = await puppeteer.launch({args: root ? ["--no-sandbox"] : undefined});
 		page = await browser.newPage();
 		try{
 			await page.goto("http://localhost:8080", {timeout: 1000});
@@ -54,7 +54,7 @@ describe("test App end to end", async () => {
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
 					rating: 1
-				}
+				};
 				await setReviewForm(page, review);
 
 				// Click the save button to save updates
@@ -73,7 +73,7 @@ describe("test App end to end", async () => {
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
 					rating: "http://localhost:8080/assets/images/icons/1-star.svg"
-				}
+				};
 				await checkCorrectness(page, "d", expected);
 			});
 		
@@ -95,7 +95,7 @@ describe("test App end to end", async () => {
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
 					rating: "http://localhost:8080/assets/images/icons/1-star.svg"
-				}
+				};
 				await checkCorrectness(shadowRoot, "a", expected);
 			});
 		});
@@ -121,7 +121,7 @@ describe("test App end to end", async () => {
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
 					rating: "http://localhost:8080/assets/images/icons/1-star.svg"
-				}
+				};
 				await checkCorrectness(page, "d", expected);
 			});
 
@@ -144,7 +144,7 @@ describe("test App end to end", async () => {
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
 					rating: "http://localhost:8080/assets/images/icons/1-star.svg"
-				}
+				};
 				await checkCorrectness(shadowRoot, "a", expected);
 			});
 		});
@@ -170,7 +170,7 @@ describe("test App end to end", async () => {
 					restaurant: "updated restaurant",
 					tags: ["tag -0", "tag -1", "tag -2", "tag -3", "tag -4", "tag -5"],
 					rating: 5
-				}
+				};
 				await setReviewForm(page, review);
 
 				// Click the save button to save updates
@@ -189,7 +189,7 @@ describe("test App end to end", async () => {
 					restaurant: "updated restaurant",
 					tags: ["tag -0", "tag -1", "tag -2", "tag -3", "tag -4", "tag -5"],
 					rating: "http://localhost:8080/assets/images/icons/5-star.svg"
-				}
+				};
 				await checkCorrectness(page, "d", expected);
 			});
 
@@ -212,7 +212,7 @@ describe("test App end to end", async () => {
 					restaurant: "updated restaurant",
 					tags: ["tag -0", "tag -1", "tag -2", "tag -3", "tag -4", "tag -5"],
 					rating: "http://localhost:8080/assets/images/icons/5-star.svg"
-				}
+				};
 				await checkCorrectness(shadowRoot, "a", expected);
 			});
 
@@ -225,7 +225,7 @@ describe("test App end to end", async () => {
 				await review_card.click();
 				await page.waitForNavigation();
 
-				page.on('dialog', async dialog => {
+				page.on("dialog", async dialog => {
 					console.log(dialog.message());
 					await dialog.accept();
 				});
