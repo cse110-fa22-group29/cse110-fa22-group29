@@ -22,4 +22,4 @@ jobs:
       - name: Install dependencies
         run: sudo npm install
       - name: Run tests
-        run: sudo npm run lint
+        run: sudo npm run lint-js
