@@ -23,7 +23,10 @@
 - ### Old/Unresolved Business
   - N/A
 - ### New Business
-  - 
+  - Planning for the Agile Steam Status Video
+    - *Present the status of your software*
+    - *Description of current challenges to development*
+    - *Preview of the next sprint and what to look forward to*
 - ### Next Meeting's Business
 
 ## Decisions Made
