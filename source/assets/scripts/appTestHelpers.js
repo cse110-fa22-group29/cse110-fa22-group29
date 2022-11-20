@@ -1,5 +1,10 @@
 import {strict as assert} from "node:assert";
 
+/**
+ * Fills out a create or update review form
+ * @param {Object} page the page object which contains the create or update form
+ * @param {Object} review review data to input into the form 
+ */
 export async function setReviewForm(page, review) {
 	
 	// Set text fields
@@ -28,6 +33,12 @@ export async function setReviewForm(page, review) {
 	await rating_select.click({delay: 100});
 }
 
+/**
+ * Tests a page or shadowDOM for correct element text, src, or alt values
+ * @param {Object} root page or shodowDOM to test
+ * @param {string} prefix prefix character for element IDs
+ * @param {Object} expected values for eahc element
+ */
 export async function checkCorrectness(root, prefix, expected){
 	// Get the review image and check src and alt
 	let img = await root.$(`#${prefix}-mealImg`);
