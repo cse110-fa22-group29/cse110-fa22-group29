@@ -62,20 +62,20 @@ function setupUpdate(){
 		*/
 		let select = document.getElementById("select");
 		select.addEventListener("change", function() {
-			const input = document.getElementById('source');
+			const input = document.getElementById("source");
 		
 			if (select.value == "file") {
-			input.innerHTML = `
-			Source:
-			<input type="file" accept="image/*" id="mealImg" name="mealImg">
-			`
+				input.innerHTML = `
+				Source:
+				<input type="file" accept="image/*" id="mealImg" name="mealImg">
+				`;
 			}
 			//TODO: change to photo taking for sprint 3
 			else {
-			input.innerHTML = `
-			Source:
-			<input type="text" id="mealImg" name="mealImg">
-			`
+				input.innerHTML = `
+				Source:
+				<input type="text" id="mealImg" name="mealImg">
+				`;
 			}
 		});
 
@@ -92,7 +92,7 @@ function setupUpdate(){
 			
 			//convert image file into data URL for local storage
 			reader.readAsDataURL(document.getElementById("mealImg").files[0]);
-		})
+		});
 
 		
 		//Take formdata values as newData when submit
