@@ -1,0 +1,65 @@
+/* homepage.css */
+/* Color*/
+body{
+    background-color: #13323b;
+}
+.Top-Bar{
+    margin-top: -8cm;
+}
+.Top-Bar > img{
+    position: relative;
+    top: 7.5cm;
+}
+.Top-Bar > h1{
+    position: relative;
+    left: 10.5cm;
+    top: 2.2cm;
+    font-size: 3cm;
+    color: #EAA9BC; 
+  
+}
+.Top-Bar > form{
+    position: relative;
+    left: 32cm;
+}
+.Review-boxes {
+    position: relative;
+}
+
+.Review-boxes > h2 {
+    position: relative;
+    left: 10cm;
+    font-size: 1.5cm;
+    color: #EAA9BC; 
+}
+.Review-boxes > input {
+    position: relative;
+    left: 20.34cm;
+    top: -3.5cm;
+}
+
+.Filter-box{
+    width:300px;
+    height:700px;
+    background: #8D4E62;
+    position: relative;
+    left: 29.5cm;
+    top: -5.5cm;
+}
+.review-container{
+    display: flex;
+    position: relative;
+    top: -22cm;
+    left: 5cm;
+    max-width: 900px;
+    flex-wrap: wrap;
+}
+.review-container > div {
+    background-color: #f1f1f1;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+  }

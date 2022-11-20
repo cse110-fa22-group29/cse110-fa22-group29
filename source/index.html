@@ -14,14 +14,39 @@
   <!-- Main Stylesheets & Scripts --> 
   <!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
   <!-- <link rel="stylesheet" href="/static/reset.css" /> -->
-  <link rel="stylesheet" href="./static/ReviewCard.css" />
+  <link rel="stylesheet" href="./static/homepage.css" />
   <script src="assets/scripts/main.js" type="module"></script>
 
 </head>
 <body>
+  <div class ="Top-Bar">
+    <img src ="./assets/images/icons/Logo.png" alt="logo" />
+    <h1 style="font-family:'Lucida Sans'"> Food Journal </h1>
+    <form id="form">
+        <input type='search' id="seaching" name="searchBar" placeholder="Search journal...">
+        <button class="click" type="search">
+            Search
+        </button>
+    </form>
+    <!--
+    <form id="form">
+        <input type='search' id="seaching" name="searchBar" placeholder="Search journal...">
+        <button class="click" type="search">
+            Search
+        </button>
+    </form>
+    --->
   <main>
     <!-- Add Food Entries Here -->
+    <div class="Review-boxes">
+      <h2> Recent Reviews </h2>
+      <a href='./CreatePage.html'><img src ="./assets/images/icons/Grouppink.png" alt="CREATE" /></a>
+      
+    </div>
+      <div class="Filter-box">
+    </div>
+    <div class="review-container" id="review-container"></div>
   </main>
-  <button type="button" id="create-btn"><a href='./CreatePage.html'></a>CREATE</button>
+  <!--<button type="button" id="create-btn"><a href='./CreatePage.html'></a>CREATE</button>-->
 </body>
 </html>

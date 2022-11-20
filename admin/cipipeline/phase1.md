@@ -31,6 +31,9 @@ So far the features listed below have been completed to some degree:
 - Linting (JS)
 	- Implemented: ction triggers on any PR, uses eslint to perform style enforcement on all JS components
 	- ToDo: trigger workflow only on certain PRs which relate to JS code
-
+- Linting (HTML)
+	- Implemented: action triggers on any PR, uses HTMLhint to perform style enforcement on all HTML components
+- Linting (CSS)
+	- Implemented: action triggers on any PR, uses Stylelint to perform style enforcement on all CSS components
 
 ## Planned Features and Timeline
