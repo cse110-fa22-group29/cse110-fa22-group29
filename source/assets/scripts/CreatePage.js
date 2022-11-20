@@ -46,7 +46,7 @@ function initFormHandler() {
         
 	});
 
-	let tagAddBtn = document.getElementById("tagAdd");
+	let tagAddBtn = document.getElementById("tag-add-btn");
 	tagAddBtn.addEventListener("click", ()=> {
 		let tagField = document.getElementById("tag-form");
 		if (tagField.value.length > 0) {
