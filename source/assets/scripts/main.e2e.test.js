@@ -40,11 +40,8 @@ describe("test App end to end", async () => {
 	describe("test CRUD on simple inputs and default image", () => {
 
 		describe("test create 10 new reviews", async () => {
-
 			for (var i=0; i < 10; i++) {
-
 				it("create 1 new review", async () => {
-
 					// Click the button to create a new review
 					let create_btn = await page.$("#create-btn");
 					await create_btn.click();
@@ -103,15 +100,11 @@ describe("test App end to end", async () => {
 					}
 					await checkCorrectness(shadowRoot, "a", expected);
 				});
-
 			}
-
 		});
 
 		describe("test read 10 reviews after refresh", async () => {
-
 			for (var i=0; i < 10; i++) {
-
 				it("refresh page", async () => {
 					// Reload the page
 					await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
@@ -158,17 +151,12 @@ describe("test App end to end", async () => {
 					}
 					await checkCorrectness(shadowRoot, "a", expected);
 				});
-
 			}
-
 		});
 
 		describe("test update 10 reviews", async () => {
-
 			for (var i=0; i < 10; i++) {
-
 				it("update 1 review", async () => {
-
 					// Get the only review card and click it
 					let review_card = await page.$("review-card");
 					await review_card.click();
@@ -231,15 +219,11 @@ describe("test App end to end", async () => {
 					}
 					await checkCorrectness(shadowRoot, "a", expected);
 				});
-
 			}			
-
 		});
 
 		describe("test delete 10 reviews", async () => {
-
 			for (var i=0; i < 10; i++) {
-
 				it("delete 1 review", async () => {
 					// Get the only review card and click it
 					let review_card = await page.$("review-card");
@@ -260,10 +244,8 @@ describe("test App end to end", async () => {
 					review_card = await page.$("#review-card");
 					assert.strictEqual(review_card, null);
 				});
-
 			}
 		});
-
 	});
 
 	after(async () => {
