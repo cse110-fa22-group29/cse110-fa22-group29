@@ -67,7 +67,7 @@ function setupUpdate(){
 	let updateBtn = document.getElementById("update-btn");
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
 	let currReview = getReviewFromStorage(currID);
-	let form = document.getElementById("update-food-entry");
+	let form = document.getElementById("update-form");
 	let updateDiv = document.getElementById("update-form");
 	updateBtn.addEventListener("click", function(){
 		//update function
