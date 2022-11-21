@@ -36,6 +36,11 @@ body {
 	align-items: center;
 }
 
+.search-bar {
+	display: flex;
+	justify-content: center;
+}
+
 #recent-reviews-text {
 	text-align: center;
 	font-size: 4rem;
