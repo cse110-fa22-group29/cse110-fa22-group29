@@ -10,30 +10,31 @@ body {
 
 }
 
-h1 {
-	text-align: center;
-}
-
 .top-bar {
-	margin-top: -8cm;
+	display: flex;
+	justify-content: center;
 }
 
 .top-bar > img {
 	position: relative;
-	top: 7.85cm;
+	align-self: center;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
 }
 
 .top-bar > h1 {
 	position: relative;
-	top: 2.2cm;
-	font-size: 3cm;
+	text-align: center;
+	/*color: #e4c3d2;*/
+	/*color: rgb(145, 124, 175);*/
 	color:#516754;
+	font-size: 6rem;
     font-family: 'testFont';
 }
 
-.top-bar > form {
-	position: relative;
-	left: 32cm;
+.journal-form > h1 {
+	font-family: 'testFont';
+	text-align: center;
 }
 
 .journal-form {
