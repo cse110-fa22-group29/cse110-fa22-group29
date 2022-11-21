@@ -36,6 +36,7 @@ class ReviewCard extends HTMLElement {
         row-gap: 5px;
         padding: 0 16px 16px 16px;
         width: 178px;
+		margin: 8px 8px 8px 8px;
       }
     
       div.rating {

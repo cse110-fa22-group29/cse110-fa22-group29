@@ -46,6 +46,7 @@ img#create-btn {
     display: flex;
     position: relative;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .review-container > div {
     background-color: #f1f1f1;
