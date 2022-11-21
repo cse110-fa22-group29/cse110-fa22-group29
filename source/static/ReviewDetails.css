@@ -1,87 +1,90 @@
 /* ReviewDetails.css */
 
-body{
-  background-color: #13323b;
+body {
+	background-color: #13323b;
 }
 
 h1 {
-  text-align: center;
+	text-align: center;
 }
-.Top-Bar{
-  margin-top: -8cm;
-}
-.Top-Bar > img{
-  position: relative;
-  top: 7.85cm;
-}
-.Top-Bar > h1{
-  position: relative;
-  top: 2.2cm;
-  font-size: 3cm;
-  color: #EAA9BC 
 
+.top-bar {
+	margin-top: -8cm;
 }
-.Top-Bar > form{
-  position: relative;
-  left: 32cm;
+
+.top-bar > img {
+	position: relative;
+	top: 7.85cm;
+}
+
+.top-bar > h1 {
+	position: relative;
+	top: 2.2cm;
+	font-size: 3cm;
+	color: #eaa9bc;
+}
+
+.top-bar > form {
+	position: relative;
+	left: 32cm;
 }
 
 .journal-form {
-  font-size: 120%;
-  width: 50%;
-  display: none;
-  margin: auto;
-  color: #ccb3bb;
-  border: 3px solid rgb(7, 0, 0);
-  background-color: #b52754;
+	font-size: 120%;
+	width: 50%;
+	display: none;
+	margin: auto;
+	color: #ccb3bb;
+	border: 3px solid rgb(7 0 0);
+	background-color: #b52754;
 }
 
 .meal-name {
-  font-size: 150%;
-  margin: left;
-  width: 50%;
-  border: 3px;
-  color: rgb(228, 119, 119);
-  text-align: left;
+	font-size: 150%;
+	margin: left;
+	width: 50%;
+	border: 3px;
+	color: rgb(228 119 119);
+	text-align: left;
 }
 
 .hidden,
 .rating:not(:checked) > input { /* Hide radio circles while star rating */
-  display: none;
+	display: none;
 }
 
 /* Unchecked stars */
 .rating:not(:checked) > label {
-  /* Make stars line up sideways and not vertically */
-  float: right;
+	/* Make stars line up sideways and not vertically */
+	float: right;
 
-  /* Hide label text */
-  width: 1em;
-  overflow: hidden;
-  white-space: nowrap;
+	/* Hide label text */
+	width: 1em;
+	overflow: hidden;
+	white-space: nowrap;
 
-  /* Star default color and size */
-  font-size: 200%;
-  line-height: 1.2;
-  color: #b3b3cc;
+	/* Star default color and size */
+	font-size: 200%;
+	line-height: 1.2;
+	color: #b3b3cc;
 }
 
 .rating > label:active {
-  position: relative;
+	position: relative;
 }
 
 .rating:not(:checked) > label::before {
-  content: "★";
+	content: "★";
 }
 
 /* Checked star color */
 .rating > input:checked ~ label {
-  color: #ffbf00;
+	color: #ffbf00;
 }
 
 .rating:not(:checked) > label:hover,
 .rating:not(:checked) > label:hover ~ label {
-  color: orangered;
+	color: orangered;
 }
 
 .rating > input:checked + label:hover,
@@ -89,5 +92,5 @@ h1 {
 .rating > input:checked + label:hover ~ label,
 .rating > input:checked ~ label:hover ~ label,
 .rating > label:hover ~ input:checked ~ label {
-  color: orangered;
+	color: orangered;
 }
