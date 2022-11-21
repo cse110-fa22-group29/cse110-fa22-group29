@@ -138,12 +138,11 @@ class ReviewCard extends HTMLElement {
 		let mealImg = document.createElement("img");
 		mealImg.setAttribute("id", "a-mealImg");
 		mealImg.setAttribute("alt","Meal Photo Corrupted");
-		if(data["mealImg"] != ""){
-			mealImg.setAttribute("src",data["mealImg"]);
-		}
-		else{
+		mealImg.setAttribute("src",data["mealImg"]);
+		mealImg.addEventListener("error", function(e) {
 			mealImg.setAttribute("src", "./assets/images/icons/plate_with_cutlery.png");
-		}
+			e.onerror = null;
+		});
 
 		//meal name setup
 		let mealLabel = document.createElement("label");
