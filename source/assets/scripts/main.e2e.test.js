@@ -39,7 +39,7 @@ describe("test App end to end", async () => {
 
 	describe("test CRUD on simple inputs and default image", () => {
 
-		describe("test create 1 new review", async () => {
+	  describe("test create 1 new review", async () => {
 			it("create 1 new review", async () => {
 				// Click the button to create a new review
 				let create_btn = await page.$("#create-btn");
@@ -229,18 +229,8 @@ describe("test App end to end", async () => {
 					console.log(dialog.message());
 					await dialog.accept();
 				});
-
-				// Get the delete button and click it
-				let delete_btn = await page.$("#delete-btn");
-				await delete_btn.click();
-				await page.waitForNavigation();
-
-				// Check that the card was correctly removed (there should be no remaining cards)
-				review_card = await page.$("#review-card");
-				assert.strictEqual(review_card, null);
 			});
 		});
-
 	});
 
 	after(async () => {

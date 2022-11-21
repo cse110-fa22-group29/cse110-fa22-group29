@@ -2,52 +2,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Food Journal</title>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Food Journal</title>
 
-  <!-- Recipe Card Custom Element -->
-  <script src="assets/scripts/ReviewCard.js" type="module"></script>
+	<!-- Recipe Card Custom Element -->
+	<script src="assets/scripts/ReviewCard.js" type="module"></script>
 
-
-  <!-- Main Stylesheets & Scripts --> 
-  <!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
-  <!-- <link rel="stylesheet" href="/static/reset.css" /> -->
-  <link rel="stylesheet" href="./static/homepage.css" />
-  <script src="assets/scripts/main.js" type="module"></script>
-
+	<!-- Main Stylesheets & Scripts --> 
+	<!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
+	<!-- <link rel="stylesheet" href="/static/reset.css" /> -->
+	<link rel="stylesheet" href="./static/homepage.css" />
+	<script src="assets/scripts/main.js" type="module"></script>
 </head>
-<body>
-  <div class ="Top-Bar">
-    <img src ="./assets/images/icons/Logo.png" alt="logo" />
-    <h1 style="font-family:'Lucida Sans'"> Food Journal </h1>
-    <form id="form">
-        <input type='search' id="seaching" name="searchBar" placeholder="Search journal...">
-        <button class="click" type="search">
-            Search
-        </button>
-    </form>
-    <!--
-    <form id="form">
-        <input type='search' id="seaching" name="searchBar" placeholder="Search journal...">
-        <button class="click" type="search">
-            Search
-        </button>
-    </form>
-    --->
-  </div>
-  <main>
-    <!-- Add Food Entries Here -->
-    <div class="Review-boxes">
-      <h2> Recent Reviews </h2>
-      <img src ="./assets/images/icons/Grouppink.png" alt="CREATE" id="create-btn" onclick="window.location.assign('./CreatePage.html')"></img>
-      
-    </div>
-      <div class="Filter-box">
-    </div>
-    <div class="review-container" id="review-container"></div>
-  </main>
-  <!--<button type="button" id="create-btn"><a href='./CreatePage.html'></a>CREATE</button>-->
-</body>
+<main>
+	<header>
+		<div class="Top-Bar" style="display: flex; justify-content: center;">
+			<img src ="./assets/images/icons/Logo.png" style="align-self: center;" alt="logo" />
+			<h1 style="font-family:'Lucida Sans';"> Food Journal </h1>
+			<img src ="./assets/images/icons/Logo.png" style="align-self: center;" alt="logo" />
+		</div>
+	</header>
+  	<body>
+
+		<!--
+			For mobile: + flex-direction: column-reverse;"
+						~ width: 100% for all divs
+		-->
+		<div style="display: flex; max-height: 100%; ">
+			<div style="width: 20%;"></div>
+
+			<div style="width: 60%;">
+				<div style="display: flex; flex-direction: row; justify-content: center;">		
+					<img src ="./assets/images/icons/Grouppink.png" alt="CREATE" style="align-self: center;" id="create-btn" onclick="window.location.assign('./CreatePage.html')"></img>
+					<h2 id="recent-reviews-text"> Recent Reviews </h2>
+					<img src ="./assets/images/icons/Grouppink.png" alt="" style="align-self: center; opacity:0;"></img>
+				</div>
+
+				<div class="review-container" id="review-container"></div>
+			</div>
+
+			<div style="width: 20%;">
+				<form id="form" style="">
+					<input type='search' id="seaching" name="searchBar" placeholder="Search journal...">
+					<button class="click" type="search">
+						Search
+					</button>
+					<div class="Filter-box"></div>
+				</form>
+			</div>
+			
+		</div>
+  	</body>
+</main>
 </html>
