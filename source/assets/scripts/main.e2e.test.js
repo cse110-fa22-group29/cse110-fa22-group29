@@ -22,7 +22,7 @@ describe("test App end to end", async () => {
 		browser = await puppeteer.launch({args: root ? ["--no-sandbox"] : undefined});
 		page = await browser.newPage();
 		try{
-			await page.goto("http://localhost:8080", {timeout: 1000});
+			await page.goto("http://localhost:8080", {timeout: 2000});
 			await console.log(`✔ connected to localhost webserver as ${root ? "root" : "user"}`);
 		}
 		catch (error) {
