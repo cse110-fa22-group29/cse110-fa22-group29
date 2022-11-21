@@ -5,8 +5,52 @@ import {deleteReviewFromStorage, getReviewFromStorage, updateReviewToStorage} fr
 window.addEventListener("DOMContentLoaded", init);
 
 function init(){
+	setupInfo();
 	setupDelete();
 	setupUpdate();
+}
+
+function setupInfo(){
+	let currID = JSON.parse(sessionStorage.getItem("currID"));
+	let currReview = getReviewFromStorage(currID);
+	
+	//meal image
+	let mealImg = document.getElementById("d-mealImg");
+	mealImg.setAttribute("alt", currReview["imgAlt"]);
+	if(currReview["mealImg"] != ""){
+		mealImg.setAttribute("src",currReview["mealImg"]);
+	}
+	else{
+		mealImg.setAttribute("src", "./assets/images/icons/plate_with_cutlery.png");
+	}
+
+	//meal name
+	let mealLabel = document.getElementById("d-mealName");
+	mealLabel.innerHTML = currReview["mealName"];
+
+	//restaurant name
+	/*let restaurantLabel = document.getElementById("d-restaurant");
+	restaurantLabel.innerHTML = currReview["restaurant"];
+
+	//comments
+	let comments = document.getElementById("d-comments");
+	comments.innerText = currReview["comments"];
+	*/
+	//rating
+	let starsImg = document.getElementById("d-rating");
+	starsImg.setAttribute("src", "./assets/images/icons/"+currReview["rating"]+"-star.svg");
+	starsImg.setAttribute("alt", currReview["rating"] +" stars");
+	/*
+	//tags
+	let tagContainer = document.getElementById("d-tags");
+	if(currReview["tags"]){
+		for (let i = 0; i < currReview["tags"].length; i++) {
+			let newTag = document.createElement("label");
+			newTag.setAttribute("class","tag");
+			newTag.innerHTML = currReview["tags"][i];
+			tagContainer.append(newTag);
+		}
+	}*/
 }
 
 function setupDelete(){
@@ -26,11 +70,11 @@ function setupUpdate(){
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
 	let currReview = getReviewFromStorage(currID);
 	let form = document.getElementById("update-food-entry");
+	let updateDiv = document.getElementById("update-form-div");
 	updateBtn.addEventListener("click", function(){
 		//update function
 
-		//form.style.display = "block";
-		form.classList.remove("hidden");
+		updateDiv.style.display = "block";
 		let tagContainer = document.getElementById("tag-container-form");
 
 		//Set value of each input element to current's values

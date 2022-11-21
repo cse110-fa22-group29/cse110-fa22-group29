@@ -17,8 +17,7 @@ export function newReviewToStorage(review){
 	localStorage.setItem("activeIDS", JSON.stringify(tempIdArr));
 	
 	//increment nextID for next review creation
-	nextReviewId++;
-	localStorage.setItem("nextID", JSON.stringify(nextReviewId));
+	localStorage.setItem("nextID", JSON.stringify(nextReviewId + 1));
 
 	return nextReviewId;
 }
