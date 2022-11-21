@@ -10,20 +10,49 @@
   <script src="assets/scripts/ReviewCard.js" type="module"></script>
 
 
+
   <!-- Main Stylesheets & Scripts --> 
   <!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
   <!-- <link rel="stylesheet" href="/static/reset.css" /> -->
-  <link rel="stylesheet" href="./static/ReviewCard.css" />
+  <link rel="stylesheet" href="./static/ReviewDetails.css" />
   <script src="assets/scripts/ReviewDetails.js" type="module"></script>
 
 </head>
 <body>
+  <div class ="Top-Bar">
+    <img src ="./assets/images/icons/Logo.png" alt="logo" />
+    <h1 style="font-family:'Lucida Sans'"> Food Journal </h1>
+
+  </div>
+
+  <!--- meal -->
+  <div class = "meal-name">
+    <h1 id="d-mealName"> Cucumber Salad </h1>
+  </div> 
+    
+  <div class = "meal-pics-and-tags">
+    <!-- image source --> 
+    <img src = https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1, 
+    alt = "photo" width=40% height=40% id="d-mealImg">
+
+    <div class = "tag-container", id="d-tags">
+      
+    </div>
+  </div>
+
+  <div class = "stars-and-comments">
+    <img src = "./assets/images/icons/5-star.svg" width=10% height=10% id="d-rating">
+    <h2> The food was good </h2>
+  </div>
+
   <main>
     <input type="button" value="Home" id="home-btn" onclick="window.location.assign('./index.html')">
     <button type="button" id="update-btn">Update</button>
     <button type="button" id="delete-btn" class="danger">Delete</button>
   </main>
-    <!----> <form id="update-food-entry" class="hidden">
+
+  <div class = journal-form id="update-form-div">
+    <form id="update-food-entry">
       <fieldset>
         <legend>Pic:</legend>
         Choose Input type:
@@ -77,7 +106,8 @@
         </label>
   
       </fieldset>
-      <button type="submit" id="save-btn" value="Submit">Add Review</button>
+      <button type="submit" id="save-btn" value="Submit">Update Review</button>
       </form>
+  </div>>
 </body>
 </html>
