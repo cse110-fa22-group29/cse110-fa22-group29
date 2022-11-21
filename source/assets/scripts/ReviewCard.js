@@ -87,7 +87,7 @@ class ReviewCard extends HTMLElement {
 		flex-flow: row wrap;
 	}
 	  
-	.tag {
+	.a-tag {
 		background-color:#94da97;
 		border-radius: 7px;
 		color: #94da97;
@@ -195,7 +195,7 @@ class ReviewCard extends HTMLElement {
 		if(data["tags"]){
 			for (let i = 0; i < data["tags"].length; i++) {
 				let newTag = document.createElement("label");
-				newTag.setAttribute("class","tag");
+				newTag.setAttribute("class","a-tag");
 				newTag.innerHTML = data["tags"][i];
 				tagContainer.append(newTag);
 			}

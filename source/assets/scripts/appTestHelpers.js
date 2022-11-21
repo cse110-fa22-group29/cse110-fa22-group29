@@ -59,7 +59,7 @@ export async function checkCorrectness(root, prefix, expected){
 	assert.strictEqual(await restaurant_text.jsonValue(), expected.restaurant);
 
 	// Check tags
-	let tags = await root.$$(".tag");
+	let tags = await root.$$(`.${prefix}-tag`);
 	assert.strictEqual(await tags.length, expected.tags.length);
 	for(let i = 0; i < expected.tags.length; i++){
 		let tag_text = await tags[i].getProperty("innerText");

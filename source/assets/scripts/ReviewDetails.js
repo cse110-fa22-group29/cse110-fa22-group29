@@ -44,7 +44,7 @@ function setupInfo(){
 	if(currReview["tags"]){
 		for (let i = 0; i < currReview["tags"].length; i++) {
 			let newTag = document.createElement("label");
-			newTag.setAttribute("class","tag");
+			newTag.setAttribute("class","d-tag");
 			newTag.innerHTML = currReview["tags"][i];
 			tagContainer.append(newTag);
 		}
@@ -67,7 +67,7 @@ function setupUpdate(){
 	let updateBtn = document.getElementById("update-btn");
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
 	let currReview = getReviewFromStorage(currID);
-	let form = document.getElementById("update-food-entry");
+	let form = document.getElementById("new-food-entry");
 	let updateDiv = document.getElementById("update-form");
 	updateBtn.addEventListener("click", function(){
 		//update function
@@ -171,7 +171,7 @@ function setupUpdate(){
 
 			updateReviewToStorage(currID, newData);
 
-			form.style.display = "none";
+			updateDiv.classList.add("hidden");
 
 		});
 
