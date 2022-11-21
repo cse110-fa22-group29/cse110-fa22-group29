@@ -71,18 +71,22 @@ function initFormHandler() {
 				reviewObject["mealImg"] = imgDataURL;
 			}
 		}
-		reviewObject["tags"] = [];
+		if(reviewObject["rating"] != null){
+			reviewObject["tags"] = [];
 
-		let tags = document.querySelectorAll(".tag");
-		for(let i = 0; i < tags.length; i ++) {
-			reviewObject["tags"].push(tags[i].innerHTML);
-			tagContainer.removeChild(tags[i]);
+			let tags = document.querySelectorAll(".tag");
+			for(let i = 0; i < tags.length; i ++) {
+				reviewObject["tags"].push(tags[i].innerHTML);
+				tagContainer.removeChild(tags[i]);
+			}
+
+			let nextReviewId = newReviewToStorage(reviewObject);
+			sessionStorage.setItem("currID", JSON.stringify(nextReviewId));
+
+			window.location.assign("./ReviewDetails.html");
+		} else{
+			window.alert("NO! FILL IN STARS");
 		}
-
-		let nextReviewId = newReviewToStorage(reviewObject);
-		sessionStorage.setItem("currID", JSON.stringify(nextReviewId));
-
-		window.location.assign("./ReviewDetails.html");
         
 	});
 
