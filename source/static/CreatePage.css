@@ -1,8 +1,8 @@
 /* CreatePage.css */
 
 @font-face {
-    font-family: "testFont";
-    src: url(CoveredByYourGrace-Regular.ttf);
+	font-family: "testFont";
+	src: url(CoveredByYourGrace-Regular.ttf);
 }
 
 body {
@@ -25,102 +25,7 @@ body {
 .top-bar > h1 {
 	position: relative;
 	text-align: center;
-	/*color: #e4c3d2;*/
-	/*color: rgb(145, 124, 175);*/
 	color:#516754;
 	font-size: 6rem;
-    font-family: 'testFont';
-}
-
-.journal-form > h1 {
 	font-family: 'testFont';
-	text-align: center;
-}
-
-.journal-form {
-	font-size: 120%;
-	font-family: 'Century Gothic';
-	width: 50%;
-	display: block;
-	margin: auto;
-	color: #516754;
-	border: 2px solid rgb(31, 41, 32);
-	border-radius: 8px;
-	background-color: #f7dfd5;
-}
-
-.hidden,
-.rating:not(:checked) > input { /* Hide radio circles while star rating */
-	display: none;
-}
-
-/* Unchecked stars */
-.rating:not(:checked) > label {
-	/* Make stars line up sideways and not vertically */
-	float: right;
-
-	/* Hide label text */
-	width: 1em;
-	overflow: hidden;
-	white-space: nowrap;
-
-	/* Star default color and size */
-	font-size: 200%;
-	line-height: 1.2;
-	color: #b3b3cc;
-}
-
-.rating > label:active {
-	position: relative;
-}
-
-.rating:not(:checked) > label::before {
-	content: "★";
-}
-
-/* Checked star color */
-.rating > input:checked ~ label {
-	color: #ffbf00;
-}
-
-.rating:not(:checked) > label:hover,
-.rating:not(:checked) > label:hover ~ label {
-	color: orangered;
-}
-
-.rating > input:checked + label:hover,
-.rating > input:checked ~ label:hover,
-.rating > input:checked + label:hover ~ label,
-.rating > input:checked ~ label:hover ~ label,
-.rating > label:hover ~ input:checked ~ label {
-	color: orangered;
-}
-
-.tag-container {
-	display: flex;
-	flex-flow: row wrap;
-}
-  
-.tag {
-	background-color: grey;
-	border-radius: 7px;
-	color: white;
-	padding-right: 7px;
-	padding-left: 7px;
-	margin: 3px;
-}
-  
-.tag::before {
-	display: inline-block;
-	content: "x";
-	height: 15px;
-	width: 15px;
-	margin-right: 4px;
-	text-align: center;
-	color: white;
-	cursor: pointer;
-}
-  
-.tag:hover::before {
-	color: red;
 }

@@ -80,7 +80,22 @@ class ReviewCard extends HTMLElement {
       time {
         color: #70757A;
         font-size: 12px;
-      }
+	  }
+
+	  .tag-container {
+		display: flex;
+		flex-flow: row wrap;
+	}
+	  
+	.tag {
+		background-color:#94da97;
+		border-radius: 7px;
+		color: #94da97;
+		padding-right: 7px;
+		padding-left: 7px;
+		margin: 3px;
+		font-weight: bold;
+	}
     `;
 		articleEl.append(styleEl);
 		shadowEl.append(articleEl);

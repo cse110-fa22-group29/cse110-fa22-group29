@@ -52,6 +52,18 @@ body{
 	justify-content: center;
 }
 
+.search-bar > form {
+	float: right;
+	padding: 6px 10px;
+	margin-top: 8px;
+	margin-right: 16px;
+	background: rgb(239, 183, 183);
+	font-size: 17px;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+}
+
 #recent-reviews-text {
 	text-align: center;
 	font-size: 4rem;

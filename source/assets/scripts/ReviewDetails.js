@@ -68,11 +68,12 @@ function setupUpdate(){
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
 	let currReview = getReviewFromStorage(currID);
 	let form = document.getElementById("update-food-entry");
-	let updateDiv = document.getElementById("update-form-div");
+	let updateDiv = document.getElementById("update-form");
 	updateBtn.addEventListener("click", function(){
 		//update function
 
-		updateDiv.style.display = "block";
+		updateDiv.classList.remove("hidden");
+
 		let tagContainer = document.getElementById("tag-container-form");
 
 		//Set value of each input element to current's values
