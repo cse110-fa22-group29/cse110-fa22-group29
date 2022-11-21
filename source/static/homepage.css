@@ -3,45 +3,51 @@
 body{
     background-color: #97a5bd;
 }
-.Top-Bar{
+
+.top-bar{
+    display: flex; 
+    justify-content: center;
 }
-.Top-Bar > img{
+.top-bar > img{
     position: relative;
+    align-self: center; 
+    padding-left: 2.5%; 
+    padding-right: 2.5%;
 }
-.Top-Bar > h1{
+.top-bar > h1{
     position: relative;
     text-align: center;
     color: #E4C3D2;
-    font-size: 100px;
+    font-size: 6rem;
     font-family: 'Lucida Sans';
 }
-.Top-Bar > form{
-    position: relative;
-    float: right;
+
+.body-container {
+    display: flex; 
+    max-height: 100%; 
 }
-.Review-boxes {
-    position: relative;
+
+.center-display {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center; 
+    align-items: center;
 }
 
 #recent-reviews-text {
     font-family: 'Lucida Sans';
     text-align: center;
-    font-size: 80px;
+    font-size: 4rem;
     color: #E4C3D2;
-}
-.Review-boxes > input {
-    position: relative;
 }
 
 img#create-btn {
     position: relative;
+    align-self: center; 
+    padding-left: 2.5%; 
+    padding-right: 2.5%;
 }
 
-.Filter-box{
-    background: #e4d9e9;
-    position: absolute;
-    border: 5px solid #99a2c2;
-}
 .review-container{
     display: flex;
     position: relative;
