@@ -13,7 +13,7 @@ class ReviewCard extends HTMLElement {
 		let styleEl = document.createElement("style");
 		styleEl.textContent = `
       * {
-        font-family: sans-serif;
+        font-family: Century Gothic;
         margin: 0;
         padding: 0;
       }
@@ -28,7 +28,7 @@ class ReviewCard extends HTMLElement {
     
       article {
         align-items: center;
-        border: 1px solid rgb(223, 225, 229);
+        border: 2px solid rgb(31, 41, 32);
         border-radius: 8px;
         display: grid;
         grid-template-rows: 118px 56px 14px 18px 15px 36px;
@@ -53,9 +53,9 @@ class ReviewCard extends HTMLElement {
       }
     
       article>img {
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        height: 118px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        height: 119px;
         object-fit: cover;
         margin-left: -16px;
         width: calc(100% + 32px);

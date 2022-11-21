@@ -1,7 +1,12 @@
 /* ReviewDetails.css */
 
+@font-face {
+    font-family: "testFont";
+    src: url(CoveredByYourGrace-Regular.ttf);
+}
+
 body {
-	background-color: #13323b;
+	background-color: #F8F3F1;
 }
 
 h1 {
@@ -9,28 +14,29 @@ h1 {
 }
 
 .top-bar {
-	margin-top: -8cm;
+	display: flex;
+	justify-content: center;
 }
 
 .top-bar > img {
 	position: relative;
-	top: 7.85cm;
+	align-self: center;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
 }
 
 .top-bar > h1 {
 	position: relative;
-	top: 2.2cm;
-	font-size: 3cm;
-	color: #eaa9bc;
-}
-
-.top-bar > form {
-	position: relative;
-	left: 32cm;
+	text-align: center;
+	/*color: #e4c3d2;*/
+	color:#516754;
+	font-size: 6rem;
+    font-family: 'testFont';
 }
 
 .journal-form {
 	font-size: 120%;
+	font-family: 'Calibria';
 	width: 50%;
 	display: none;
 	margin: auto;
@@ -93,4 +99,33 @@ h1 {
 .rating > input:checked ~ label:hover ~ label,
 .rating > label:hover ~ input:checked ~ label {
 	color: orangered;
+}
+
+.journal-form .tag-container{
+	display: flex;
+	flex-flow: row wrap;
+}
+  
+.journal-form .tag{
+	background-color: grey;
+	border-radius: 7px;
+	color: white;
+	padding-right: 7px;
+	padding-left: 7px;
+	margin: 3px;
+}
+  
+.journal-form .tag::before{
+	display: inline-block;
+	content: "x";
+	height: 15px;
+	width: 15px;
+	margin-right: 4px;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+  
+.journal-form .tag:hover::before{
+	color: red;
 }

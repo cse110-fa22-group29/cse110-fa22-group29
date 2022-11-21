@@ -1,5 +1,6 @@
 /* homepage.css */
 
+
 @font-face {
     font-family: "testFont";
     src: url(CoveredByYourGrace-Regular.ttf);
@@ -8,7 +9,8 @@
 /* Color*/
 body{
     /*background-color: #97a5bd*/
-    background-color: #E3E3EC;
+    /*background-color: #E3E3EC;*/
+	background-color: #F8F3F1;
 }
 
 .top-bar {
@@ -26,7 +28,9 @@ body{
 .top-bar > h1 {
 	position: relative;
 	text-align: center;
-	color: #e4c3d2;
+	/*color: #e4c3d2;*/
+	/*color: rgb(145, 124, 175);*/
+	color:#516754;
 	font-size: 6rem;
     font-family: 'testFont';
 }
@@ -51,9 +55,30 @@ body{
 #recent-reviews-text {
 	text-align: center;
 	font-size: 4rem;
-	color: #e4c3d2;
-    font-family: 'testFont'
+	/* color: #e4c3d2; */
+	/*color: rgb(145, 124, 175);*/
+	color: #516754;
+    font-family: 'testFont';
 }
+
+img#create-btn {
+	position: relative;
+	align-self: center;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
+}
+
+.review-container {
+	display: flex;
+	position: relative;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.review-container > div {
+	background-color: #f1f1f1;
+	text-align: center;
+}}
 
 img#create-btn {
 	position: relative;

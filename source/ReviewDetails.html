@@ -6,20 +6,28 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Food Journal</title>
 
-  <!-- Recipe Card Custom Element -->
-  <script src="assets/scripts/ReviewCard.js" type="module"></script>
+    <!-- Recipe Card Custom Element -->
+    <script src="assets/scripts/ReviewCard.js" type="module"></script>
   
-  <!-- Main Stylesheets & Scripts --> 
-  <!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
-  <!-- <link rel="stylesheet" href="/static/reset.css" /> -->
-  <link rel="stylesheet" href="./static/ReviewDetails.css" />
-  <script src="assets/scripts/ReviewDetails.js" type="module"></script>
-
-		</div>
+    <!-- Main Stylesheets & Scripts --> 
+    <!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
+    <!-- <link rel="stylesheet" href="/static/reset.css" /> -->
+    <link rel="stylesheet" href="./static/ReviewDetails.css" />
+    <script src="assets/scripts/ReviewDetails.js" type="module"></script>
+  </head>
+  <body>
+    <header>
+			<div class="top-bar">
+				<img src ="./assets/images/icons/Logo.png" alt="logo" />
+				<h1> Food Journal </h1>
+				<img src ="./assets/images/icons/Logo.png" alt="logo" />
+			</div>
+		</header>
 
 		<!--- meal -->
 		<div class = "meal-name">
-			<h1 id="d-mealName"> Cucumber Salad </h1>
+			<h1 id="d-mealName"> Salad (default name) </h1>
+      		<h1 id="d-restaurant"> Salad Inc. (default name) </h1>
 		</div> 
 			
 		<div class = "meal-pics-and-tags">
@@ -28,13 +36,13 @@
 			alt = "photo" width=40% height=40% id="d-mealImg">
 
 			<div class = "tag-container", id="d-tags">
-			
+
 			</div>
 		</div>
 
 		<div class = "stars-and-comments">
 			<img src = "./assets/images/icons/5-star.svg" width=10% height=10% id="d-rating">
-			<p id = "d-comments"> The food was good </p>
+			<p id = "d-comments"> Default comment </p>
 		</div>
 
 		<main>
@@ -43,7 +51,7 @@
 			<button type="button" id="delete-btn" class="danger">Delete</button>
 		</main>
 
-		<div class = journal-form id="update-form-div">
+		<div class = "journal-form" id="update-form-div">
 			<form id="update-food-entry">
 			<fieldset>
 				<legend>Pic:</legend>

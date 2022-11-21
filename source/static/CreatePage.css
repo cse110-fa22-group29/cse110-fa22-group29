@@ -1,7 +1,13 @@
 /* CreatePage.css */
 
+@font-face {
+    font-family: "testFont";
+    src: url(CoveredByYourGrace-Regular.ttf);
+}
+
 body {
-	background-color: #13323b;
+	background-color: #F8F3F1;
+
 }
 
 h1 {
@@ -21,7 +27,8 @@ h1 {
 	position: relative;
 	top: 2.2cm;
 	font-size: 3cm;
-	color: #eaa9bc;
+	color:#516754;
+    font-family: 'testFont';
 }
 
 .top-bar > form {
@@ -31,12 +38,14 @@ h1 {
 
 .journal-form {
 	font-size: 120%;
+	font-family: 'Century Gothic';
 	width: 50%;
 	display: block;
 	margin: auto;
-	color: #ccb3bb;
-	border: 3px solid rgb(7 0 0);
-	background-color: #b52754;
+	color: #516754;
+	border: 2px solid rgb(31, 41, 32);
+	border-radius: 8px;
+	background-color: #f7dfd5;
 }
 
 .hidden,
@@ -84,4 +93,33 @@ h1 {
 .rating > input:checked ~ label:hover ~ label,
 .rating > label:hover ~ input:checked ~ label {
 	color: orangered;
+}
+
+.tag-container {
+	display: flex;
+	flex-flow: row wrap;
+}
+  
+.tag {
+	background-color: grey;
+	border-radius: 7px;
+	color: white;
+	padding-right: 7px;
+	padding-left: 7px;
+	margin: 3px;
+}
+  
+.tag::before {
+	display: inline-block;
+	content: "x";
+	height: 15px;
+	width: 15px;
+	margin-right: 4px;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+  
+.tag:hover::before {
+	color: red;
 }
