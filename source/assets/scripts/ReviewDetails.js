@@ -16,13 +16,11 @@ function setupInfo(){
 	
 	//meal image
 	let mealImg = document.getElementById("d-mealImg");
-	mealImg.setAttribute("alt", currReview["imgAlt"]);
-	if(currReview["mealImg"] != ""){
-		mealImg.setAttribute("src",currReview["mealImg"]);
-	}
-	else{
+	mealImg.setAttribute("src",currReview["mealImg"]);
+	mealImg.addEventListener("error", function(e) {
 		mealImg.setAttribute("src", "./assets/images/icons/plate_with_cutlery.png");
-	}
+		e.onerror = null;
+	});
 
 	//meal name
 	let mealLabel = document.getElementById("d-mealName");
@@ -79,7 +77,6 @@ function setupUpdate(){
 
 		//Set value of each input element to current's values
 		document.getElementById("mealImg").defaultValue = currReview["mealImg"];
-		document.getElementById("imgAlt").defaultValue = currReview["imgAlt"];
 		document.getElementById("mealName").defaultValue = currReview["mealName"];
 		document.getElementById("comments").textContent = currReview["comments"];
 		document.getElementById("s" + `${currReview["rating"]}`).checked = true;

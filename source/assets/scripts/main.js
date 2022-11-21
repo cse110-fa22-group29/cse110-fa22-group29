@@ -18,12 +18,12 @@ function init() {
  * @param {Array<Object>} reviews An array of reviews
  */
 function addReviewsToDocument(reviews) {
-	let box = document.getElementById("review-container");
+	let reviewBox = document.getElementById("review-container");
 	reviews.forEach(review => {
 		let newReview = document.createElement("review-card");
 		newReview.data = review;
 		//TODO: want to append it to whatever the box is in layout 
-		box.append(newReview);
+		reviewBox.append(newReview);
 	});
 
 }
