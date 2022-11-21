@@ -10,31 +10,32 @@ function init() {
 	// Add each reviews to the <main> element
 	addReviewsToDocument(reviews);
 	// Add the event listeners to the form elements
-	initFormHandler();
+	initHomepage();
 }
 
 
 /**
- * @param {Array<Object>} reviews An array of reviews
+ * Takes the active IDs, finds corresponding review data, and
+ * adds those reviews to the page.
+ * 
+ * @param {Array<Object>} reviews An array of active review ID
  */
 function addReviewsToDocument(reviews) {
+	// Grabs the review container and adds each review
 	let box = document.getElementById("review-container");
 	reviews.forEach(review => {
 		let newReview = document.createElement("review-card");
 		newReview.data = review;
-		//TODO: want to append it to whatever the box is in layout 
 		box.append(newReview);
 	});
-
 }
 
 /**
- * Adds the necessary event handlers to <form> and the clear storage
- * <button>.
+ * Adds the necessary create button for the homepage
  */
-function initFormHandler() {
+function initHomepage() {
 
-	//btn to create form (could be its own function?)
+	// Creates button that would lead to the review form
 	let createBtn = document.getElementById("create-btn");
 	createBtn.addEventListener("click", function(){
 		window.location.assign("./CreatePage.html");

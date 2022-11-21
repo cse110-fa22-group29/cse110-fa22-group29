@@ -1,18 +1,33 @@
-//reviewDetails.js
+//ReviewDetails.js
 import {deleteReviewFromStorage, getReviewFromStorage, updateReviewToStorage} from "./localStorage.js";
 
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
+/**
+ * Delegates the functionality for deleting and updating review cards.
+ */
 function init(){
 	setupDelete();
 	setupUpdate();
 }
 
+/**
+ * Sets up functionality for the delete button when deleting a review.
+ */
 function setupDelete(){
+
+	// Grabs the delete button
 	let deleteBtn = document.getElementById("delete-btn");
+
+	// Gets the ID from the current review card
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
+
+	// Event Listener that deletes the review from storage
 	deleteBtn.addEventListener("click", function(){
+
+		// Pop-up that checks if the user wants to delete
+		// If so, deletes from storage
 		if(window.confirm("Are you sure you want to delete this entry?")){
 			deleteReviewFromStorage(currID);
 			sessionStorage.removeItem("currID");
@@ -21,10 +36,21 @@ function setupDelete(){
 	});
 }
 
+/**
+ * Sets up functionality for the update button when updating a review.
+ */
 function setupUpdate(){
+
+	// Grabs the update button
 	let updateBtn = document.getElementById("update-btn");
+
+	// Gets the ID from the current review card
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
+
+	// Gets the data from the current review card
 	let currReview = getReviewFromStorage(currID);
+
+	// Gets the form
 	let form = document.getElementById("update-food-entry");
 	updateBtn.addEventListener("click", function(){
 		//update function

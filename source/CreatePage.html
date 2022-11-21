@@ -7,36 +7,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Food Journal</title>
 
-  <!-- Recipe Card Custom Element -->
+  <!-- Review Card Custom Element -->
   <script src="assets/scripts/ReviewCard.js" type="module"></script>
 
-
-  <!-- Main Stylesheets & Scripts -->
-  <!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
-  <!-- <link rel="stylesheet" href="/static/reset.css" /> -->
+  <!-- Create Page Stylesheets & Scripts -->
   <link rel="stylesheet" href="./static/CreatePage.css" />
   <link rel="icon" href="./assets/images/icons/favicon.ico">
   <script src="./assets/scripts/CreatePage.js" type="module"></script>
-
 </head>
 
 <body>
+
+  <!-- Button that allows user to go back to the homepage -->
   <input type="button" value="Home" id="home-btn" onclick="window.location.assign('./index.html')">
+
+  <!-- Setting up logo and site name at the top of the website -->
   <div class ="Top-Bar">
     <img src ="./assets/images/icons/Logo.png" alt="logo" />
     <h1> Food Journal </h1>
-    <!--
-    <form id="form">
-        <input type='search' id="seaching" name="searchBar" placeholder="Search journal...">
-        <button class="click" type="search">
-            Search
-        </button>
-    </form>
-    --->
-</div>
-  <div class="journal-form">
-    <h1>New Entry </h1>
+  </div>
 
+  <!-- Setting up the form for the review card -->
+  <div class="journal-form">
+    <h1>New Entry</h1>
     <form id="new-food-entry">
       <fieldset>
         <legend>Pic:</legend>
@@ -49,6 +42,7 @@
           <input type="text" id="imgAlt" name="imgAlt">
         </label>
       </fieldset>
+
       <fieldset>
         <legend> Meal: </legend>
         <label for="Meal: ">Meal:
@@ -59,14 +53,15 @@
           <textarea name="comments" id="comments"></textarea>
         </label>
       </fieldset>
-    <fieldset class="rating">
-      <legend> Rating: </legend>
-      <input type="radio" id="s5" name="rating" value="5"/> <label for="s5" id="s5-select"> 5 stars </label>
-      <input type="radio" id="s4" name="rating" value="4"/> <label for="s4" id="s4-select"> 4 stars </label>
-      <input type="radio" id="s3" name="rating" value="3"/> <label for="s3" id="s3-select"> 3 stars </label>
-      <input type="radio" id="s2" name="rating" value="2"/> <label for="s2" id="s2-select"> 2 stars </label>
-      <input type="radio" id="s1" name="rating" value="1"/> <label for="s1" id="s1-select"> 1 star </label>
-    </fieldset>
+
+      <fieldset class="rating">
+        <legend> Rating: </legend>
+        <input type="radio" id="s5" name="rating" value="5"/> <label for="s5" id="s5-select"> 5 stars </label>
+        <input type="radio" id="s4" name="rating" value="4"/> <label for="s4" id="s4-select"> 4 stars </label>
+        <input type="radio" id="s3" name="rating" value="3"/> <label for="s3" id="s3-select"> 3 stars </label>
+        <input type="radio" id="s2" name="rating" value="2"/> <label for="s2" id="s2-select"> 2 stars </label>
+        <input type="radio" id="s1" name="rating" value="1"/> <label for="s1" id="s1-select"> 1 star </label>
+      </fieldset>
 
       <fieldset>
         <legend>Other Info:</legend>
@@ -77,16 +72,13 @@
         <label for="tag-form">
           Tags:
           <input type="text" id="tag-form" name="tag-form">
-          <div class='tag-container' id="tag-container-form">
-        </div>
-        <button type="button" id="tag-add-btn">Add Tag</button>
-      </label>
-
-
+          <div class='tag-container' id="tag-container-form"></div>
+          <button type="button" id="tag-add-btn">Add Tag</button>
+        </label>
       </fieldset>
+      
       <button type="submit" id="save-btn" value="Submit">Save Review</button>
     </form>
   </div> 
 </body>
-
 </html>
