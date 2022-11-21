@@ -16,7 +16,6 @@ function setupInfo(){
 	
 	//meal image
 	let mealImg = document.getElementById("d-mealImg");
-	mealImg.setAttribute("alt", currReview["imgAlt"]);
 	if(currReview["mealImg"] != ""){
 		mealImg.setAttribute("src",currReview["mealImg"]);
 	}

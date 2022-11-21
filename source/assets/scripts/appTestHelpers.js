@@ -8,7 +8,6 @@ import {strict as assert} from "node:assert";
 export async function setReviewForm(page, review) {
 	
 	// Set text fields
-	await page.$eval("#imgAlt", (el, value) => el.value = value, review.imgAlt);
 	await page.$eval("#mealName", (el, value) => el.value = value, review.mealName);
 	await page.$eval("#comments", (el, value) => el.value = value, review.comments);
 	await page.$eval("#restaurant", (el, value) => el.value = value, review.restaurant);
@@ -34,19 +33,17 @@ export async function setReviewForm(page, review) {
 }
 
 /**
- * Tests a page or shadowDOM for correct element text, src, or alt values
+ * Tests a page or shadowDOM for correct element text or src values
  * @param {Object} root page or shodowDOM to test
  * @param {string} prefix prefix character for element IDs
- * @param {Object} expected values for eahc element
+ * @param {Object} expected values for each element
  */
 export async function checkCorrectness(root, prefix, expected){
-	// Get the review image and check src and alt
+	// Get the review image and check src
 	let img = await root.$(`#${prefix}-mealImg`);
 	let imgSrc = await img.getProperty("src");
-	let imgAlt = await img.getProperty("alt");
-	// Check src and alt
+	// Check src
 	assert.strictEqual(await imgSrc.jsonValue(), expected.imgSrc);
-	assert.strictEqual(await imgAlt.jsonValue(), expected.imgAlt);
 
 	// Get the title, comment, and restaurant
 	let title = await root.$(`#${prefix}-mealName`);

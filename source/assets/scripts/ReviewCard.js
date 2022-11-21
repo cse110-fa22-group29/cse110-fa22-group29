@@ -117,7 +117,6 @@ class ReviewCard extends HTMLElement {
    *                        following format:
    *                        {
    *                          "mealImg": "string",
-   *                          "imgAlt": "string",
    *                          "mealName": "string",
    *                          "comments": "string",
    *                          "rating": number,
@@ -138,7 +137,7 @@ class ReviewCard extends HTMLElement {
 		//image setup
 		let mealImg = document.createElement("img");
 		mealImg.setAttribute("id", "a-mealImg");
-		mealImg.setAttribute("alt",data["imgAlt"]);
+		mealImg.setAttribute("alt","Meal Photo Corrupted");
 		if(data["mealImg"] != ""){
 			mealImg.setAttribute("src",data["mealImg"]);
 		}
@@ -211,7 +210,6 @@ class ReviewCard extends HTMLElement {
    *                        following format:
    *                        {
    *                          "mealImg": "string",
-   *                          "imgAlt": "string",
    *                          "mealName": "string",
    *                          "comments": "string",
    *                          "rating": number,
@@ -229,7 +227,6 @@ class ReviewCard extends HTMLElement {
 		//get image
 		let mealImg = this.shadowEl.getElementById("a-mealImg");
 		dataContainer["mealImg"] = mealImg.getAttribute("src");
-		dataContainer["imgAlt"] = mealImg.getAttribute("alt");
 
 		//get meal name
 		let mealLabel = this.shadowEl.getElementById("a-mealName");
