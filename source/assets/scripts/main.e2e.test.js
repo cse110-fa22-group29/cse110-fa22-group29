@@ -39,7 +39,7 @@ describe("test App end to end", async () => {
 
 	describe("test CRUD on simple inputs and default image", () => {
 
-	  describe("test create 1 new review", async () => {
+		describe("test create 1 new review", async () => {
 			it("create 1 new review", async () => {
 				// Click the button to create a new review
 				let create_btn = await page.$("#create-btn");
