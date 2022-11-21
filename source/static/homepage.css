@@ -1,57 +1,68 @@
 /* homepage.css */
+
 /* Color*/
 body{
     /*background-color: #97a5bd*/
     background-color: #E3E3EC;
 }
-.Top-Bar{
+
+.top-bar {
+	display: flex;
+	justify-content: center;
 }
-.Top-Bar > img{
-    position: relative;
+
+.top-bar > img {
+	position: relative;
+	align-self: center;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
 }
-.Top-Bar > h1{
-    position: relative;
-    text-align: center;
-    /*color: #E4C3D2;*/
-    color: #8284D0;
-    font-size: 100px;
-    font-family: 'Lucida Sans';
+
+.top-bar > h1 {
+	position: relative;
+	text-align: center;
+	color: #e4c3d2;
+	font-size: 6rem;
 }
-.Top-Bar > form{
-    position: relative;
-    float: right;
+
+.body-container {
+	display: flex;
+	max-height: 100%;
 }
-.Review-boxes {
-    position: relative;
+
+.center-display {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.search-bar {
+	display: flex;
+	justify-content: center;
 }
 
 #recent-reviews-text {
-    font-family: 'Lucida Sans';
-    text-align: center;
-    font-size: 80px;
-    /*Color: #E4C3D2;*/
-    color: #8284D0;
-
-}
-.Review-boxes > input {
-    position: relative;
+	text-align: center;
+	font-size: 4rem;
+	color: #e4c3d2;
 }
 
 img#create-btn {
-    position: relative;
+	position: relative;
+	align-self: center;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
 }
 
-.Filter-box{
-    background: #e4d9e9;
-    position: absolute;
-    border: 5px solid #99a2c2;
+.review-container {
+	display: flex;
+	position: relative;
+	flex-wrap: wrap;
+	justify-content: center;
 }
-.review-container{
-    display: flex;
-    position: relative;
-    flex-wrap: wrap;
-}
+
 .review-container > div {
-    background-color: #f1f1f1;
-    text-align: center;
-  }
+	background-color: #f1f1f1;
+	text-align: center;
+}
