@@ -6,65 +6,48 @@ body{
 .Top-Bar{
 }
 .Top-Bar > img{
-    position: absolute;
+    position: relative;
 }
 .Top-Bar > h1{
     position: relative;
     text-align: center;
-    font-size: 5rem;
     color: #E4C3D2;
+    font-size: 100px;
     font-family: 'Lucida Sans';
-    padding: 25px 0px 0px 0px;
-    font-weight: 900;
-    margin: 0px
 }
 .Top-Bar > form{
     position: relative;
     float: right;
-    margin-right: 12%;
 }
 .Review-boxes {
     position: relative;
 }
 
-.Review-boxes > h2 {
+#recent-reviews-text {
     font-family: 'Lucida Sans';
-    display: block;
     text-align: center;
-    font-size: 2.7rem;
+    font-size: 80px;
     color: #E4C3D2;
-    margin-top: 2.5em;
 }
 .Review-boxes > input {
     position: relative;
-    left: 20.34cm;
-    top: -3.5cm;
 }
 
 img#create-btn {
-    position: absolute;
-    left: 12%;
+    position: relative;
 }
 
 .Filter-box{
-    width: 200px;
-    height: 400px;
     background: #e4d9e9;
     position: absolute;
     border: 5px solid #99a2c2;
-    right: 12%;
 }
 .review-container{
     display: flex;
     position: relative;
-    margin-left: 25%;
+    flex-wrap: wrap;
 }
 .review-container > div {
     background-color: #f1f1f1;
-    width: 200px;
-    height: 200px;
-    margin: 10px;
     text-align: center;
-    line-height: 75px;
-    font-size: 30px;
   }
