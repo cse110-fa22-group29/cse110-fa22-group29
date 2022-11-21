@@ -29,18 +29,18 @@ function setupInfo(){
 	mealLabel.innerHTML = currReview["mealName"];
 
 	//restaurant name
-	/*let restaurantLabel = document.getElementById("d-restaurant");
+	let restaurantLabel = document.getElementById("d-restaurant");
 	restaurantLabel.innerHTML = currReview["restaurant"];
-
+	
 	//comments
 	let comments = document.getElementById("d-comments");
 	comments.innerText = currReview["comments"];
-	*/
+
 	//rating
 	let starsImg = document.getElementById("d-rating");
 	starsImg.setAttribute("src", "./assets/images/icons/"+currReview["rating"]+"-star.svg");
 	starsImg.setAttribute("alt", currReview["rating"] +" stars");
-	/*
+	
 	//tags
 	let tagContainer = document.getElementById("d-tags");
 	if(currReview["tags"]){
@@ -50,7 +50,7 @@ function setupInfo(){
 			newTag.innerHTML = currReview["tags"][i];
 			tagContainer.append(newTag);
 		}
-	}*/
+	}
 }
 
 function setupDelete(){
