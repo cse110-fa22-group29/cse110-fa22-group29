@@ -48,7 +48,6 @@ describe("test App end to end", async () => {
 
 				// create a new review
 				let review = {
-					imgAlt: "sample alt",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
@@ -67,7 +66,6 @@ describe("test App end to end", async () => {
 				// check the details page for correctness
 				let expected = {
 					imgSrc: "http://localhost:8080/assets/images/icons/plate_with_cutlery.png",
-					imgAlt: "sample alt",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
@@ -89,7 +87,6 @@ describe("test App end to end", async () => {
 
 				let expected = {
 					imgSrc: "http://localhost:8080/assets/images/icons/plate_with_cutlery.png",
-					imgAlt: "sample alt",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
@@ -115,7 +112,6 @@ describe("test App end to end", async () => {
 				// check the details page for correctness
 				let expected = {
 					imgSrc: "http://localhost:8080/assets/images/icons/plate_with_cutlery.png",
-					imgAlt: "sample alt",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
@@ -138,7 +134,6 @@ describe("test App end to end", async () => {
 				// check the details page for correctness
 				let expected = {
 					imgSrc: "http://localhost:8080/assets/images/icons/plate_with_cutlery.png",
-					imgAlt: "sample alt",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
@@ -164,7 +159,6 @@ describe("test App end to end", async () => {
 
 				// create a new review
 				let review = {
-					imgAlt: "updated alt",
 					mealName: "updated name",
 					comments: "updated comment",
 					restaurant: "updated restaurant",
@@ -183,7 +177,6 @@ describe("test App end to end", async () => {
 				// check the details page for correctness
 				let expected = {
 					imgSrc: "http://localhost:8080/assets/images/icons/plate_with_cutlery.png",
-					imgAlt: "updated alt",
 					mealName: "updated name",
 					comments: "updated comment",
 					restaurant: "updated restaurant",
@@ -206,7 +199,6 @@ describe("test App end to end", async () => {
 				// check the details page for correctness
 				let expected = {
 					imgSrc: "http://localhost:8080/assets/images/icons/plate_with_cutlery.png",
-					imgAlt: "updated alt",
 					mealName: "updated name",
 					comments: "updated comment",
 					restaurant: "updated restaurant",
