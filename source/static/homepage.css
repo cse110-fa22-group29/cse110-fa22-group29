@@ -1,7 +1,8 @@
 /* homepage.css */
 /* Color*/
 body{
-    background-color: #97a5bd;
+    /*background-color: #97a5bd*/
+    background-color: #E3E3EC;
 }
 .Top-Bar{
 }
@@ -11,7 +12,8 @@ body{
 .Top-Bar > h1{
     position: relative;
     text-align: center;
-    color: #E4C3D2;
+    /*color: #E4C3D2;*/
+    color: #8284D0;
     font-size: 100px;
     font-family: 'Lucida Sans';
 }
@@ -27,7 +29,9 @@ body{
     font-family: 'Lucida Sans';
     text-align: center;
     font-size: 80px;
-    color: #E4C3D2;
+    /*Color: #E4C3D2;*/
+    color: #8284D0;
+
 }
 .Review-boxes > input {
     position: relative;
