@@ -40,6 +40,10 @@ h1 {
 	color: white;
 	padding-right: 7px;
 	padding-left: 7px;
-	margin-left: 10px;
-	margin-right: 10px;
+	margin: 10px 10px 10px 10px; 
+}
+
+.tag-container > .d-tag {
+	max-width: 100%;
+	overflow-wrap: anywhere;
 }

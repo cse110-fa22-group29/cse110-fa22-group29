@@ -83,11 +83,12 @@ class ReviewCard extends HTMLElement {
 	  }
 
 	  .tag-container {
+		margin-top: 20px;
 		display: flex;
 		flex-flow: row wrap;
-	}
+	  }
 	  
-	.a-tag {
+	  .a-tag {
 		background-color:#94da97;
 		border-radius: 7px;
 		color: #94da97;
@@ -95,7 +96,7 @@ class ReviewCard extends HTMLElement {
 		padding-left: 7px;
 		margin: 3px;
 		font-weight: bold;
-	}
+	  }
     `;
 		articleEl.append(styleEl);
 		shadowEl.append(articleEl);

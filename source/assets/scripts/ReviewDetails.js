@@ -167,7 +167,7 @@ function setupUpdate(){
 				tagContainer.removeChild(tags[i]);
 			}
 
-			newData["revietawID"] = currID;
+			newData["reviewID"] = currID;
 
 			updateReviewToStorage(currID, newData);
 

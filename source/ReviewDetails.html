@@ -7,7 +7,7 @@
 		<title>Food Journal</title>
 
 		<!--Add Favicon-->
-		<link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+		<link rel="icon" type="image/x-icon" href="./assets/images/icons/favicon.ico">
 
 		<!-- Recipe Card Custom Element -->
 		<script src="assets/scripts/ReviewCard.js" type="module"></script>
@@ -29,7 +29,7 @@
 		</header>
 
 		<main>
-			<div class="journal-form">
+			<div class="journal-form" id="review-details">
 				<form>
 					<fieldset class = "meal-name">
 						<h1 id="d-mealName" style="font-family: Century Gothic;"></h1>
@@ -54,10 +54,10 @@
 			</div>
 		
 			<!---Navigation Buttons-->
-			<div style="display: flex; justify-content: center; margin: 10px;">
-				<input type="button" value="Home" id="home-btn" onclick="window.location.assign('./index.html')">
-				<button type="button" id="update-btn">Update</button>
-				<button type="button" id="delete-btn" class="danger">Delete</button>
+			<div style="display: flex; justify-content: center;">
+				<img src="./assets/images/home_button_for_interface.png" style="margin: 20px 10px 20px 10px;" id="home-btn" onclick="window.location.assign('./index.html')" height="50" width="50"/>
+				<img src ="./assets/images/edit_button_for_interface.png" style="margin: 20px 10px 20px 10px;" id="update-btn" height="50" width="50"/>
+				<img src ="./assets/images/delete_icon_for_interface.png" style="margin: 20px 10px 20px 10px;" id="delete-btn" class="danger" height="50" width="50"/>
 			</div>
 		</main>
 
@@ -114,8 +114,8 @@
 					<button type="button" id="tag-add-btn"> + </button>
 				</fieldset>
 
-			<button type="submit" id="save-btn" value="Submit">Save Review</button>
-			<input type="button" value="Home" id="home-btn" onclick="window.location.assign('./index.html')">
+			<button type="submit" id="save-btn" value="Submit">Save</button>
+			<input type="button" value="Cancel" id="home-btn" onclick="window.location.assign('./index.html')">
 			</form>
 		</div>
 	</body>
