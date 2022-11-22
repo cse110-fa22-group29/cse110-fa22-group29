@@ -1,7 +1,12 @@
 /* ReviewDetails.css */
 
+@font-face {
+    font-family: "testFont";
+    src: url(CoveredByYourGrace-Regular.ttf);
+}
+
 body {
-	background-color: #13323b;
+	background-color: #F8F3F1;
 }
 
 h1 {
@@ -9,88 +14,31 @@ h1 {
 }
 
 .top-bar {
-	margin-top: -8cm;
+	display: flex;
+	justify-content: center;
 }
 
 .top-bar > img {
 	position: relative;
-	top: 7.85cm;
+	align-self: center;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
 }
 
 .top-bar > h1 {
 	position: relative;
-	top: 2.2cm;
-	font-size: 3cm;
-	color: #eaa9bc;
+	text-align: center;
+	/*color: #e4c3d2;*/
+	color:#516754;
+	font-size: 6rem;
+    font-family: 'testFont';
 }
 
-.top-bar > form {
-	position: relative;
-	left: 32cm;
-}
-
-.journal-form {
-	font-size: 120%;
-	width: 50%;
-	display: none;
-	margin: auto;
-	color: #ccb3bb;
-	border: 3px solid rgb(7 0 0);
-	background-color: #b52754;
-}
-
-.meal-name {
-	font-size: 150%;
-	margin: left;
-	width: 50%;
-	border: 3px;
-	color: rgb(228 119 119);
-	text-align: left;
-}
-
-.hidden,
-.rating:not(:checked) > input { /* Hide radio circles while star rating */
-	display: none;
-}
-
-/* Unchecked stars */
-.rating:not(:checked) > label {
-	/* Make stars line up sideways and not vertically */
-	float: right;
-
-	/* Hide label text */
-	width: 1em;
-	overflow: hidden;
-	white-space: nowrap;
-
-	/* Star default color and size */
-	font-size: 200%;
-	line-height: 1.2;
-	color: #b3b3cc;
-}
-
-.rating > label:active {
-	position: relative;
-}
-
-.rating:not(:checked) > label::before {
-	content: "★";
-}
-
-/* Checked star color */
-.rating > input:checked ~ label {
-	color: #ffbf00;
-}
-
-.rating:not(:checked) > label:hover,
-.rating:not(:checked) > label:hover ~ label {
-	color: orangered;
-}
-
-.rating > input:checked + label:hover,
-.rating > input:checked ~ label:hover,
-.rating > input:checked + label:hover ~ label,
-.rating > input:checked ~ label:hover ~ label,
-.rating > label:hover ~ input:checked ~ label {
-	color: orangered;
+.d-tag {
+	background-color: grey;
+	border-radius: 7px;
+	color: white;
+	padding-right: 7px;
+	padding-left: 7px;
+	margin: 10px 10px 10px 10px; 
 }

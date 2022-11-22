@@ -12,76 +12,93 @@ class ReviewCard extends HTMLElement {
 
 		let styleEl = document.createElement("style");
 		styleEl.textContent = `
-      * {
-        font-family: sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-    
-      a {
-        text-decoration: none;
-      }
-    
-      a:hover {
-        text-decoration: underline;
-      }
-    
-      article {
-        align-items: center;
-        border: 1px solid rgb(223, 225, 229);
-        border-radius: 8px;
-        display: grid;
-        grid-template-rows: 118px 56px 14px 18px 15px 36px;
-        height: auto;
-        row-gap: 5px;
-        padding: 0 16px 16px 16px;
-        width: 178px;
-		margin: 8px 8px 8px 8px;
-      }
-    
-      div.rating {
-        align-items: center;
-        column-gap: 5px;
-        display: flex;
-      }
-    
-      div.rating>img {
-        height: auto;
-        display: inline-block;
-        object-fit: scale-down;
-        width: 78px;
-      }
-    
-      article>img {
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        height: 118px;
-        object-fit: cover;
-        margin-left: -16px;
-        width: calc(100% + 32px);
-      }
-    
-      label.restaurant-name {
-        color: black !important;
-      }
-    
-      label.meal-name {
-        display: -webkit-box;
-        font-size: 16px;
-        height: 36px;
-        line-height: 18px;
-        overflow: hidden;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-      }
-    
-      label:not(.meal-name),
-      span,
-      time {
-        color: #70757A;
-        font-size: 12px;
-      }
-    `;
+		* {
+			font-family: Century Gothic;
+			margin: 0;
+			padding: 0;
+			overflow-wrap: anywhere;
+		}
+		
+		a {
+			text-decoration: none;
+		}
+		
+		a:hover {
+			text-decoration: underline;
+		}
+		
+		article {
+			align-items: center;
+			border: 2px solid rgb(31, 41, 32);
+			border-radius: 8px;
+			display: grid;
+			grid-template-rows: 118px 56px 14px 18px 15px 36px;
+			height: auto;
+			row-gap: 5px;
+			padding: 0 16px 16px 16px;
+			width: 178px;
+			margin: 8px 8px 8px 8px;
+		}
+		
+		div.rating {
+			align-items: center;
+			column-gap: 5px;
+			display: flex;
+		}
+		
+		div.rating>img {
+			height: auto;
+			display: inline-block;
+			object-fit: scale-down;
+			width: 78px;
+		}
+		
+		article>img {
+			border-top-left-radius: 6px;
+			border-top-right-radius: 6px;
+			height: 119px;
+			object-fit: cover;
+			margin-left: -16px;
+			width: calc(100% + 32px);
+		}
+		
+		label.restaurant-name {
+			color: black !important;
+		}
+		
+		label.meal-name {
+			display: -webkit-box;
+			font-size: 16px;
+			height: 36px;
+			line-height: 18px;
+			overflow: hidden;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+		}
+		
+		label:not(.meal-name),
+		span,
+		time {
+			color: #70757A;
+			font-size: 12px;
+		}
+
+		.tag-container {
+			margin-top: 20px;
+			display: flex;
+			flex-flow: row wrap;
+		}
+		
+		.a-tag {
+			background-color:#94da97;
+			border-radius: 7px;
+			color: #94da97;
+			padding-right: 7px;
+			padding-left: 7px;
+			margin: 3px;
+			font-weight: bold;
+		}
+    	`;
 		articleEl.append(styleEl);
 		shadowEl.append(articleEl);
 		this.shadowEl = shadowEl;
@@ -117,7 +134,6 @@ class ReviewCard extends HTMLElement {
    *                        following format:
    *                        {
    *                          "mealImg": "string",
-   *                          "imgAlt": "string",
    *                          "mealName": "string",
    *                          "comments": "string",
    *                          "rating": number,
@@ -138,13 +154,12 @@ class ReviewCard extends HTMLElement {
 		//image setup
 		let mealImg = document.createElement("img");
 		mealImg.setAttribute("id", "a-mealImg");
-		mealImg.setAttribute("alt",data["imgAlt"]);
-		if(data["mealImg"] != ""){
-			mealImg.setAttribute("src",data["mealImg"]);
-		}
-		else{
-			mealImg.setAttribute("src", "./assets/images/icons/plate_with_cutlery.png");
-		}
+		mealImg.setAttribute("alt","Meal Photo Corrupted");
+		mealImg.setAttribute("src",data["mealImg"]);
+		mealImg.addEventListener("error", function(e) {
+			mealImg.setAttribute("src", "./assets/images/plate_with_cutlery.png");
+			e.onerror = null;
+		});
 
 		//meal name setup
 		let mealLabel = document.createElement("label");
@@ -169,7 +184,7 @@ class ReviewCard extends HTMLElement {
 		ratingDiv.setAttribute("class", "rating");
 		let starsImg = document.createElement("img");
 		starsImg.setAttribute("id", "a-rating");
-		starsImg.setAttribute("src", "./assets/images/icons/"+data["rating"]+"-star.svg");
+		starsImg.setAttribute("src", "./assets/images/"+data["rating"]+"-star.svg");
 		starsImg.setAttribute("alt", data["rating"] +" stars");
 		starsImg.setAttribute("num", data["rating"]);
 		ratingDiv.append(starsImg);
@@ -182,7 +197,7 @@ class ReviewCard extends HTMLElement {
 		if(data["tags"]){
 			for (let i = 0; i < data["tags"].length; i++) {
 				let newTag = document.createElement("label");
-				newTag.setAttribute("class","tag");
+				newTag.setAttribute("class","a-tag");
 				newTag.innerHTML = data["tags"][i];
 				tagContainer.append(newTag);
 			}
@@ -211,7 +226,6 @@ class ReviewCard extends HTMLElement {
    *                        following format:
    *                        {
    *                          "mealImg": "string",
-   *                          "imgAlt": "string",
    *                          "mealName": "string",
    *                          "comments": "string",
    *                          "rating": number,
@@ -229,7 +243,6 @@ class ReviewCard extends HTMLElement {
 		//get image
 		let mealImg = this.shadowEl.getElementById("a-mealImg");
 		dataContainer["mealImg"] = mealImg.getAttribute("src");
-		dataContainer["imgAlt"] = mealImg.getAttribute("alt");
 
 		//get meal name
 		let mealLabel = this.shadowEl.getElementById("a-mealName");

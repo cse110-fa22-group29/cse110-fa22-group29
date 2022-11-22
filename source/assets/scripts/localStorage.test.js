@@ -17,7 +17,6 @@ describe("test app localStorage interaction", () => {
 	it("test localStorage state after adding one review", () => {
 		let review = {
 			"imgSrc": "sample src",
-			"imgAlt": "sample alt",
 			"mealName": "sample name",
 			"restaurant": "sample restaurant",
 			"rating": 5,
@@ -42,7 +41,6 @@ describe("test app localStorage interaction", () => {
 			ids.push(i);
 			let new_review = {
 				"imgSrc": `sample src ${i}`,
-				"imgAlt": `sample alt ${i}`,
 				"mealName": `sample name ${i}`,
 				"restaurant": `sample restaurant ${i}`,
 				"rating": i,
@@ -68,7 +66,6 @@ describe("test app localStorage interaction", () => {
 		for(let i = 0; i < 1000; i++){
 			let new_review = {
 				"imgSrc": `updated sample src ${i}`,
-				"imgAlt": `updated sample alt ${i}`,
 				"mealName": `updated sample name ${i}`,
 				"restaurant": `updated sample restaurant ${i}`,
 				"rating": i*2+i,

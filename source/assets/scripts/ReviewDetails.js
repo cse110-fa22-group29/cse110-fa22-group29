@@ -16,41 +16,39 @@ function setupInfo(){
 	
 	//meal image
 	let mealImg = document.getElementById("d-mealImg");
-	mealImg.setAttribute("alt", currReview["imgAlt"]);
-	if(currReview["mealImg"] != ""){
-		mealImg.setAttribute("src",currReview["mealImg"]);
-	}
-	else{
-		mealImg.setAttribute("src", "./assets/images/icons/plate_with_cutlery.png");
-	}
+	mealImg.setAttribute("src",currReview["mealImg"]);
+	mealImg.addEventListener("error", function(e) {
+		mealImg.setAttribute("src", "./assets/images/plate_with_cutlery.png");
+		e.onerror = null;
+	});
 
 	//meal name
 	let mealLabel = document.getElementById("d-mealName");
 	mealLabel.innerHTML = currReview["mealName"];
 
 	//restaurant name
-	/*let restaurantLabel = document.getElementById("d-restaurant");
+	let restaurantLabel = document.getElementById("d-restaurant");
 	restaurantLabel.innerHTML = currReview["restaurant"];
-
+	
 	//comments
 	let comments = document.getElementById("d-comments");
 	comments.innerText = currReview["comments"];
-	*/
+
 	//rating
 	let starsImg = document.getElementById("d-rating");
-	starsImg.setAttribute("src", "./assets/images/icons/"+currReview["rating"]+"-star.svg");
+	starsImg.setAttribute("src", "./assets/images/"+currReview["rating"]+"-star.svg");
 	starsImg.setAttribute("alt", currReview["rating"] +" stars");
-	/*
+	
 	//tags
 	let tagContainer = document.getElementById("d-tags");
 	if(currReview["tags"]){
 		for (let i = 0; i < currReview["tags"].length; i++) {
 			let newTag = document.createElement("label");
-			newTag.setAttribute("class","tag");
+			newTag.setAttribute("class","d-tag");
 			newTag.innerHTML = currReview["tags"][i];
 			tagContainer.append(newTag);
 		}
-	}*/
+	}
 }
 
 function setupDelete(){
@@ -69,17 +67,17 @@ function setupUpdate(){
 	let updateBtn = document.getElementById("update-btn");
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
 	let currReview = getReviewFromStorage(currID);
-	let form = document.getElementById("update-food-entry");
-	let updateDiv = document.getElementById("update-form-div");
+	let form = document.getElementById("new-food-entry");
+	let updateDiv = document.getElementById("update-form");
 	updateBtn.addEventListener("click", function(){
 		//update function
 
-		updateDiv.style.display = "block";
+		updateDiv.classList.remove("hidden");
+
 		let tagContainer = document.getElementById("tag-container-form");
 
 		//Set value of each input element to current's values
 		document.getElementById("mealImg").defaultValue = currReview["mealImg"];
-		document.getElementById("imgAlt").defaultValue = currReview["imgAlt"];
 		document.getElementById("mealName").defaultValue = currReview["mealName"];
 		document.getElementById("comments").textContent = currReview["comments"];
 		document.getElementById("s" + `${currReview["rating"]}`).checked = true;
@@ -173,7 +171,7 @@ function setupUpdate(){
 
 			updateReviewToStorage(currID, newData);
 
-			form.style.display = "none";
+			updateDiv.classList.add("hidden");
 
 		});
 

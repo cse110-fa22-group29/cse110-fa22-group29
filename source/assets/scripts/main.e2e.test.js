@@ -48,7 +48,6 @@ describe("test App end to end", async () => {
 
 				// create a new review
 				let review = {
-					imgAlt: "sample alt",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
@@ -66,13 +65,12 @@ describe("test App end to end", async () => {
 			it("check details page", async () => {
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/icons/plate_with_cutlery.png",
-					imgAlt: "sample alt",
+					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
-					rating: "http://localhost:8080/assets/images/icons/1-star.svg"
+					rating: "http://localhost:8080/assets/images/1-star.svg"
 				};
 				await checkCorrectness(page, "d", expected);
 			});
@@ -88,13 +86,12 @@ describe("test App end to end", async () => {
 				let shadowRoot = await review_card.getProperty("shadowRoot");
 
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/icons/plate_with_cutlery.png",
-					imgAlt: "sample alt",
+					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
-					rating: "http://localhost:8080/assets/images/icons/1-star.svg"
+					rating: "http://localhost:8080/assets/images/1-star.svg"
 				};
 				await checkCorrectness(shadowRoot, "a", expected);
 			});
@@ -114,13 +111,12 @@ describe("test App end to end", async () => {
 
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/icons/plate_with_cutlery.png",
-					imgAlt: "sample alt",
+					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
-					rating: "http://localhost:8080/assets/images/icons/1-star.svg"
+					rating: "http://localhost:8080/assets/images/1-star.svg"
 				};
 				await checkCorrectness(page, "d", expected);
 			});
@@ -137,13 +133,12 @@ describe("test App end to end", async () => {
 
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/icons/plate_with_cutlery.png",
-					imgAlt: "sample alt",
+					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
-					rating: "http://localhost:8080/assets/images/icons/1-star.svg"
+					rating: "http://localhost:8080/assets/images/1-star.svg"
 				};
 				await checkCorrectness(shadowRoot, "a", expected);
 			});
@@ -164,7 +159,6 @@ describe("test App end to end", async () => {
 
 				// create a new review
 				let review = {
-					imgAlt: "updated alt",
 					mealName: "updated name",
 					comments: "updated comment",
 					restaurant: "updated restaurant",
@@ -182,13 +176,12 @@ describe("test App end to end", async () => {
 			it("check details page", async () => {
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/icons/plate_with_cutlery.png",
-					imgAlt: "updated alt",
+					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
 					mealName: "updated name",
 					comments: "updated comment",
 					restaurant: "updated restaurant",
 					tags: ["tag -0", "tag -1", "tag -2", "tag -3", "tag -4", "tag -5"],
-					rating: "http://localhost:8080/assets/images/icons/5-star.svg"
+					rating: "http://localhost:8080/assets/images/5-star.svg"
 				};
 				await checkCorrectness(page, "d", expected);
 			});
@@ -205,13 +198,12 @@ describe("test App end to end", async () => {
 
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/icons/plate_with_cutlery.png",
-					imgAlt: "updated alt",
+					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
 					mealName: "updated name",
 					comments: "updated comment",
 					restaurant: "updated restaurant",
 					tags: ["tag -0", "tag -1", "tag -2", "tag -3", "tag -4", "tag -5"],
-					rating: "http://localhost:8080/assets/images/icons/5-star.svg"
+					rating: "http://localhost:8080/assets/images/5-star.svg"
 				};
 				await checkCorrectness(shadowRoot, "a", expected);
 			});
