@@ -140,3 +140,8 @@ input[type=text]:focus {
 .hidden {
 	display: none;
 }
+
+.tag-container * {
+	max-width: 100%;
+	overflow-wrap: anywhere;
+}

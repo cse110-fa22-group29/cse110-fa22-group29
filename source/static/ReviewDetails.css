@@ -42,8 +42,3 @@ h1 {
 	padding-left: 7px;
 	margin: 10px 10px 10px 10px; 
 }
-
-.tag-container > .d-tag {
-	max-width: 100%;
-	overflow-wrap: anywhere;
-}

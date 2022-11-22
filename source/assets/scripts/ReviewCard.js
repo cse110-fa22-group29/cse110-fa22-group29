@@ -12,92 +12,93 @@ class ReviewCard extends HTMLElement {
 
 		let styleEl = document.createElement("style");
 		styleEl.textContent = `
-      * {
-        font-family: Century Gothic;
-        margin: 0;
-        padding: 0;
-      }
-    
-      a {
-        text-decoration: none;
-      }
-    
-      a:hover {
-        text-decoration: underline;
-      }
-    
-      article {
-        align-items: center;
-        border: 2px solid rgb(31, 41, 32);
-        border-radius: 8px;
-        display: grid;
-        grid-template-rows: 118px 56px 14px 18px 15px 36px;
-        height: auto;
-        row-gap: 5px;
-        padding: 0 16px 16px 16px;
-        width: 178px;
-		margin: 8px 8px 8px 8px;
-      }
-    
-      div.rating {
-        align-items: center;
-        column-gap: 5px;
-        display: flex;
-      }
-    
-      div.rating>img {
-        height: auto;
-        display: inline-block;
-        object-fit: scale-down;
-        width: 78px;
-      }
-    
-      article>img {
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
-        height: 119px;
-        object-fit: cover;
-        margin-left: -16px;
-        width: calc(100% + 32px);
-      }
-    
-      label.restaurant-name {
-        color: black !important;
-      }
-    
-      label.meal-name {
-        display: -webkit-box;
-        font-size: 16px;
-        height: 36px;
-        line-height: 18px;
-        overflow: hidden;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-      }
-    
-      label:not(.meal-name),
-      span,
-      time {
-        color: #70757A;
-        font-size: 12px;
-	  }
+		* {
+			font-family: Century Gothic;
+			margin: 0;
+			padding: 0;
+			overflow-wrap: anywhere;
+		}
+		
+		a {
+			text-decoration: none;
+		}
+		
+		a:hover {
+			text-decoration: underline;
+		}
+		
+		article {
+			align-items: center;
+			border: 2px solid rgb(31, 41, 32);
+			border-radius: 8px;
+			display: grid;
+			grid-template-rows: 118px 56px 14px 18px 15px 36px;
+			height: auto;
+			row-gap: 5px;
+			padding: 0 16px 16px 16px;
+			width: 178px;
+			margin: 8px 8px 8px 8px;
+		}
+		
+		div.rating {
+			align-items: center;
+			column-gap: 5px;
+			display: flex;
+		}
+		
+		div.rating>img {
+			height: auto;
+			display: inline-block;
+			object-fit: scale-down;
+			width: 78px;
+		}
+		
+		article>img {
+			border-top-left-radius: 6px;
+			border-top-right-radius: 6px;
+			height: 119px;
+			object-fit: cover;
+			margin-left: -16px;
+			width: calc(100% + 32px);
+		}
+		
+		label.restaurant-name {
+			color: black !important;
+		}
+		
+		label.meal-name {
+			display: -webkit-box;
+			font-size: 16px;
+			height: 36px;
+			line-height: 18px;
+			overflow: hidden;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+		}
+		
+		label:not(.meal-name),
+		span,
+		time {
+			color: #70757A;
+			font-size: 12px;
+		}
 
-	  .tag-container {
-		margin-top: 20px;
-		display: flex;
-		flex-flow: row wrap;
-	  }
-	  
-	  .a-tag {
-		background-color:#94da97;
-		border-radius: 7px;
-		color: #94da97;
-		padding-right: 7px;
-		padding-left: 7px;
-		margin: 3px;
-		font-weight: bold;
-	  }
-    `;
+		.tag-container {
+			margin-top: 20px;
+			display: flex;
+			flex-flow: row wrap;
+		}
+		
+		.a-tag {
+			background-color:#94da97;
+			border-radius: 7px;
+			color: #94da97;
+			padding-right: 7px;
+			padding-left: 7px;
+			margin: 3px;
+			font-weight: bold;
+		}
+    	`;
 		articleEl.append(styleEl);
 		shadowEl.append(articleEl);
 		this.shadowEl = shadowEl;
