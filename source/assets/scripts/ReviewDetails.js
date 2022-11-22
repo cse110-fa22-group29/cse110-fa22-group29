@@ -18,7 +18,7 @@ function setupInfo(){
 	let mealImg = document.getElementById("d-mealImg");
 	mealImg.setAttribute("src",currReview["mealImg"]);
 	mealImg.addEventListener("error", function(e) {
-		mealImg.setAttribute("src", "./assets/images/icons/plate_with_cutlery.png");
+		mealImg.setAttribute("src", "./assets/images/plate_with_cutlery.png");
 		e.onerror = null;
 	});
 
@@ -36,7 +36,7 @@ function setupInfo(){
 
 	//rating
 	let starsImg = document.getElementById("d-rating");
-	starsImg.setAttribute("src", "./assets/images/icons/"+currReview["rating"]+"-star.svg");
+	starsImg.setAttribute("src", "./assets/images/"+currReview["rating"]+"-star.svg");
 	starsImg.setAttribute("alt", currReview["rating"] +" stars");
 	
 	//tags
@@ -167,7 +167,7 @@ function setupUpdate(){
 				tagContainer.removeChild(tags[i]);
 			}
 
-			newData["reviewID"] = currID;
+			newData["revietawID"] = currID;
 
 			updateReviewToStorage(currID, newData);
 

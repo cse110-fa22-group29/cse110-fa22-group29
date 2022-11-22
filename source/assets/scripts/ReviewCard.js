@@ -155,7 +155,7 @@ class ReviewCard extends HTMLElement {
 		mealImg.setAttribute("alt","Meal Photo Corrupted");
 		mealImg.setAttribute("src",data["mealImg"]);
 		mealImg.addEventListener("error", function(e) {
-			mealImg.setAttribute("src", "./assets/images/icons/plate_with_cutlery.png");
+			mealImg.setAttribute("src", "./assets/images/plate_with_cutlery.png");
 			e.onerror = null;
 		});
 
@@ -182,7 +182,7 @@ class ReviewCard extends HTMLElement {
 		ratingDiv.setAttribute("class", "rating");
 		let starsImg = document.createElement("img");
 		starsImg.setAttribute("id", "a-rating");
-		starsImg.setAttribute("src", "./assets/images/icons/"+data["rating"]+"-star.svg");
+		starsImg.setAttribute("src", "./assets/images/"+data["rating"]+"-star.svg");
 		starsImg.setAttribute("alt", data["rating"] +" stars");
 		starsImg.setAttribute("num", data["rating"]);
 		ratingDiv.append(starsImg);
