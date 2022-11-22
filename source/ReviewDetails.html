@@ -11,8 +11,6 @@
 
 		<!-- Recipe Card Custom Element -->
 		<script src="assets/scripts/ReviewCard.js" type="module"></script>
-
-	
   
 		<!-- Main Stylesheets & Scripts --> 
 		<!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
@@ -30,30 +28,37 @@
 			</div>
 		</header>
 
-		<!--- meal -->
-		<div class = "meal-name">
-			<h1 id="d-mealName"></h1>
-	  		<h1 id="d-restaurant"></h1>
-		</div> 
-			
-		<div class = "meal-pics-and-tags">
-			<!-- image source --> 
-			<img width=40% height=40% id="d-mealImg"/>
-
-			<div class = "tag-container", id="d-tags">
-
-			</div>
-		</div>
-
-		<div class = "stars-and-comments">
-			<img width=10% height=10% id="d-rating"/>
-			<p id = "d-comments"></p>
-		</div>
-
 		<main>
-			<input type="button" value="Home" id="home-btn" onclick="window.location.assign('./index.html')">
-			<button type="button" id="update-btn">Update</button>
-			<button type="button" id="delete-btn" class="danger">Delete</button>
+			<div class="journal-form">
+				<form>
+					<fieldset class = "meal-name">
+						<h1 id="d-mealName" style="font-family: Century Gothic;"></h1>
+						<h1 id="d-restaurant" style="font-family: Century Gothic; font-size: 30px;"></h1>
+					</fieldset> 
+
+					<fieldset class = "meal-pics">
+						<!-- image source --> 
+						<img width=40% height=40% id="d-mealImg" style="margin-left: auto; margin-right: auto; display: block;"/>
+					</fieldset>
+		
+					<fieldset class = "stars-and-comments" style="text-align: center;">
+						<img width=30% height=30% id="d-rating" style="margin-left: auto; margin-right: auto; display: block;"/>
+						<p id = "d-comments"></p>
+					</fieldset>
+
+					<fieldset class = "meal-tags">
+						<div class = "tag-container" id="d-tags" style="justify-content: center;"></div>
+					</fieldset>
+
+				</form>
+			</div>
+		
+			<!---Navigation Buttons-->
+			<div style="display: flex; justify-content: center; margin: 10px;">
+				<input type="button" value="Home" id="home-btn" onclick="window.location.assign('./index.html')">
+				<button type="button" id="update-btn">Update</button>
+				<button type="button" id="delete-btn" class="danger">Delete</button>
+			</div>
 		</main>
 
 		<div class="journal-form hidden" id="update-form">
