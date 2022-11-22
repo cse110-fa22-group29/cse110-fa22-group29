@@ -1,15 +1,15 @@
 .journal-form h1 {
-	font-family: 'testFont';
+	font-family: testFont;
 	text-align: center;
 }
 
 .journal-form {
 	font-size: 120%;
-	font-family: 'Century Gothic';
+	font-family: "Century Gothic";
 	width: 50%;
 	margin: auto;
 	color: #516754;
-	border: 2px solid rgb(31, 41, 32);
+	border: 2px solid rgb(31 41 32);
 	border-radius: 8px;
 	background-color: #f7dfd5;
 }
@@ -18,21 +18,23 @@ fieldset {
 	border: none;
 }
 
-input[type=text] {
+input[type="text"] {
 	width: 100%;
 	box-sizing: border-box;
 	background-color: #f7dfd5;
 	border: none;
-	border-bottom: 1px solid rgb(0, 0, 0);
+	border-bottom: 1px solid rgb(0 0 0);
 }
 
-input[type=text]:focus {
+input[type="text"]:focus {
 	outline: none;
-	border-bottom: 1px solid rgb(0, 0, 0);
+	border-bottom: 1px solid rgb(0 0 0);
 }
 
 .rating {
-	display: flex; flex-wrap: nowrap; flex-direction: row-reverse;
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row-reverse;
 }
 
 .hidden,
@@ -86,7 +88,7 @@ input[type=text]:focus {
 	display: flex;
 	flex-flow: row wrap;
 }
-  
+
 .tag {
 	background-color: grey;
 	border-radius: 7px;
@@ -95,7 +97,7 @@ input[type=text]:focus {
 	padding-left: 7px;
 	margin: 3px;
 }
-  
+
 .tag::before {
 	display: inline-block;
 	content: "x";
@@ -106,7 +108,7 @@ input[type=text]:focus {
 	color: white;
 	cursor: pointer;
 }
-  
+
 .tag:hover::before {
 	color: red;
 }
@@ -114,7 +116,7 @@ input[type=text]:focus {
 #tag-add-btn {
 	background-color: #94da97; /* Green */
 	border: round;
-	color: rgb(206, 83, 179);
+	color: rgb(206 83 179);
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
@@ -125,7 +127,7 @@ input[type=text]:focus {
 }
 
 #tag-add-btn:hover {
-	background-color: rgb(206, 83, 179); /* Green */
+	background-color: rgb(206 83 179); /* Green */
 	border: round;
 	color: #94da97;
 	text-align: center;

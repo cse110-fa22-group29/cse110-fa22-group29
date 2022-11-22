@@ -1,16 +1,16 @@
 /* homepage.css */
 
-
 @font-face {
-    font-family: "testFont";
-    src: url(CoveredByYourGrace-Regular.ttf);
+	font-family: testFont;
+	src: url(CoveredByYourGrace-Regular.ttf);
 }
 
-/* Color*/
-body{
-    /*background-color: #97a5bd*/
-    /*background-color: #E3E3EC;*/
-	background-color: #F8F3F1;
+/* Color */
+body {
+	/* background-color: #97a5bd */
+
+	/* background-color: #E3E3EC; */
+	background-color: #f8f3f1;
 }
 
 .top-bar {
@@ -28,11 +28,13 @@ body{
 .top-bar > h1 {
 	position: relative;
 	text-align: center;
-	/*color: #e4c3d2;*/
-	/*color: rgb(145, 124, 175);*/
-	color:#516754;
+
+	/* color: #e4c3d2; */
+
+	/* color: rgb(145, 124, 175); */
+	color: #516754;
 	font-size: 6rem;
-    font-family: 'testFont';
+	font-family: testFont;
 }
 
 .body-container {
@@ -57,7 +59,7 @@ body{
 	padding: 6px 10px;
 	margin-top: 8px;
 	margin-right: 16px;
-	background: rgb(239, 183, 183);
+	background: rgb(239 183 183);
 	font-size: 17px;
 	border: none;
 	border-radius: 12px;
@@ -67,10 +69,8 @@ body{
 #recent-reviews-text {
 	text-align: center;
 	font-size: 4rem;
-	/* color: #e4c3d2; */
-	/*color: rgb(145, 124, 175);*/
 	color: #516754;
-    font-family: 'testFont';
+	font-family: testFont;
 }
 
 img#create-btn {

@@ -1,13 +1,12 @@
 /* CreatePage.css */
 
 @font-face {
-	font-family: "testFont";
+	font-family: testFont;
 	src: url(CoveredByYourGrace-Regular.ttf);
 }
 
 body {
-	background-color: #F8F3F1;
-
+	background-color: #f8f3f1;
 }
 
 .top-bar {
@@ -25,7 +24,7 @@ body {
 .top-bar > h1 {
 	position: relative;
 	text-align: center;
-	color:#516754;
+	color: #516754;
 	font-size: 6rem;
-	font-family: 'testFont';
+	font-family: testFont;
 }
