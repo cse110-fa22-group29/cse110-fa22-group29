@@ -171,7 +171,7 @@ describe("test App end to end", async () => {
 				let save_btn = await page.$("#save-btn");
 				await save_btn.click();
 				await page.waitForNavigation();
-			});
+			}).timeout(10000);
 
 			it("check details page", async () => {
 				// check the details page for correctness
