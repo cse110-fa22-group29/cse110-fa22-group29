@@ -34,7 +34,7 @@ body {
 	/* color: rgb(145, 124, 175); */
 	color: #516754;
 	font-size: 6rem;
-	font-family: testFont;
+	font-family: testFont, sans-serif;
 }
 
 .body-container {
@@ -70,26 +70,7 @@ body {
 	text-align: center;
 	font-size: 4rem;
 	color: #516754;
-	font-family: testFont;
-}
-
-img#create-btn {
-	position: relative;
-	align-self: center;
-	padding-left: 2.5%;
-	padding-right: 2.5%;
-}
-
-.review-container {
-	display: flex;
-	position: relative;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-
-.review-container > div {
-	background-color: #f1f1f1;
-	text-align: center;
+	font-family: testFont, sans-serif;
 }
 
 img#create-btn {

@@ -1,11 +1,16 @@
-.journal-form h1 {
+@font-face {
 	font-family: testFont;
+	src: url("CoveredByYourGrace-Regular.ttf");
+}
+
+.journal-form h1 {
+	font-family: testFont, sans-serif;
 	text-align: center;
 }
 
 .journal-form {
 	font-size: 120%;
-	font-family: "Century Gothic";
+	font-family: "Century Gothic", sans-serif;
 	width: 50%;
 	margin: auto;
 	color: #516754;
