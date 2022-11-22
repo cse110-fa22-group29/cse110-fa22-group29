@@ -38,8 +38,7 @@ input[type="text"]:focus {
 
 .rating {
 	display: flex;
-	flex-wrap: nowrap;
-	flex-direction: row-reverse;
+	flex-flow: nowrap row-reverse;
 }
 
 .hidden,
@@ -91,8 +90,7 @@ input[type="text"]:focus {
 
 .tag-container {
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex-flow: nowrap row-reverse;
 }
 
 .tag {
