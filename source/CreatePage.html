@@ -1,77 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Food Journal</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Food Journal</title>
 
-  <!-- Recipe Card Custom Element -->
-  <script src="assets/scripts/ReviewCard.js" type="module"></script>
+		<!--Add Favicon-->
+		<link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+
+		<!-- Recipe Card Custom Element -->
+		<script src="assets/scripts/ReviewCard.js" type="module"></script>
 
 
-  <!-- Main Stylesheets & Scripts -->
-  <!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
-  <!-- <link rel="stylesheet" href="/static/reset.css" /> -->
-  <link rel="stylesheet" href="./static/CreatePage.css" />
-  <script src="assets/scripts/main.js" type="module"></script>
+		<!-- Main Stylesheets & Scripts -->
+		<!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
+		<!-- <link rel="stylesheet" href="/static/reset.css" /> -->
+		<link rel="stylesheet" href="./static/CreatePage.css" />
+		<link rel="stylesheet" href="./static/Form.css" />
+		<script src="./assets/scripts/CreatePage.js" type="module"></script>
+	</head>
 
-</head>
+	<header>
+		<div class="top-bar">
+			<img src ="./assets/images/Logo.png" alt="logo" />
+			<h1> Food Journal </h1>
+			<img src ="./assets/images/Logo.png" alt="logo" />
+		</div>
+	</header>
+	
+	<body>
+		<div class="journal-form">
+			<h1>New Entry</h1>
 
-<body>
-  <form id="new-food-entry">
-    <fieldset>
-      <legend>Pic:</legend>
-      <label for="mealImage">
-        Source:
-        <input type="text" id="mealImg" name="mealImg">
-      </label>
-      <label for="image-alt">
-        Alt Text:
-        <input type="text" id="imgAlt" name="imgAlt">
-      </label>
-    </fieldset>
-    <fieldset>
+			<form id="new-food-entry">
+				
+				<fieldset>
+					<legend>PICTURE:</legend>
+					<select id="select" name="select">
+						<option value="file">File Upload</option>
+						<option value="url">From an URL</option>
+					</select>
+					<label for="mealImage" id="source">
+						<input type="file" accept="image/*" id="mealImg" name="mealImg">
+					</label>
+				</fieldset>
+				
+				<fieldset>
+					<legend>MEAL NAME:</legend>
+					<label for="Name: "> <input type="text" id="mealName" name="mealName" required> </label>
+				</fieldset>
 
-      <legend> Meal: </legend>
-      <label for="Meal: ">Meal:
-        <input type="text" id="mealName" name="mealName" required>
-      </label>
-      <label for="comments">Comments:
-        <br>
-        <textarea name="comments" id="comments"></textarea>
-      </label>
-    </fieldset>
+				<fieldset>
+					<legend>RESTAURANT NAME:</legend>
+					<label for="Name:"> <input type="text" id="restaurant" name="restaurant" required> </label>
+				</fieldset>
+			
+				<fieldset>
+					<legend>RATING:</legend>
+					<div style="display: flex; justify-content: flex-start; align-items: center;">
+						<div class="rating">
+							<input type="radio" id="s5" name="rating" value="5"/> <label for="s5" id="s5-select"> 5 stars </label>
+							<input type="radio" id="s4" name="rating" value="4"/> <label for="s4" id="s4-select"> 4 stars </label>
+							<input type="radio" id="s3" name="rating" value="3"/> <label for="s3" id="s3-select"> 3 stars </label>
+							<input type="radio" id="s2" name="rating" value="2"/> <label for="s2" id="s2-select"> 2 stars </label>
+							<input type="radio" id="s1" name="rating" value="1"/> <label for="s1" id="s1-select"> 1 star </label>
+						</div>
+					</div>
+				</fieldset>
 
-    <fieldset class="rating">
-      <legend> Rating: </legend>
-      <input type="radio" id="s5" name="rating" value="5"/> <label for="s5"> 5 stars </label>
-      <input type="radio" id="s4" name="rating" value="4"/> <label for="s4"> 4 stars </label>
-      <input type="radio" id="s3" name="rating" value="3"/> <label for="s3"> 3 stars </label>
-      <input type="radio" id="s2" name="rating" value="2"/> <label for="s2"> 2 stars </label>
-      <input type="radio" id="s1" name="rating" value="1"/> <label for="s1"> 1 star </label>
-    </fieldset>
+				<fieldset>
+					<legend>COMMENTS:</legend>
+					<textarea name="comments" id="comments" rows="5" style="resize: none; width: 100%;"></textarea>
+				</fieldset>
 
-    <fieldset>
-      <legend>Other Info:</legend>
-      <label for="restaurant">
-        Restaurant:
-        <input type="text" id="restaurant" name="restaurant" required>
-      </label>
-      <label for="tag-form">
-        Tags:
-        <input type="text" id="tag-form" name="tag-form">
-        <div class='tag-container' id="tag-container-form">
+				<fieldset>
+					<legend>TAGS: (ex. cuisine, distance, cost, etc)</legend>
+					<input type="text" id="tag-form" name="tag-form">
 
-        </div>
-        <button type="button" id="tagAdd">Add Tag</button>
-      </label>
+					<div class='tag-container' id="tag-container-form">
+					</div>
+					<button type="button" id="tag-add-btn"> + </button>
+				</fieldset>
 
-    </fieldset>
-    <button type="submit" value="Submit">Add Review</button>
-    <button type="button" class="danger">Clear Review Journal</button>
-  </form>
-</body>
+			<button type="submit" id="save-btn" value="Submit">Save</button>
+			<input type="button" value="Cancel" id="home-btn" onclick="window.location.assign('./index.html')">
+			</form>
+		</div> 
+	</body>
 
 </html>

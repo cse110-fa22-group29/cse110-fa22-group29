@@ -1,4 +1,4 @@
-/* CreatePage.css */
+/* ReviewDetails.css */
 
 @font-face {
 	font-family: testFont;
@@ -7,6 +7,10 @@
 
 body {
 	background-color: #f8f3f1;
+}
+
+h1 {
+	text-align: center;
 }
 
 .top-bar {
@@ -24,7 +28,18 @@ body {
 .top-bar > h1 {
 	position: relative;
 	text-align: center;
+
+	/* color: #e4c3d2; */
 	color: #516754;
 	font-size: 6rem;
 	font-family: testFont, sans-serif;
+}
+
+.d-tag {
+	background-color: grey;
+	border-radius: 7px;
+	color: white;
+	padding-right: 7px;
+	padding-left: 7px;
+	margin: 10px;
 }

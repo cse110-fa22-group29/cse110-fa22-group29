@@ -1,0 +1,93 @@
+/* homepage.css */
+
+@font-face {
+	font-family: testFont;
+	src: url("CoveredByYourGrace-Regular.ttf");
+}
+
+/* Color */
+body {
+	/* background-color: #97a5bd */
+
+	/* background-color: #E3E3EC; */
+	background-color: #f8f3f1;
+}
+
+.top-bar {
+	display: flex;
+	justify-content: center;
+}
+
+.top-bar > img {
+	position: relative;
+	align-self: center;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
+}
+
+.top-bar > h1 {
+	position: relative;
+	text-align: center;
+
+	/* color: #e4c3d2; */
+
+	/* color: rgb(145, 124, 175); */
+	color: #516754;
+	font-size: 6rem;
+	font-family: testFont, sans-serif;
+}
+
+.body-container {
+	display: flex;
+	max-height: 100%;
+}
+
+.center-display {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.search-bar {
+	display: flex;
+	justify-content: center;
+}
+
+.search-bar > form {
+	float: right;
+	padding: 6px 10px;
+	margin-top: 8px;
+	margin-right: 16px;
+	background: rgb(239 183 183);
+	font-size: 17px;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+}
+
+#recent-reviews-text {
+	text-align: center;
+	font-size: 4rem;
+	color: #516754;
+	font-family: testFont, sans-serif;
+}
+
+img#create-btn {
+	position: relative;
+	align-self: center;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
+}
+
+.review-container {
+	display: flex;
+	position: relative;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.review-container > div {
+	background-color: #f1f1f1;
+	text-align: center;
+}

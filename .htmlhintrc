@@ -1,3 +1,4 @@
 {
-  "attr-value-not-empty": false
+  "attr-value-not-empty": false,
+  "space-tab-mixed-disabled": "tab"
 }
