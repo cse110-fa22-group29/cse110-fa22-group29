@@ -157,7 +157,7 @@ class ReviewCard extends HTMLElement {
 		mealImg.setAttribute("alt","Meal Photo Corrupted");
 		mealImg.setAttribute("src",data["mealImg"]);
 		mealImg.addEventListener("error", function(e) {
-			mealImg.setAttribute("src", "./assets/images/plate_with_cutlery.png");
+			mealImg.setAttribute("src", "./assets/images/default_plate.png");
 			e.onerror = null;
 		});
 
