@@ -65,7 +65,7 @@ describe("test App end to end", async () => {
 			it("check details page", async () => {
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
+					imgSrc: "http://localhost:8080/assets/images/default_plate.png",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
@@ -86,7 +86,7 @@ describe("test App end to end", async () => {
 				let shadowRoot = await review_card.getProperty("shadowRoot");
 
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
+					imgSrc: "http://localhost:8080/assets/images/default_plate.png",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
@@ -111,7 +111,7 @@ describe("test App end to end", async () => {
 
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
+					imgSrc: "http://localhost:8080/assets/images/default_plate.png",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
@@ -133,7 +133,7 @@ describe("test App end to end", async () => {
 
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
+					imgSrc: "http://localhost:8080/assets/images/default_plate.png",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
@@ -176,7 +176,7 @@ describe("test App end to end", async () => {
 			it("check details page", async () => {
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
+					imgSrc: "http://localhost:8080/assets/images/default_plate.png",
 					mealName: "updated name",
 					comments: "updated comment",
 					restaurant: "updated restaurant",
@@ -198,7 +198,7 @@ describe("test App end to end", async () => {
 
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
+					imgSrc: "http://localhost:8080/assets/images/default_plate.png",
 					mealName: "updated name",
 					comments: "updated comment",
 					restaurant: "updated restaurant",
