@@ -76,3 +76,21 @@ export function getAllReviewsFromStorage() {
 	}
 	return reviews;
 }
+
+/**
+ * Returns the top n reviews by ID. If there are less than n reviews, returns the most possible. 
+ * @param {number} n number of reviews to return
+ * @returns {Object} list of n reviews that are the top rated
+ */
+export function getTopReviewsFromStorage(n) {
+
+}
+
+/**
+ * Returns all reviews which contain the same tag specified. 
+ * @param {string} tag to filter by
+ * @returns {Object} list of reviews that all contain the specified tag
+ */
+export function getReviewsByTag(tag) {
+
+}

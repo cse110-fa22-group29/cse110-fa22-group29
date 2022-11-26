@@ -27,7 +27,7 @@ describe("test App end to end", async () => {
 		}
 		catch (error) {
 			await console.log("❌ failed to connect to localhost webserver on port 8080");
-			await exit(1);
+			//await exit(1);
 		}
 	});
 
