@@ -15,7 +15,7 @@ function setupInfo(){
 	let currReview = getReviewFromStorage(currID);
 	
 	//meal image
-	let mealImg = document.getElementById("d-mealImg");
+	let mealImg = document.getElementById("d-meal-img");
 	mealImg.setAttribute("src",currReview["mealImg"]);
 	mealImg.addEventListener("error", function(e) {
 		mealImg.setAttribute("src", "./assets/images/default_plate.png");
@@ -23,7 +23,7 @@ function setupInfo(){
 	});
 
 	//meal name
-	let mealLabel = document.getElementById("d-mealName");
+	let mealLabel = document.getElementById("d-meal-name");
 	mealLabel.innerHTML = currReview["mealName"];
 
 	//restaurant name
