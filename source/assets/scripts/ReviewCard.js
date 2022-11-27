@@ -80,12 +80,16 @@ class ReviewCard extends HTMLElement {
 			font-size: 12px;
 		}
 
-		.tag-container {
+		.tag-container-div {
 			margin-top: 20px;
-			display: flex;
-			flex-flow: row wrap;
 			height: 100px;
 			overflow: hidden;
+		}
+
+		.tag-container {
+			display: flex;
+			flex-flow: row wrap;
+			height: fit-content;
 		}
 		
 		.a-tag {
@@ -95,6 +99,8 @@ class ReviewCard extends HTMLElement {
 			padding: 0px 6px 2px 6px;
 			margin: 2px 2px 2px 2px;
 			font-weight: bold;
+			overflow: hidden;
+			height: 14px;
 		}
     	`;
 		articleEl.append(styleEl);
@@ -191,6 +197,8 @@ class ReviewCard extends HTMLElement {
 		ratingDiv.append(starsImg);
 
 		//added tags
+		let tagContainerDiv = document.createElement("div"); 
+		tagContainerDiv.setAttribute("class", "tag-container-div");
 		let tagContainer = document.createElement("div");
 		tagContainer.setAttribute("class", "tag-container");
 		tagContainer.setAttribute("id", "a-tags");
@@ -203,6 +211,7 @@ class ReviewCard extends HTMLElement {
 				tagContainer.append(newTag);
 			}
 		}
+		tagContainerDiv.append(tagContainer);
 
 		//adding final ID to data!
 
@@ -210,7 +219,7 @@ class ReviewCard extends HTMLElement {
 		articleEl.append(meallabelDiv);
 		articleEl.append(restaurantLabel);
 		articleEl.append(ratingDiv);
-		articleEl.append(tagContainer);
+		articleEl.append(tagContainerDiv);
 		articleEl.append(comments);
 
 
