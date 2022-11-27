@@ -10,6 +10,9 @@ export function newReviewToStorage(review){
 
 	// set the review entry to the review object
 	localStorage.setItem(`review${nextReviewId}`, JSON.stringify(review));
+
+	// adding to the tag keys
+	addTagsToStorage(nextReviewId, review["tags"]);
 	
 	//updating our activeIDS list
 	let tempIdArr = JSON.parse(localStorage.getItem("activeIDS"));
@@ -52,12 +55,54 @@ export function deleteReviewFromStorage(ID){
 		if (activeIDS[i] == ID) {
 			activeIDS.splice(i,1);
 			localStorage.setItem("activeIDS", JSON.stringify(activeIDS));
+			//get review to delete all the tags(may wanna just add ID to a different list that will delete review and tag list in background)(also don't wanna linear search)
+			let currReview = JSON.parse(localStorage.getItem(`review${ID}`));
+			deleteTagsFromStorage(ID, currReview["tags"]);
 			localStorage.removeItem(`review${ID}`);
 			return;
 		}
 	}
 
 	console.error(`could not find review${ID} in localStorage`);
+}
+
+/**
+ * Delete ID from the specified tags' storage
+ * @param {string} ID to delete from lists
+ * @param {string[]} deletedTags to modify storage of
+ */
+export function deleteTagsFromStorage(ID, deletedTags) {
+	for(let i in deletedTags){
+		//get local storage of each tag and remove id from tag list
+		let tagArr = JSON.parse(localStorage.getItem("!"+ deletedTags[i]));
+		for(let j in tagArr){
+			if(tagArr[j] == ID){
+				tagArr.splice(j,1);
+			}
+			break;
+		}
+		if(tagArr.length != 0){
+			localStorage.setItem("!" + deletedTags[i], JSON.stringify(tagArr));
+		} else {
+			localStorage.removeItem("!" + deletedTags[i]);
+		}
+	}
+}
+
+/**
+ * Add ID from the specified tags' storage
+ * @param {string} ID to add to lists
+ * @param {string[]} addedTags to modify storage of
+ */
+export function addTagsToStorage(ID, addedTags) {
+	for(let i in addedTags){
+		let tagArr = JSON.parse(localStorage.getItem("!" + addedTags[i]));
+		if(!tagArr){
+			tagArr = [];
+		}
+		tagArr.push(ID);
+		localStorage.setItem("!" + addedTags[i], JSON.stringify(tagArr));
+	}
 }
 
 // legacy function

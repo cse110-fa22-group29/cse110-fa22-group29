@@ -1,5 +1,5 @@
 //reviewDetails.js
-import {deleteReviewFromStorage, getReviewFromStorage, updateReviewToStorage} from "./localStorage.js";
+import {addTagsToStorage, deleteReviewFromStorage, deleteTagsFromStorage, getReviewFromStorage, updateReviewToStorage} from "./localStorage.js";
 
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
@@ -10,6 +10,9 @@ function init(){
 	setupUpdate();
 }
 
+/**
+ * Populates the relevant data to the details from local storage review
+ */
 function setupInfo(){
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
 	let currReview = getReviewFromStorage(currID);
@@ -51,6 +54,9 @@ function setupInfo(){
 	}
 }
 
+/**
+ * Sets up delete button to delete review from storage and switch to homepage
+ */
 function setupDelete(){
 	let deleteBtn = document.getElementById("delete-btn");
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
@@ -63,6 +69,9 @@ function setupDelete(){
 	});
 }
 
+/**
+ * Sets up update button to reveal form and update info in storage and the current page 
+ */
 function setupUpdate(){
 	let updateBtn = document.getElementById("update-btn");
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
@@ -141,10 +150,11 @@ function setupUpdate(){
 		form.addEventListener("submit", function(){
 			/*
 			*  User submits the form for their review.
-			*  We create reviewCard and put in storage
+			*  We create reviewCard data, replace in storage, and update tags
 			*/
 			let formData = new FormData(form);
 			let newData = {};
+			//iterate through formData and add to newData
 			for (let [key, value] of formData) {
 				console.log(`${key}`);
 				console.log(`${value}`);
@@ -169,12 +179,23 @@ function setupUpdate(){
 
 			newData["reviewID"] = currID;
 
+			//Get diff of tags and update storage
+			//Note: we can either get the difference twice or keep track when we delete and add
+			//if keep track also need to make sure that a tag doesn't end up on both list
+			let deletedTags = currReview["tags"].filter(x => !newData["tags"].includes(x));
+			let addedTags = newData["tags"].filter(x => !currReview["tags"].includes(x));
+
+			deleteTagsFromStorage(currID, deletedTags);
+			addTagsToStorage(currID, addedTags);
+
 			updateReviewToStorage(currID, newData);
 
 			updateDiv.classList.add("hidden");
 
 		});
 
+		//adding tag to form functionality
+		//TODO: disable duplicate tags (use set?)
 		let tagAddBtn = document.getElementById("tag-add-btn");
 		tagAddBtn.addEventListener("click", ()=> {
 			let tagField = document.getElementById("tag-form");
