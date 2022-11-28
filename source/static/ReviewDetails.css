@@ -32,7 +32,7 @@ h1 {
 	/* color: #e4c3d2; */
 	color: #516754;
 	font-size: 6rem;
-	font-family: testFont;
+	font-family: testFont, sans-serif;
 }
 
 .d-tag {
