@@ -36,7 +36,8 @@ With the vast majority of feature implementation underway the rapid progress cre
 * Gavyn Etzel: 
 * Henry Feng: Worked on implementing local image uploading and storing features for updating and creating profiles.
 * Sanjit: I reimplemented the star ratings since they had some issues and weren’t merged with sprint 1. I fixed a bunch of linting issues that popped up from that as well. I did a fair bit of color palette brainstorming with the team. I also went over our app design for the sprint video and edited that together. Most importantly I put a chef hat on the raccoon
-* Daniel: 
+* Daniel: Helped in initial CreatePage and HomePage design which improved through feedback from the rest of the group. 
+Helped in styling suggestions.  
 * Arthur Lu: Worked on fixing some CI/CD pipeline issues
 Implemented e2e testing for basic update and delete functionality
 Helped with fixing the homepage and review page layout 
