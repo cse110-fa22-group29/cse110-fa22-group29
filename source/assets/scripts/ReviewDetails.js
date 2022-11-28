@@ -178,16 +178,7 @@ function setupUpdate(){
 			}
 
 			newData["reviewID"] = currID;
-
-			//Get diff of tags and update storage
-			//Note: we can either get the difference twice or keep track when we delete and add
-			//if keep track also need to make sure that a tag doesn't end up on both list
-			let deletedTags = currReview["tags"].filter(x => !newData["tags"].includes(x));
-			let addedTags = newData["tags"].filter(x => !currReview["tags"].includes(x));
-
-			deleteTagsFromStorage(currID, deletedTags);
-			addTagsToStorage(currID, addedTags);
-
+			
 			updateReviewToStorage(currID, newData);
 
 			updateDiv.classList.add("hidden");

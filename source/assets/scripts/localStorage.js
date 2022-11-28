@@ -40,6 +40,14 @@ export function getReviewFromStorage(ID){
  * @param {Object} review to store
  */
 export function updateReviewToStorage(ID, review){
+	let oldReview = JSON.parse(localStorage.getItem(`review${ID}`));
+
+	//Get diff of tags and update storage
+	let deletedTags = oldReview["tags"].filter(x => !review["tags"].includes(x));
+	let addedTags = review["tags"].filter(x => !oldReview["tags"].includes(x));
+	deleteTagsFromStorage(currID, deletedTags);
+	addTagsToStorage(currID, addedTags);
+
 	// set the review entry with ID to the review object
 	localStorage.setItem(`review${ID}`, JSON.stringify(review));
 }
