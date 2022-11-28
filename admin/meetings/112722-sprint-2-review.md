@@ -1,4 +1,4 @@
-# Sprint 1 Review Meeting Minutes (11/27/2022)
+# Sprint 2 Review Meeting Minutes (11/27/2022)
 ## Team 29: Hackers1995
 ## Meeting Topic: Sprint 2 Review
 We are reviewing the second sprint 2 progress made and highlights 
@@ -26,27 +26,29 @@ Review the second sprint and discuss assiget the writeup for the Agile review as
 In collecting feedback for the sprint the leads decided to ask members individually about their experience during sprint 2 to then summarize these responses. Each member was asked 4 questions with their summarized responses below:
 
 ### ➼ What do you think worked well in the first sprint?
-Communication within the group was improved and our joint study sessions where more productive 
+Communication within the group was improved and our joint study sessions where more productive. The design team got the support they needed to accomplish the majority of their work on the project. The push to emphasize the sub-teams responsible for different tasks turned out to be a great idea and everyone put in a good effort. 
 
 ### ➼ What can we improve on for the next sprint?
-We ran into trouble early on due to some lack of planning for specific tasks. The members agreed that we should have spent more time defining tasks for specific members and defining goals for our different teams (frontend, backend, and unit testing). There was some concern over members not being able to attend all meetings and we think this could have been fixed with regularly scheduled meetings. Some technical concerns were the Javascript unit testing pipeline development lagging behind code development and pipeline requirements being unclear. Perhaps we should write out a style document to guide the automated linting process.
+With the vast majority of feature implementation underway the rapid progress created a lot of bugs which otherwise could have been avoid with more careful planning. Some members felt that even though they made a great effort they weren't able to contribute as much as they wanted to. Some of the code documentation fell behind and some design discussions were circumvented because some members where busy. One consequence was that relatively few ADRs were created even though we made many important design decisions during sprint 2.
 
 ### ➼ What was your contribution to the sprint?
-* Rhea Bhutada: Worked on the backend features including how to get create new review card page to open in a new window
-* Gavyn Etzel: Helped with javascript side of things for website 
-* Henry Feng: Local image store and meeting support
-* Sanjit: Default photo design and frontend star rating css
-* Daniel: Helped modify html, added upload file feature
-* Arthur Lu: Added JS Linting, Unit testing pipeline actions and rote a few simple unit tests; added deployment pipeline action
-* Marc Rheta: Added HTML Linting and CSS Linting
-* Isaac Otero: Low and mid fidelity wireframes of how our page will look like, Started working on homepage.html
-* George Dubinin: Meeting notes, Repo organization, cookies
-* Kara Hoagland: CRUD backend functionality
+* Rhea Bhutada: I mainly helped implement the backend for the CRUD features of the app and documentation related to this. This mainly entailed changing the way that we were storing user data in local storage. Additionally, I helped design the form and homepage.
+* Gavyn Etzel: 
+* Henry Feng: Worked on implementing local image uploading and storing features for updating and creating profiles.
+* Sanjit: I reimplemented the star ratings since they had some issues and weren’t merged with sprint 1. I fixed a bunch of linting issues that popped up from that as well. I did a fair bit of color palette brainstorming with the team. I also went over our app design for the sprint video and edited that together. Most importantly I put a chef hat on the raccoon
+* Daniel: 
+* Arthur Lu: Worked on fixing some CI/CD pipeline issues
+Implemented e2e testing for basic update and delete functionality
+Helped with fixing the homepage and review page layout 
+Helped with fixing the article tag overflow issue
+* Marc Rheta: Implemented the e2e testing for reading and create
+Allowed tabs for CSS/HTML linters
+* Isaac Otero: I was able to help out with the sprint video for the last sprint and thought of how our page will look like, Started working on homepage.html
+* George Dubinin: Meeting notes, Repo organization, Front-end (a little), Project Status Review video.
+* Kara Hoagland: I helped set up the new local storage design, reimplemented the CRUD features using the new local storage design, contributed to the styling, added a default img, backend on the details page 
 
 ### ➼ Was there anything blocking your progress in the sprint?
-Communication was challenging especially for members that would attend over Zoom and it was a challenge keeping  track of each member's progress. We ran into some issues with the branching strategy with branches rapidly multiplying at points and the GitHub tags not working. The biggest technical issue we experienced involved Node and ES6 compatibility issues.
-
-Overall we feel that sprint 1 was a success with many lessons learned. Our enthusiasm for the project is only building and we are excited to get back into it with sprint 2 after a much needed short break.
+A few members got sick over the break and with midterms picking up for other classes some members had trouble dedicting time for the project but everyone still put in a great effort overall.
 
 ## Next Sprint Goals
     - Resolve the 4 issues open on GitHub right now
