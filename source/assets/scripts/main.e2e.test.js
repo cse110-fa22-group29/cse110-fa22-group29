@@ -1,7 +1,6 @@
 import {strict as assert} from "node:assert";
 import {describe, it, before, after} from "mocha";
 import puppeteer from "puppeteer-core";
-import {exit} from "node:process";
 import {setReviewForm, checkCorrectness} from "./appTestHelpers.js";
 
 describe("test App end to end", async () => {
@@ -27,7 +26,6 @@ describe("test App end to end", async () => {
 		}
 		catch (error) {
 			await console.log("❌ failed to connect to localhost webserver on port 8080");
-			await exit(1);
 		}
 	});
 

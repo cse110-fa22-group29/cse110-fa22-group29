@@ -31,18 +31,15 @@ class ReviewCard extends HTMLElement {
 			align-items: center;
 			border: 2px solid rgb(31, 41, 32);
 			border-radius: 8px;
-			display: grid;
-			grid-template-rows: 118px 56px 14px 18px 15px 36px;
 			height: auto;
 			row-gap: 5px;
 			padding: 0 16px 16px 16px;
-			width: 178px;
+			width: 200px;
 			margin: 8px 8px 8px 8px;
 		}
 		
 		div.rating {
 			align-items: center;
-			column-gap: 5px;
 			display: flex;
 		}
 		
@@ -50,16 +47,21 @@ class ReviewCard extends HTMLElement {
 			height: auto;
 			display: inline-block;
 			object-fit: scale-down;
-			width: 78px;
 		}
 		
 		article>img {
 			border-top-left-radius: 6px;
 			border-top-right-radius: 6px;
-			height: 119px;
+			height: 120px;
 			object-fit: cover;
 			margin-left: -16px;
+			margin-right: -16px;
 			width: calc(100% + 32px);
+		}
+
+		.meal-name-div {
+			height: 54px;
+			overflow: hidden;
 		}
 		
 		label.restaurant-name {
@@ -67,13 +69,8 @@ class ReviewCard extends HTMLElement {
 		}
 		
 		label.meal-name {
-			display: -webkit-box;
-			font-size: 16px;
+			font-size: 24px;
 			height: 36px;
-			line-height: 18px;
-			overflow: hidden;
-			-webkit-line-clamp: 2;
-			-webkit-box-orient: vertical;
 		}
 		
 		label:not(.meal-name),
@@ -83,20 +80,27 @@ class ReviewCard extends HTMLElement {
 			font-size: 12px;
 		}
 
-		.tag-container {
+		.tag-container-div {
 			margin-top: 20px;
+			height: 100px;
+			overflow: hidden;
+		}
+
+		.tag-container {
 			display: flex;
 			flex-flow: row wrap;
+			height: fit-content;
 		}
 		
 		.a-tag {
 			background-color:#94da97;
-			border-radius: 7px;
+			border-radius: 6px;
 			color: #94da97;
-			padding-right: 7px;
-			padding-left: 7px;
-			margin: 3px;
+			padding: 0px 6px 2px 6px;
+			margin: 2px 2px 2px 2px;
 			font-weight: bold;
+			overflow: hidden;
+			height: 14px;
 		}
     	`;
 		articleEl.append(styleEl);
@@ -162,10 +166,13 @@ class ReviewCard extends HTMLElement {
 		});
 
 		//meal name setup
+		let meallabelDiv = document.createElement("div");
+		meallabelDiv.setAttribute("class", "meal-name-div");
 		let mealLabel = document.createElement("label");
 		mealLabel.setAttribute("id", "a-mealName");
 		mealLabel.setAttribute("class","meal-name");
 		mealLabel.innerHTML = data["mealName"];
+		meallabelDiv.append(mealLabel);
 
 		//restaurant name setup
 		let restaurantLabel = document.createElement("label");
@@ -190,6 +197,8 @@ class ReviewCard extends HTMLElement {
 		ratingDiv.append(starsImg);
 
 		//added tags
+		let tagContainerDiv = document.createElement("div"); 
+		tagContainerDiv.setAttribute("class", "tag-container-div");
 		let tagContainer = document.createElement("div");
 		tagContainer.setAttribute("class", "tag-container");
 		tagContainer.setAttribute("id", "a-tags");
@@ -202,14 +211,15 @@ class ReviewCard extends HTMLElement {
 				tagContainer.append(newTag);
 			}
 		}
+		tagContainerDiv.append(tagContainer);
 
 		//adding final ID to data!
 
 		articleEl.append(mealImg);
-		articleEl.append(mealLabel);
+		articleEl.append(meallabelDiv);
 		articleEl.append(restaurantLabel);
 		articleEl.append(ratingDiv);
-		articleEl.append(tagContainer);
+		articleEl.append(tagContainerDiv);
 		articleEl.append(comments);
 
 
