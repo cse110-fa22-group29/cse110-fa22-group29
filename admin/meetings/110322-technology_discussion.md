@@ -1,9 +1,13 @@
 # Meeting Minutes (11/03/2022)
+
 ## Team 29: Hackers1995
+
 ## Meeting Topic: Technologies Discussion
+
 We're deciding on what web technologies we will incorporate into our food blog application.
 
 ## Attendance
+
 1. Rhea Bhutada
 2. Sanjit Joseph
 3. Arthur Lu
@@ -15,10 +19,12 @@ We're deciding on what web technologies we will incorporate into our food blog a
 9. Isaac Otero
 
 ## Meeting Details
+
 - When: 11/03/2022 at 3:00PM
 - Where: In-person (CSE Basement B250) and George's Zoom room
 
 ## Agenda:
+
 - ### Answer the questions that Gagan's asked the team leads yesterday
   - What high level approach will we have to coding?
     - Slow approach with diagrams and short sprints of around 3 days. Biweekly meetings where we catch up with what happened end of each sprint.
@@ -30,15 +36,13 @@ We're deciding on what web technologies we will incorporate into our food blog a
     - We will be creating branches for different features and be submitting PRs direclty to the master branch. Forks will only be created for large overhaul type changes
   - How will PRs be approved
     - The team will be split up into groups for different aspects of the app (front end, ui, database for example) and PRs will be reviewed and approved by 1 other member of the respective group
-  - Introduce the ADR and discuss how we will create it
-    - 
-
-
+  - ## Introduce the ADR and discuss how we will create it
 
 ## Assignments:
-- ### By X point in time:
-- 
 
+- ### By X point in time:
+-
 
 ## End Time
+
 - 11/03/2022 at 4:00 PM

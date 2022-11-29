@@ -1,5 +1,5 @@
 // main.js
-import {getAllReviewsFromStorage} from "./localStorage.js";
+import { getAllReviewsFromStorage } from "./localStorage.js";
 
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
@@ -13,19 +13,17 @@ function init() {
 	initFormHandler();
 }
 
-
 /**
  * @param {Array<Object>} reviews An array of reviews
  */
 function addReviewsToDocument(reviews) {
 	let reviewBox = document.getElementById("review-container");
-	reviews.forEach(review => {
+	reviews.forEach((review) => {
 		let newReview = document.createElement("review-card");
 		newReview.data = review;
-		//TODO: want to append it to whatever the box is in layout 
+		//TODO: want to append it to whatever the box is in layout
 		reviewBox.append(newReview);
 	});
-
 }
 
 /**
@@ -33,10 +31,9 @@ function addReviewsToDocument(reviews) {
  * <button>.
  */
 function initFormHandler() {
-
 	//btn to create form (could be its own function?)
 	let createBtn = document.getElementById("create-btn");
-	createBtn.addEventListener("click", function(){
+	createBtn.addEventListener("click", function () {
 		window.location.assign("./CreatePage.html");
 	});
 }

@@ -11,9 +11,10 @@
 - Framework should be easy to implement end to end tests with
 
 ## Considered Options
+
 - puppeteer
 - selenium-webdriver
 
 ## Decision Outcome
 
-Chosen Option: Puppeteer for its ease of use with mocha. 
+Chosen Option: Puppeteer for its ease of use with mocha.

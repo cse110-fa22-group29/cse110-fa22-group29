@@ -16,4 +16,4 @@
 
 ## Decision Outcome
 
-Chosen Option: eslint for its low configuration complexity. 
+Chosen Option: eslint for its low configuration complexity.

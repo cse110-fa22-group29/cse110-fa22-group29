@@ -3,19 +3,19 @@
  * @param {Object} review to store
  * @return {number} ID of the newly added review
  */
-export function newReviewToStorage(review){
+export function newReviewToStorage(review) {
 	//grabbing the nextID, and putting our review object in storage associated with the ID
 	let nextReviewId = JSON.parse(localStorage.getItem("nextID"));
 	review["reviewID"] = nextReviewId;
 
 	// set the review entry to the review object
 	localStorage.setItem(`review${nextReviewId}`, JSON.stringify(review));
-	
+
 	//updating our activeIDS list
 	let tempIdArr = JSON.parse(localStorage.getItem("activeIDS"));
 	tempIdArr.push(nextReviewId);
 	localStorage.setItem("activeIDS", JSON.stringify(tempIdArr));
-	
+
 	//increment nextID for next review creation
 	localStorage.setItem("nextID", JSON.stringify(nextReviewId + 1));
 
@@ -27,7 +27,7 @@ export function newReviewToStorage(review){
  * @param {string} ID of the review to get
  * @returns {Object} review object corresponding to param ID
  */
-export function getReviewFromStorage(ID){
+export function getReviewFromStorage(ID) {
 	return JSON.parse(localStorage.getItem(`review${ID}`));
 }
 
@@ -36,7 +36,7 @@ export function getReviewFromStorage(ID){
  * @param {string} ID of review to update
  * @param {Object} review to store
  */
-export function updateReviewToStorage(ID, review){
+export function updateReviewToStorage(ID, review) {
 	// set the review entry with ID to the review object
 	localStorage.setItem(`review${ID}`, JSON.stringify(review));
 }
@@ -45,12 +45,12 @@ export function updateReviewToStorage(ID, review){
  * Deletes a review by ID from storage
  * @param {string} ID of the review to delete
  */
-export function deleteReviewFromStorage(ID){
+export function deleteReviewFromStorage(ID) {
 	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
 
 	for (let i in activeIDS) {
 		if (activeIDS[i] == ID) {
-			activeIDS.splice(i,1);
+			activeIDS.splice(i, 1);
 			localStorage.setItem("activeIDS", JSON.stringify(activeIDS));
 			localStorage.removeItem(`review${ID}`);
 			return;
@@ -62,10 +62,10 @@ export function deleteReviewFromStorage(ID){
 
 // legacy function
 export function getAllReviewsFromStorage() {
-	if (!(localStorage.getItem("activeIDS"))) {
+	if (!localStorage.getItem("activeIDS")) {
 		// we wanna init the active ID array and start the nextID count
 		localStorage.setItem("activeIDS", JSON.stringify([]));
-		localStorage.setItem("nextID",  JSON.stringify(0));
+		localStorage.setItem("nextID", JSON.stringify(0));
 	}
 	//iterate thru activeIDS
 	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
@@ -78,19 +78,15 @@ export function getAllReviewsFromStorage() {
 }
 
 /**
- * Returns the top n reviews by ID. If there are less than n reviews, returns the most possible. 
+ * Returns the top n reviews by ID. If there are less than n reviews, returns the most possible.
  * @param {number} n number of reviews to return
  * @returns {Object} list of n reviews that are the top rated
  */
-export function getTopReviewsFromStorage(n) {
-
-}
+export function getTopReviewsFromStorage(n) {}
 
 /**
- * Returns all reviews which contain the same tag specified. 
+ * Returns all reviews which contain the same tag specified.
  * @param {string} tag to filter by
  * @returns {Object} list of reviews that all contain the specified tag
  */
-export function getReviewsByTag(tag) {
-
-}
+export function getReviewsByTag(tag) {}

@@ -16,4 +16,4 @@
 
 ## Decision Outcome
 
-Chosen Option: HTMLhint for its low configuration complexity. 
+Chosen Option: HTMLhint for its low configuration complexity.

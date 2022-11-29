@@ -7,23 +7,21 @@ function init() {
 
 	// creates the key
 	initFormHandler();
-    
 }
 
 function initFormHandler() {
-
 	//accessing form components
 	let tagContainer = document.getElementById("tag-container-form");
 	let form = document.querySelector("form");
 
 	/*
-	* change the input source of the image between local file and URL 
-	* depending on user's selection
-	*/
+	 * change the input source of the image between local file and URL
+	 * depending on user's selection
+	 */
 	let select = document.getElementById("select");
-	select.addEventListener("change", function() {
+	select.addEventListener("change", function () {
 		const input = document.getElementById("source");
-	
+
 		if (select.value == "file") {
 			input.innerHTML = `
 			Source:
@@ -41,23 +39,27 @@ function initFormHandler() {
 
 	//addressing sourcing image from local file
 	let imgDataURL = "";
-	document.getElementById("mealImg").addEventListener("change", function() {
+	document.getElementById("mealImg").addEventListener("change", function () {
 		const reader = new FileReader();
-		
+
 		//store image data URL after successful image load
-		reader.addEventListener("load", ()=>{
-			imgDataURL = reader.result;
-		}, false);
-		
+		reader.addEventListener(
+			"load",
+			() => {
+				imgDataURL = reader.result;
+			},
+			false
+		);
+
 		//convert image file into data URL for local storage
 		reader.readAsDataURL(document.getElementById("mealImg").files[0]);
 	});
-		
-	form.addEventListener("submit", function(e){
-	/*
-    *  User submits the form for their review.
-    *  We create reviewCard and put in storage
-    */
+
+	form.addEventListener("submit", function (e) {
+		/*
+		 *  User submits the form for their review.
+		 *  We create reviewCard and put in storage
+		 */
 		e.preventDefault();
 		let formData = new FormData(form);
 		let reviewObject = {};
@@ -71,11 +73,11 @@ function initFormHandler() {
 				reviewObject["mealImg"] = imgDataURL;
 			}
 		}
-		if(reviewObject["rating"] != null){
+		if (reviewObject["rating"] != null) {
 			reviewObject["tags"] = [];
 
 			let tags = document.querySelectorAll(".tag");
-			for(let i = 0; i < tags.length; i ++) {
+			for (let i = 0; i < tags.length; i++) {
 				reviewObject["tags"].push(tags[i].innerHTML);
 				tagContainer.removeChild(tags[i]);
 			}
@@ -84,27 +86,24 @@ function initFormHandler() {
 			sessionStorage.setItem("currID", JSON.stringify(nextReviewId));
 
 			window.location.assign("./ReviewDetails.html");
-		} else{
+		} else {
 			window.alert("NO! FILL IN STARS");
 		}
-        
 	});
 
 	let tagAddBtn = document.getElementById("tag-add-btn");
-	tagAddBtn.addEventListener("click", ()=> {
+	tagAddBtn.addEventListener("click", () => {
 		let tagField = document.getElementById("tag-form");
 		if (tagField.value.length > 0) {
 			let tagLabel = document.createElement("label");
 			tagLabel.innerHTML = tagField.value;
-			tagLabel.setAttribute("class","tag");
-			tagLabel.addEventListener("click",()=> {
+			tagLabel.setAttribute("class", "tag");
+			tagLabel.addEventListener("click", () => {
 				tagContainer.removeChild(tagLabel);
 			});
-      
+
 			tagContainer.append(tagLabel);
 			tagField.value = "";
-
 		}
 	});
-
 }

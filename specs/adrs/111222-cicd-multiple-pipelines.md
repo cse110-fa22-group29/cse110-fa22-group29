@@ -16,4 +16,4 @@
 
 ## Decision Outcone
 
-Chosen Option: Multiple short pipelines in parallel as any one failure will not prevent code from being developed and deployed. 
+Chosen Option: Multiple short pipelines in parallel as any one failure will not prevent code from being developed and deployed.

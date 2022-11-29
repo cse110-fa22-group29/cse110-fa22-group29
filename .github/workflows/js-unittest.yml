@@ -3,7 +3,7 @@ name: JS Unit Test
 on:
   pull_request:
     branches:
-    - main
+      - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -24,6 +24,6 @@ jobs:
       - name: Install dependencies
         run: sudo npm install
       - name: Start local http server
-        run: sudo npm run http-server & 
+        run: sudo npm run http-server &
       - name: Run tests
         run: sudo npm test

@@ -47,7 +47,8 @@ input[type="text"]:focus {
 }
 
 .hidden,
-.rating:not(:checked) > input { /* Hide radio circles while star rating */
+.rating:not(:checked) > input {
+	/* Hide radio circles while star rating */
 	display: none;
 }
 

@@ -16,4 +16,4 @@
 
 ## Decision Outcome
 
-Chosen Option: Stylelint for its easy installation and unopinionated. 
+Chosen Option: Stylelint for its easy installation and unopinionated.
