@@ -14,7 +14,10 @@ function init() {
 	setupUpdate();
 }
 
-function setupInfo() {
+/**
+ * Populates the relevant data to the details from local storage review
+ */
+function setupInfo(){
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
 	let currReview = getReviewFromStorage(currID);
 
@@ -58,7 +61,10 @@ function setupInfo() {
 	}
 }
 
-function setupDelete() {
+/**
+ * Sets up delete button to delete review from storage and switch to homepage
+ */
+function setupDelete(){
 	let deleteBtn = document.getElementById("delete-btn");
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
 	deleteBtn.addEventListener("click", function () {
@@ -70,7 +76,10 @@ function setupDelete() {
 	});
 }
 
-function setupUpdate() {
+/**
+ * Sets up update button to reveal form and update info in storage and the current page 
+ */
+function setupUpdate(){
 	let updateBtn = document.getElementById("update-btn");
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
 	let currReview = getReviewFromStorage(currID);
@@ -154,8 +163,10 @@ function setupUpdate() {
 			 *  User submits the form for their review.
 			 *  We create reviewCard and put in storage
 			 */
+       
 			let formData = new FormData(form);
 			let newData = {};
+			//iterate through formData and add to newData
 			for (let [key, value] of formData) {
 				console.log(`${key}`);
 				console.log(`${value}`);
@@ -181,12 +192,14 @@ function setupUpdate() {
 			}
 
 			newData["reviewID"] = currID;
-
+			
 			updateReviewToStorage(currID, newData);
 
 			updateDiv.classList.add("hidden");
 		});
 
+		//adding tag to form functionality
+		//TODO: disable duplicate tags (use set?)
 		let tagAddBtn = document.getElementById("tag-add-btn");
 		tagAddBtn.addEventListener("click", () => {
 			let tagField = document.getElementById("tag-form");
