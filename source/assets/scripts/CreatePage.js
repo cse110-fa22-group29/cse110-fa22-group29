@@ -92,7 +92,8 @@ function initFormHandler() {
 	tagAddBtn.addEventListener("click", ()=> {
 		let tagField = document.getElementById("tag-form");
 		if (tagField.value.length > 0) {
-			if (!tagSet.has(tagField.value.toLowerCase())){
+			let tagSetVal = tagField.value.toLowerCase();
+			if (!tagSet.has(tagSetVal)){
 				let tagLabel = document.createElement("label");
 				tagLabel.innerHTML = tagField.value;
 				tagLabel.setAttribute("class","tag");

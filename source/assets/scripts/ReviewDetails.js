@@ -99,14 +99,15 @@ function setupUpdate(){
 			while (tagContainer.firstChild) {
 				tagContainer.removeChild(tagContainer.firstChild);
 			}
+			let tagSetVal = currReview["tags"][i].toLowerCase()
 			for (let i = 0; i < currReview["tags"].length; i++) {
-				tagSet.add(currReview["tags"][i].toLowerCase());
+				tagSet.add(tagSetVal);
 				let newTag = document.createElement("label");
 				newTag.setAttribute("class","tag");
 				newTag.innerHTML = currReview["tags"][i];
 				newTag.addEventListener("click",()=> {
 					tagContainer.removeChild(newTag);
-					tagSet.delete(currReview["tags"][i].toLowerCase());
+					tagSet.delete(tagSetVal);
 				});
 				tagContainer.append(newTag);
 			}
@@ -195,14 +196,15 @@ function setupUpdate(){
 		tagAddBtn.addEventListener("click", ()=> {
 			let tagField = document.getElementById("tag-form");
 			if (tagField.value.length > 0) {
-				if (!tagSet.has(tagField.value.toLowerCase())){
+				let tagSetVal = tagField.value.toLowerCase();
+				if (!tagSet.has(tagSetVal)){
 					let tagLabel = document.createElement("label");
 					tagLabel.innerHTML = tagField.value;
 					tagLabel.setAttribute("class","tag");
-					tagSet.add(tagField.value.toLowerCase());
+					tagSet.add(tagSetVal);
 					tagLabel.addEventListener("click",()=> {
 						tagContainer.removeChild(tagLabel);
-						tagSet.delete(tagField.value.toLowerCase());
+						tagSet.delete(tagSetVal);
 					});
 			
 					tagContainer.append(tagLabel);

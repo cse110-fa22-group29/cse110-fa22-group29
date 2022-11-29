@@ -81,8 +81,8 @@ export function deleteReviewFromStorage(ID){
 function deleteTagsFromStorage(ID, deletedTags) {
 	for(let i in deletedTags){
 		//get local storage of each tag and remove id from tag list
-		let tagName = "!"+ deletedTags[i];
-		let tagArr = JSON.parse(localStorage.getItem(tagName.toLowerCase()));
+		let tagName = "!"+ deletedTags[i].toLowerCase();
+		let tagArr = JSON.parse(localStorage.getItem(tagName));
 		for(let j in tagArr){
 			if(tagArr[j] == ID){
 				tagArr.splice(j,1);
@@ -90,9 +90,9 @@ function deleteTagsFromStorage(ID, deletedTags) {
 			break;
 		}
 		if(tagArr.length != 0){
-			localStorage.setItem(tagName.toLowerCase(), JSON.stringify(tagArr));
+			localStorage.setItem(tagName, JSON.stringify(tagArr));
 		} else {
-			localStorage.removeItem(tagName.toLowerCase());
+			localStorage.removeItem(tagName);
 		}
 	}
 }
@@ -104,13 +104,13 @@ function deleteTagsFromStorage(ID, deletedTags) {
  */
 function addTagsToStorage(ID, addedTags) {
 	for(let i in addedTags){
-		let tagName = "!" + addedTags[i];
-		let tagArr = JSON.parse(localStorage.getItem(tagName.toLowerCase()));
+		let tagName = "!" + addedTags[i].toLowerCase();
+		let tagArr = JSON.parse(localStorage.getItem(tagName));
 		if(!tagArr){
 			tagArr = [];
 		}
 		tagArr.push(ID);
-		localStorage.setItem(tagName.toLowerCase(), JSON.stringify(tagArr));
+		localStorage.setItem(tagName, JSON.stringify(tagArr));
 	}
 }
 
