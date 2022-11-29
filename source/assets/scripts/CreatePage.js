@@ -117,7 +117,7 @@ function initFormHandler() {
 			tagLabel.addEventListener("click",()=> {
 				tagContainer.removeChild(tagLabel);
 			});
-      	
+			
 			// Adds the tag
 			tagContainer.append(tagLabel);
 			tagField.value = "";
