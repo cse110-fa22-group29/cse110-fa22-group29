@@ -14,4 +14,4 @@
 
 ## Decision Outcome
 
-Chosen Option: JSDoc
+Chosen Option: JSDoc. Will run by generating docs in /source/docs/ before publishing /source/ so users can enter the URI /docs/ to see documentation. 
