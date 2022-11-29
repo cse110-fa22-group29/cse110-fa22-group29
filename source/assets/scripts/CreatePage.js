@@ -3,11 +3,7 @@ import { newReviewToStorage } from "./localStorage.js";
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-	// get next id
-
-	// creates the key
 	initFormHandler();
-    
 }
 
 function initFormHandler() {
@@ -91,19 +87,27 @@ function initFormHandler() {
 	});
 
 	let tagAddBtn = document.getElementById("tag-add-btn");
+	//Set used to track tags and ensure no duplicates
+	let tagSet = new Set();
 	tagAddBtn.addEventListener("click", ()=> {
 		let tagField = document.getElementById("tag-form");
 		if (tagField.value.length > 0) {
-			let tagLabel = document.createElement("label");
-			tagLabel.innerHTML = tagField.value;
-			tagLabel.setAttribute("class","tag");
-			tagLabel.addEventListener("click",()=> {
-				tagContainer.removeChild(tagLabel);
-			});
-      
-			tagContainer.append(tagLabel);
+			let tagSetVal = tagField.value.toLowerCase();
+			if (!tagSet.has(tagSetVal)){
+				let tagLabel = document.createElement("label");
+				tagLabel.innerHTML = tagField.value;
+				tagLabel.setAttribute("class","tag");
+				tagSet.add(tagField.value.toLowerCase());
+				tagLabel.addEventListener("click",()=> {
+					tagContainer.removeChild(tagLabel);
+					tagSet.delete(tagField.value.toLowerCase());
+				});
+		
+				tagContainer.append(tagLabel);
+			} else {
+				window.alert("No duplicate tags allowed");
+			}
 			tagField.value = "";
-
 		}
 	});
 

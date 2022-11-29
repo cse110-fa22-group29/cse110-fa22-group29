@@ -10,6 +10,9 @@ export function newReviewToStorage(review){
 
 	// set the review entry to the review object
 	localStorage.setItem(`review${nextReviewId}`, JSON.stringify(review));
+
+	// adding to the tag keys
+	addTagsToStorage(nextReviewId, review["tags"]);
 	
 	//updating our activeIDS list
 	let tempIdArr = JSON.parse(localStorage.getItem("activeIDS"));
@@ -37,6 +40,14 @@ export function getReviewFromStorage(ID){
  * @param {Object} review to store
  */
 export function updateReviewToStorage(ID, review){
+	let oldReview = JSON.parse(localStorage.getItem(`review${ID}`));
+
+	//Get diff of tags and update storage
+	let deletedTags = oldReview["tags"].filter(x => !review["tags"].includes(x));
+	let addedTags = review["tags"].filter(x => !oldReview["tags"].includes(x));
+	deleteTagsFromStorage(ID, deletedTags);
+	addTagsToStorage(ID, addedTags);
+
 	// set the review entry with ID to the review object
 	localStorage.setItem(`review${ID}`, JSON.stringify(review));
 }
@@ -52,6 +63,8 @@ export function deleteReviewFromStorage(ID){
 		if (activeIDS[i] == ID) {
 			activeIDS.splice(i,1);
 			localStorage.setItem("activeIDS", JSON.stringify(activeIDS));
+			let currReview = JSON.parse(localStorage.getItem(`review${ID}`));
+			deleteTagsFromStorage(ID, currReview["tags"]);
 			localStorage.removeItem(`review${ID}`);
 			return;
 		}
@@ -60,21 +73,45 @@ export function deleteReviewFromStorage(ID){
 	console.error(`could not find review${ID} in localStorage`);
 }
 
-// legacy function
-export function getAllReviewsFromStorage() {
-	if (!(localStorage.getItem("activeIDS"))) {
-		// we wanna init the active ID array and start the nextID count
-		localStorage.setItem("activeIDS", JSON.stringify([]));
-		localStorage.setItem("nextID",  JSON.stringify(0));
+/**
+ * Delete ID from the specified tags' storage
+ * @param {string} ID to delete from lists
+ * @param {string[]} deletedTags to modify storage of
+ */
+function deleteTagsFromStorage(ID, deletedTags) {
+	for(let i in deletedTags){
+		//get local storage of each tag and remove id from tag list
+		let tagName = "!"+ deletedTags[i].toLowerCase();
+		let tagArr = JSON.parse(localStorage.getItem(tagName));
+		for(let j in tagArr){
+			if(tagArr[j] == ID){
+				tagArr.splice(j,1);
+				break;
+			}
+		}
+		if(tagArr.length != 0){
+			localStorage.setItem(tagName, JSON.stringify(tagArr));
+		} else {
+			localStorage.removeItem(tagName);
+		}
 	}
-	//iterate thru activeIDS
-	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
-	let reviews = [];
-	for (let i = 0; i < activeIDS.length; i++) {
-		let currReview = JSON.parse(localStorage.getItem(`review${activeIDS[i]}`));
-		reviews.push(currReview);
+}
+
+/**
+ * Add ID from the specified tags' storage
+ * @param {string} ID to add to lists
+ * @param {string[]} addedTags to modify storage of
+ */
+function addTagsToStorage(ID, addedTags) {
+	for(let i in addedTags){
+		let tagName = "!" + addedTags[i].toLowerCase();
+		let tagArr = JSON.parse(localStorage.getItem(tagName));
+		if(!tagArr){
+			tagArr = [];
+		}
+		tagArr.push(ID);
+		localStorage.setItem(tagName, JSON.stringify(tagArr));
 	}
-	return reviews;
 }
 
 /**
@@ -93,4 +130,21 @@ export function getTopReviewsFromStorage(n) {
  */
 export function getReviewsByTag(tag) {
 
+}
+
+// legacy function
+export function getAllReviewsFromStorage() {
+	if (!(localStorage.getItem("activeIDS"))) {
+		// we wanna init the active ID array and start the nextID count
+		localStorage.setItem("activeIDS", JSON.stringify([]));
+		localStorage.setItem("nextID",  JSON.stringify(0));
+	}
+	//iterate thru activeIDS
+	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
+	let reviews = [];
+	for (let i = 0; i < activeIDS.length; i++) {
+		let currReview = JSON.parse(localStorage.getItem(`review${activeIDS[i]}`));
+		reviews.push(currReview);
+	}
+	return reviews;
 }
