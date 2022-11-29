@@ -1,5 +1,5 @@
 //reviewDetails.js
-import {addTagsToStorage, deleteReviewFromStorage, deleteTagsFromStorage, getReviewFromStorage, updateReviewToStorage} from "./localStorage.js";
+import {deleteReviewFromStorage, getReviewFromStorage, updateReviewToStorage} from "./localStorage.js";
 
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
@@ -92,16 +92,21 @@ function setupUpdate(){
 		document.getElementById("s" + `${currReview["rating"]}`).checked = true;
 		document.getElementById("restaurant").defaultValue = currReview["restaurant"];
 
+		//Set used to track tags and ensure no duplicates
+		let tagSet = new Set();
+
 		if(currReview["tags"]){
 			while (tagContainer.firstChild) {
 				tagContainer.removeChild(tagContainer.firstChild);
 			}
 			for (let i = 0; i < currReview["tags"].length; i++) {
+				tagSet.add(currReview["tags"][i].toLowerCase());
 				let newTag = document.createElement("label");
 				newTag.setAttribute("class","tag");
 				newTag.innerHTML = currReview["tags"][i];
 				newTag.addEventListener("click",()=> {
 					tagContainer.removeChild(newTag);
+					tagSet.delete(currReview["tags"][i].toLowerCase());
 				});
 				tagContainer.append(newTag);
 			}
@@ -186,19 +191,24 @@ function setupUpdate(){
 		});
 
 		//adding tag to form functionality
-		//TODO: disable duplicate tags (use set?)
 		let tagAddBtn = document.getElementById("tag-add-btn");
 		tagAddBtn.addEventListener("click", ()=> {
 			let tagField = document.getElementById("tag-form");
 			if (tagField.value.length > 0) {
-				let tagLabel = document.createElement("label");
-				tagLabel.innerHTML = tagField.value;
-				tagLabel.setAttribute("class","tag");
-				tagLabel.addEventListener("click",()=> {
-					tagContainer.removeChild(tagLabel);
-				});
+				if (!tagSet.has(tagField.value.toLowerCase())){
+					let tagLabel = document.createElement("label");
+					tagLabel.innerHTML = tagField.value;
+					tagLabel.setAttribute("class","tag");
+					tagSet.add(tagField.value.toLowerCase());
+					tagLabel.addEventListener("click",()=> {
+						tagContainer.removeChild(tagLabel);
+						tagSet.delete(tagField.value.toLowerCase());
+					});
 			
-				tagContainer.append(tagLabel);
+					tagContainer.append(tagLabel);
+				} else {
+					window.alert("No duplicate tags allowed");
+				}
 				tagField.value = "";
 			}
 		});
