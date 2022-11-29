@@ -10,7 +10,9 @@
     "lint-css": "stylelint **/*.css",
     "fix-css": "stylelint --fix **/*.css",
     "http-server": "http-server source",
-    "js-doc": "jsdoc -d source/docs/ -r source/"
+    "js-doc": "jsdoc -d source/docs/ -r source/",
+    "lint-prettier": "prettier --check .",
+		"fix-prettier": "prettier --write ."
   },
   "devDependencies": {
     "eslint": "^8.27.0",
@@ -21,6 +23,7 @@
     "mock-local-storage": "^1.1.23",
     "puppeteer": "^18.2.1",
     "stylelint": "14.14.1",
-    "stylelint-config-standard": "^29.0.0"
+    "stylelint-config-standard": "^29.0.0",
+    "prettier": "2.8.0"
   }
 }
