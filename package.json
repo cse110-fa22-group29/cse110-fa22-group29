@@ -10,7 +10,7 @@
     "lint-css": "stylelint **/*.css",
     "fix-css": "stylelint --fix **/*.css",
     "http-server": "http-server source",
-    "js-docs": "jsdoc **/*.js"
+    "js-doc": "jsdoc -d source/docs/ -r source/"
   },
   "devDependencies": {
     "eslint": "^8.27.0",
