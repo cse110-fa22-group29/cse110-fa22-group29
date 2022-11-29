@@ -1,24 +1,27 @@
 {
-  "name": "food-journal",
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "test": "mocha --recursive --require mock-local-storage './{,!(node_modules)/**}/*.test.js'",
-    "lint-js": "eslint **/*.js",
-    "fix-js": "eslint --fix **/*.js",
-    "lint-html": "htmlhint **/*.html",
-    "lint-css": "stylelint **/*.css",
-    "fix-css": "stylelint --fix **/*.css",
-    "http-server": "http-server source"
-  },
-  "devDependencies": {
-    "eslint": "^8.27.0",
-    "htmlhint": "1.1.4",
-    "http-server": "",
-    "mocha": "10",
-    "mock-local-storage": "^1.1.23",
-    "puppeteer": "^18.2.1",
-    "stylelint": "14.14.1",
-    "stylelint-config-standard": "^29.0.0"
-  }
+	"name": "food-journal",
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"test": "mocha --recursive --require mock-local-storage './{,!(node_modules)/**}/*.test.js'",
+		"lint-js": "eslint **/*.js",
+		"fix-js": "eslint --fix **/*.js",
+		"lint-html": "htmlhint **/*.html",
+		"lint-css": "stylelint **/*.css",
+		"fix-css": "stylelint --fix **/*.css",
+		"http-server": "http-server source",
+		"lint-prettier": "prettier --check .",
+		"fix-prettier": "prettier --write ."
+	},
+	"devDependencies": {
+		"eslint": "^8.27.0",
+		"htmlhint": "1.1.4",
+		"http-server": "",
+		"mocha": "10",
+		"mock-local-storage": "^1.1.23",
+		"prettier": "2.8.0",
+		"puppeteer": "^18.2.1",
+		"stylelint": "14.14.1",
+		"stylelint-config-standard": "^29.0.0"
+	}
 }
