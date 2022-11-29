@@ -24,9 +24,12 @@ So far the features listed below have been completed to some degree:
 
 - Deployment
 	- Implemented: action triggered on any push to main, uses the github pages action to publish the app
-	- ToDo: Add minifications ste between trigger and github pages action
+	- Implemented: uses JSDoc to generate documentation on the same site at [docs](https://cse110-fa22-group29.github.io/cse110-fa22-group29/docs/)
+	- ToDo: Add minifications step between trigger and github pages action
 - Unit Testing
 	- Implemented: action triggers on PR to main, uses mocha to perform unit testing on core components
+- End to end testing
+	- Implemented: action triggers on PR to main, uses mocha and puppeteer to perform end to end testing
 - Linting (JS)
 	- Implemented: action triggers on PR to main, uses eslint to perform style enforcement on all JS components
 - Linting (HTML)
