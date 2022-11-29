@@ -1,4 +1,4 @@
-name: JS Unit Test
+name: Prettier
 
 on:
   pull_request:
