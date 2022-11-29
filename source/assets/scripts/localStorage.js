@@ -86,8 +86,8 @@ function deleteTagsFromStorage(ID, deletedTags) {
 		for(let j in tagArr){
 			if(tagArr[j] == ID){
 				tagArr.splice(j,1);
+				break;
 			}
-			break;
 		}
 		if(tagArr.length != 0){
 			localStorage.setItem(tagName, JSON.stringify(tagArr));
