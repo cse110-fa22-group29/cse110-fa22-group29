@@ -46,7 +46,12 @@
 						<img src ="./assets/images/Grouppink.png" alt="CREATE" style="opacity: 100%;" id="create-btn" title="Add an entry!" onclick="window.location.assign('./CreatePage.html')"/>
 						<h2 id="recent-reviews-text"> Recent Reviews </h2>
 						<img src ="./assets/images/Grouppink.png" style="opacity:0;"/>
-						<button id="rating-btn">Sort By Top Rating</button>
+						<!--<button id="rating-btn">Sort By Top Rating</button>-->
+						<label for="sort">Filtering Method:</label>
+						<select id="sort">
+							<option value="recent">Most Recent</option>
+							<option value="top">Top Rated</option>
+						</select>
 					</div>
 
 					<div class="review-container" id="review-container"></div>

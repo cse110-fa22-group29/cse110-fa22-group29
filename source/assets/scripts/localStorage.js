@@ -169,6 +169,7 @@ function addTagsToStorage(ID, addedTags) {
  * @param {number} n number of reviews to return
  * @returns {Array} list of n reviews that are the top rated
  */
+//legacy
 export function getTopReviewsFromStorage(n) {
 	let resultArr = [];
 	for(let i = 5; i > 0; i--){
@@ -195,6 +196,7 @@ export function getTopReviewsFromStorage(n) {
  * @param {string} tag to filter by
  * @returns {Object} list of reviews that all contain the specified tag
  */
+//legacy
 export function getReviewsByTag(tag) {
 	let reviewArr = [];
 	let tagArr = JSON.parse(localStorage.getItem("!" + tag.toLowerCase()));
@@ -214,9 +216,49 @@ export function getAllReviewsFromStorage() {
 	//iterate thru activeIDS
 	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
 	let reviews = [];
-	for (let i = activeIDS.length - 1; i >= 0; i--) {
+	for (let i = 0; i < activeIDS.length; i++) {
 		let currReview = JSON.parse(localStorage.getItem(`review${activeIDS[i]}`));
 		reviews.push(currReview);
 	}
 	return reviews;
+}
+
+/**
+ * Get all IDs of active reviews
+ * @returns {number[]} list of all active IDs
+ */
+export function getIDsFromStorage() {
+	if (!(localStorage.getItem("activeIDS"))) {
+		// we wanna init the active ID array and start the nextID count
+		localStorage.setItem("activeIDS", JSON.stringify([]));
+		localStorage.setItem("nextID",  JSON.stringify(0));
+	}
+	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
+	return activeIDS;
+}
+
+/**
+ * Returns all review IDs which contain the same tag specified. 
+ * @param {string} tag to filter by
+ * @returns {number[]} list of IDs of reviews that all contain the specified tag
+ */
+export function getIDsByTag(tag) {
+	let tagArr = JSON.parse(localStorage.getItem("!" + tag.toLowerCase()));
+	return tagArr;
+}
+
+/**
+ * Returns the top rated review IDs in order.
+ * @returns {number[]} list of IDs of reviews in order of top rating (most recent if equal rating)
+ */
+export function getTopIDsFromStorage() {
+	let resultArr = [];
+	for(let i = 5; i > 0; i--){
+		let starArr = JSON.parse(localStorage.getItem(`star${i}`));
+		if(!starArr){
+			continue;
+		}
+		resultArr = resultArr.concat(starArr.reverse());
+	}
+	return resultArr;
 }
