@@ -1,5 +1,5 @@
 // main.js
-import {getAllReviewsFromStorage, getTopReviewsFromStorage, getReviewsByTag, getIDsByTag, getIDsFromStorage, getReviewFromStorage, getTopIDsFromStorage} from "./localStorage.js";
+import {getIDsByTag, getIDsFromStorage, getReviewFromStorage, getTopIDsFromStorage} from "./localStorage.js";
 
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);

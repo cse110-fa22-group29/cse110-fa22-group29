@@ -164,48 +164,6 @@ function addTagsToStorage(ID, addedTags) {
 	}
 }
 
-/**
- * Returns the top n reviews by ID. If there are less than n reviews, returns the most possible. 
- * @param {number} n number of reviews to return
- * @returns {Array} list of n reviews that are the top rated
- */
-//legacy
-export function getTopReviewsFromStorage(n) {
-	let resultArr = [];
-	for(let i = 5; i > 0; i--){
-		let starArr = JSON.parse(localStorage.getItem(`star${i}`));
-		if(!starArr){
-			continue;
-		}
-		for(let j = starArr.length - 1; j >= 0; j--) {
-			let review = JSON.parse(localStorage.getItem(`review${starArr[j]}`))
-			resultArr.push(review);
-			if(resultArr.length == n) {
-				break;
-			}
-		}
-		if(resultArr.length == n) {
-			break;
-		}
-	}
-	return resultArr;
-}
-
-/**
- * Returns all reviews which contain the same tag specified. 
- * @param {string} tag to filter by
- * @returns {Object} list of reviews that all contain the specified tag
- */
-//legacy
-export function getReviewsByTag(tag) {
-	let reviewArr = [];
-	let tagArr = JSON.parse(localStorage.getItem("!" + tag.toLowerCase()));
-	for (let i in tagArr){
-		reviewArr.push(JSON.parse(localStorage.getItem(`review${tagArr[i]}`)));
-	}
-	return reviewArr;
-}
-
 // legacy function
 export function getAllReviewsFromStorage() {
 	if (!(localStorage.getItem("activeIDS"))) {

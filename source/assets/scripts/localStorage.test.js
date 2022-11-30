@@ -1,6 +1,6 @@
 import {strict as assert} from "node:assert";
 import {describe, it, before, after} from "mocha";
-import {newReviewToStorage, getReviewFromStorage, updateReviewToStorage, deleteReviewFromStorage, getAllReviewsFromStorage, getTopReviewsFromStorage, getReviewsByTag} from "./localStorage.js";
+import {newReviewToStorage, getReviewFromStorage, updateReviewToStorage, deleteReviewFromStorage, getAllReviewsFromStorage, getIDsByTag, getTopIDsFromStorage} from "./localStorage.js";
 
 describe("test CRUD localStorage interaction", () => {
 	
@@ -108,6 +108,7 @@ describe("test sort/filter localStorage interaction", () => {
 	
 	before(() => {
 		localStorage.clear();
+		getAllReviewsFromStorage();
 	});
 
 	it("add sample data for sort and filter", () => {
@@ -116,7 +117,7 @@ describe("test sort/filter localStorage interaction", () => {
 				"imgSrc": `sample src ${i}`,
 				"mealName": `sample name ${i}`,
 				"restaurant": `sample restaurant ${i}`,
-				"rating": i,
+				"rating": (i % 5) + 1,
 				"tags": [`tag ${i%3}`, `tag ${i < 50}`, "tag x"]
 			};
 
@@ -124,134 +125,145 @@ describe("test sort/filter localStorage interaction", () => {
 		}
 	});
 
-	it("test getTopReviewsFromStorage end behavior after create", () =>{
-		for(let i = 0; i <= 100; i++){
-			let top_reviews = getTopReviewsFromStorage(i);
-			for(let j = 0; j < i; j++){
-				assert.strictEqual(top_reviews[j].rating, 99 - j);
-				assert.strictEqual(top_reviews[j].reviewID, 99 - j);
-			}
+	it("test getTopIDsFromStorage end behavior after create", () =>{
+		let top_reviews = getTopIDsFromStorage();
+		let prev = Infinity;
+		for(let i = 0; i < top_reviews.length; i++){
+			let review = getReviewFromStorage(top_reviews[i]);
+			assert.strictEqual(review.rating <= prev, true);
 		}
 	});
 
-	it("test getReviewsByTag end behavior after create", () => {
+	it("test getIDsByTag end behavior after create", () => {
 		let specific_tagged_reviews = [];
 
-		specific_tagged_reviews = getReviewsByTag("tag 0");
+		specific_tagged_reviews = getIDsByTag("tag 0");
 		assert.strictEqual(specific_tagged_reviews.length, 34);
 		for(let i = 0; i < specific_tagged_reviews.length; i++){
-			assert.strictEqual(specific_tagged_reviews[i].tags.includes("tag 0"), true);
-			assert.strictEqual(specific_tagged_reviews[i].reviewID % 3, 0);
+			let review = getReviewFromStorage(specific_tagged_reviews[i]);
+			assert.strictEqual(review.tags.includes("tag 0"), true);
+			assert.strictEqual(review.reviewID % 3, 0);
 		}
 
-		specific_tagged_reviews = getReviewsByTag("tag 1");
+		specific_tagged_reviews = getIDsByTag("tag 1");
 		assert.strictEqual(specific_tagged_reviews.length, 33);
 		for(let i = 0; i < specific_tagged_reviews.length; i++){
-			assert.strictEqual(specific_tagged_reviews[i].tags.includes("tag 1"), true);
-			assert.strictEqual(specific_tagged_reviews[i].reviewID % 3, 1);
+			let review = getReviewFromStorage(specific_tagged_reviews[i]);
+			assert.strictEqual(review.tags.includes("tag 1"), true);
+			assert.strictEqual(review.reviewID % 3, 1);
 		}
 
-		specific_tagged_reviews = getReviewsByTag("tag 2");
+		specific_tagged_reviews = getIDsByTag("tag 2");	
 		assert.strictEqual(specific_tagged_reviews.length, 33);
 		for(let i = 0; i < specific_tagged_reviews.length; i++){
-			assert.strictEqual(specific_tagged_reviews[i].tags.includes("tag 2"), true);
-			assert.strictEqual(specific_tagged_reviews[i].reviewID % 3, 2);
+			let review = getReviewFromStorage(specific_tagged_reviews[i]);
+			assert.strictEqual(review.tags.includes("tag 2"), true);
+			assert.strictEqual(review.reviewID % 3, 2);
 		}
 
-		specific_tagged_reviews = getReviewsByTag("tag true");
+		specific_tagged_reviews = getIDsByTag("tag true");		
 		assert.strictEqual(specific_tagged_reviews.length, 50);
 		for(let i = 0; i < specific_tagged_reviews.length; i++){
-			assert.strictEqual(specific_tagged_reviews[i].tags.includes("tag true"), true);
-			assert.strictEqual(specific_tagged_reviews[i].reviewID < 50, true);
+			let review = getReviewFromStorage(specific_tagged_reviews[i]);
+			assert.strictEqual(review.tags.includes("tag true"), true);
+			assert.strictEqual(review.reviewID < 50, true);
 		}
 
-		specific_tagged_reviews = getReviewsByTag("tag false");
+		specific_tagged_reviews = getIDsByTag("tag false");		
 		assert.strictEqual(specific_tagged_reviews.length, 50);
 		for(let i = 0; i < specific_tagged_reviews.length; i++){
-			assert.strictEqual(specific_tagged_reviews[i].tags.includes("tag false"), true);
-			assert.strictEqual(specific_tagged_reviews[i].reviewID >= 50, true);
+			let review = getReviewFromStorage(specific_tagged_reviews[i]);
+			assert.strictEqual(review.tags.includes("tag false"), true);
+			assert.strictEqual(review.reviewID >= 50, true);
 		}
 
-		specific_tagged_reviews = getReviewsByTag("tag x");
+		specific_tagged_reviews = getIDsByTag("tag x");		
 		assert.strictEqual(specific_tagged_reviews.length, 100);
 
-		specific_tagged_reviews = getReviewsByTag("tag y");
+		specific_tagged_reviews = getIDsByTag("tag y");		
 		assert.deepEqual(specific_tagged_reviews, []);
 	});
 
 	it("update sample data for sort and filter", () => {
 		for(let i = 0; i < 100; i++){
+			let old_review = getReviewFromStorage(i);
 			let new_review = {
 				"imgSrc": `sample src ${i}`,
 				"mealName": `sample name ${i}`,
 				"restaurant": `sample restaurant ${i}`,
-				"rating": 99-i,
-				"tags": [`tag ${i%4}`, `tag ${i < 37}`, "tag y"]
+				"reviewID": old_review.reviewID,
+				"rating": (i % 5) + 1,
+				"tags": [`tag ${i % 4}`, `tag ${i < 37}`, "tag y"]
 			};
 
-			updateReviewToStorage(i, new_review);
+			updateReviewToStorage(old_review.reviewID, new_review);
 		}
 	});
 
-	it("test getTopReviewsFromStorage end behavior after create", () =>{
-		for(let i = 0; i <= 100; i++){
-			let top_reviews = getTopReviewsFromStorage(i);
-			for(let j = 0; j < i; j++){
-				assert.strictEqual(top_reviews[j].rating, 99 - j);
-				assert.strictEqual(top_reviews[j].reviewID, j);
-			}
+	it("test getTopIDsFromStorage end behavior after create", () =>{
+		let top_reviews = getTopIDsFromStorage();
+		let prev = Infinity;
+		for(let i = 0; i < top_reviews.length; i++){
+			let review = getReviewFromStorage(top_reviews[i]);
+			assert.strictEqual(review.rating <= prev, true);
 		}
 	});
 
-	it("test getReviewsByTag end behavior after update", () => {
+	it("test getIDsByTag end behavior after update", () => {
 		let specific_tagged_reviews = [];
 
-		specific_tagged_reviews = getReviewsByTag("tag 0");
+		specific_tagged_reviews = getIDsByTag("tag 0");
 		assert.strictEqual(specific_tagged_reviews.length, 25);
 		for(let i = 0; i < specific_tagged_reviews.length; i++){
-			assert.strictEqual(specific_tagged_reviews[i].tags.includes("tag 0"), true);
-			assert.strictEqual(specific_tagged_reviews[i].reviewID % 4, 0);
+			let review = getReviewFromStorage(specific_tagged_reviews[i]);
+			assert.strictEqual(review.tags.includes("tag 0"), true);
+			assert.strictEqual(review.reviewID % 4, 0);
 		}
 
-		specific_tagged_reviews = getReviewsByTag("tag 1");
+		specific_tagged_reviews = getIDsByTag("tag 1");
 		assert.strictEqual(specific_tagged_reviews.length, 25);
 		for(let i = 0; i < specific_tagged_reviews.length; i++){
-			assert.strictEqual(specific_tagged_reviews[i].tags.includes("tag 1"), true);
-			assert.strictEqual(specific_tagged_reviews[i].reviewID % 4, 1);
+			let review = getReviewFromStorage(specific_tagged_reviews[i]);
+			assert.strictEqual(review.tags.includes("tag 1"), true);
+			assert.strictEqual(review.reviewID % 4, 1);
 		}
 
-		specific_tagged_reviews = getReviewsByTag("tag 2");
+		specific_tagged_reviews = getIDsByTag("tag 2");
 		assert.strictEqual(specific_tagged_reviews.length, 25);
 		for(let i = 0; i < specific_tagged_reviews.length; i++){
-			assert.strictEqual(specific_tagged_reviews[i].tags.includes("tag 2"), true);
-			assert.strictEqual(specific_tagged_reviews[i].reviewID % 4, 2);
+			let review = getReviewFromStorage(specific_tagged_reviews[i]);
+			assert.strictEqual(review.tags.includes("tag 2"), true);
+			assert.strictEqual(review.reviewID % 4, 2);
 		}
 
-		specific_tagged_reviews = getReviewsByTag("tag 3");
+		specific_tagged_reviews = getIDsByTag("tag 3");
 		assert.strictEqual(specific_tagged_reviews.length, 25);
 		for(let i = 0; i < specific_tagged_reviews.length; i++){
-			assert.strictEqual(specific_tagged_reviews[i].tags.includes("tag 3"), true);
-			assert.strictEqual(specific_tagged_reviews[i].reviewID % 4, 3);
+			let review = getReviewFromStorage(specific_tagged_reviews[i]);
+			assert.strictEqual(review.tags.includes("tag 3"), true);
+			assert.strictEqual(review.reviewID % 4, 3);
 		}
 
-		specific_tagged_reviews = getReviewsByTag("tag true");
+		specific_tagged_reviews = getIDsByTag("tag true");
 		assert.strictEqual(specific_tagged_reviews.length, 37);
 		for(let i = 0; i < specific_tagged_reviews.length; i++){
-			assert.strictEqual(specific_tagged_reviews[i].tags.includes("tag true"), true);
-			assert.strictEqual(specific_tagged_reviews[i].reviewID < 37, true);
+			let review = getReviewFromStorage(specific_tagged_reviews[i]);
+			assert.strictEqual(review.tags.includes("tag true"), true);
+			assert.strictEqual(review.reviewID < 37, true);
 		}
 
-		specific_tagged_reviews = getReviewsByTag("tag false");
+		specific_tagged_reviews = getIDsByTag("tag false");
 		assert.strictEqual(specific_tagged_reviews.length, 63);
 		for(let i = 0; i < specific_tagged_reviews.length; i++){
-			assert.strictEqual(specific_tagged_reviews[i].tags.includes("tag false"), true);
-			assert.strictEqual(specific_tagged_reviews[i].reviewID >= 37, true);
+			let review = getReviewFromStorage(specific_tagged_reviews[i]);
+			assert.strictEqual(review.tags.includes("tag false"), true);
+			assert.strictEqual(review.reviewID >= 37, true);
 		}
 
-		specific_tagged_reviews = getReviewsByTag("tag x");
+		specific_tagged_reviews = getIDsByTag("tag x");
 		assert.deepEqual(specific_tagged_reviews, []);
 
-		specific_tagged_reviews = getReviewsByTag("tag y");
+		specific_tagged_reviews = getIDsByTag("tag y");
 		assert.strictEqual(specific_tagged_reviews.length, 100);
 	});
 
@@ -261,38 +273,38 @@ describe("test sort/filter localStorage interaction", () => {
 		}
 	});
 
-	it("test getTopReviewsFromStorage end behavior after delete", () =>{
+	it("test getTopIDsFromStorage end behavior after delete", () =>{
 		for(let i = 0; i <= 100; i++){
-			let top_reviews = getTopReviewsFromStorage(i);
+			let top_reviews = getTopIDsFromStorage(i);
 			assert.deepEqual(top_reviews, []);
 		}
 	});
 
-	it("test getReviewsByTag end behavior after delete", () => {
+	it("test getIDsByTag end behavior after delete", () => {
 		let specific_tagged_reviews = [];
 
-		specific_tagged_reviews = getReviewsByTag("tag 0");
+		specific_tagged_reviews = getIDsByTag("tag 0");
 		assert.deepEqual(specific_tagged_reviews, []);
 
-		specific_tagged_reviews = getReviewsByTag("tag 1");
+		specific_tagged_reviews = getIDsByTag("tag 1");
 		assert.deepEqual(specific_tagged_reviews, []);
 
-		specific_tagged_reviews = getReviewsByTag("tag 2");
+		specific_tagged_reviews = getIDsByTag("tag 2");
 		assert.deepEqual(specific_tagged_reviews, []);
 
-		specific_tagged_reviews = getReviewsByTag("tag 3");
+		specific_tagged_reviews = getIDsByTag("tag 3");
 		assert.deepEqual(specific_tagged_reviews, []);
 
-		specific_tagged_reviews = getReviewsByTag("tag true");
+		specific_tagged_reviews = getIDsByTag("tag true");
 		assert.deepEqual(specific_tagged_reviews, []);
 
-		specific_tagged_reviews = getReviewsByTag("tag false");
+		specific_tagged_reviews = getIDsByTag("tag false");
 		assert.deepEqual(specific_tagged_reviews, []);
 
-		specific_tagged_reviews = getReviewsByTag("tag x");
+		specific_tagged_reviews = getIDsByTag("tag x");
 		assert.deepEqual(specific_tagged_reviews, []);
 
-		specific_tagged_reviews = getReviewsByTag("tag y");
+		specific_tagged_reviews = getIDsByTag("tag y");
 		assert.deepEqual(specific_tagged_reviews, []);
 	});
 
