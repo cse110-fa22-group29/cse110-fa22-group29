@@ -19,6 +19,11 @@
 	background-color: #f7dfd5;
 }
 
+#d-meal-img {
+	border: 2px solid rgb(31 41 32);
+	border-radius: 8px;
+}
+
 fieldset {
 	border: none;
 }

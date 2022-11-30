@@ -13,20 +13,23 @@ function init(){
 	setupUpdate();
 }
 
+/**
+ * Populates the relevant data to the details from local storage review
+ */
 function setupInfo(){
 	let currID = JSON.parse(sessionStorage.getItem("currID"));
 	let currReview = getReviewFromStorage(currID);
 	
 	//meal image
-	let mealImg = document.getElementById("d-mealImg");
+	let mealImg = document.getElementById("d-meal-img");
 	mealImg.setAttribute("src",currReview["mealImg"]);
 	mealImg.addEventListener("error", function(e) {
-		mealImg.setAttribute("src", "./assets/images/plate_with_cutlery.png");
+		mealImg.setAttribute("src", "./assets/images/default_plate.png");
 		e.onerror = null;
 	});
 
 	//meal name
-	let mealLabel = document.getElementById("d-mealName");
+	let mealLabel = document.getElementById("d-meal-name");
 	mealLabel.innerHTML = currReview["mealName"];
 
 	//restaurant name
@@ -55,7 +58,7 @@ function setupInfo(){
 }
 
 /**
- * Sets up delete button to delete reveiw from storage and switch to homepage.
+ * Sets up delete button to delete review from storage and switch to homepage
  */
 function setupDelete(){
 	let deleteBtn = document.getElementById("delete-btn");
@@ -70,7 +73,7 @@ function setupDelete(){
 }
 
 /**
- * Sets up update button to reveal form and update info in storage and the current page.
+ * Sets up update button to reveal form and update info in storage and the current page 
  */
 function setupUpdate(){
 	let updateBtn = document.getElementById("update-btn");
@@ -92,16 +95,22 @@ function setupUpdate(){
 		document.getElementById("s" + `${currReview["rating"]}`).checked = true;
 		document.getElementById("restaurant").defaultValue = currReview["restaurant"];
 
+		//Set used to track tags and ensure no duplicates
+		let tagSet = new Set();
+
 		if(currReview["tags"]){
 			while (tagContainer.firstChild) {
 				tagContainer.removeChild(tagContainer.firstChild);
 			}
+			let tagSetVal = currReview["tags"][i].toLowerCase()
 			for (let i = 0; i < currReview["tags"].length; i++) {
+				tagSet.add(tagSetVal);
 				let newTag = document.createElement("label");
 				newTag.setAttribute("class","tag");
 				newTag.innerHTML = currReview["tags"][i];
 				newTag.addEventListener("click",()=> {
 					tagContainer.removeChild(newTag);
+					tagSet.delete(tagSetVal);
 				});
 				tagContainer.append(newTag);
 			}
@@ -148,11 +157,13 @@ function setupUpdate(){
 		
 		//Take formdata values as newData when submit
 		form.addEventListener("submit", function(){
-			//We create reviewCard datea, replace it in in storage, and update tags
+			/*
+			*  User submits the form for their review.
+			*  We create reviewCard data, replace in storage, and update tags
+			*/
 			let formData = new FormData(form);
 			let newData = {};
-
-			// Iterate through formData an add to newData
+			//iterate through formData and add to newData
 			for (let [key, value] of formData) {
 				console.log(`${key}`);
 				console.log(`${value}`);
@@ -176,26 +187,33 @@ function setupUpdate(){
 			}
 
 			newData["reviewID"] = currID;
-
+			
 			updateReviewToStorage(currID, newData);
 
 			updateDiv.classList.add("hidden");
 
 		});
 
-		// Adding tag to form functionality
+		//adding tag to form functionality
 		let tagAddBtn = document.getElementById("tag-add-btn");
 		tagAddBtn.addEventListener("click", ()=> {
 			let tagField = document.getElementById("tag-form");
 			if (tagField.value.length > 0) {
-				let tagLabel = document.createElement("label");
-				tagLabel.innerHTML = tagField.value;
-				tagLabel.setAttribute("class","tag");
-				tagLabel.addEventListener("click",()=> {
-					tagContainer.removeChild(tagLabel);
-				});
+				let tagSetVal = tagField.value.toLowerCase();
+				if (!tagSet.has(tagSetVal)){
+					let tagLabel = document.createElement("label");
+					tagLabel.innerHTML = tagField.value;
+					tagLabel.setAttribute("class","tag");
+					tagSet.add(tagSetVal);
+					tagLabel.addEventListener("click",()=> {
+						tagContainer.removeChild(tagLabel);
+						tagSet.delete(tagSetVal);
+					});
 			
-				tagContainer.append(tagLabel);
+					tagContainer.append(tagLabel);
+				} else {
+					window.alert("No duplicate tags allowed");
+				}
 				tagField.value = "";
 			}
 		});

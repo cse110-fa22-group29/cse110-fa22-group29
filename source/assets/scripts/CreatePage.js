@@ -6,9 +6,7 @@ window.addEventListener("DOMContentLoaded", init);
  * Delegates the functionality for creating review cards.
  */
 function init() {
-	
 	initFormHandler();
-    
 }
 
 /**
@@ -104,24 +102,29 @@ function initFormHandler() {
 
 	// Event listener for tag functionality
 	let tagAddBtn = document.getElementById("tag-add-btn");
+	//Set used to track tags and ensure no duplicates
+	let tagSet = new Set();
 	tagAddBtn.addEventListener("click", ()=> {
 		let tagField = document.getElementById("tag-form");
 
 		// If there is a tag, it'll display the tag
 		if (tagField.value.length > 0) {
-			let tagLabel = document.createElement("label");
-			tagLabel.innerHTML = tagField.value;
-			tagLabel.setAttribute("class","tag");
-			
-			// Allows for user to delete the tag
-			tagLabel.addEventListener("click",()=> {
-				tagContainer.removeChild(tagLabel);
-			});
-			
-			// Adds the tag
-			tagContainer.append(tagLabel);
+			let tagSetVal = tagField.value.toLowerCase();
+			if (!tagSet.has(tagSetVal)){
+				let tagLabel = document.createElement("label");
+				tagLabel.innerHTML = tagField.value;
+				tagLabel.setAttribute("class","tag");
+				tagSet.add(tagField.value.toLowerCase());
+				tagLabel.addEventListener("click",()=> {
+					tagContainer.removeChild(tagLabel);
+					tagSet.delete(tagField.value.toLowerCase());
+				});
+		
+				tagContainer.append(tagLabel);
+			} else {
+				window.alert("No duplicate tags allowed");
+			}
 			tagField.value = "";
-
 		}
 	});
 
