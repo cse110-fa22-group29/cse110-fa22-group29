@@ -17,31 +17,76 @@ function initFormHandler() {
 	// Accesses form components
 	let tagContainer = document.getElementById("tag-container-form");
 	let form = document.querySelector("form");
-
-	// Event listener for reading form data
-	let select = document.getElementById("select");
-	select.addEventListener("change", function() {
-		const input = document.getElementById("source");
 	
+	// Declaring variable storing image data url
+	let imgDataURL = "";
+	
+	// Accessing components related to taking photo
+	let videoMode = true;
+	let player = document.getElementById("player");
+	let canvas = document.getElementById("photoCanvas");
+	let photoButton = document.getElementById("photoButton");
+	let context = canvas.getContext('2d');
+
+	// Event listener for the photo taking/reset button
+	photoButton.addEventListener('click', ()=>{
+		// capturing the current video frame
+		if (videoMode) {
+			videoMode = false;
+			
+			// setting up the appropriate components for displaying the photo preview
+			photoButton.innerText = "Retake";
+			player.setAttribute("hidden", "");
+			canvas.removeAttribute("hidden", "");
+
+			// displaying the captured snapshot on a canvas and saving it as a data url
+			context.drawImage(player, 0, 0, canvas.width, canvas.height);
+			imgDataURL = canvas.toDataURL();
+		}
+		// returning to displaying the video stream
+		else {
+			videoMode = true;
+
+			// setting up the appropriate components for the video stream
+			photoButton.innerText = "Take Photo";
+			canvas.setAttribute("hidden", "");
+			player.removeAttribute("hidden", "");
+		}
+	});
+
+	// Event listener for reading image form different data
+	let select = document.getElementById("select");
+	const input = document.getElementById("mealImg");
+	select.addEventListener("change", function() {
 		// Select a photo with HTML file selector
 		if (select.value == "file") {
-			input.innerHTML = `
-			Source:
-			<input type="file" accept="image/*" id="mealImg" name="mealImg">
-			`;
+			// enabling file upload components and hiding photo taking components
+			input.removeAttribute("hidden", "");
+			player.setAttribute("hidden", "");
+			canvas.setAttribute("hidden", "");
+			photoButton.setAttribute("hidden", "");
+
+			// stopping the video stream
+			player.srcObject.getVideoTracks()[0].stop();
 		}
 
-		// Upload text URL input
+		// Take a photo
 		else {
-			input.innerHTML = `
-			Source:
-			<input type="text" id="mealImg" name="mealImg">
-			`;
+			// enabling photo taking components and hiding file upload components
+			videoMode = true;
+			photoButton.innerText = "Take Photo";
+			input.setAttribute("hidden", "");
+			player.removeAttribute("hidden", "");
+			photoButton.removeAttribute("hidden", "");
+
+			// getting video stream from user's camera then displaying it on a video element
+			navigator.mediaDevices.getUserMedia({video: true,}).then((stream)=>{
+				player.srcObject = stream;
+			});
 		}
 	});
 
 	// Addresses sourcing image from local file
-	let imgDataURL = "";
 	document.getElementById("mealImg").addEventListener("change", function() {
 		const reader = new FileReader();
 		
@@ -53,7 +98,7 @@ function initFormHandler() {
 		// Convert image file into data URL for local storage
 		reader.readAsDataURL(document.getElementById("mealImg").files[0]);
 	});
-		
+
 	form.addEventListener("submit", function(e){
 
 		// Create reviewObject and put in storage
@@ -68,7 +113,7 @@ function initFormHandler() {
 			if (`${key}` !== "tag-form") {
 				reviewObject[`${key}`] = `${value}`;
 			}
-			if (`${key}` === "mealImg" && select.value == "file") {
+			if (`${key}` === "mealImg" && imgDataURL !== "") {
 				reviewObject["mealImg"] = imgDataURL;
 			}
 		}
@@ -126,6 +171,6 @@ function initFormHandler() {
 			}
 			tagField.value = "";
 		}
-	});
+	});		
 
 }

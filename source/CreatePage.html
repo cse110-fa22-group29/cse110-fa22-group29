@@ -39,13 +39,17 @@
 					<legend>PICTURE:</legend>
 					<select id="select" name="select">
 						<option value="file">File Upload</option>
-						<option value="url">From an URL</option>
+						<option value="photo">Take a Photo</option>
 					</select>
-					<label for="mealImage" id="source">
-						<input type="file" accept="image/*" id="mealImg" name="mealImg">
-					</label>
+					<input type="file" accept="image/*" id="mealImg" name="mealImg">
 				</fieldset>
-				
+
+				<fieldset>
+					<video id="player" width="320" height="240" autoplay hidden></video>
+					<canvas id="photoCanvas" width="320" height="240" hidden></canvas>
+					<button type="button" id="photoButton" hidden>Take Photo</button>
+				</fieldset>
+
 				<fieldset>
 					<legend>MEAL NAME:</legend>
 					<label for="Name: "> <input type="text" id="mealName" name="mealName" required> </label>
