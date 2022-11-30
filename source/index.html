@@ -32,18 +32,21 @@
 				<div style="width: 60%;">
 					<div class="search-bar">
 						<form id="form">
-							<input type="search" id="searching" name="searchBar" placeholder="Search journal...">
-							<button class="click" type="search"> Search </button>
+							<input type="search" id="search-bar" name="searchBar" placeholder="Search tags...">
+							<!--- 
+								<button class="click" type="search"> Search </button>
+							--->
 							<div class="Filter-box">
 								
 							</div>
 						</form>
+						<img src ="./assets/images/search_button.png" alt="SEARCH BTN" id="search-btn"/>
 					</div>
 					<div class="center-display">		
 						<img src ="./assets/images/Grouppink.png" alt="CREATE" style="opacity: 100%;" id="create-btn" title="Add an entry!" onclick="window.location.assign('./CreatePage.html')"/>
 						<h2 id="recent-reviews-text"> Recent Reviews </h2>
 						<img src ="./assets/images/Grouppink.png" style="opacity:0;"/>
-						
+						<button id="rating-btn">Sort By Top Rating</button>
 					</div>
 
 					<div class="review-container" id="review-container"></div>

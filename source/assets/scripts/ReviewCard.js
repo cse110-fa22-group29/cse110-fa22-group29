@@ -17,6 +17,7 @@ class ReviewCard extends HTMLElement {
 			margin: 0;
 			padding: 0;
 			overflow-wrap: anywhere;
+			cursor: pointer;
 		}
 		
 		a {

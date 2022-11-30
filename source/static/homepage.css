@@ -57,13 +57,21 @@ body {
 .search-bar > form {
 	float: right;
 	padding: 6px 10px;
-	margin-top: 8px;
+	/* 
+	margin-top: 8px; 
 	margin-right: 16px;
+	*/
 	background: rgb(239 183 183);
 	font-size: 17px;
 	border: none;
 	border-radius: 12px;
-	cursor: pointer;
+}
+
+#search-btn {
+	position: relative;
+	align-self: center;
+	width: 30px; 
+    height: 30px;
 }
 
 #recent-reviews-text {
@@ -78,6 +86,7 @@ img#create-btn {
 	align-self: center;
 	padding-left: 2.5%;
 	padding-right: 2.5%;
+	cursor: pointer;
 }
 
 .review-container {

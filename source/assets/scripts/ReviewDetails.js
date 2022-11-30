@@ -99,8 +99,9 @@ function setupUpdate(){
 			while (tagContainer.firstChild) {
 				tagContainer.removeChild(tagContainer.firstChild);
 			}
-			let tagSetVal = currReview["tags"][i].toLowerCase()
+			let tagSetVal;
 			for (let i = 0; i < currReview["tags"].length; i++) {
+				tagSetVal = currReview["tags"][i].toLowerCase()
 				tagSet.add(tagSetVal);
 				let newTag = document.createElement("label");
 				newTag.setAttribute("class","tag");

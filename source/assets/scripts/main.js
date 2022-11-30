@@ -1,5 +1,5 @@
 // main.js
-import {getAllReviewsFromStorage} from "./localStorage.js";
+import {getAllReviewsFromStorage, getTopReviewsFromStorage, getReviewsByTag} from "./localStorage.js";
 
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
@@ -22,7 +22,6 @@ function addReviewsToDocument(reviews) {
 	reviews.forEach(review => {
 		let newReview = document.createElement("review-card");
 		newReview.data = review;
-		//TODO: want to append it to whatever the box is in layout 
 		reviewBox.append(newReview);
 	});
 
@@ -39,4 +38,30 @@ function initFormHandler() {
 	createBtn.addEventListener("click", function(){
 		window.location.assign("./CreatePage.html");
 	});
+
+	let ratingBtn = document.getElementById("rating-btn");
+	ratingBtn.addEventListener("click", function() {
+		let reviewBox = document.getElementById("review-container");
+		while(reviewBox.firstChild){
+			reviewBox.removeChild(reviewBox.firstChild);
+		}
+		let reviewArr = getTopReviewsFromStorage(12);
+		addReviewsToDocument(reviewArr);
+	});
+
+	//grabbing search field
+	let searchField = document.getElementById("search-bar");
+	let searchBtn = document.getElementById("search-btn");
+	//adding search functionality
+	searchBtn.addEventListener('click', function(){
+		let reviewBox = document.getElementById("review-container");
+		//clearing after a search 
+		while(reviewBox.firstChild){
+			reviewBox.removeChild(reviewBox.firstChild);
+		}
+		let reviewArr = getReviewsByTag(searchField.value);
+		addReviewsToDocument(reviewArr);
+	})	
+
+	
 }
