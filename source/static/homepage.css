@@ -86,12 +86,13 @@ img#create-btn {
 	align-self: center;
 	padding-left: 2.5%;
 	padding-right: 2.5%;
-	cursor: pointer;
+	cursor: pointer; 
 	width: 15%; 
     height: 15%;
 }
 
 img#create-btn-invis {
+	opacity: 0%;
 	width: 15%; 
     height: 15%;
 }
