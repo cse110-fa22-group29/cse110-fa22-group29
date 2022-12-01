@@ -32,22 +32,21 @@
 		<div class="body-container">
 			<div style="width: 20%;"></div>
 			<div style="width: 60%;">
+
 				<div class="search-bar">
+
 					<form id="form">
+						<label for="sort">Filtering Method:</label>
+						<select id="sort">
+							<option value="recent">Most Recent</option>
+							<option value="top">Top Rated</option>
+						</select>
 						<input type="search" id="search-bar" name="searchBar" placeholder="Search tags...">
 						<button id="clear-search">Clear Search</button>
 					</form>
 					<img src="./assets/images/search_button.png" alt="SEARCH BTN" id="search-btn" />
 				</div>
 
-				<div class="filter-bar">
-					<label for="sort">Filtering Method:</label>
-					<select id="sort">
-						<option value="recent">Most Recent</option>
-						<option value="top">Top Rated</option>
-					</select>
-				</div>
-				
 				<div class="center-display">
 					<img src="./assets/images/create_button.png" alt="CREATE" id="create-btn" title="Add an entry!"
 						onclick="window.location.assign('./CreatePage.html')" />
