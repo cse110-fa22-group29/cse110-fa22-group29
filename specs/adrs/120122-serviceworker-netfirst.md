@@ -1,8 +1,8 @@
 # Use a network first cache second for service worker architecture 
 
 - Status: in consideration
-- Deciders: Arthur Lu
-- Date: 12 / 02 / 22
+- Deciders: Arthur Lu, Kara Hoagland, Rhea Bhutada, George Dubinin
+- Date: 12 / 01 / 22
 
 ## Decision Drivers
 
@@ -16,4 +16,4 @@
 
 ## Decision Outcome
 
-Chosen Option: TBD
+Chosen Option: Network first for automatic app updating.
