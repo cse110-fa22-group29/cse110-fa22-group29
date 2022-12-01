@@ -128,7 +128,6 @@ input[type="text"]:focus {
 	color: rgb(206 83 179);
 	text-align: center;
 	text-decoration: none;
-	display: inline-block;
 	font-size: 20px;
 	cursor: pointer;
 	border-radius: 10%;
