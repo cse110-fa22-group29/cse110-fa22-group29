@@ -25,7 +25,7 @@ const ASSETS = [
 	"assets/scripts/localStorage.js",
 	"assets/scripts/main.js",
 	"assets/scripts/ReviewCard.js",
-	"assets/scripts/ReviewDetails.js",
+	"assets/scripts/ReviewDetails.js"
 ];
 
 /**
