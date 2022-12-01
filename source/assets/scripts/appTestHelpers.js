@@ -40,13 +40,13 @@ export async function setReviewForm(page, review) {
  */
 export async function checkCorrectness(root, prefix, expected){
 	// Get the review image and check src
-	let img = await root.$(`#${prefix}-mealImg`);
+	let img = await root.$(`#${prefix}-meal-img`);
 	let imgSrc = await img.getProperty("src");
 	// Check src
 	assert.strictEqual(await imgSrc.jsonValue(), expected.imgSrc);
 
 	// Get the title, comment, and restaurant
-	let title = await root.$(`#${prefix}-mealName`);
+	let title = await root.$(`#${prefix}-meal-name`);
 	let title_text = await title.getProperty("innerText");
 	let comment = await root.$(`#${prefix}-comments`);
 	let comment_text = await comment.getProperty("innerText");
