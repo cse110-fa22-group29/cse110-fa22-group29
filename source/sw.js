@@ -34,12 +34,15 @@ self.addEventListener("install", async () => {
 });
 
 self.addEventListener("fetch", (event) => {
+	console.log(`fetching: ${event.request.url}`);
 	event.respondWith(caches.open(CACHE_NAME).then((cache) => {
 		return fetch(event.request).then((fetchedResponse) => {
 			cache.put(event.request, fetchedResponse.clone());
+			console.log(typeof(fetchedResponse));
 			return fetchedResponse;
 		}).catch(() => {
-			return cache.match(event.request);
+			console.log(cache.match(event.request, {ignoreVary: true}));
+			return cache.match(event.request, {ignoreVary: true});
 		});
 	}));
 });
