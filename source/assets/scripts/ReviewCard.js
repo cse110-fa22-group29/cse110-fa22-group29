@@ -158,7 +158,7 @@ class ReviewCard extends HTMLElement {
 
 		//image setup
 		let mealImg = document.createElement("img");
-		mealImg.setAttribute("id", "a-mealImg");
+		mealImg.setAttribute("id", "a-meal-img");
 		mealImg.setAttribute("alt","Meal Photo Corrupted");
 		mealImg.setAttribute("src",data["mealImg"]);
 		mealImg.addEventListener("error", function(e) {
@@ -170,7 +170,7 @@ class ReviewCard extends HTMLElement {
 		let meallabelDiv = document.createElement("div");
 		meallabelDiv.setAttribute("class", "meal-name-div");
 		let mealLabel = document.createElement("label");
-		mealLabel.setAttribute("id", "a-mealName");
+		mealLabel.setAttribute("id", "a-meal-name");
 		mealLabel.setAttribute("class","meal-name");
 		mealLabel.innerHTML = data["mealName"];
 		meallabelDiv.append(mealLabel);
@@ -252,7 +252,7 @@ class ReviewCard extends HTMLElement {
 		dataContainer["reviewID"] = this.reviewID;
 
 		//get image
-		let mealImg = this.shadowEl.getElementById("a-mealImg");
+		let mealImg = this.shadowEl.getElementById("a-meal-img");
 		dataContainer["mealImg"] = mealImg.getAttribute("src");
 
 		//get meal name
