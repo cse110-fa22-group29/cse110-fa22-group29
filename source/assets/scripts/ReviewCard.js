@@ -256,7 +256,7 @@ class ReviewCard extends HTMLElement {
 		dataContainer["mealImg"] = mealImg.getAttribute("src");
 
 		//get meal name
-		let mealLabel = this.shadowEl.getElementById("a-mealName");
+		let mealLabel = this.shadowEl.getElementById("a-meal-name");
 		dataContainer["mealName"] = mealLabel.innerHTML;
 
 		//get comment section
