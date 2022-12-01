@@ -164,7 +164,10 @@ function addTagsToStorage(ID, addedTags) {
 	}
 }
 
-// legacy function
+/**
+ * Test Helper Function to get all reviews from local storage
+ * @returns {Object} all active reviews from local storage
+ */
 export function getAllReviewsFromStorage() {
 	if (!(localStorage.getItem("activeIDS"))) {
 		// we wanna init the active ID array and start the nextID count
@@ -182,8 +185,8 @@ export function getAllReviewsFromStorage() {
 }
 
 /**
- * Get all IDs of active reviews
- * @returns {number[]} list of all active IDs
+ * Get all IDs of active reviews (order: most recent)
+ * @returns {number[]} list of all active IDs by recency
  */
 export function getIDsFromStorage() {
 	if (!(localStorage.getItem("activeIDS"))) {
@@ -192,17 +195,20 @@ export function getIDsFromStorage() {
 		localStorage.setItem("nextID",  JSON.stringify(0));
 	}
 	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
-	return activeIDS;
+	return activeIDS.reverse();
 }
 
 /**
- * Returns all review IDs which contain the same tag specified. 
+ * Returns all review IDs which contain the same tag specified (order: most recent)
  * @param {string} tag to filter by
- * @returns {number[]} list of IDs of reviews that all contain the specified tag
+ * @returns {number[]} list of IDs of reviews that all contain the specified tag by recency
  */
 export function getIDsByTag(tag) {
 	let tagArr = JSON.parse(localStorage.getItem("!" + tag.toLowerCase()));
-	return tagArr;
+	if(!tagArr){
+		tagArr = [];
+	}
+	return tagArr.reverse();
 }
 
 /**

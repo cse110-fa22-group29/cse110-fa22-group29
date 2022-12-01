@@ -42,6 +42,14 @@ function initFormHandler() {
 		sortAndFilter(searchTag);
 	});
 
+	//for clearing tag filter
+	let clearSearchBtn = document.getElementById("clear-search");
+	clearSearchBtn.addEventListener("click", function(){
+		searchTag = null;
+		searchField.value = "";
+		sortAndFilter(searchTag);
+	})
+
 	//sort by selected method
 	let sortMethod = document.getElementById("sort");
 	sortMethod.addEventListener("input", function(){
@@ -74,7 +82,7 @@ function sortAndFilter(searchTag){
 			reviewIDs = getIDsFromStorage();
 		}
 		//reversed for recency
-		loadReviews(0, reviewIDs.reverse());
+		loadReviews(0, reviewIDs);
 	} 
 	//sort method: top rated
 	else if (sortMethod.value == "top"){
@@ -98,6 +106,18 @@ function sortAndFilter(searchTag){
  */
 function loadReviews(index, reviewIDs){
 	let reviewBox = document.getElementById("review-container");
+	// label if there are no reviews to display
+	if(reviewIDs.length == 0){
+		let emptyLabel = document.createElement("label");
+		emptyLabel.setAttribute("id", "empty");
+		emptyLabel.innerText = "No Reviews To Display";
+		reviewBox.append(emptyLabel);
+	} else {
+		let emptyLabel = document.getElementById("empty");
+		if(emptyLabel){
+			reviewBox.removeChild(emptyLabel);
+		}
+	}
 	let moreBtn = document.getElementById("more-btn");
 	//delete load more button if exists
 	if(moreBtn){
