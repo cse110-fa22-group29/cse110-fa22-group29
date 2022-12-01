@@ -54,6 +54,10 @@ body {
 	justify-content: center;
 }
 
+#sort{
+	margin-right: 1em;
+}
+
 .search-bar > form {
 	float: right;
 	padding: 6px 10px;
