@@ -24,8 +24,18 @@
 	border-radius: 8px;
 }
 
+.edit-display {
+	display: block;
+}
+
 fieldset {
 	border: none;
+}
+
+#rating-container{
+	display: flex; 
+	justify-content: flex-start; 
+	align-items: center;
 }
 
 input[type="text"] {
@@ -98,7 +108,7 @@ input[type="text"]:focus {
 	flex-flow: wrap row;
 }
 
-.tag {
+.d-tag {
 	background-color: grey;
 	border-radius: 7px;
 	color: white;
@@ -107,7 +117,7 @@ input[type="text"]:focus {
 	margin: 3px;
 }
 
-.tag::before {
+.d-tag::before {
 	display: inline-block;
 	content: "x";
 	height: 15px;
@@ -118,7 +128,7 @@ input[type="text"]:focus {
 	cursor: pointer;
 }
 
-.tag:hover::before {
+.d-tag:hover::before {
 	color: red;
 }
 
@@ -147,11 +157,21 @@ input[type="text"]:focus {
 	margin-top: 5px;
 }
 
-.hidden {
-	display: none;
-}
-
 .tag-container * {
 	max-width: 100%;
 	overflow-wrap: anywhere;
+}
+
+textarea {
+	resize: none;
+	width: 100%;
+	background-color: #f8f3f1;
+}
+
+.info-only {
+	display: none;
+}
+
+.hidden {
+	display: none;
 }

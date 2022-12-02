@@ -13,6 +13,14 @@ h1 {
 	text-align: center;
 }
 
+img {
+	display: block;
+}
+
+.info-only {
+	display: block;
+}
+
 .top-bar {
 	display: flex;
 	justify-content: center;
@@ -35,6 +43,37 @@ h1 {
 	font-family: testFont, sans-serif;
 }
 
+.journal-form h1 {
+	font-family: testFont, sans-serif;
+	text-align: center;
+}
+
+.journal-form {
+	font-size: 120%;
+	font-family: "Century Gothic", sans-serif;
+	width: 50%;
+	margin: auto;
+	color: #516754;
+	border: 2px solid rgb(31 41 32);
+	border-radius: 8px;
+	background-color: #f7dfd5;
+}
+
+#d-meal-img {
+	border: 2px solid rgb(31 41 32);
+	border-radius: 8px;
+}
+
+textarea {
+	resize: none;
+	width: 100%;
+	background-color: #f7dfd5;
+}
+
+fieldset {
+	border: none;
+}
+
 .d-tag {
 	background-color: grey;
 	border-radius: 7px;
@@ -42,4 +81,46 @@ h1 {
 	padding-right: 7px;
 	padding-left: 7px;
 	margin: 10px;
+}
+
+input[type="text"] {
+	width: 100%;
+	box-sizing: border-box;
+	background-color: #f7dfd5;
+	border: none;
+	border-bottom: none;
+	font-family : "Century Gothic";
+	text-align : center;
+	font-weight : bold;
+}
+
+#d-meal-name {
+	font-size : 2em;
+}
+
+#d-restaurant {
+	font-size : 1.5em;
+}
+
+#d-rating {
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+.tag-container {
+	display: flex;
+	flex-flow: wrap row;
+}
+
+.tag-container * {
+	max-width: 100%;
+	overflow-wrap: anywhere;
+}
+
+.hidden {
+	display: none;
+}
+
+.edit-display {
+	display: none;
 }

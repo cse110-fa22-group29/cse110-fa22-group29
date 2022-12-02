@@ -16,7 +16,7 @@
 		<!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
 		<!-- <link rel="stylesheet" href="/static/reset.css" /> -->
 		<link rel="stylesheet" href="./static/ReviewDetails.css" />
-		<link rel="stylesheet" href="./static/Form.css" />
+		<!--<link rel="stylesheet" href="./static/Form.css" />-->
 		<script src="assets/scripts/ReviewDetails.js" type="module"></script>
 	</head>
 	<body>
@@ -29,8 +29,8 @@
 		</header>
 
 		<main>
-			<div class="journal-form" id="update-form">
-				<form>
+			<div class="journal-form">
+				<form id="update-form">
 					<fieldset class = "meal-name">
 						<label for="Name:"> <input type="text" id="d-meal-name" name="mealName" required> </label>
 						<label for="Name:"> <input type="text" id="d-restaurant" name="restaurant" required> </label>
@@ -39,18 +39,18 @@
 					<fieldset class = "meal-pics">
 						<!-- image source --> 
 						<img width=40% height=40% id="d-meal-img" style="margin-left: auto; margin-right: auto; display: block;"/>
-						<select id="select" name="select">
+						<select id="select" class="edit-display" name="select">
 							<option value="file">File Upload</option>
 							<option value="url">From an URL</option>
 						</select>
-						<label for="mealImage" id="source">
+						<label for="mealImage" id="source" class="edit-display">
 							<input type="file" accept="image/*" id="mealImg" name="mealImg">
 						</label>
 					</fieldset>
 		
 					<fieldset class = "stars-and-comments" style="text-align: center;">
-						<img width=30% height=30% id="d-rating" style="margin-left: auto; margin-right: auto; display: block;"/>
-						<div style="display: flex; justify-content: flex-start; align-items: center;">
+						<img width=30% height=30% id="d-rating" class="info-only"/>
+						<div id="rating-container" class="edit-display">
 							<div class="rating">
 								<input type="radio" id="s5" name="rating" value="5"/> <label for="s5" id="s5-select"> 5 stars </label>
 								<input type="radio" id="s4" name="rating" value="4"/> <label for="s4" id="s4-select"> 4 stars </label>
@@ -59,23 +59,23 @@
 								<input type="radio" id="s1" name="rating" value="1"/> <label for="s1" id="s1-select"> 1 star </label>
 							</div>
 						</div>
-						<p id = "d-comments"></p>
+						<textarea name="comments" id="d-comments" rows="5"></textarea>
 					</fieldset>
 
 					<fieldset class = "meal-tags">
 						<input type="text" id="tag-form" name="tag-form">
 						<div class='tag-container' id="tag-container-form"></div>
-						<button type="button" id="tag-add-btn"> + </button>
+						<button type="button" id="tag-add-btn" class="edit-display"> + </button>
 					</fieldset>
-					<button type="submit" id="save-btn" value="Submit">Save</button>
-					<input type="button" value="Cancel" id="home-btn" onclick="window.location.assign('./index.html')">
+					<button type="submit" id="save-btn" class="edit-display" value="Submit">Save</button>
+					<input type="button" value="Cancel" id="cancel-btn" class="edit-display">
 				</form>
 			</div>
 		
 			<!---Navigation Buttons-->
 			<div style="display: flex; justify-content: center;">
 				<img src="./assets/images/home_button_for_interface.png" style="margin: 20px 10px 20px 10px;" id="home-btn" title="Home Page" onclick="window.location.assign('./index.html')" height="50" width="50"/>
-				<img src ="./assets/images/edit_button_for_interface.png" style="margin: 20px 10px 20px 10px;" id="update-btn" title="Edit Review" height="50" width="50"/>
+				<img src ="./assets/images/edit_button_for_interface.png" class="info-only" style="margin: 20px 10px 20px 10px;" id="update-btn" title="Edit Review" height="50" width="50"/>
 				<img src ="./assets/images/delete_icon_for_interface.png" style="margin: 20px 10px 20px 10px;" id="delete-btn" title="Delete Review" class="danger" height="50" width="50"/>
 			</div>
 		</main>
