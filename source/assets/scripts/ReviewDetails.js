@@ -102,6 +102,7 @@ function setupUpdate(){
 			while (tagContainer.firstChild) {
 				tagContainer.removeChild(tagContainer.firstChild);
 			}
+      
 			for (let i = 0; i < currReview["tags"].length; i++) {
 				let tagSetVal = currReview["tags"][i].toLowerCase()
 				tagSet.add(tagSetVal);
