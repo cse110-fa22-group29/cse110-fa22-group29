@@ -1,56 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Food Journal</title>
 
-		<!--Add Favicon-->
-		<link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Food Journal</title>
 
-		<!-- Recipe Card Custom Element -->
-		<script src="assets/scripts/ReviewCard.js" type="module"></script>
+	<!--Add Favicon-->
+	<link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
 
-		<!-- Main Stylesheets & Scripts --> 
-		<!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
-		<!-- <link rel="stylesheet" href="/static/reset.css" /> -->
-		<link rel="stylesheet" href="./static/homepage.css" />
-		<script src="assets/scripts/main.js" type="module"></script>
-	</head>
-	<body>
-		<header>
-			<div class="top-bar">
-				<img src ="./assets/images/Logo.png" alt="logo" />
-				<h1> Food Journal </h1>
-				<img src ="./assets/images/Logo.png" alt="logo" />
-			</div>
-		</header>
-		<main>
-			<div class="body-container">
-				<div style="width: 20%;"></div>
-				<div style="width: 60%;">
-					<div class="search-bar">
-						<form id="form">
-							<input type="search" id="searching" name="searchBar" placeholder="Search journal...">
-							<button class="click" type="search"> Search </button>
-							<div class="Filter-box">
-								
-							</div>
-						</form>
-					</div>
-					<div class="center-display">		
-						<img src ="./assets/images/Grouppink.png" alt="CREATE" style="opacity: 100%;" id="create-btn" title="Add an entry!" onclick="window.location.assign('./CreatePage.html')"/>
-						<h2 id="recent-reviews-text"> Recent Reviews </h2>
-						<img src ="./assets/images/Grouppink.png" style="opacity:0;"/>
-						
-					</div>
+	<!-- Recipe Card Custom Element -->
+	<script src="assets/scripts/ReviewCard.js" type="module"></script>
 
-					<div class="review-container" id="review-container"></div>
+	<!-- Main Stylesheets & Scripts -->
+	<!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
+	<!-- <link rel="stylesheet" href="/static/reset.css" /> -->
+	<link rel="stylesheet" href="./static/homepage.css" />
+	<script src="assets/scripts/main.js" type="module"></script>
+</head>
+
+<body>
+	<header>
+		<div class="top-bar">
+			<img src="./assets/images/Logo.png" alt="logo" />
+			<h1> Food Journal </h1>
+			<img src="./assets/images/Logo.png" alt="logo" />
+		</div>
+	</header>
+	<main>
+		<div class="body-container">
+			<div style="width: 20%;"></div>
+			<div style="width: 60%;">
+
+				<div class="search-bar">
+
+					<form id="form">
+						<label for="sort">Sorting Method:</label>
+						<select id="sort">
+							<option value="recent">Most Recent</option>
+							<option value="top">Top Rated</option>
+						</select>
+						<input type="search" id="search-bar" name="searchBar" placeholder="Search tags...">
+						<button id="clear-search">Clear Search</button>
+					</form>
+					<img src="./assets/images/search_button.png" alt="SEARCH BTN" id="search-btn" />
 				</div>
-				<div style="width: 20%;">
+
+				<div class="center-display">
+					<img src="./assets/images/create_button.png" alt="CREATE" id="create-btn" title="Add an entry!"
+						onclick="window.location.assign('./CreatePage.html')" />
+					<h2 id="recent-reviews-text"> Recent Reviews </h2>
+					<img src="./assets/images/create_button.png" id="create-btn-invis" draggable="false" />
 				</div>
+
+				<div class="review-container" id="review-container"></div>
 			</div>
-		</main>
-	</body>
+			<div style="width: 20%;">
+			</div>
+		</div>
+	</main>
+</body>
+
 </html>
