@@ -107,45 +107,37 @@ class ReviewCard extends HTMLElement {
 		articleEl.append(styleEl);
 		shadowEl.append(articleEl);
 		this.shadowEl = shadowEl;
-		//attach event listener to each recipe-card
+		
+		// Attach event listener to each review-card
 		this.addEventListener("click", (event) => {
 			console.log(event.target);
 			console.log(event.target.reviewId);
-			//Option 1: sending current data to second html page using localStorage (could also just store index)
+			// Saves the ID for corresponding review on new page (for data retrieval)
 			sessionStorage.setItem("currID", JSON.stringify(event.target.data.reviewID));
+			// Goes to the new page for the review
 			window.location.assign("./ReviewDetails.html");
-			/*
-      //Option 2: sending current data to second html page using string query w/ url (currently not storing value)
-      let reviewFields = window.location.search.slice(1).split("&");
-      for(let i = 0; i < reviewFields.length; i++) {
-        let kv = reviewFields[i].split("=");
-        let key = kv[0]; 
-        let value = kv[1];
-        console.log(key);
-        console.log(value);
-        // What you want to do with name and value...
-      }*/
 		});
 	}
 
 	/**
-   * Called when the .data property is set on this element.
-   *
-   * For Example:
-   * let reviewCard = document.createElement('review-card'); 
-   * reviewCard.data = { foo: 'bar' } 
-   *
-   * @param {Object} data - The data to pass into the <review-card>, must be of the
-   *                        following format:
-   *                        {
-   *                          "mealImg": "string",
-   *                          "mealName": "string",
-   *                          "comments": "string",
-   *                          "rating": number,
-   *                          "restaurant": "string",
-   *                          "tags": string array
-   *                        }
-   */
+	* Called when the .data property is set on this element.
+	*
+	* For Example:
+	* let reviewCard = document.createElement('review-card'); 
+	* reviewCard.data = { foo: 'bar' } 
+	*
+	* @param {Object} data - The data to pass into the <review-card>, must be of the
+	*                        following format:
+	*                        {
+	*                          "mealImg": string,
+	*                          "mealName": string,
+	*                          "comments": string,
+	*                          "rating": number,
+	*                          "restaurant": string,
+	*                          "reviewID": number,
+	*                          "tags": string array
+	*                        }
+	*/
 	set data(data) {
 		// If nothing was passed in, return
 		if (!data) return;
@@ -153,10 +145,10 @@ class ReviewCard extends HTMLElement {
 		// Select the <article> we added to the Shadow DOM in the constructor
 		let articleEl = this.shadowEl.querySelector("article");
     
-		// setting the article elements for the review card
+		// Setting the article elements for the review card
 		this.reviewID = data["reviewID"];
 
-		//image setup
+		// Image setup
 		let mealImg = document.createElement("img");
 		mealImg.setAttribute("id", "a-meal-img");
 		mealImg.setAttribute("alt","Meal Photo Corrupted");
@@ -166,7 +158,7 @@ class ReviewCard extends HTMLElement {
 			e.onerror = null;
 		});
 
-		//meal name setup
+		// Meal name setup
 		let meallabelDiv = document.createElement("div");
 		meallabelDiv.setAttribute("class", "meal-name-div");
 		let mealLabel = document.createElement("label");
@@ -175,19 +167,19 @@ class ReviewCard extends HTMLElement {
 		mealLabel.innerHTML = data["mealName"];
 		meallabelDiv.append(mealLabel);
 
-		//restaurant name setup
+		// Restaurant name setup
 		let restaurantLabel = document.createElement("label");
 		restaurantLabel.setAttribute("id", "a-restaurant");
 		restaurantLabel.setAttribute("class","restaurant-name");
 		restaurantLabel.innerHTML = data["restaurant"];
 
-		//comment section setup (display set to none)
+		// Comment section setup (display set to none)
 		let comments = document.createElement("p");
 		comments.setAttribute("id", "a-comments");
 		comments.style.display = "none";
 		comments.innerText = data["comments"];
 
-		//other info: rating
+		// Rating setup
 		let ratingDiv = document.createElement("div");
 		ratingDiv.setAttribute("class", "rating");
 		let starsImg = document.createElement("img");
@@ -197,13 +189,15 @@ class ReviewCard extends HTMLElement {
 		starsImg.setAttribute("num", data["rating"]);
 		ratingDiv.append(starsImg);
 
-		//added tags
+		// Tags setup
 		let tagContainerDiv = document.createElement("div"); 
 		tagContainerDiv.setAttribute("class", "tag-container-div");
 		let tagContainer = document.createElement("div");
 		tagContainer.setAttribute("class", "tag-container");
 		tagContainer.setAttribute("id", "a-tags");
 		tagContainer.setAttribute("list", data["tags"]);
+
+		// Checks if user gave tags, if so added to review card
 		if(data["tags"]){
 			for (let i = 0; i < data["tags"].length; i++) {
 				let newTag = document.createElement("label");
@@ -214,8 +208,7 @@ class ReviewCard extends HTMLElement {
 		}
 		tagContainerDiv.append(tagContainer);
 
-		//adding final ID to data!
-
+		// Setting all the data to the review card
 		articleEl.append(mealImg);
 		articleEl.append(meallabelDiv);
 		articleEl.append(restaurantLabel);
@@ -227,28 +220,29 @@ class ReviewCard extends HTMLElement {
 	}
 
 	/**
-   * Called when getting the .data property of this element.
-   *
-   * For Example:
-   * let reviewCard = document.createElement('review-card'); 
-   * reviewCard.data = { foo: 'bar' } 
-   *
-   * @return {Object} data - The data from the <review-card>, of the
-   *                        following format:
-   *                        {
-   *                          "mealImg": "string",
-   *                          "mealName": "string",
-   *                          "comments": "string",
-   *                          "rating": number,
-   *                          "restaurant": "string",
-   *                          "tags": string array
-   *                        }
-   */
+	* Called when getting the .data property of this element.
+	*
+	* For Example:
+	* let reviewCard = document.createElement('review-card'); 
+	* reviewCard.data = { foo: 'bar' } 
+	*
+	* @return {Object} data - The data from the <review-card>, of the
+	*                        following format:
+	*                        {
+	*                          "mealImg": string,
+	*                          "mealName": string,
+	*                          "comments": string,
+	*                          "rating": number,
+	*                          "restaurant": string,
+	*                          "reviewID": number,
+	*                          "tags": string array
+	*                        }
+	*/
 	get data() {
 
 		let dataContainer = {};
     
-		// getting the article elements for the review card
+		// Getting the article elements for the review card
 		dataContainer["reviewID"] = this.reviewID;
 
 		//get image
@@ -259,20 +253,20 @@ class ReviewCard extends HTMLElement {
 		let mealLabel = this.shadowEl.getElementById("a-meal-name");
 		dataContainer["mealName"] = mealLabel.innerHTML;
 
-		//get comment section
+		// Get comment section
 		let comments = this.shadowEl.getElementById("a-comments");
 		console.log(comments);
 		dataContainer["comments"] = comments.innerText;
 
-		//get other info: rating
+		// Get rating
 		let starsImg = this.shadowEl.getElementById("a-rating");
 		dataContainer["rating"] = starsImg.getAttribute("num");
 
-		//get restaurant name
+		//Get restaurant name
 		let restaurantLabel = this.shadowEl.getElementById("a-restaurant");
 		dataContainer["restaurant"] = restaurantLabel.innerHTML;
 
-		//get tags
+		// Get tags
 		let tagContainer = this.shadowEl.getElementById("a-tags");
 		dataContainer["tags"] = tagContainer.getAttribute("list").split(",");
 

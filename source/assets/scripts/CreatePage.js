@@ -2,31 +2,36 @@ import { newReviewToStorage } from "./localStorage.js";
 
 window.addEventListener("DOMContentLoaded", init);
 
+/**
+ * Delegates the functionality for creating review cards.
+ */
 function init() {
 	initFormHandler();
 }
 
+/**
+ * Creates a form and associates a new ID with the new review card.
+ */
 function initFormHandler() {
 
-	//accessing form components
+	// Accesses form components
 	let tagContainer = document.getElementById("tag-container-form");
 	let form = document.querySelector("form");
 
-	/*
-	* change the input source of the image between local file and URL 
-	* depending on user's selection
-	*/
+	// Event listener for reading form data
 	let select = document.getElementById("select");
 	select.addEventListener("change", function() {
 		const input = document.getElementById("source");
 	
+		// Select a photo with HTML file selector
 		if (select.value == "file") {
 			input.innerHTML = `
 			Source:
 			<input type="file" accept="image/*" id="mealImg" name="mealImg">
 			`;
 		}
-		//TODO: change to photo taking for sprint 3
+
+		// Upload text URL input
 		else {
 			input.innerHTML = `
 			Source:
@@ -35,28 +40,28 @@ function initFormHandler() {
 		}
 	});
 
-	//addressing sourcing image from local file
+	// Addresses sourcing image from local file
 	let imgDataURL = "";
 	document.getElementById("mealImg").addEventListener("change", function() {
 		const reader = new FileReader();
 		
-		//store image data URL after successful image load
+		// Store image data URL after successful image load
 		reader.addEventListener("load", ()=>{
 			imgDataURL = reader.result;
 		}, false);
 		
-		//convert image file into data URL for local storage
+		// Convert image file into data URL for local storage
 		reader.readAsDataURL(document.getElementById("mealImg").files[0]);
 	});
 		
 	form.addEventListener("submit", function(e){
-	/*
-    *  User submits the form for their review.
-    *  We create reviewCard and put in storage
-    */
+
+		// Create reviewObject and put in storage
 		e.preventDefault();
 		let formData = new FormData(form);
 		let reviewObject = {};
+
+		// Adds data to the reviewObject from form data
 		for (let [key, value] of formData) {
 			console.log(`${key}`);
 			console.log(`${value}`);
@@ -67,30 +72,42 @@ function initFormHandler() {
 				reviewObject["mealImg"] = imgDataURL;
 			}
 		}
+
+		// Makes sure that ratings is filled
 		if(reviewObject["rating"] != null){
+
+			//Adds rags separately as an array
 			reviewObject["tags"] = [];
 
+			// Grabs tags
 			let tags = document.querySelectorAll(".tag");
 			for(let i = 0; i < tags.length; i ++) {
 				reviewObject["tags"].push(tags[i].innerHTML);
 				tagContainer.removeChild(tags[i]);
 			}
 
+			// Assigns the new review with a new ID
 			let nextReviewId = newReviewToStorage(reviewObject);
 			sessionStorage.setItem("currID", JSON.stringify(nextReviewId));
-
+			
+			// Redirects to a page that shows the newly created review
 			window.location.assign("./ReviewDetails.html");
-		} else{
+		} 
+		// Does not let user proceed if rating is not complete
+		else{
 			window.alert("NO! FILL IN STARS");
 		}
         
 	});
 
+	// Event listener for tag functionality
 	let tagAddBtn = document.getElementById("tag-add-btn");
 	//Set used to track tags and ensure no duplicates
 	let tagSet = new Set();
 	tagAddBtn.addEventListener("click", ()=> {
 		let tagField = document.getElementById("tag-form");
+
+		// If there is a tag, it'll display the tag
 		if (tagField.value.length > 0) {
 			let tagSetVal = tagField.value.toLowerCase();
 			if (!tagSet.has(tagSetVal)){

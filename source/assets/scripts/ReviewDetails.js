@@ -4,6 +4,9 @@ import {deleteReviewFromStorage, getReviewFromStorage, updateReviewToStorage} fr
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
+/**
+ * Populates the relevant data to the details from local storage review.
+ */
 function init(){
 	setupInfo();
 	setupDelete();
@@ -55,7 +58,7 @@ function setupInfo(){
 }
 
 /**
- * Sets up delete button to delete review from storage and switch to homepage
+ * Sets up delete button to delete reveiw from storage and switch to homepage.
  */
 function setupDelete(){
 	let deleteBtn = document.getElementById("delete-btn");
@@ -70,7 +73,7 @@ function setupDelete(){
 }
 
 /**
- * Sets up update button to reveal form and update info in storage and the current page 
+ * Sets up update button to reveal form and update info in storage and the current page.
  */
 function setupUpdate(){
 	let updateBtn = document.getElementById("update-btn");
@@ -169,7 +172,7 @@ function setupUpdate(){
 				if (`${key}` !== "tag-form") {
 					newData[`${key}`] = `${value}`;
 				}
-				//Account for the case where image is not updated
+				// Account for the case where image is not updated
 				if (`${key}` === "mealImg" && document.getElementById("mealImg").value === "") {
 					newData["mealImg"] = currReview["mealImg"];
 				}
@@ -193,7 +196,7 @@ function setupUpdate(){
 
 		});
 
-		//adding tag to form functionality
+		// Adding tag to form functionality
 		let tagAddBtn = document.getElementById("tag-add-btn");
 		tagAddBtn.addEventListener("click", ()=> {
 			let tagField = document.getElementById("tag-form");

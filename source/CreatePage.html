@@ -10,19 +10,18 @@
 		<!--Add Favicon-->
 		<link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
 
-		<!-- Recipe Card Custom Element -->
+		<!-- Review Card Custom Element -->
 		<script src="assets/scripts/ReviewCard.js" type="module"></script>
 
 
-		<!-- Main Stylesheets & Scripts -->
-		<!-- Temporarily commented out reset.css due to furthur discussion needed on the values of the default config-->
-		<!-- <link rel="stylesheet" href="/static/reset.css" /> -->
+		<!-- Create Page Stylesheets & Scripts -->
 		<link rel="stylesheet" href="./static/CreatePage.css" />
 		<link rel="stylesheet" href="./static/Form.css" />
 		<script src="./assets/scripts/CreatePage.js" type="module"></script>
 	</head>
 
 	<header>
+		<!-- Setting up logo and site name at the top of the website -->
 		<div class="top-bar">
 			<img src ="./assets/images/Logo.png" alt="logo" />
 			<h1> Food Journal </h1>
@@ -85,6 +84,8 @@
 				</fieldset>
 
 			<button type="submit" id="save-btn" value="Submit">Save</button>
+
+			<!-- Button that allows user to go back to the homepage -->
 			<input type="button" value="Cancel" id="home-btn" onclick="window.location.assign('./index.html')">
 			</form>
 		</div> 
