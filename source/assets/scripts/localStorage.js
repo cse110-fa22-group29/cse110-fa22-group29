@@ -49,6 +49,18 @@ export function getReviewFromStorage(ID){
  */
 export function updateReviewToStorage(ID, review){
 	let oldReview = JSON.parse(localStorage.getItem(`review${ID}`));
+	let starArr = JSON.parse(localStorage.getItem(`star${review["rating"]}`));
+
+	//activeID update recency
+	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
+	for (let i in activeIDS){
+		if(activeIDS[i] == ID){
+			activeIDS.splice(i,1);
+			activeIDS.push(ID);
+			break;
+		}
+	}
+	localStorage.setItem("activeIDS", JSON.stringify(activeIDS));
 
 	//star local storage update
 	if(oldReview["rating"] !== review["rating"]){
@@ -67,12 +79,39 @@ export function updateReviewToStorage(ID, review){
 			localStorage.removeItem(`star${oldReview["rating"]}`);
 		}
 		//then add ID to array corresponding to new review rating
-		let newStarArr = JSON.parse(localStorage.getItem(`star${review["rating"]}`));
+		let newStarArr = starArr;
 		if(!newStarArr){
 			newStarArr = [];
 		}
 		newStarArr.push(ID);
 		localStorage.setItem(`star${review["rating"]}`, JSON.stringify(newStarArr));
+	} else if(starArr.length !== 1) {
+		//stars update recency if unchanged
+		for (let i in starArr){
+			if(starArr[i] == ID) {
+				starArr.splice(i,1)
+				starArr.push(ID);
+				break;
+			}
+		}
+		localStorage.setItem(`star${review["rating"]}`, JSON.stringify(starArr));
+	}
+
+	//specifically the unchanged tags update recency
+	let repeatedTags = review["tags"].filter(x => oldReview["tags"].includes(x));
+	let tagArr = [];
+	for (let i in repeatedTags){
+		tagArr = JSON.parse(localStorage.getItem(`!${repeatedTags[i]}`));
+		if(tagArr.length == 1){
+			for (let j in tagArr){
+				if(tagArr[j] == ID){
+					tagArr.splice(j,1);
+					tagArr.push(ID);
+					break;
+				}
+			}
+			localStorage.setItem(`!${repeatedTags[i]}`, JSON.stringify(tagArr));
+		}
 	}
 
 	//Get diff of tags and update storage
