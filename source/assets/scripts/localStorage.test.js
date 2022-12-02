@@ -58,26 +58,27 @@ describe("test CRUD localStorage interaction", () => {
 	}).timeout(5000);
 
 	it("test localStorage state during updating 1000 reviews", () => {
-		let reviews = getAllReviewsFromStorage();
-		let ids = JSON.parse(localStorage.getItem("activeIDS"));
-
 		for(let i = 0; i < 1000; i++){
+			let old_review = getReviewFromStorage(i);
+			let id = old_review.reviewID;
+
 			let new_review = {
-				"imgSrc": `updated sample src ${i}`,
-				"mealName": `updated sample name ${i}`,
-				"restaurant": `updated sample restaurant ${i}`,
-				"rating": i*2+i,
-				"tags": [`tag ${3*i}`, `tag ${3*i + 1}`, `tag ${3*i + 2}`]
+				"imgSrc": `updated sample src ${id}`,
+				"mealName": `updated sample name ${id}`,
+				"restaurant": `updated sample restaurant ${id}`,
+				"reviewID": id,
+				"rating": (id % 5) + 1,
+				"tags": [`tag ${3*id}`, `tag ${3*id + 1}`, `tag ${3*id + 2}`]
 			};
-			new_review.reviewID = i;
 
-			reviews[i] = new_review;
+			updateReviewToStorage(id, new_review);
 
-			updateReviewToStorage(i, new_review);
+			let all_reviews = getAllReviewsFromStorage();
+			let active_ids = JSON.parse(localStorage.getItem("activeIDS"));
 
-			assert.deepEqual(getAllReviewsFromStorage(), reviews);
+			assert.deepEqual(all_reviews[999], new_review);
+			assert.strictEqual(active_ids[999], id);
 			assert.deepEqual(getReviewFromStorage(i), new_review);
-			assert.deepEqual(JSON.parse(localStorage.getItem("activeIDS")), ids);
 			assert.strictEqual(JSON.parse(localStorage.getItem("nextID")), 1000);
 		}
 	}).timeout(5000);
