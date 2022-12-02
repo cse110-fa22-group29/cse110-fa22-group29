@@ -139,12 +139,11 @@ function setupInfo(){
 	});
 
 	//Take formdata values as newData when submit
-	form.addEventListener("submit", function(e){
+	form.addEventListener("submit", function(){
 		/*
 		*  User submits the form for their review.
 		*  We create reviewCard data, replace in storage, and update tags
 		*/
-		e.preventDefault();
 		let formData = new FormData(form);
 		let newData = {};
 		//iterate through formData and add to newData
