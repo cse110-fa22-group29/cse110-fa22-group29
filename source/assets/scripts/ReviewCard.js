@@ -17,6 +17,7 @@ class ReviewCard extends HTMLElement {
 			margin: 0;
 			padding: 0;
 			overflow-wrap: anywhere;
+			cursor: pointer;
 		}
 		
 		a {
@@ -149,7 +150,7 @@ class ReviewCard extends HTMLElement {
 
 		// Image setup
 		let mealImg = document.createElement("img");
-		mealImg.setAttribute("id", "a-mealImg");
+		mealImg.setAttribute("id", "a-meal-img");
 		mealImg.setAttribute("alt","Meal Photo Corrupted");
 		mealImg.setAttribute("src",data["mealImg"]);
 		mealImg.addEventListener("error", function(e) {
@@ -157,11 +158,11 @@ class ReviewCard extends HTMLElement {
 			e.onerror = null;
 		});
 
-		//meal name setup
+		// Meal name setup
 		let meallabelDiv = document.createElement("div");
 		meallabelDiv.setAttribute("class", "meal-name-div");
 		let mealLabel = document.createElement("label");
-		mealLabel.setAttribute("id", "a-mealName");
+		mealLabel.setAttribute("id", "a-meal-name");
 		mealLabel.setAttribute("class","meal-name");
 		mealLabel.innerHTML = data["mealName"];
 		meallabelDiv.append(mealLabel);
@@ -188,7 +189,7 @@ class ReviewCard extends HTMLElement {
 		starsImg.setAttribute("num", data["rating"]);
 		ratingDiv.append(starsImg);
 
-		//added tags
+		// Tags setup
 		let tagContainerDiv = document.createElement("div"); 
 		tagContainerDiv.setAttribute("class", "tag-container-div");
 		let tagContainer = document.createElement("div");
@@ -244,12 +245,12 @@ class ReviewCard extends HTMLElement {
 		// Getting the article elements for the review card
 		dataContainer["reviewID"] = this.reviewID;
 
-		// Get image
-		let mealImg = this.shadowEl.getElementById("a-mealImg");
+		//get image
+		let mealImg = this.shadowEl.getElementById("a-meal-img");
 		dataContainer["mealImg"] = mealImg.getAttribute("src");
 
-		// Get meal name
-		let mealLabel = this.shadowEl.getElementById("a-mealName");
+		//get meal name
+		let mealLabel = this.shadowEl.getElementById("a-meal-name");
 		dataContainer["mealName"] = mealLabel.innerHTML;
 
 		// Get comment section

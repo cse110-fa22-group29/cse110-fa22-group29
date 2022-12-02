@@ -159,10 +159,10 @@ function initFormHandler() {
 				let tagLabel = document.createElement("label");
 				tagLabel.innerHTML = tagField.value;
 				tagLabel.setAttribute("class","tag");
-				tagSet.add(tagField.value.toLowerCase());
+				tagSet.add(tagSetVal);
 				tagLabel.addEventListener("click",()=> {
 					tagContainer.removeChild(tagLabel);
-					tagSet.delete(tagField.value.toLowerCase());
+					tagSet.delete(tagSetVal);
 				});
 		
 				tagContainer.append(tagLabel);

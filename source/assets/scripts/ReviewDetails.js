@@ -58,7 +58,7 @@ function setupInfo(){
 }
 
 /**
- * Sets up delete button to delete review from storage and switch to homepage
+ * Sets up delete button to delete reveiw from storage and switch to homepage.
  */
 function setupDelete(){
 	let deleteBtn = document.getElementById("delete-btn");
@@ -73,7 +73,7 @@ function setupDelete(){
 }
 
 /**
- * Sets up update button to reveal form and update info in storage and the current page 
+ * Sets up update button to reveal form and update info in storage and the current page.
  */
 function setupUpdate(){
 	let updateBtn = document.getElementById("update-btn");
@@ -102,8 +102,10 @@ function setupUpdate(){
 			while (tagContainer.firstChild) {
 				tagContainer.removeChild(tagContainer.firstChild);
 			}
+      
+			let tagSetVal;
 			for (let i = 0; i < currReview["tags"].length; i++) {
-				let tagSetVal = currReview["tags"][i].toLowerCase()
+				tagSetVal = currReview["tags"][i].toLowerCase();
 				tagSet.add(tagSetVal);
 				let newTag = document.createElement("label");
 				newTag.setAttribute("class","tag");
@@ -242,7 +244,7 @@ function setupUpdate(){
 
 		});
 
-		//adding tag to form functionality
+		// Adding tag to form functionality
 		let tagAddBtn = document.getElementById("tag-add-btn");
 		tagAddBtn.addEventListener("click", ()=> {
 			let tagField = document.getElementById("tag-form");
