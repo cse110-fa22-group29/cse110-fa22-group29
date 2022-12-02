@@ -48,7 +48,7 @@ function initFormHandler() {
 		searchTag = null;
 		searchField.value = "";
 		sortAndFilter(searchTag);
-	})
+	});
 
 	//sort by selected method
 	let sortMethod = document.getElementById("sort");
@@ -142,7 +142,7 @@ function loadReviews(index, reviewIDs){
 		moreBtn.setAttribute("id", "more-btn");
 		moreBtn.innerText = "Load More";
 		//if load more clicked, load 9 more
-		moreBtn.addEventListener("click", function(){loadReviews(index + 9, reviewIDs)});
+		moreBtn.addEventListener("click", function(){loadReviews(index + 9, reviewIDs);});
 		reviewBox.append(moreBtn);
 	}
 
@@ -151,7 +151,7 @@ function loadReviews(index, reviewIDs){
 const registerServiceWorker = async () => {
 	if ("serviceWorker" in navigator) {
 		try {
-			const registration = await navigator.serviceWorker.register("./sw.js", {scope: "./"});
+			await navigator.serviceWorker.register("./sw.js", {scope: "./"});
 		} catch (error) {
 			console.error(`Registration failed with ${error}`);
 		}

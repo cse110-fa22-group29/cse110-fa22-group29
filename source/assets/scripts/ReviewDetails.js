@@ -102,7 +102,7 @@ function setupUpdate(){
       
 			let tagSetVal;
 			for (let i = 0; i < currReview["tags"].length; i++) {
-				tagSetVal = currReview["tags"][i].toLowerCase()
+				tagSetVal = currReview["tags"][i].toLowerCase();
 				tagSet.add(tagSetVal);
 				let newTag = document.createElement("label");
 				newTag.setAttribute("class","tag");

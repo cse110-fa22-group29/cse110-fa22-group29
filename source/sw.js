@@ -1,5 +1,6 @@
 const CACHE_NAME = "food-journal-v1";
 const ASSETS = [
+	"/",
 	"index.html",
 	"ReviewDetails.html",
 	"CreatePage.html",
@@ -57,7 +58,7 @@ self.addEventListener("fetch", (event) => {
 			// If there is not a network response, return the cached response
 			// The ignoreVary option is used here to fix an issue where the service worker 
 			// would not serve certain requests unless the page was refreshed at least once
-			return cache.match(event.request, {ignoreVary: true}); 
+			return cache.match(event.request, {ignoreVary: true, ignoreSearch: true}); 
 		});
 	}));
 });

@@ -89,7 +89,7 @@ export function updateReviewToStorage(ID, review){
 		//stars update recency if unchanged
 		for (let i in starArr){
 			if(starArr[i] == ID) {
-				starArr.splice(i,1)
+				starArr.splice(i,1);
 				starArr.push(ID);
 				break;
 			}
