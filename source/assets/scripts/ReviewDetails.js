@@ -39,6 +39,8 @@ function setupInfo(){
 	restaurantLabel.classList.add("read-only");
 	let comments = document.getElementById('d-comments');
 	comments.setAttribute('readonly', true);
+	let tagForm = document.getElementById('tag-form');
+	tagForm.setAttribute('readonly', true);
 
 	//rating
 	let starsImg = document.getElementById("d-rating");
@@ -124,6 +126,7 @@ function setupInfo(){
 		mealLabel.readOnly = false;
 		restaurantLabel.readOnly = false;
 		comments.readOnly = false;
+		tagForm.readOnly = false;
 
 		console.log("editable");
 
