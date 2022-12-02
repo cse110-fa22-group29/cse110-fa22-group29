@@ -1,6 +1,5 @@
 const CACHE_NAME = "food-journal-v1";
 const ASSETS = [
-	"/",
 	"index.html",
 	"ReviewDetails.html",
 	"CreatePage.html",
