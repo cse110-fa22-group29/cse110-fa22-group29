@@ -11,7 +11,8 @@
 		"fix-css": "stylelint --fix **/*.css",
 		"http-server": "http-server source",
 		"lint-prettier": "prettier --check .",
-		"fix-prettier": "prettier --write ."
+		"fix-prettier": "prettier --write .",
+		"js-doc": "jsdoc -d source/docs/ -r source/"
 	},
 	"devDependencies": {
 		"eslint": "^8.27.0",
