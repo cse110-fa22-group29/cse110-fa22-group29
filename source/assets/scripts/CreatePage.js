@@ -154,7 +154,7 @@ function initFormHandler() {
 
 		// If there is a tag, it'll display the tag
 		if (tagField.value.length > 0) {
-			let tagSetVal = tagField.value.toLowerCase();
+			let tagSetVal = tagField.value.toLocaleLowerCase();
 			if (!tagSet.has(tagSetVal)) {
 				let tagLabel = document.createElement("label");
 				tagLabel.innerHTML = tagField.value;

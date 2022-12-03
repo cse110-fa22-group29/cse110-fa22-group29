@@ -101,8 +101,8 @@ export function updateReviewToStorage(ID, review) {
 	let repeatedTags = review["tags"].filter((x) => oldReview["tags"].includes(x));
 	let tagArr = [];
 	for (let i in repeatedTags) {
-		tagArr = JSON.parse(localStorage.getItem(`!${repeatedTags[i]}`.toLocaleLowerCase()));
-		if (tagArr.length == 1) {
+		tagArr = JSON.parse(localStorage.getItem(`!${repeatedTags[i].toLocaleLowerCase()}`));
+		if (tagArr.length !== 1) {
 			for (let j in tagArr) {
 				if (tagArr[j] == ID) {
 					tagArr.splice(j, 1);
@@ -110,7 +110,7 @@ export function updateReviewToStorage(ID, review) {
 					break;
 				}
 			}
-			localStorage.setItem(`!${repeatedTags[i]}`, JSON.stringify(tagArr));
+			localStorage.setItem(`!${repeatedTags[i].toLocaleLowerCase()}`, JSON.stringify(tagArr));
 		}
 	}
 
@@ -170,7 +170,7 @@ export function deleteReviewFromStorage(ID) {
 function deleteTagsFromStorage(ID, deletedTags) {
 	for (let i in deletedTags) {
 		//get local storage of each tag and remove id from tag list
-		let tagName = "!" + deletedTags[i].toLowerCase();
+		let tagName = "!" + deletedTags[i].toLocaleLowerCase();
 		let tagArr = JSON.parse(localStorage.getItem(tagName));
 		for (let j in tagArr) {
 			if (tagArr[j] == ID) {
@@ -193,7 +193,7 @@ function deleteTagsFromStorage(ID, deletedTags) {
  */
 function addTagsToStorage(ID, addedTags) {
 	for (let i in addedTags) {
-		let tagName = "!" + addedTags[i].toLowerCase();
+		let tagName = "!" + addedTags[i].toLocaleLowerCase();
 		let tagArr = JSON.parse(localStorage.getItem(tagName));
 		if (!tagArr) {
 			tagArr = [];
@@ -243,7 +243,7 @@ export function getIDsFromStorage() {
  * @returns {number[]} list of IDs of reviews that all contain the specified tag by recency
  */
 export function getIDsByTag(tag) {
-	let tagArr = JSON.parse(localStorage.getItem("!" + tag.toLowerCase()));
+	let tagArr = JSON.parse(localStorage.getItem("!" + tag.toLocaleLowerCase()));
 	if (!tagArr) {
 		tagArr = [];
 	}

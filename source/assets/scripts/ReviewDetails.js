@@ -105,7 +105,7 @@ function setupUpdate() {
 
 			let tagSetVal;
 			for (let i = 0; i < currReview["tags"].length; i++) {
-				tagSetVal = currReview["tags"][i].toLowerCase();
+				tagSetVal = currReview["tags"][i].toLocaleLowerCase();
 				tagSet.add(tagSetVal);
 				let newTag = document.createElement("label");
 				newTag.setAttribute("class", "tag");
@@ -250,7 +250,7 @@ function setupUpdate() {
 		tagAddBtn.addEventListener("click", () => {
 			let tagField = document.getElementById("tag-form");
 			if (tagField.value.length > 0) {
-				let tagSetVal = tagField.value.toLowerCase();
+				let tagSetVal = tagField.value.toLocaleLowerCase();
 				if (!tagSet.has(tagSetVal)) {
 					let tagLabel = document.createElement("label");
 					tagLabel.innerHTML = tagField.value;
