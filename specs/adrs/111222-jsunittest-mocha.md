@@ -1,18 +1,19 @@
 # Use mocha for JS unit testing framework
 
-- Status: accept
-- Deciders: Arthur Lu, Marc Reta
-- Date: 11 / 12 / 22
+-   Status: accept
+-   Deciders: Arthur Lu, Marc Reta
+-   Date: 11 / 12 / 22
 
 ## Decision Drivers
 
-- Need specification on how to write unit testing assertion statements
-- Need framework to perform unit testing quickly for immediate code feedback
+-   Need specification on how to write unit testing assertion statements
+-   Need framework to perform unit testing quickly for immediate code feedback
 
 ## Considered Options
-- JUnit5
-- Jest
-- Mocha
+
+-   JUnit5
+-   Jest
+-   Mocha
 
 ## Decision Outcome
 

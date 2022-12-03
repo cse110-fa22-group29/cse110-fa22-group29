@@ -26,7 +26,7 @@ const ASSETS = [
 	"assets/scripts/localStorage.js",
 	"assets/scripts/main.js",
 	"assets/scripts/ReviewCard.js",
-	"assets/scripts/ReviewDetails.js"
+	"assets/scripts/ReviewDetails.js",
 ];
 
 /**
@@ -46,18 +46,22 @@ self.addEventListener("install", async () => {
  */
 self.addEventListener("fetch", (event) => {
 	// add a response to the fetch event
-	event.respondWith(caches.open(CACHE_NAME).then((cache) => {
-		// try to return a network fetch response
-		return fetch(event.request).then((fetchedResponse) => {
-			// if there is a response, add it to the cache
-			cache.put(event.request, fetchedResponse.clone());
-			// return the network response
-			return fetchedResponse;
-		}).catch(() => {
-			// If there is not a network response, return the cached response
-			// The ignoreVary option is used here to fix an issue where the service worker 
-			// would not serve certain requests unless the page was refreshed at least once
-			return cache.match(event.request, {ignoreVary: true, ignoreSearch: true}); 
-		});
-	}));
+	event.respondWith(
+		caches.open(CACHE_NAME).then((cache) => {
+			// try to return a network fetch response
+			return fetch(event.request)
+				.then((fetchedResponse) => {
+					// if there is a response, add it to the cache
+					cache.put(event.request, fetchedResponse.clone());
+					// return the network response
+					return fetchedResponse;
+				})
+				.catch(() => {
+					// If there is not a network response, return the cached response
+					// The ignoreVary option is used here to fix an issue where the service worker
+					// would not serve certain requests unless the page was refreshed at least once
+					return cache.match(event.request, { ignoreVary: true, ignoreSearch: true });
+				});
+		})
+	);
 });

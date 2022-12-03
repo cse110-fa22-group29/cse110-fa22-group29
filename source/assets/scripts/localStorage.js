@@ -3,7 +3,7 @@
  * @param {Object} review to store
  * @return {number} ID of the newly added review
  */
-export function newReviewToStorage(review){
+export function newReviewToStorage(review) {
 	//grabbing the nextID, and putting our review object in storage associated with the ID
 	let nextReviewId = JSON.parse(localStorage.getItem("nextID"));
 	review["reviewID"] = nextReviewId;
@@ -16,17 +16,17 @@ export function newReviewToStorage(review){
 
 	//adding to the star storage
 	let starArr = JSON.parse(localStorage.getItem(`star${review["rating"]}`));
-	if(!starArr){
+	if (!starArr) {
 		starArr = [];
 	}
 	starArr.push(nextReviewId);
 	localStorage.setItem(`star${review["rating"]}`, JSON.stringify(starArr));
-	
+
 	//updating our activeIDS list
 	let tempIdArr = JSON.parse(localStorage.getItem("activeIDS"));
 	tempIdArr.push(nextReviewId);
 	localStorage.setItem("activeIDS", JSON.stringify(tempIdArr));
-	
+
 	//increment nextID for next review creation
 	localStorage.setItem("nextID", JSON.stringify(nextReviewId + 1));
 
@@ -38,7 +38,7 @@ export function newReviewToStorage(review){
  * @param {string} ID of the review to get
  * @returns {Object} review object corresponding to param ID
  */
-export function getReviewFromStorage(ID){
+export function getReviewFromStorage(ID) {
 	return JSON.parse(localStorage.getItem(`review${ID}`));
 }
 
@@ -47,15 +47,15 @@ export function getReviewFromStorage(ID){
  * @param {string} ID of review to update
  * @param {Object} review to store
  */
-export function updateReviewToStorage(ID, review){
+export function updateReviewToStorage(ID, review) {
 	let oldReview = JSON.parse(localStorage.getItem(`review${ID}`));
 	let starArr = JSON.parse(localStorage.getItem(`star${review["rating"]}`));
 
 	//activeID update recency
 	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
-	for (let i in activeIDS){
-		if(activeIDS[i] == ID){
-			activeIDS.splice(i,1);
+	for (let i in activeIDS) {
+		if (activeIDS[i] == ID) {
+			activeIDS.splice(i, 1);
 			activeIDS.push(ID);
 			break;
 		}
@@ -63,33 +63,33 @@ export function updateReviewToStorage(ID, review){
 	localStorage.setItem("activeIDS", JSON.stringify(activeIDS));
 
 	//star local storage update
-	if(oldReview["rating"] !== review["rating"]){
+	if (oldReview["rating"] !== review["rating"]) {
 		//first delete from previous rating array in storage
 		let oldStarArr = JSON.parse(localStorage.getItem(`star${oldReview["rating"]}`));
 		for (let i in oldStarArr) {
 			if (oldStarArr[i] == ID) {
 				//removing from corresponding rating array and updating local Storage
-				oldStarArr.splice(i,1);
+				oldStarArr.splice(i, 1);
 				break;
 			}
 		}
-		if(oldStarArr.length != 0){
+		if (oldStarArr.length != 0) {
 			localStorage.setItem(`star${oldReview["rating"]}`, JSON.stringify(oldStarArr));
 		} else {
 			localStorage.removeItem(`star${oldReview["rating"]}`);
 		}
 		//then add ID to array corresponding to new review rating
 		let newStarArr = starArr;
-		if(!newStarArr){
+		if (!newStarArr) {
 			newStarArr = [];
 		}
 		newStarArr.push(ID);
 		localStorage.setItem(`star${review["rating"]}`, JSON.stringify(newStarArr));
-	} else if(starArr.length !== 1) {
+	} else if (starArr.length !== 1) {
 		//stars update recency if unchanged
-		for (let i in starArr){
-			if(starArr[i] == ID) {
-				starArr.splice(i,1);
+		for (let i in starArr) {
+			if (starArr[i] == ID) {
+				starArr.splice(i, 1);
 				starArr.push(ID);
 				break;
 			}
@@ -98,14 +98,14 @@ export function updateReviewToStorage(ID, review){
 	}
 
 	//specifically the unchanged tags update recency
-	let repeatedTags = review["tags"].filter(x => oldReview["tags"].includes(x));
+	let repeatedTags = review["tags"].filter((x) => oldReview["tags"].includes(x));
 	let tagArr = [];
-	for (let i in repeatedTags){
+	for (let i in repeatedTags) {
 		tagArr = JSON.parse(localStorage.getItem(`!${repeatedTags[i]}`.toLocaleLowerCase()));
-		if(tagArr.length == 1){
-			for (let j in tagArr){
-				if(tagArr[j] == ID){
-					tagArr.splice(j,1);
+		if (tagArr.length == 1) {
+			for (let j in tagArr) {
+				if (tagArr[j] == ID) {
+					tagArr.splice(j, 1);
 					tagArr.push(ID);
 					break;
 				}
@@ -115,8 +115,8 @@ export function updateReviewToStorage(ID, review){
 	}
 
 	//Get diff of tags and update storage
-	let deletedTags = oldReview["tags"].filter(x => !review["tags"].includes(x));
-	let addedTags = review["tags"].filter(x => !oldReview["tags"].includes(x));
+	let deletedTags = oldReview["tags"].filter((x) => !review["tags"].includes(x));
+	let addedTags = review["tags"].filter((x) => !oldReview["tags"].includes(x));
 	deleteTagsFromStorage(ID, deletedTags);
 	addTagsToStorage(ID, addedTags);
 
@@ -128,30 +128,30 @@ export function updateReviewToStorage(ID, review){
  * Deletes a review by ID from storage
  * @param {string} ID of the review to delete
  */
-export function deleteReviewFromStorage(ID){
+export function deleteReviewFromStorage(ID) {
 	//removing id number from activeIDS and star{rating}
 	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
 	let reviewRating = JSON.parse(localStorage.getItem(`review${ID}`))["rating"];
 	let starArr = JSON.parse(localStorage.getItem(`star${reviewRating}`));
-	
+
 	for (let i in starArr) {
 		if (starArr[i] == ID) {
 			//removing from corresponding rating array and updating local Storage
-			starArr.splice(i,1);
+			starArr.splice(i, 1);
 			break;
 		}
 	}
-	if(starArr.length != 0){
+	if (starArr.length != 0) {
 		localStorage.setItem(`star${reviewRating}`, JSON.stringify(starArr));
 	} else {
 		localStorage.removeItem(`star${reviewRating}`);
 	}
-	
+
 	for (let i in activeIDS) {
 		if (activeIDS[i] == ID) {
-			activeIDS.splice(i,1);
+			activeIDS.splice(i, 1);
 			localStorage.setItem("activeIDS", JSON.stringify(activeIDS));
-			
+
 			let currReview = JSON.parse(localStorage.getItem(`review${ID}`));
 			deleteTagsFromStorage(ID, currReview["tags"]);
 			localStorage.removeItem(`review${ID}`);
@@ -168,17 +168,17 @@ export function deleteReviewFromStorage(ID){
  * @param {string[]} deletedTags to modify storage of
  */
 function deleteTagsFromStorage(ID, deletedTags) {
-	for(let i in deletedTags){
+	for (let i in deletedTags) {
 		//get local storage of each tag and remove id from tag list
-		let tagName = "!"+ deletedTags[i].toLowerCase();
+		let tagName = "!" + deletedTags[i].toLowerCase();
 		let tagArr = JSON.parse(localStorage.getItem(tagName));
-		for(let j in tagArr){
-			if(tagArr[j] == ID){
-				tagArr.splice(j,1);
+		for (let j in tagArr) {
+			if (tagArr[j] == ID) {
+				tagArr.splice(j, 1);
 				break;
 			}
 		}
-		if(tagArr.length != 0){
+		if (tagArr.length != 0) {
 			localStorage.setItem(tagName, JSON.stringify(tagArr));
 		} else {
 			localStorage.removeItem(tagName);
@@ -192,10 +192,10 @@ function deleteTagsFromStorage(ID, deletedTags) {
  * @param {string[]} addedTags to modify storage of
  */
 function addTagsToStorage(ID, addedTags) {
-	for(let i in addedTags){
+	for (let i in addedTags) {
 		let tagName = "!" + addedTags[i].toLowerCase();
 		let tagArr = JSON.parse(localStorage.getItem(tagName));
-		if(!tagArr){
+		if (!tagArr) {
 			tagArr = [];
 		}
 		tagArr.push(ID);
@@ -208,10 +208,10 @@ function addTagsToStorage(ID, addedTags) {
  * @returns {Object} all active reviews from local storage
  */
 export function getAllReviewsFromStorage() {
-	if (!(localStorage.getItem("activeIDS"))) {
+	if (!localStorage.getItem("activeIDS")) {
 		// we wanna init the active ID array and start the nextID count
 		localStorage.setItem("activeIDS", JSON.stringify([]));
-		localStorage.setItem("nextID",  JSON.stringify(0));
+		localStorage.setItem("nextID", JSON.stringify(0));
 	}
 	//iterate thru activeIDS
 	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
@@ -228,10 +228,10 @@ export function getAllReviewsFromStorage() {
  * @returns {number[]} list of all active IDs by recency
  */
 export function getIDsFromStorage() {
-	if (!(localStorage.getItem("activeIDS"))) {
+	if (!localStorage.getItem("activeIDS")) {
 		// we wanna init the active ID array and start the nextID count
 		localStorage.setItem("activeIDS", JSON.stringify([]));
-		localStorage.setItem("nextID",  JSON.stringify(0));
+		localStorage.setItem("nextID", JSON.stringify(0));
 	}
 	let activeIDS = JSON.parse(localStorage.getItem("activeIDS"));
 	return activeIDS.reverse();
@@ -244,7 +244,7 @@ export function getIDsFromStorage() {
  */
 export function getIDsByTag(tag) {
 	let tagArr = JSON.parse(localStorage.getItem("!" + tag.toLowerCase()));
-	if(!tagArr){
+	if (!tagArr) {
 		tagArr = [];
 	}
 	return tagArr.reverse();
@@ -256,9 +256,9 @@ export function getIDsByTag(tag) {
  */
 export function getTopIDsFromStorage() {
 	let resultArr = [];
-	for(let i = 5; i > 0; i--){
+	for (let i = 5; i > 0; i--) {
 		let starArr = JSON.parse(localStorage.getItem(`star${i}`));
-		if(!starArr){
+		if (!starArr) {
 			continue;
 		}
 		resultArr = resultArr.concat(starArr.reverse());

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,11 +7,10 @@
 		<title>Food Journal</title>
 
 		<!--Add Favicon-->
-		<link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+		<link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico" />
 
 		<!-- Review Card Custom Element -->
 		<script src="assets/scripts/ReviewCard.js" type="module"></script>
-
 
 		<!-- Create Page Stylesheets & Scripts -->
 		<link rel="stylesheet" href="./static/CreatePage.css" />
@@ -23,25 +21,24 @@
 	<header>
 		<!-- Setting up logo and site name at the top of the website -->
 		<div class="top-bar">
-			<img src ="./assets/images/Logo.png" alt="logo" />
-			<h1> Food Journal </h1>
-			<img src ="./assets/images/Logo.png" alt="logo" />
+			<img src="./assets/images/Logo.png" alt="logo" />
+			<h1>Food Journal</h1>
+			<img src="./assets/images/Logo.png" alt="logo" />
 		</div>
 	</header>
-	
+
 	<body>
 		<div class="journal-form">
 			<h1>New Entry</h1>
 
 			<form id="new-food-entry">
-				
 				<fieldset>
 					<legend>PICTURE:</legend>
 					<select id="select" name="select">
 						<option value="file">File Upload</option>
 						<option value="photo">Take a Photo</option>
 					</select>
-					<input type="file" accept="image/*" id="mealImg" name="mealImg">
+					<input type="file" accept="image/*" id="mealImg" name="mealImg" />
 				</fieldset>
 
 				<fieldset>
@@ -52,47 +49,45 @@
 
 				<fieldset>
 					<legend>MEAL NAME:</legend>
-					<label for="Name: "> <input type="text" id="mealName" name="mealName" required> </label>
+					<label for="Name: "> <input type="text" id="mealName" name="mealName" required /> </label>
 				</fieldset>
 
 				<fieldset>
 					<legend>RESTAURANT NAME:</legend>
-					<label for="Name:"> <input type="text" id="restaurant" name="restaurant" required> </label>
+					<label for="Name:"> <input type="text" id="restaurant" name="restaurant" required /> </label>
 				</fieldset>
-			
+
 				<fieldset>
 					<legend>RATING:</legend>
-					<div style="display: flex; justify-content: flex-start; align-items: center;">
+					<div style="display: flex; justify-content: flex-start; align-items: center">
 						<div class="rating">
-							<input type="radio" id="s5" name="rating" value="5"/> <label for="s5" id="s5-select"> 5 stars </label>
-							<input type="radio" id="s4" name="rating" value="4"/> <label for="s4" id="s4-select"> 4 stars </label>
-							<input type="radio" id="s3" name="rating" value="3"/> <label for="s3" id="s3-select"> 3 stars </label>
-							<input type="radio" id="s2" name="rating" value="2"/> <label for="s2" id="s2-select"> 2 stars </label>
-							<input type="radio" id="s1" name="rating" value="1"/> <label for="s1" id="s1-select"> 1 star </label>
+							<input type="radio" id="s5" name="rating" value="5" /> <label for="s5" id="s5-select"> 5 stars </label>
+							<input type="radio" id="s4" name="rating" value="4" /> <label for="s4" id="s4-select"> 4 stars </label>
+							<input type="radio" id="s3" name="rating" value="3" /> <label for="s3" id="s3-select"> 3 stars </label>
+							<input type="radio" id="s2" name="rating" value="2" /> <label for="s2" id="s2-select"> 2 stars </label>
+							<input type="radio" id="s1" name="rating" value="1" /> <label for="s1" id="s1-select"> 1 star </label>
 						</div>
 					</div>
 				</fieldset>
 
 				<fieldset>
 					<legend>COMMENTS:</legend>
-					<textarea name="comments" id="comments" rows="5" style="resize: none; width: 100%;"></textarea>
+					<textarea name="comments" id="comments" rows="5" style="resize: none; width: 100%"></textarea>
 				</fieldset>
 
 				<fieldset>
 					<legend>TAGS: (ex. cuisine, distance, cost, etc)</legend>
-					<input type="text" id="tag-form" name="tag-form">
+					<input type="text" id="tag-form" name="tag-form" />
 
-					<div class='tag-container' id="tag-container-form">
-					</div>
-					<button type="button" id="tag-add-btn"> + </button>
+					<div class="tag-container" id="tag-container-form"></div>
+					<button type="button" id="tag-add-btn">+</button>
 				</fieldset>
 
-			<button type="submit" id="save-btn" value="Submit">Save</button>
+				<button type="submit" id="save-btn" value="Submit">Save</button>
 
-			<!-- Button that allows user to go back to the homepage -->
-			<input type="button" value="Cancel" id="home-btn" onclick="window.location.assign('./index.html')">
+				<!-- Button that allows user to go back to the homepage -->
+				<input type="button" value="Cancel" id="home-btn" onclick="window.location.assign('./index.html')" />
 			</form>
-		</div> 
+		</div>
 	</body>
-
 </html>
