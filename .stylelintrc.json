@@ -1,7 +1,7 @@
 {
 	"extends": "stylelint-config-standard",
 	"ignore": ["inside-parens", "param", "value"],
-	"rules":{
+	"rules": {
 		"indentation": "tab"
 	}
 }

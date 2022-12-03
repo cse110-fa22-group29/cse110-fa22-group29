@@ -4,9 +4,9 @@ class ReviewCard extends HTMLElement {
 	// Called once when document.createElement('review-card') is called, or
 	// the element is written into the DOM directly as <review-card>
 	constructor() {
-		super(); 
+		super();
 
-		let shadowEl = this.attachShadow({mode:"open"});
+		let shadowEl = this.attachShadow({ mode: "open" });
 
 		let articleEl = document.createElement("article");
 
@@ -16,7 +16,7 @@ class ReviewCard extends HTMLElement {
 			font-family: Century Gothic;
 			margin: 0;
 			padding: 0;
-			overflow-wrap: anywhere;
+			cursor: pointer;
 		}
 		
 		a {
@@ -31,18 +31,15 @@ class ReviewCard extends HTMLElement {
 			align-items: center;
 			border: 2px solid rgb(31, 41, 32);
 			border-radius: 8px;
-			display: grid;
-			grid-template-rows: 118px 56px 14px 18px 15px 36px;
 			height: auto;
 			row-gap: 5px;
 			padding: 0 16px 16px 16px;
-			width: 178px;
+			width: 200px;
 			margin: 8px 8px 8px 8px;
 		}
 		
 		div.rating {
 			align-items: center;
-			column-gap: 5px;
 			display: flex;
 		}
 		
@@ -50,16 +47,21 @@ class ReviewCard extends HTMLElement {
 			height: auto;
 			display: inline-block;
 			object-fit: scale-down;
-			width: 78px;
 		}
 		
 		article>img {
 			border-top-left-radius: 6px;
 			border-top-right-radius: 6px;
-			height: 119px;
+			height: 120px;
 			object-fit: cover;
 			margin-left: -16px;
+			margin-right: -16px;
 			width: calc(100% + 32px);
+		}
+
+		.meal-name-div {
+			height: 54px;
+			overflow: hidden;
 		}
 		
 		label.restaurant-name {
@@ -67,13 +69,8 @@ class ReviewCard extends HTMLElement {
 		}
 		
 		label.meal-name {
-			display: -webkit-box;
-			font-size: 16px;
+			font-size: 24px;
 			height: 36px;
-			line-height: 18px;
-			overflow: hidden;
-			-webkit-line-clamp: 2;
-			-webkit-box-orient: vertical;
 		}
 		
 		label:not(.meal-name),
@@ -83,26 +80,33 @@ class ReviewCard extends HTMLElement {
 			font-size: 12px;
 		}
 
-		.tag-container {
+		.tag-container-div {
 			margin-top: 20px;
+			height: 100px;
+			overflow: hidden;
+		}
+
+		.tag-container {
 			display: flex;
 			flex-flow: row wrap;
+			height: fit-content;
 		}
 		
 		.a-tag {
 			background-color:#94da97;
-			border-radius: 7px;
+			border-radius: 6px;
 			color: #94da97;
-			padding-right: 7px;
-			padding-left: 7px;
-			margin: 3px;
+			padding: 0px 6px 2px 6px;
+			margin: 2px 2px 2px 2px;
 			font-weight: bold;
+			overflow: hidden;
+			height: 14px;
 		}
     	`;
 		articleEl.append(styleEl);
 		shadowEl.append(articleEl);
 		this.shadowEl = shadowEl;
-		
+
 		// Attach event listener to each review-card
 		this.addEventListener("click", (event) => {
 			console.log(event.target);
@@ -115,54 +119,57 @@ class ReviewCard extends HTMLElement {
 	}
 
 	/**
-	* Called when the .data property is set on this element.
-	*
-	* For Example:
-	* let reviewCard = document.createElement('review-card'); 
-	* reviewCard.data = { foo: 'bar' } 
-	*
-	* @param {Object} data - The data to pass into the <review-card>, must be of the
-	*                        following format:
-	*                        {
-	*                          "mealImg": string,
-	*                          "mealName": string,
-	*                          "comments": string,
-	*                          "rating": number,
-	*                          "restaurant": string,
-	*                          "reviewID": number,
-	*                          "tags": string array
-	*                        }
-	*/
+	 * Called when the .data property is set on this element.
+	 *
+	 * For Example:
+	 * let reviewCard = document.createElement('review-card');
+	 * reviewCard.data = { foo: 'bar' }
+	 *
+	 * @param {Object} data - The data to pass into the <review-card>, must be of the
+	 *                        following format:
+	 *                        {
+	 *                          "mealImg": string,
+	 *                          "mealName": string,
+	 *                          "comments": string,
+	 *                          "rating": number,
+	 *                          "restaurant": string,
+	 *                          "reviewID": number,
+	 *                          "tags": string array
+	 *                        }
+	 */
 	set data(data) {
 		// If nothing was passed in, return
 		if (!data) return;
 
 		// Select the <article> we added to the Shadow DOM in the constructor
 		let articleEl = this.shadowEl.querySelector("article");
-    
+
 		// Setting the article elements for the review card
 		this.reviewID = data["reviewID"];
 
 		// Image setup
 		let mealImg = document.createElement("img");
-		mealImg.setAttribute("id", "a-mealImg");
-		mealImg.setAttribute("alt","Meal Photo Corrupted");
-		mealImg.setAttribute("src",data["mealImg"]);
-		mealImg.addEventListener("error", function(e) {
-			mealImg.setAttribute("src", "./assets/images/plate_with_cutlery.png");
+		mealImg.setAttribute("id", "a-meal-img");
+		mealImg.setAttribute("alt", "Meal Photo Corrupted");
+		mealImg.setAttribute("src", data["mealImg"]);
+		mealImg.addEventListener("error", function (e) {
+			mealImg.setAttribute("src", "./assets/images/default_plate.png");
 			e.onerror = null;
 		});
 
 		// Meal name setup
+		let meallabelDiv = document.createElement("div");
+		meallabelDiv.setAttribute("class", "meal-name-div");
 		let mealLabel = document.createElement("label");
-		mealLabel.setAttribute("id", "a-mealName");
-		mealLabel.setAttribute("class","meal-name");
+		mealLabel.setAttribute("id", "a-meal-name");
+		mealLabel.setAttribute("class", "meal-name");
 		mealLabel.innerHTML = data["mealName"];
+		meallabelDiv.append(mealLabel);
 
 		// Restaurant name setup
 		let restaurantLabel = document.createElement("label");
 		restaurantLabel.setAttribute("id", "a-restaurant");
-		restaurantLabel.setAttribute("class","restaurant-name");
+		restaurantLabel.setAttribute("class", "restaurant-name");
 		restaurantLabel.innerHTML = data["restaurant"];
 
 		// Comment section setup (display set to none)
@@ -176,70 +183,70 @@ class ReviewCard extends HTMLElement {
 		ratingDiv.setAttribute("class", "rating");
 		let starsImg = document.createElement("img");
 		starsImg.setAttribute("id", "a-rating");
-		starsImg.setAttribute("src", "./assets/images/"+data["rating"]+"-star.svg");
-		starsImg.setAttribute("alt", data["rating"] +" stars");
+		starsImg.setAttribute("src", "./assets/images/" + data["rating"] + "-star.svg");
+		starsImg.setAttribute("alt", data["rating"] + " stars");
 		starsImg.setAttribute("num", data["rating"]);
 		ratingDiv.append(starsImg);
 
 		// Tags setup
+		let tagContainerDiv = document.createElement("div");
+		tagContainerDiv.setAttribute("class", "tag-container-div");
 		let tagContainer = document.createElement("div");
 		tagContainer.setAttribute("class", "tag-container");
 		tagContainer.setAttribute("id", "a-tags");
 		tagContainer.setAttribute("list", data["tags"]);
 
 		// Checks if user gave tags, if so added to review card
-		if(data["tags"]){
+		if (data["tags"]) {
 			for (let i = 0; i < data["tags"].length; i++) {
 				let newTag = document.createElement("label");
-				newTag.setAttribute("class","a-tag");
+				newTag.setAttribute("class", "a-tag");
 				newTag.innerHTML = data["tags"][i];
 				tagContainer.append(newTag);
 			}
 		}
+		tagContainerDiv.append(tagContainer);
 
 		// Setting all the data to the review card
 		articleEl.append(mealImg);
-		articleEl.append(mealLabel);
+		articleEl.append(meallabelDiv);
 		articleEl.append(restaurantLabel);
 		articleEl.append(ratingDiv);
-		articleEl.append(tagContainer);
+		articleEl.append(tagContainerDiv);
 		articleEl.append(comments);
-
-
 	}
 
 	/**
-	* Called when getting the .data property of this element.
-	*
-	* For Example:
-	* let reviewCard = document.createElement('review-card'); 
-	* reviewCard.data = { foo: 'bar' } 
-	*
-	* @return {Object} data - The data from the <review-card>, of the
-	*                        following format:
-	*                        {
-	*                          "mealImg": string,
-	*                          "mealName": string,
-	*                          "comments": string,
-	*                          "rating": number,
-	*                          "restaurant": string,
-	*                          "reviewID": number,
-	*                          "tags": string array
-	*                        }
-	*/
+	 * Called when getting the .data property of this element.
+	 *
+	 * For Example:
+	 * let reviewCard = document.createElement('review-card');
+	 * reviewCard.data = { foo: 'bar' }
+	 *
+	 * @return {Object} data - The data from the <review-card>, of the
+	 *                        following format:
+	 *                        {
+	 *                          "mealImg": string,
+	 *                          "mealName": string,
+	 *                          "comments": string,
+	 *                          "rating": number,
+	 *                          "restaurant": string,
+	 *                          "reviewID": number,
+	 *                          "tags": string array
+	 *                        }
+	 */
 	get data() {
-
 		let dataContainer = {};
-    
+
 		// Getting the article elements for the review card
 		dataContainer["reviewID"] = this.reviewID;
 
-		// Get image
-		let mealImg = this.shadowEl.getElementById("a-mealImg");
+		//get image
+		let mealImg = this.shadowEl.getElementById("a-meal-img");
 		dataContainer["mealImg"] = mealImg.getAttribute("src");
 
-		// Get meal name
-		let mealLabel = this.shadowEl.getElementById("a-mealName");
+		//get meal name
+		let mealLabel = this.shadowEl.getElementById("a-meal-name");
 		dataContainer["mealName"] = mealLabel.innerHTML;
 
 		// Get comment section

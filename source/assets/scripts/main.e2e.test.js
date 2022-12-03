@@ -1,33 +1,28 @@
-import {strict as assert} from "node:assert";
-import {describe, it, before, after} from "mocha";
+import { strict as assert } from "node:assert";
+import { describe, it, before, after } from "mocha";
 import puppeteer from "puppeteer-core";
-import {exit} from "node:process";
-import {setReviewForm, checkCorrectness} from "./appTestHelpers.js";
+import { setReviewForm, checkCorrectness } from "./appTestHelpers.js";
 
 describe("test App end to end", async () => {
-
 	let browser;
 	let page;
 
 	before(async () => {
 		let root;
 		try {
-			root =  process.getuid() == 0;
-		}
-		catch (error) {
+			root = process.getuid() == 0;
+		} catch (error) {
 			root = false;
 		}
 
 		//browser = await puppeteer.launch({headless: false, slowMo: 250, args: root ? ['--no-sandbox'] : undefined});
-		browser = await puppeteer.launch({args: root ? ["--no-sandbox"] : undefined});
+		browser = await puppeteer.launch({ args: root ? ["--no-sandbox"] : undefined });
 		page = await browser.newPage();
-		try{
-			await page.goto("http://localhost:8080", {timeout: 2000});
+		try {
+			await page.goto("http://localhost:8080", { timeout: 2000 });
 			await console.log(`✔ connected to localhost webserver as ${root ? "root" : "user"}`);
-		}
-		catch (error) {
+		} catch (error) {
 			await console.log("❌ failed to connect to localhost webserver on port 8080");
-			await exit(1);
 		}
 	});
 
@@ -38,7 +33,6 @@ describe("test App end to end", async () => {
 	});
 
 	describe("test CRUD on simple inputs and default image", () => {
-
 		describe("test create 1 new review", async () => {
 			it("create 1 new review", async () => {
 				// Click the button to create a new review
@@ -52,7 +46,7 @@ describe("test App end to end", async () => {
 					comments: "sample comment",
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
-					rating: 1
+					rating: 1,
 				};
 				await setReviewForm(page, review);
 
@@ -65,16 +59,16 @@ describe("test App end to end", async () => {
 			it("check details page", async () => {
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
+					imgSrc: "http://localhost:8080/assets/images/default_plate.png",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
-					rating: "http://localhost:8080/assets/images/1-star.svg"
+					rating: "http://localhost:8080/assets/images/1-star.svg",
 				};
 				await checkCorrectness(page, "d", expected);
 			});
-		
+
 			it("check home page", async () => {
 				// Click the button to return to the home page
 				let home_btn = await page.$("#home-btn");
@@ -86,12 +80,12 @@ describe("test App end to end", async () => {
 				let shadowRoot = await review_card.getProperty("shadowRoot");
 
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
+					imgSrc: "http://localhost:8080/assets/images/default_plate.png",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
-					rating: "http://localhost:8080/assets/images/1-star.svg"
+					rating: "http://localhost:8080/assets/images/1-star.svg",
 				};
 				await checkCorrectness(shadowRoot, "a", expected);
 			});
@@ -111,12 +105,12 @@ describe("test App end to end", async () => {
 
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
+					imgSrc: "http://localhost:8080/assets/images/default_plate.png",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
-					rating: "http://localhost:8080/assets/images/1-star.svg"
+					rating: "http://localhost:8080/assets/images/1-star.svg",
 				};
 				await checkCorrectness(page, "d", expected);
 			});
@@ -133,21 +127,19 @@ describe("test App end to end", async () => {
 
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
+					imgSrc: "http://localhost:8080/assets/images/default_plate.png",
 					mealName: "sample name",
 					comments: "sample comment",
 					restaurant: "sample restaurant",
 					tags: ["tag 0", "tag 1", "tag 2", "tag 3", "tag 4"],
-					rating: "http://localhost:8080/assets/images/1-star.svg"
+					rating: "http://localhost:8080/assets/images/1-star.svg",
 				};
 				await checkCorrectness(shadowRoot, "a", expected);
 			});
 		});
 
 		describe("test update 1 review", async () => {
-
 			it("update 1 review", async () => {
-
 				// Get the only review card and click it
 				let review_card = await page.$("review-card");
 				await review_card.click();
@@ -163,7 +155,7 @@ describe("test App end to end", async () => {
 					comments: "updated comment",
 					restaurant: "updated restaurant",
 					tags: ["tag -0", "tag -1", "tag -2", "tag -3", "tag -4", "tag -5"],
-					rating: 5
+					rating: 5,
 				};
 				await setReviewForm(page, review);
 
@@ -176,12 +168,12 @@ describe("test App end to end", async () => {
 			it("check details page", async () => {
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
+					imgSrc: "http://localhost:8080/assets/images/default_plate.png",
 					mealName: "updated name",
 					comments: "updated comment",
 					restaurant: "updated restaurant",
 					tags: ["tag -0", "tag -1", "tag -2", "tag -3", "tag -4", "tag -5"],
-					rating: "http://localhost:8080/assets/images/5-star.svg"
+					rating: "http://localhost:8080/assets/images/5-star.svg",
 				};
 				await checkCorrectness(page, "d", expected);
 			});
@@ -198,16 +190,15 @@ describe("test App end to end", async () => {
 
 				// check the details page for correctness
 				let expected = {
-					imgSrc: "http://localhost:8080/assets/images/plate_with_cutlery.png",
+					imgSrc: "http://localhost:8080/assets/images/default_plate.png",
 					mealName: "updated name",
 					comments: "updated comment",
 					restaurant: "updated restaurant",
 					tags: ["tag -0", "tag -1", "tag -2", "tag -3", "tag -4", "tag -5"],
-					rating: "http://localhost:8080/assets/images/5-star.svg"
+					rating: "http://localhost:8080/assets/images/5-star.svg",
 				};
 				await checkCorrectness(shadowRoot, "a", expected);
 			});
-
 		});
 
 		describe("test delete 1 review", async () => {
@@ -217,7 +208,7 @@ describe("test App end to end", async () => {
 				await review_card.click();
 				await page.waitForNavigation();
 
-				page.on("dialog", async dialog => {
+				page.on("dialog", async (dialog) => {
 					console.log(dialog.message());
 					await dialog.accept();
 				});

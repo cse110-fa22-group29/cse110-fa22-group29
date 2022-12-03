@@ -17,6 +17,12 @@
 	border: 2px solid rgb(31 41 32);
 	border-radius: 8px;
 	background-color: #f7dfd5;
+	word-break: break-all;
+}
+
+#d-meal-img {
+	border: 2px solid rgb(31 41 32);
+	border-radius: 8px;
 }
 
 fieldset {
@@ -42,7 +48,8 @@ input[type="text"]:focus {
 }
 
 .hidden,
-.rating:not(:checked) > input { /* Hide radio circles while star rating */
+.rating:not(:checked) > input {
+	/* Hide radio circles while star rating */
 	display: none;
 }
 
