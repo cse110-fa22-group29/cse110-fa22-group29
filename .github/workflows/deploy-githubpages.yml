@@ -39,7 +39,7 @@ jobs:
               uses: actions/checkout@v3
             - name: Install dependencies
               run: sudo npm install
-            - name: Run tests
+            - name: Run js-doc
               run: sudo npm run js-doc
             - name: Setup Pages
               uses: actions/configure-pages@v2
