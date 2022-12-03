@@ -101,7 +101,7 @@ export function updateReviewToStorage(ID, review){
 	let repeatedTags = review["tags"].filter(x => oldReview["tags"].includes(x));
 	let tagArr = [];
 	for (let i in repeatedTags){
-		tagArr = JSON.parse(localStorage.getItem(`!${repeatedTags[i]}`));
+		tagArr = JSON.parse(localStorage.getItem(`!${repeatedTags[i]}`.toLocaleLowerCase()));
 		if(tagArr.length == 1){
 			for (let j in tagArr){
 				if(tagArr[j] == ID){

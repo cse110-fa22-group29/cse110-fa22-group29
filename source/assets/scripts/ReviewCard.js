@@ -16,7 +16,6 @@ class ReviewCard extends HTMLElement {
 			font-family: Century Gothic;
 			margin: 0;
 			padding: 0;
-			overflow-wrap: anywhere;
 			cursor: pointer;
 		}
 		
