@@ -32,8 +32,6 @@ function initFormHandler() {
 	let searchBtn = document.getElementById("search-btn");
 	let searchTag = null;
 	//adding search functionality
-	//TODO: Add ability to enter without refresh of search bar
-	//filter by selected tag when button clicked
 	searchBtn.addEventListener("click", function () {
 		searchTag = searchField.value;
 		sortAndFilter(searchTag);
@@ -145,6 +143,7 @@ function loadReviews(index, reviewIDs) {
 	}
 }
 
+//setting up service worker
 const registerServiceWorker = async () => {
 	if ("serviceWorker" in navigator) {
 		try {

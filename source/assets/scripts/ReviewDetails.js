@@ -212,7 +212,7 @@ function setupUpdate() {
 			updateDiv.classList.add("hidden");
 		})
 
-		//Take formdata values as newData when submit
+		//Take form data values as newData when submit
 		form.addEventListener("submit", function () {
 			/*
 			 *  User submits the form for their review.

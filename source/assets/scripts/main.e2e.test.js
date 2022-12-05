@@ -15,7 +15,6 @@ describe("test App end to end", async () => {
 			root = false;
 		}
 
-		//browser = await puppeteer.launch({headless: false, slowMo: 250, args: root ? ['--no-sandbox'] : undefined});
 		browser = await puppeteer.launch({ args: root ? ["--no-sandbox"] : undefined });
 		page = await browser.newPage();
 		try {
