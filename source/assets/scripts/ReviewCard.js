@@ -109,8 +109,6 @@ class ReviewCard extends HTMLElement {
 
 		// Attach event listener to each review-card
 		this.addEventListener("click", (event) => {
-			console.log(event.target);
-			console.log(event.target.reviewId);
 			// Saves the ID for corresponding review on new page (for data retrieval)
 			sessionStorage.setItem("currID", JSON.stringify(event.target.data.reviewID));
 			// Goes to the new page for the review
@@ -251,7 +249,6 @@ class ReviewCard extends HTMLElement {
 
 		// Get comment section
 		let comments = this.shadowEl.getElementById("a-comments");
-		console.log(comments);
 		dataContainer["comments"] = comments.innerText;
 
 		// Get rating

@@ -161,7 +161,6 @@ function setupUpdate() {
 		let select = document.getElementById("select");
 		const input = document.getElementById("mealImg");
 		select.addEventListener("change", function () {
-			console.log("1");
 			// Select a photo with HTML file selector
 			if (select.value == "file") {
 				// enabling file upload components and hiding photo taking components
@@ -192,7 +191,6 @@ function setupUpdate() {
 
 		//addressing sourcing image from local file
 		document.getElementById("mealImg").addEventListener("change", function () {
-			console.log("reading used");
 			const reader = new FileReader();
 
 			//store image data URL after successful image load
@@ -208,6 +206,12 @@ function setupUpdate() {
 			reader.readAsDataURL(document.getElementById("mealImg").files[0]);
 		});
 
+		//cancel button on update form hids form not making any changes
+		let cancelBtn = document.getElementById("cancel-btn");
+		cancelBtn.addEventListener("click", function(){
+			updateDiv.classList.add("hidden");
+		})
+
 		//Take formdata values as newData when submit
 		form.addEventListener("submit", function () {
 			/*
@@ -218,8 +222,6 @@ function setupUpdate() {
 			let newData = {};
 			//iterate through formData and add to newData
 			for (let [key, value] of formData) {
-				console.log(`${key}`);
-				console.log(`${value}`);
 				if (`${key}` !== "tag-form") {
 					newData[`${key}`] = `${value}`;
 				}

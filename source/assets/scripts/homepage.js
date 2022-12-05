@@ -1,4 +1,4 @@
-// main.js
+// homepage.js
 import { getIDsByTag, getIDsFromStorage, getReviewFromStorage, getTopIDsFromStorage } from "./localStorage.js";
 
 // Run the init() function when the page has loaded
@@ -101,6 +101,7 @@ function sortAndFilter(searchTag) {
  */
 function loadReviews(index, reviewIDs) {
 	let reviewBox = document.getElementById("review-container");
+	let footer = document.querySelector("footer");
 	// label if there are no reviews to display
 	if (reviewIDs.length == 0) {
 		let emptyLabel = document.createElement("label");
@@ -116,7 +117,7 @@ function loadReviews(index, reviewIDs) {
 	let moreBtn = document.getElementById("more-btn");
 	//delete load more button if exists
 	if (moreBtn) {
-		reviewBox.removeChild(moreBtn);
+		footer.removeChild(moreBtn);
 	}
 	let reviewArr = [];
 	//check if there are more than 9 reviews left
@@ -140,7 +141,7 @@ function loadReviews(index, reviewIDs) {
 		moreBtn.addEventListener("click", function () {
 			loadReviews(index + 9, reviewIDs);
 		});
-		reviewBox.append(moreBtn);
+		footer.append(moreBtn);
 	}
 }
 

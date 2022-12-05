@@ -24,7 +24,7 @@ const ASSETS = [
 	"assets/images/search_button.png",
 	"assets/scripts/CreatePage.js",
 	"assets/scripts/localStorage.js",
-	"assets/scripts/main.js",
+	"assets/scripts/homepage.js",
 	"assets/scripts/ReviewCard.js",
 	"assets/scripts/ReviewDetails.js",
 ];
