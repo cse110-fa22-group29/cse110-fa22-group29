@@ -4,7 +4,7 @@
 	"type": "module",
 	"scripts": {
 		"test": "mocha --recursive --require mock-local-storage './{,!(node_modules)/**}/*.test.js'",
-		"coverage": "nyc --all npm run test",
+		"coverage": "c8 npm run test",
 		"lint-js": "eslint **/*.js",
 		"fix-js": "eslint --fix **/*.js",
 		"lint-html": "htmlhint **/*.html",
@@ -16,12 +16,12 @@
 		"js-doc": "jsdoc -d source/docs/ -r source/"
 	},
 	"devDependencies": {
+		"c8": "^7.12.0",
 		"eslint": "^8.27.0",
 		"htmlhint": "1.1.4",
 		"http-server": "",
 		"mocha": "10",
 		"mock-local-storage": "^1.1.23",
-		"nyc": "^14.0.0",
 		"prettier": "2.8.0",
 		"puppeteer": "^18.2.1",
 		"stylelint": "14.14.1",
