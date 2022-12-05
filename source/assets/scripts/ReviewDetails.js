@@ -208,9 +208,9 @@ function setupUpdate() {
 
 		//cancel button on update form hids form not making any changes
 		let cancelBtn = document.getElementById("cancel-btn");
-		cancelBtn.addEventListener("click", function(){
+		cancelBtn.addEventListener("click", function () {
 			updateDiv.classList.add("hidden");
-		})
+		});
 
 		//Take form data values as newData when submit
 		form.addEventListener("submit", function () {
