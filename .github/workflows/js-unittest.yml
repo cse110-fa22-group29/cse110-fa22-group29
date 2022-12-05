@@ -25,5 +25,5 @@ jobs:
               run: sudo npm install
             - name: Start local http server
               run: sudo npm run http-server &
-            - name: Run tests
-              run: sudo npm test
+            - name: Run tests with coverage
+              run: sudo npm run coverage

@@ -4,6 +4,7 @@
 	"type": "module",
 	"scripts": {
 		"test": "mocha --recursive --require mock-local-storage './{,!(node_modules)/**}/*.test.js'",
+		"coverage": "nyc --all npm run test",
 		"lint-js": "eslint **/*.js",
 		"fix-js": "eslint --fix **/*.js",
 		"lint-html": "htmlhint **/*.html",
@@ -20,6 +21,7 @@
 		"http-server": "",
 		"mocha": "10",
 		"mock-local-storage": "^1.1.23",
+		"nyc": "^14.0.0",
 		"prettier": "2.8.0",
 		"puppeteer": "^18.2.1",
 		"stylelint": "14.14.1",
