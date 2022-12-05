@@ -22,8 +22,8 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - name: Install dependencies
-              run: sudo npm install
+              run: npm install
             - name: Start local http server
-              run: sudo npm run http-server &
-            - name: Run tests
-              run: sudo npm test
+              run: npm run http-server &
+            - name: Run tests with coverage
+              run: npm run coverage

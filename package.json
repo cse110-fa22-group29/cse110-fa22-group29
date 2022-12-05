@@ -4,6 +4,7 @@
 	"type": "module",
 	"scripts": {
 		"test": "mocha --recursive --require mock-local-storage './{,!(node_modules)/**}/*.test.js'",
+		"coverage": "c8 --check-coverage --lines 90 --functions 90 --branches 90 npm run test",
 		"lint-js": "eslint **/*.js",
 		"fix-js": "eslint --fix **/*.js",
 		"lint-html": "htmlhint **/*.html",
@@ -15,6 +16,7 @@
 		"js-doc": "jsdoc -d source/docs/ -r source/"
 	},
 	"devDependencies": {
+		"c8": "^7.12.0",
 		"eslint": "^8.27.0",
 		"htmlhint": "1.1.4",
 		"http-server": "",
