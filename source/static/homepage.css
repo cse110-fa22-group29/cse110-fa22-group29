@@ -23,6 +23,8 @@ body {
 	align-self: center;
 	padding-left: 2.5%;
 	padding-right: 2.5%;
+	width: 7.5%;
+	height: 7.5%;
 }
 
 .top-bar > h1 {
