@@ -110,8 +110,6 @@ function initFormHandler() {
 
 		// Adds data to the reviewObject from form data
 		for (let [key, value] of formData) {
-			console.log(`${key}`);
-			console.log(`${value}`);
 			if (`${key}` !== "tag-form") {
 				reviewObject[`${key}`] = `${value}`;
 			}
@@ -141,7 +139,7 @@ function initFormHandler() {
 		}
 		// Does not let user proceed if rating is not complete
 		else {
-			window.alert("NO! FILL IN STARS");
+			window.alert("Please fill in rating by selecting the stars :)");
 		}
 	});
 

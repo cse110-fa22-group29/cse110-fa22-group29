@@ -1,4 +1,6 @@
 **/.devcontainer/*
 **/node_modules/*
 **/package-lock.json
-**/*.vscode/*
+**/.vscode/*
+**/.nyc_output/*
+**/coverage/*

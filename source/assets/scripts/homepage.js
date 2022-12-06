@@ -1,4 +1,4 @@
-// main.js
+// homepage.js
 import { getIDsByTag, getIDsFromStorage, getReviewFromStorage, getTopIDsFromStorage } from "./localStorage.js";
 
 // Run the init() function when the page has loaded
@@ -32,8 +32,6 @@ function initFormHandler() {
 	let searchBtn = document.getElementById("search-btn");
 	let searchTag = null;
 	//adding search functionality
-	//TODO: Add ability to enter without refresh of search bar
-	//filter by selected tag when button clicked
 	searchBtn.addEventListener("click", function () {
 		searchTag = searchField.value;
 		sortAndFilter(searchTag);
@@ -101,6 +99,7 @@ function sortAndFilter(searchTag) {
  */
 function loadReviews(index, reviewIDs) {
 	let reviewBox = document.getElementById("review-container");
+	let footer = document.querySelector("footer");
 	// label if there are no reviews to display
 	if (reviewIDs.length == 0) {
 		let emptyLabel = document.createElement("label");
@@ -116,7 +115,7 @@ function loadReviews(index, reviewIDs) {
 	let moreBtn = document.getElementById("more-btn");
 	//delete load more button if exists
 	if (moreBtn) {
-		reviewBox.removeChild(moreBtn);
+		footer.removeChild(moreBtn);
 	}
 	let reviewArr = [];
 	//check if there are more than 9 reviews left
@@ -140,10 +139,11 @@ function loadReviews(index, reviewIDs) {
 		moreBtn.addEventListener("click", function () {
 			loadReviews(index + 9, reviewIDs);
 		});
-		reviewBox.append(moreBtn);
+		footer.append(moreBtn);
 	}
 }
 
+//setting up service worker
 const registerServiceWorker = async () => {
 	if ("serviceWorker" in navigator) {
 		try {
