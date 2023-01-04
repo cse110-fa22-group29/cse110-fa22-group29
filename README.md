@@ -1,5 +1,7 @@
 # My Meal Journal
 
+My Meal Journal is a local-first journaling application on the web designed for recording your standout meal experiences.
+
 [Team Page Link](https://github.com/cse110-fa22-group29/cse110-fa22-group29/blob/main/admin/team.md)
 
 [Food Journal](https://cse110-fa22-group29.github.io/cse110-fa22-group29/)
