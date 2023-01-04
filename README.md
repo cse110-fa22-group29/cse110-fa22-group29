@@ -1,6 +1,7 @@
 # My Meal Journal
 
 My Meal Journal is a local-first journaling application on the web designed for recording your standout meal experiences. The app utilizes local storage in the browser to store invidual journal entries with support for tagging, filtering, image posting, and more!<br>
+
 The site is completely static with no front-end or back-end libraries employed. As such cross browser support is relatively strong and site performance is very reliable.
 
 Access the Site Here:<br>
