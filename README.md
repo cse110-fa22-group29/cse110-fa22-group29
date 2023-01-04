@@ -8,4 +8,5 @@ Access the Site Here:<br>
 Meet the Team:<br>
 [Team Page Link](https://github.com/cse110-fa22-group29/cse110-fa22-group29/blob/main/admin/team.md)
 
-If you enjoyed the site or have suggestion for how we can improve it don't hesitate to reach out to the developers!
+If you enjoyed the site or have suggestion for how we can improve it don't hesitate to reach out to the developers!<br>
+Crafted with ❤️ and care by students of the University of California San Diego.
