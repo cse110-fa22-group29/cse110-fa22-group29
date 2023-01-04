@@ -26,7 +26,7 @@
 
 -   #### About Me:
     -   Hello World! I'm a fifth year (3rd year transfer) computer science major from the North Bay Area. Web development has been a big focus of mine since taking Prof Powell's 134B last winter and I'm stoked to be back in the "full stack" developer seat for 110. I am the second the team lead and in addition to my love for leading and working on team projects I am also fascinated by web development technologies including containerization, infrastructure as code (IaC), software as a service (SAAS), and web-based encryption (security). I am also an avid DJ and the traininer manmager for the DJ club on campus. This quarter is shaping up to be a memorable one!
--   #### Link to Github: https://github.com/look-its-ashton
+-   #### Link to Github: https://github.com/CODE-REFINARY
 
 ### **Gavyn Ezell**
 
